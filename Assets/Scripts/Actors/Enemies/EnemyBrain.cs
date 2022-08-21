@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
 {
+/*
     [SerializeReference] public CharacterController2D controller;
     [SerializeReference] public GameObject player;
     [SerializeReference] public Animator animator;
@@ -56,12 +57,6 @@ public class EnemyBrain : MonoBehaviour
         rightRayNormalized = rightRay.normalized;
         leftRayNormalized = rightRayNormalized;
         leftRayNormalized[0] *= -1; // Flip rightRayNormalized over y-axis
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     // FixedUpdate is called a fixed number of times per second
@@ -156,4 +151,6 @@ public class EnemyBrain : MonoBehaviour
         }
         return preferredMovement;
     }
+
+    */
 }
