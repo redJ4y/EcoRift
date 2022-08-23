@@ -4,5 +4,5 @@
 Group members:
 - Kylie Crump
 - Myles Hosken
-- Chris Young
+- Christopher Young
 - Jared Scholz
