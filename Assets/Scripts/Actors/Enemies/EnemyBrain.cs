@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
 {
-/*
     [SerializeReference] public CharacterController2D controller;
     [SerializeReference] public GameObject player;
     [SerializeReference] public Animator animator;
+    [SerializeField] private GameObject groundCheck;
     [SerializeField] private LayerMask whatIsGround;
 
     [Header("Movement")]
@@ -40,6 +40,7 @@ public class EnemyBrain : MonoBehaviour
     private Vector2 rightRayNormalized;
     private Vector2 leftRayNormalized;
 
+    private bool grounded = true;
     private float currentMovement = 0;
     private bool jump = false;
     private bool permanentAggro = false; // If enemy was aggroed and keepAgro is enabled
@@ -59,6 +60,14 @@ public class EnemyBrain : MonoBehaviour
         leftRayNormalized[0] *= -1; // Flip rightRayNormalized over y-axis
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        // Update animation state:
+        animator.SetBool("Run", currentMovement != 0);
+        animator.SetBool("Jump", !grounded);
+    }
+
     // FixedUpdate is called a fixed number of times per second
     void FixedUpdate()
     {
@@ -68,8 +77,14 @@ public class EnemyBrain : MonoBehaviour
         timeSinceDirectionChange += Time.fixedDeltaTime;
         jump = false;
 
-        // Update animation state:
-        animator.SetBool("Running", currentMovement != 0);
+        // Update grounded variable for animation state:
+        grounded = false;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.transform.position, 0.1f, whatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
+                grounded = true;
+        }
     }
 
     // Returns the preferred movement value (not scaled by movement speed)
@@ -151,6 +166,4 @@ public class EnemyBrain : MonoBehaviour
         }
         return preferredMovement;
     }
-
-    */
 }
