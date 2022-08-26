@@ -1438,7 +1438,6 @@ GameObject:
   - component: {fileID: 1221059968}
   - component: {fileID: 1221059964}
   - component: {fileID: 1221059963}
-  - component: {fileID: 1221059962}
   - component: {fileID: 1221059967}
   - component: {fileID: 1221059966}
   m_Layer: 9
@@ -1465,26 +1464,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1221059962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221059960}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3144ef4ba4d2c9546a21f28d53c3616f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 1221059964}
-  isFacingRight: 1
-  speed: 200
-  jumpForce: 5
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  groundCheck: {fileID: 2095936286}
 --- !u!70 &1221059963
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1611,6 +1590,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 2095936286}
   m_CeilingCheck: {fileID: 186073827}
   m_CrouchDisableCollider: {fileID: 0}
+  animator: {fileID: 1221059968}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []

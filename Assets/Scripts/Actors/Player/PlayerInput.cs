@@ -26,13 +26,6 @@ public class PlayerInput : MonoBehaviour
         };
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        animator.SetBool("Run", playerDirection != 0);
-        animator.SetBool("Jump", jump);
-    }
-
     // Called a fixed number of times per second
     void FixedUpdate()
     {

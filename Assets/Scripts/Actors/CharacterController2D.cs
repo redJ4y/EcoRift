@@ -10,7 +10,8 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
-	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
+	[SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
+	[SerializeReference] public Animator animator;
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
@@ -18,6 +19,7 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
+	private float moveInput = 0f;
 
 	[Header("Events")]
 	[Space]
@@ -41,7 +43,12 @@ public class CharacterController2D : MonoBehaviour
 			OnCrouchEvent = new BoolEvent();
 	}
 
-	private void FixedUpdate()
+    private void Update()
+    {
+		animator.SetBool("Run", Mathf.Abs(moveInput) > 0.1f);
+		animator.SetBool("Jump", !m_Grounded);
+    }
+    private void FixedUpdate()
 	{
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
@@ -63,6 +70,9 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump)
 	{
+
+		moveInput = move; //Addition
+
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
 		{
