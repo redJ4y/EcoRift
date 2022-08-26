@@ -8,8 +8,6 @@ public class EnemyBrain : MonoBehaviour
 {
     [SerializeReference] public CharacterController2D controller;
     [SerializeReference] public GameObject player;
-    [SerializeReference] public Animator animator;
-    [SerializeField] private GameObject groundCheck;
     [SerializeField] private LayerMask whatIsGround;
 
     [Header("Movement")]
@@ -34,61 +32,50 @@ public class EnemyBrain : MonoBehaviour
     [Range(1, 50)] [SerializeField] private int attackSpeed = 1;
 
     private float playerHeight;
+    private float halfPlayerHeight;
+    private float halfPlayerHeightSquared;
     private float halfMovementSpeed;
+    private float gravity;
     // For ray casting:
     private float rayLength;
     private Vector2 rightRayNormalized;
     private Vector2 leftRayNormalized;
 
-    private bool grounded = true;
     private float currentMovement = 0;
     private bool jump = false;
     private bool permanentAggro = false; // If enemy was aggroed and keepAgro is enabled
     private float timeSinceDirectionChange = 0;
+    private bool currentlyLeaping = false;
 
     // Start is called before the first frame update
     void Start()
     {
         playerHeight = player.GetComponent<SpriteRenderer>().bounds.size.y;
+        halfPlayerHeight = playerHeight / 2.0f;
+        halfPlayerHeightSquared = Mathf.Pow(halfPlayerHeight, 2);
         halfMovementSpeed = movementSpeed / 2.0f;
+        gravity = gameObject.GetComponent<Rigidbody2D>().gravityScale * 9.8f;
 
         // Set up ray casting variables:
-        Vector2 rightRay = new Vector2(gameObject.GetComponent<SpriteRenderer>().bounds.size.x / 2.0f, -(gameObject.GetComponent<SpriteRenderer>().bounds.size.y / 2.0f)); // Vector to bottom-right corner of sprite
+        Vector2 rightRay = new Vector2(gameObject.GetComponent<SpriteRenderer>().bounds.size.x / 4.0f, -(playerHeight / 2.0f));
         rayLength = rightRay.magnitude + 1; // Extend vector in ray cast
         rightRayNormalized = rightRay.normalized;
         leftRayNormalized = rightRayNormalized;
         leftRayNormalized[0] *= -1; // Flip rightRayNormalized over y-axis
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Update animation state:
-        animator.SetBool("Run", currentMovement != 0);
-        animator.SetBool("Jump", !grounded);
-    }
-
     // FixedUpdate is called a fixed number of times per second
     void FixedUpdate()
     {
-        currentMovement = validateMovement(smoothMovement(getPreferredMovement()));
+        currentMovement = ValidateMovement(SmoothMovement(GetPreferredMovement()));
 
         controller.Move(currentMovement * Time.fixedDeltaTime, false, jump);
         timeSinceDirectionChange += Time.fixedDeltaTime;
         jump = false;
-
-        // Update grounded variable for animation state:
-        grounded = false;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.transform.position, 0.1f, whatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-                grounded = true;
-        }
     }
 
     // Returns the preferred movement value (not scaled by movement speed)
-    private float getPreferredMovement()
+    private float GetPreferredMovement()
     {
         Vector3 myPos = gameObject.transform.position;
         Vector3 playerPos = player.transform.position;
@@ -112,7 +99,7 @@ public class EnemyBrain : MonoBehaviour
             if (distance < keepDistance && Random.value < 0.6f) // Ensure keepDistance is loosely obeyed
                 preferredMovement *= -1; // Invert movement direction (away from player)
 
-            if (canJump && Random.value < 0.8f && distance < 3 && playerPos.y > myPos.y + playerHeight) // Check if the enemy should jump
+            if (canJump && Random.value < 0.8f && distance < 2 && playerPos.y > myPos.y + playerHeight) // Check if the enemy should jump
                 jump = true;
         }
         else
@@ -123,7 +110,7 @@ public class EnemyBrain : MonoBehaviour
     }
 
     // Returns a less annoying movement value (now scaled by movement speed)
-    private float smoothMovement(float preferredMovement)
+    private float SmoothMovement(float preferredMovement)
     {
         int currentMovementRaw = System.Math.Sign(currentMovement);
         if (currentMovementRaw != preferredMovement) // Check for direction change
@@ -150,20 +137,55 @@ public class EnemyBrain : MonoBehaviour
         return currentMovementRaw * movementSpeed;
     }
 
-    private float validateMovement(float preferredMovement)
+    private float ValidateMovement(float preferredMovement)
     {
-        if (preferredMovement != 0)
+        if (currentlyLeaping)
         {
-            // Determine which ray to use based on movement direction:
-            Vector2 ray = rightRayNormalized;
-            if (preferredMovement < 0)
-                ray = leftRayNormalized;
-            // Jump if necessary:
-            if (!Physics2D.Raycast(transform.position, ray, rayLength, whatIsGround))
+            jump = true;
+        }
+        else
+        {
+            if (preferredMovement != 0)
             {
-                jump = true;
+                // Determine which ray to use based on movement direction:
+                Vector2 ray = rightRayNormalized;
+                if (preferredMovement < 0)
+                    ray = leftRayNormalized;
+                // Jump or stop if necessary (about to fall):
+                if (!Physics2D.Raycast(transform.position, ray, rayLength, whatIsGround))
+                {
+                    // Check if there is something to jump to:
+                    float jumpDistance = GetApproximateJumpDistance();
+                    if (jumpDistance > 2) // Filter out false positives at very low speed
+                    {
+                        float jumpRayLength = Mathf.Sqrt(Mathf.Pow(jumpDistance, 2) + halfPlayerHeightSquared) * 1.01f;
+                        Vector2 jumpToRay = new Vector2(preferredMovement < 0 ? -jumpDistance : jumpDistance, -halfPlayerHeight);
+                        if (Physics2D.Raycast(transform.position, jumpToRay.normalized, jumpRayLength, whatIsGround))
+                        { // Jump to the next platform...
+                            jump = true;
+                            currentlyLeaping = true; // Maintain jump state until landing
+                            return preferredMovement;
+                        }
+                    }
+                    // There is nothing to jump to...
+                    currentlyLeaping = false;
+                    timeSinceDirectionChange = 0;
+                    return Random.value < 0.8f ? 0 : -preferredMovement;
+                }
             }
         }
+        if (controller.IsPlayerGrounded())
+            currentlyLeaping = false;
         return preferredMovement;
     }
+
+    private float GetApproximateJumpDistance()
+    {
+        Vector2 jumpVector = controller.GetJumpVector();
+        float vx = Mathf.Abs(jumpVector.x);
+        float vy = Mathf.Abs(jumpVector.y);
+        float a = Mathf.Abs(gravity / (2 * Mathf.Pow(vx, 2))); // Abs for float inaccuracy
+        float b = Mathf.Abs(Mathf.Tan(vy / Mathf.Sqrt(vx + vy))); // Abs for float inaccuracy
+        return 0.8f * (b / a); // Using the quadratic formula (already simplified)
+    } // Return 80% of the approximate distance for confidence
 }
