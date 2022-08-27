@@ -27,7 +27,8 @@ public class GetWeather : MonoBehaviour
             transform.Find("Snowy").gameObject,
             transform.Find("Sunny").gameObject,
             transform.Find("Rain Particles").gameObject,
-            transform.Find("Snow Particles").gameObject
+            transform.Find("Snow Particles").gameObject,
+            transform.Find("Cloud Particles").gameObject
         };
         weatherBackgrounds = new List<GameObject>(bgs);
 
@@ -92,6 +93,7 @@ public class GetWeather : MonoBehaviour
         if (currentWeather == "Clouds")
         {
             weatherBackgrounds.Find(obj => obj.name == "Cloudy").SetActive(true);
+            weatherBackgrounds.Find(obj => obj.name == "Cloud Particles").SetActive(true);
             replaceCurrentTiles(normalSprites);
         }
         else if (currentWeather == "Clear")
