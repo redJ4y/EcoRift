@@ -6,7 +6,6 @@ public class PlayerInput : MonoBehaviour
 {
     public PlayerControls controls;
     public CharacterController2D controller;
-    public Animator animator;
     public float runSpeed = 30f;
 
     private float playerDirection = 0f;
@@ -24,13 +23,6 @@ public class PlayerInput : MonoBehaviour
         {
             jump = true;
         };
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        animator.SetBool("Run", playerDirection != 0);
-        animator.SetBool("Jump", jump);
     }
 
     // Called a fixed number of times per second
