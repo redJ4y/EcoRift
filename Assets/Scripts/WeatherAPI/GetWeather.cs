@@ -18,15 +18,15 @@ public class GetWeather : MonoBehaviour
             Debug.Log(w.main);
             if (w.main == "Clouds")
             {
-                Camera.main.backgroundColor = Color.blue;
+                Camera.main.backgroundColor = Color.grey;
             }
             else if (w.main == "Clear")
             {
-                Camera.main.backgroundColor = Color.blue;
+                Camera.main.backgroundColor = Color.grey;
             }
             else if (w.main == "Rain")
             {
-                Camera.main.backgroundColor = Color.blue;
+                Camera.main.backgroundColor = Color.grey;
             }
         }
     }
