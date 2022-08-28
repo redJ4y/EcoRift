@@ -31,8 +31,6 @@ public class GetWeather : MonoBehaviour
             transform.Find("Cloud Particles").gameObject
         };
         weatherBackgrounds = new List<GameObject>(bgs);
-
-        fetchAPIData();
     }
 
     private void replaceCurrentTiles(Sprite[] newSprites)
@@ -71,10 +69,9 @@ public class GetWeather : MonoBehaviour
         }
         return null;
     }
-
-    public void fetchAPIData()
+    
+    public void fetchAPIData(Weather[] weatherList)
     {
-        Weather[] weatherList = APIHelper.GetWeatherList();
         // json object is a list for some reason so parse through that
         foreach (Weather w in weatherList)
         {
@@ -84,7 +81,7 @@ public class GetWeather : MonoBehaviour
 
         updateWeather();
     }
-
+    
     private void updateWeather()
     {
         // Ensure no backgrounds are currently set
