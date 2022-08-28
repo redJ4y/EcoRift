@@ -32,6 +32,7 @@ public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
     {
         float x = Mathf.Abs(offset.x) > dragThreshold ? offset.x : 0;
         float y = Mathf.Abs(offset.y) > dragThreshold ? offset.y : 0;
+        Debug.Log(offset);
         return new Vector2(x, y);
     }
 
