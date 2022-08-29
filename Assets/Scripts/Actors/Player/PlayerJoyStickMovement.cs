@@ -14,7 +14,7 @@ public class PlayerJoyStickMovement : MonoBehaviour
     private void Move(Vector2 input)
     {
         MovementVector = input;
-        
+        //controller.Move;
         
     }
     
