@@ -13672,10 +13672,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< Updated upstream
     - target: {fileID: 8396136382275733298, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
       propertyPath: joyStick
       value: 
       objectReference: {fileID: 2070850095}
+=======
+    - target: {fileID: 8396136382275733296, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 0427808d96b7a454d8bffa22417c2f6e, type: 2}
+>>>>>>> Stashed changes
     - target: {fileID: 8396136382275733300, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
       propertyPath: m_Name
       value: Player
