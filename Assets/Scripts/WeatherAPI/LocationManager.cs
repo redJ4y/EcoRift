@@ -9,10 +9,19 @@ public class LocationManager : MonoBehaviour
     IEnumerator Start()
     {
         TextMeshProUGUI text = textTest.GetComponent<TextMeshProUGUI>();
+
+        // Wait until the editor and unity remote are connected before starting a location service
+        if (isUnityRemote)
+        {
+            yield return new WaitForSeconds(5);
+        }
+
         // Check if the user has location service enabled.
         if (!Input.location.isEnabledByUser)
+        {
+            text.text = "Location not enabled";
             yield break;
-
+        }
         // Starts the location service.
         Input.location.Start();
 
