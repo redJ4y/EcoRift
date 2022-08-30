@@ -11,7 +11,7 @@ public class LocationManager : MonoBehaviour
         TextMeshProUGUI text = textTest.GetComponent<TextMeshProUGUI>();
 
         // Wait until the editor and unity remote are connected before starting a location service
-        if (isUnityRemote)
+        if (UnityEditor.EditorApplication.isRemoteConnected)
         {
             yield return new WaitForSeconds(5);
         }
