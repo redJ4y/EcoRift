@@ -8,7 +8,7 @@ public class LocationManager : MonoBehaviour
 
     IEnumerator Start()
     {
-        TextMeshPro text = textTest.GetComponent<TextMeshPro>();
+        TextMeshProUGUI text = textTest.GetComponent<TextMeshProUGUI>();
         // Check if the user has location service enabled.
         if (!Input.location.isEnabledByUser)
             yield break;
