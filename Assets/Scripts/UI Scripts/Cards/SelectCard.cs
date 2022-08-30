@@ -11,16 +11,19 @@ public class SelectCard : MonoBehaviour
     private RectTransform cardTrans;
     private Vector3 newPos;
     private Color prevColor;
+    private bool currentlyAnimating;
 
     private void Start()
     {
         prevColor = new Color32(140, 140, 140, 255);
+        currentlyAnimating = false;
     }
 
     public void OnClick(GameObject cardClicked)
     {
-        if (cardClicked != selectedCard)
+        if (cardClicked != selectedCard && currentlyAnimating == false)
         {
+            currentlyAnimating = true;
             if (selectedCard != null)
             {
                 // First animate down the previous selected card
@@ -46,7 +49,7 @@ public class SelectCard : MonoBehaviour
 
         while (t < 1f)
         {
-            t += Time.deltaTime * 2.0f;
+            t += Time.deltaTime * 3.0f;
             tra.localPosition = Vector3.Lerp(from, to, t);
             if (selected == true)
                 cardImg.color = Color.Lerp(prevColor, Color.white, t);
@@ -54,6 +57,8 @@ public class SelectCard : MonoBehaviour
                 cardImg.color = Color.Lerp(Color.white, prevColor, t);
             yield return null;
         }
+
+        currentlyAnimating = false;
     }
 
 }
