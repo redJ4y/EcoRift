@@ -9,35 +9,6 @@ public class APIHelper : MonoBehaviour
 {
     public GetWeather getWeatherScript;
 
-    /*
-    public static string GetCurrentWeather()
-    {
-        // Brisbane: lat: -27.469770, lon: 153.025131
-        // Auckland: lat: -36.852095, lon: 174.7631803
-
-        string lat = "-27.469770";
-        string lon = "153.025131";
-        string key = "1c69bc2783cad2acbebae2820882055b";
-        string APIurl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric&appid=" + key;
-
-        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(APIurl);
-        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-        StreamReader reader = new StreamReader(response.GetResponseStream());
-        string json = reader.ReadToEnd();
-
-        return json;
-    }
-
-
-    public static Weather[] GetWeatherList()
-    {
-        Weather[] weather = JsonHelper.FromJson<Weather>(GetCurrentWeather());
-
-        return weather;
-    }
-    */
-
     private void Start()
     {
         startRequest();
@@ -51,15 +22,7 @@ public class APIHelper : MonoBehaviour
     private IEnumerator MakeRequests()
     {
         // GET
-        // Brisbane: lat: -27.469770, lon: 153.025131
-        // Auckland: lat: -36.852095, lon: 174.7631803
-
-        string lat = "-27.469770";
-        string lon = "153.025131";
-        string key = "1c69bc2783cad2acbebae2820882055b";
-        string APIurl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric&appid=" + key;
-
-        UnityWebRequest getRequest = CreateRequest(APIurl);
+        UnityWebRequest getRequest = CreateRequest(APIData.APIurl);
         yield return getRequest.SendWebRequest();
         //var deserializedGetData = JsonUtility.FromJson<Todo>(getRequest.downloadHandler.text);
         Weather[] deserialisedGetData = JsonHelper.FromJson<Weather>(getRequest.downloadHandler.text);
