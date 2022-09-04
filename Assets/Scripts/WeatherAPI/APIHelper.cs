@@ -9,11 +9,6 @@ public class APIHelper : MonoBehaviour
 {
     public GetWeather getWeatherScript;
 
-    private void Start()
-    {
-        startRequest();
-    }
-
     public void startRequest()
     {
         StartCoroutine(MakeRequests());
