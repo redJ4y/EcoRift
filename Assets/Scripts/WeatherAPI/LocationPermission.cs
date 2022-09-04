@@ -22,14 +22,14 @@ public class LocationPermission : MonoBehaviour
     {
         if (Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
-            // The user authorized use of the microphone.
+            // The user authorized use of location.
         }
         else
         {
             bool useCallbacks = false;
             if (!useCallbacks)
             {
-                // We do not have permission to use the microphone.
+                // We do not have permission to use the location.
                 // Ask for permission or proceed without the functionality enabled.
                 Permission.RequestUserPermission(Permission.FineLocation);
             }

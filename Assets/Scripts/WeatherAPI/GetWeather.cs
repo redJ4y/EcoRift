@@ -28,7 +28,8 @@ public class GetWeather : MonoBehaviour
             transform.Find("Sunny").gameObject,
             transform.Find("Rain Particles").gameObject,
             transform.Find("Snow Particles").gameObject,
-            transform.Find("Cloud Particles").gameObject
+            transform.Find("Cloud Particles").gameObject,
+            transform.Find("Default").gameObject
         };
         weatherBackgrounds = new List<GameObject>(bgs);
     }
