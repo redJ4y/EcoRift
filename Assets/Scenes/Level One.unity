@@ -381,8 +381,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 819, y: 480}
-  m_SizeDelta: {x: 206.467, y: 48.589}
+  m_AnchoredPosition: {x: 891.1796, y: 470.28873}
+  m_SizeDelta: {x: 288.998, y: 68.011}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &200632536
 MonoBehaviour:
@@ -652,8 +652,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 572.13995, y: 480}
-  m_SizeDelta: {x: 236.513, y: 48.581}
+  m_AnchoredPosition: {x: 545.642, y: 470.28873}
+  m_SizeDelta: {x: 331.055, y: 68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &218439713
 MonoBehaviour:
@@ -1080,8 +1080,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -1329,7 +1329,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430689065}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 30
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -1404,8 +1404,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 20
-      minScalar: 10
+      scalar: 50
+      minScalar: 20
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6442,7 +6442,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 33.027}
+  m_SizeDelta: {x: 0, y: 48.537}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &621394526
 GameObject:
@@ -6850,7 +6850,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.5, y: -0.5}
+  m_AnchoredPosition: {x: -7.4999847, y: -0.4999962}
   m_SizeDelta: {x: -35, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &780668092
@@ -6900,8 +6900,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13610,8 +13610,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.035}
-  m_SizeDelta: {x: 0, y: 30.957}
+  m_AnchoredPosition: {x: 0, y: -0.000005722046}
+  m_SizeDelta: {x: 0, y: 48.537}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1179867385
 MonoBehaviour:
@@ -13744,7 +13744,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1833640476}
   m_HandleRect: {fileID: 1833640475}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -13939,8 +13939,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 13.614, y: -0.48193}
-  m_SizeDelta: {x: 27.226, y: 27.226}
+  m_AnchoredPosition: {x: 21.886, y: -0.48193}
+  m_SizeDelta: {x: 43.77, y: 43.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537134679
 MonoBehaviour:
@@ -14527,8 +14527,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.6135, y: -0.5}
-  m_SizeDelta: {x: -37.227, y: -3}
+  m_AnchoredPosition: {x: 21.885, y: -1.5}
+  m_SizeDelta: {x: -43.77, y: -3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1878090821
 MonoBehaviour:
@@ -14577,8 +14577,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14762,8 +14762,7 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8396136382275733298, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
 --- !u!1 &2010747081
 GameObject:
@@ -14948,7 +14947,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.65955853, g: 0.9150943, b: 0.8923784, a: 1}
+  m_Color: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

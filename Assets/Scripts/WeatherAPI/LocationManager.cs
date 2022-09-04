@@ -16,6 +16,7 @@ public class LocationManager : MonoBehaviour
         if (!Input.location.isEnabledByUser)
         {
             print("Location not enabled");
+            apiHelperScript.startRequest(); // Begin API request with default lat and lon
             yield break;
         }
         // Starts the location service.
