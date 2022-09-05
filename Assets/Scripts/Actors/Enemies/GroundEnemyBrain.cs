@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController2D))]
 
-public class EnemyBrain : MonoBehaviour
+public class GroundEnemyBrain : MonoBehaviour
 {
     [SerializeReference] public CharacterController2D controller;
     [SerializeReference] public GameObject player;
@@ -30,9 +30,8 @@ public class EnemyBrain : MonoBehaviour
     // [Range(1, 50)] [SerializeField] private int attackRange = 5;
     // [Range(1, 50)] [SerializeField] private int attackSpeed = 1;
 
-    private float playerHeight;
-    private float halfPlayerHeight;
-    private float halfPlayerHeightSquared;
+    private float halfEnemyHeight;
+    private float halfEnemyHeightSquared;
     private float halfMovementSpeed;
     private float gravity;
     // For ray casting:
@@ -51,14 +50,14 @@ public class EnemyBrain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerHeight = player.GetComponent<SpriteRenderer>().bounds.size.y;
-        halfPlayerHeight = playerHeight / 2.0f;
-        halfPlayerHeightSquared = Mathf.Pow(halfPlayerHeight, 2);
+        float enemyHeight = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;
+        halfEnemyHeight = enemyHeight / 2.0f;
+        halfEnemyHeightSquared = Mathf.Pow(halfEnemyHeight, 2);
         halfMovementSpeed = movementSpeed / 2.0f;
         gravity = gameObject.GetComponent<Rigidbody2D>().gravityScale * 9.8f;
 
         // Set up ray casting variables:
-        Vector2 rightRay = new Vector2(gameObject.GetComponent<SpriteRenderer>().bounds.size.x / 4.0f, -(playerHeight / 2.0f));
+        Vector2 rightRay = new Vector2(gameObject.GetComponent<SpriteRenderer>().bounds.size.x / 4.0f, -(enemyHeight / 2.0f));
         rayLength = rightRay.magnitude + 1; // Extend vector in ray cast
         rightRayNormalized = rightRay.normalized;
         leftRayNormalized = rightRayNormalized;
@@ -146,7 +145,7 @@ public class EnemyBrain : MonoBehaviour
         int currentMovementRaw = System.Math.Sign(currentMovement);
         if (currentMovementRaw != preferredMovement) // Check for direction change
         { // Apply smoothing to direction change...
-            if (Random.value < timeSinceDirectionChange / 10.0f) // Do not always switch directions immediately (increase chance as time passes)
+            if (timeSinceDirectionChange > 0.5f && Random.value < timeSinceDirectionChange / 10.0f) // Do not always switch directions immediately (increase chance as time passes)
             {
                 timeSinceDirectionChange = 0; // Reset duration since change (increased in every fixed update)
                 return preferredMovement * movementSpeed; // Accept preferredMovement
@@ -197,8 +196,8 @@ public class EnemyBrain : MonoBehaviour
                         float jumpDistance = GetApproximateJumpDistance();
                         if (jumpDistance > 2) // Filter out false positives at very low speed
                         {
-                            float jumpRayLength = Mathf.Sqrt(Mathf.Pow(jumpDistance, 2) + halfPlayerHeightSquared) * 1.01f;
-                            Vector2 jumpToRay = new Vector2(preferredMovement < 0 ? -jumpDistance : jumpDistance, -halfPlayerHeight);
+                            float jumpRayLength = Mathf.Sqrt(Mathf.Pow(jumpDistance, 2) + halfEnemyHeightSquared) * 1.01f;
+                            Vector2 jumpToRay = new Vector2(preferredMovement < 0 ? -jumpDistance : jumpDistance, -halfEnemyHeight);
                             if (Physics2D.Raycast(transform.position, jumpToRay.normalized, jumpRayLength, whatIsGround))
                             { // Jump to the next platform...
                                 jump = true;
