@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeReference] ProjectileHandler handler;
+
     public PlayerControls controls;
     public CharacterController2D controller;
     public float runSpeed = 30f;
 
     private float playerDirection = 0f;
     private bool jump = false;
+    private bool shoot = false;
 
     private void Awake()
     {
@@ -22,6 +25,10 @@ public class PlayerInput : MonoBehaviour
         controls.Ground.Jump.performed += ctx =>
         {
             jump = true;
+        };
+        controls.Ground.Shoot.performed += ctx =>
+        {
+            handler.OnShoot();
         };
     }
 

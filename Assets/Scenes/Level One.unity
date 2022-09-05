@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 211795061}
   - component: {fileID: 211795060}
   m_Layer: 5
-  m_Name: SnowCard
+  m_Name: Snow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 272557530}
   - component: {fileID: 272557529}
   m_Layer: 5
-  m_Name: LightningCard
+  m_Name: Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1140,19 +1140,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8396136382275733301, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
   m_PrefabInstance: {fileID: 1991063543}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &385384376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385384374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e5d2a82e798b846a912226531ec552, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handler: {fileID: 2010308901}
 --- !u!1 &429889424
 GameObject:
   m_ObjectHideFlags: 0
@@ -12045,7 +12032,7 @@ GameObject:
   - component: {fileID: 1068307903}
   - component: {fileID: 1068307902}
   m_Layer: 5
-  m_Name: SunCard
+  m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13440,6 +13427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCard: {fileID: 0}
+  projectileScript: {fileID: 2010308901}
 --- !u!1 &1176291670
 GameObject:
   m_ObjectHideFlags: 0
@@ -13847,7 +13835,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2172089, y: 1}
+    m_SensorSize: {x: 2.0068307, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -14170,7 +14158,7 @@ GameObject:
   - component: {fileID: 1754450655}
   - component: {fileID: 1754450654}
   m_Layer: 5
-  m_Name: WaterCard
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14662,6 +14650,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8396136382275733298, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
+      propertyPath: handler
+      value: 
+      objectReference: {fileID: 2010308901}
     - target: {fileID: 8396136382275733300, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
       propertyPath: m_Name
       value: Player
@@ -14747,7 +14739,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWeapon: {fileID: 6958890066831099034, guid: 9649aeaf7c73f134e884631fab844b2e, type: 3}
   player: {fileID: 385384374}
-  weapons: []
+  weapons:
+  - {fileID: 6958890066831099034, guid: 14532a76b7dd40c428b2f5fc0db3c523, type: 3}
+  - {fileID: 6958890066831099034, guid: 9649aeaf7c73f134e884631fab844b2e, type: 3}
+  - {fileID: 6958890066831099034, guid: d75151a8c0ca76f4b999ab858e875e0e, type: 3}
+  - {fileID: 6958890066831099034, guid: 98bc9ac8e3d797648ac94e3862c0b91b, type: 3}
 --- !u!4 &2010308902
 Transform:
   m_ObjectHideFlags: 0
