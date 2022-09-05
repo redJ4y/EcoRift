@@ -1140,6 +1140,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8396136382275733301, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
   m_PrefabInstance: {fileID: 1991063543}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &385384376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385384374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e5d2a82e798b846a912226531ec552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handler: {fileID: 2010308901}
 --- !u!1 &429889424
 GameObject:
   m_ObjectHideFlags: 0
@@ -14764,6 +14777,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
+--- !u!1 &2010308900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2010308902}
+  - component: {fileID: 2010308901}
+  m_Layer: 0
+  m_Name: ProjectileTemp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2010308901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010308900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4120d77920c1c1c4586a12e9b7e8f7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerWeapon: {fileID: 6958890066831099034, guid: 9649aeaf7c73f134e884631fab844b2e, type: 3}
+  player: {fileID: 385384374}
+  weapons: []
+--- !u!4 &2010308902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010308900}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.961338, y: -2.451449, z: 3.0688515}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2010747081
 GameObject:
   m_ObjectHideFlags: 0
