@@ -11,25 +11,24 @@ public class EnemyBrain : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
 
     [Header("Movement")]
-    [Range(1.0f, 100.0f)] [SerializeField] private float movementSpeed = 30f;
+    [Range(1.0f, 60.0f)] [SerializeField] private float movementSpeed = 30f;
     [SerializeField] private bool canJump = true;
-    [SerializeField] private bool avoidFalling = true;
 
     [Header("Behavior")]
     [Tooltip("The distance at which the enemy will begin tracking the player")]
-    [Range(1, 100)] [SerializeField] private int aggroDistance = 6;
+    [Range(1, 50)] [SerializeField] private int aggroDistance = 6;
     [Tooltip("Whether to keep aggro after the player moves out of Aggro Distance")]
     [SerializeField] private bool keepAggro = false;
     [Tooltip("The prefered minimum (closest) distance from the player")]
-    [Range(0, 50)] [SerializeField] private int keepDistance = 0;
+    [Range(0, 20)] [SerializeField] private int keepDistance = 0;
     [Tooltip("The distance the enemy may travel from its origin while not aggroed")]
-    [Range(0, 100)] [SerializeField] private int patrolDistance = 5;
-    [Tooltip("The health at which the enemy retreats")]
-    [Range(0.0f, 99.9f)] [SerializeField] private float retreatHealth = 5;
+    [Range(0, 50)] [SerializeField] private int patrolDistance = 5;
+    // [Tooltip("The health at which the enemy retreats")]
+    // [Range(0.0f, 99.9f)] [SerializeField] private float retreatHealth = 5;
 
-    [Header("Combat")]
-    [Range(1, 50)] [SerializeField] private int attackRange = 5;
-    [Range(1, 50)] [SerializeField] private int attackSpeed = 1;
+    // [Header("Combat")]
+    // [Range(1, 50)] [SerializeField] private int attackRange = 5;
+    // [Range(1, 50)] [SerializeField] private int attackSpeed = 1;
 
     private float playerHeight;
     private float halfPlayerHeight;
@@ -42,6 +41,8 @@ public class EnemyBrain : MonoBehaviour
     private Vector2 leftRayNormalized;
 
     private float currentMovement = 0;
+    private bool patrolling = false;
+    private float patrolPostX = 0; // The x position to patrol around
     private bool jump = false;
     private bool permanentAggro = false; // If enemy was aggroed and keepAgro is enabled
     private float timeSinceDirectionChange = 0;
@@ -84,6 +85,7 @@ public class EnemyBrain : MonoBehaviour
         float preferredMovement = 0;
         if (permanentAggro || distance < aggroDistance)
         { // The enemy is aggroed...
+            patrolling = false;
             if (keepAggro)
                 permanentAggro = true; // Lock in aggro if keepAggro is enabled
             // Determine movement direction:
@@ -98,13 +100,42 @@ public class EnemyBrain : MonoBehaviour
 
             if (distance < keepDistance && Random.value < 0.6f) // Ensure keepDistance is loosely obeyed
                 preferredMovement *= -1; // Invert movement direction (away from player)
-
-            if (canJump && Random.value < 0.8f && distance < 2 && playerPos.y > myPos.y + playerHeight) // Check if the enemy should jump
-                jump = true;
         }
         else
-        { // The enemy is not aggroed...
-            // TODO
+        { // The enemy is not aggroed, patrol...
+            if (!patrolling)
+                patrolPostX = myPos.x; // Update patrol position
+            patrolling = true;
+            if (myPos.x < patrolPostX - patrolDistance)
+            {
+                preferredMovement = 1;
+                if (Random.value < 0.5f)
+                    preferredMovement = 0;
+            }
+            else if (myPos.x > patrolPostX + patrolDistance)
+            {
+                preferredMovement = -1;
+                if (Random.value < 0.5f)
+                    preferredMovement = 0;
+            }
+            else
+            { // Move freely...
+                if (Random.value < 0.1f)
+                {
+                    if (Random.value < 0.5f)
+                    {
+                        preferredMovement = 1;
+                    }
+                    else
+                    {
+                        preferredMovement = -1;
+                    }
+                }
+                else
+                { // High chance of resuming previous movement
+                    preferredMovement = System.Math.Sign(currentMovement);
+                }
+            }
         }
         return preferredMovement;
     }
@@ -139,6 +170,12 @@ public class EnemyBrain : MonoBehaviour
 
     private float ValidateMovement(float preferredMovement)
     {
+        /* Debugging visuals:
+        * float jumpDistanceT = GetApproximateJumpDistance();
+        * float jumpRayLengthT = Mathf.Sqrt(Mathf.Pow(jumpDistanceT, 2) + halfPlayerHeightSquared) * 1.01f;
+        * Vector2 jumpToRayT = new Vector2(preferredMovement < 0 ? -jumpDistanceT : jumpDistanceT, -halfPlayerHeight);
+        * Debug.DrawRay(transform.position, jumpToRayT.normalized * jumpRayLengthT, Color.red); 
+        */
         if (currentlyLeaping)
         {
             jump = true;
@@ -154,27 +191,30 @@ public class EnemyBrain : MonoBehaviour
                 // Jump or stop if necessary (about to fall):
                 if (!Physics2D.Raycast(transform.position, ray, rayLength, whatIsGround))
                 {
-                    // Check if there is something to jump to:
-                    float jumpDistance = GetApproximateJumpDistance();
-                    if (jumpDistance > 2) // Filter out false positives at very low speed
+                    if (canJump)
                     {
-                        float jumpRayLength = Mathf.Sqrt(Mathf.Pow(jumpDistance, 2) + halfPlayerHeightSquared) * 1.01f;
-                        Vector2 jumpToRay = new Vector2(preferredMovement < 0 ? -jumpDistance : jumpDistance, -halfPlayerHeight);
-                        if (Physics2D.Raycast(transform.position, jumpToRay.normalized, jumpRayLength, whatIsGround))
-                        { // Jump to the next platform...
-                            jump = true;
-                            currentlyLeaping = true; // Maintain jump state until landing
-                            return preferredMovement;
+                        // Check if there is something to jump to:
+                        float jumpDistance = GetApproximateJumpDistance();
+                        if (jumpDistance > 2) // Filter out false positives at very low speed
+                        {
+                            float jumpRayLength = Mathf.Sqrt(Mathf.Pow(jumpDistance, 2) + halfPlayerHeightSquared) * 1.01f;
+                            Vector2 jumpToRay = new Vector2(preferredMovement < 0 ? -jumpDistance : jumpDistance, -halfPlayerHeight);
+                            if (Physics2D.Raycast(transform.position, jumpToRay.normalized, jumpRayLength, whatIsGround))
+                            { // Jump to the next platform...
+                                jump = true;
+                                currentlyLeaping = true; // Maintain jump state until landing
+                                return preferredMovement;
+                            }
                         }
                     }
-                    // There is nothing to jump to...
+                    // There is nothing to jump to (or canJump is disabled)...
                     currentlyLeaping = false;
                     timeSinceDirectionChange = 0;
                     return Random.value < 0.8f ? 0 : -preferredMovement;
                 }
             }
         }
-        if (controller.IsPlayerGrounded())
+        if (canJump && controller.IsPlayerGrounded())
             currentlyLeaping = false;
         return preferredMovement;
     }
