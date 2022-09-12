@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FlyingCharacterController2D : MonoBehaviour
 {
-    [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
     [SerializeReference] private Animator animator;
 
     private Rigidbody2D m_Rigidbody2D;
@@ -23,7 +22,7 @@ public class FlyingCharacterController2D : MonoBehaviour
 
     public void Move(Vector2 move)
     {
-        m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, move, ref m_Velocity, m_MovementSmoothing);
+        m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, move * 10.0f, ref m_Velocity, 0.5f);
 
         // If the input is moving the player right and the player is facing left...
         if (move.x > 0 && !m_FacingRight)
