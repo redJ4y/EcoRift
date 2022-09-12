@@ -13,6 +13,7 @@ public class SelectCard : MonoBehaviour
     private Color prevColor;
     private bool currentlyAnimating;
     [SerializeReference] ProjectileHandler projectileScript;
+    [SerializeReference] SwitchStaff staffScript;
 
     private void Start()
     {
@@ -36,6 +37,7 @@ public class SelectCard : MonoBehaviour
 
             selectedCard = cardClicked;
             projectileScript.SwitchWeapon(cardClicked.name+"Projectile");
+            staffScript.changeStaff(cardClicked.name + "Staff");
             // Now animate up the current selected card
             cardTrans = cardClicked.GetComponent<RectTransform>();
             newPos = cardTrans.transform.localPosition + new Vector3(0, 40.0f,0);

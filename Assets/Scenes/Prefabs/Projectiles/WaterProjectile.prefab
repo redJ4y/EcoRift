@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: -120871672431923471}
   - component: {fileID: 4221439398019739133}
   - component: {fileID: 6512161085064558953}
+  - component: {fileID: -6015929882461896642}
+  - component: {fileID: -9056290490968465567}
   m_Layer: 0
   m_Name: WaterProjectile
   m_TagString: Untagged
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6958890066831099034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: 1d4e790c5bd49a24f94d97d0f3b24bcb, type: 3}
-  m_Color: {r: 0.390566, g: 0.8244187, b: 1, a: 1}
+  m_Sprite: {fileID: 707970898, guid: dc2b17fe38fb9f1439d06ec8fe9f47ad, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -139,3 +141,32 @@ MonoBehaviour:
   damageText: {fileID: 0}
   damage: 0
   element: 
+--- !u!114 &-6015929882461896642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958890066831099034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &-9056290490968465567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958890066831099034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3bf811ba93d87f4da64d68fe48089df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShadowOffset: {x: 0, y: -0.05}
+  ShadowMaterial: {fileID: 2100000, guid: 98b78a084732d3246a735e87d223e4c8, type: 2}

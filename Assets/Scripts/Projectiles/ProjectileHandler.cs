@@ -17,6 +17,7 @@ public class ProjectileHandler : MonoBehaviour
 
         float bulletSpeed = 20.0f;
         float horizontalOffset = 0.1f;
+        float verticalOffset = 0.1f;
 
         // Flip bullet based on direction the player is facing
         
@@ -30,7 +31,7 @@ public class ProjectileHandler : MonoBehaviour
         }
         
         // Set starting position
-        bullet.transform.position += new Vector3(horizontalOffset, 0, 0);
+        bullet.transform.position += new Vector3(horizontalOffset, verticalOffset, 0);
 
         // Scale properly
         /*
