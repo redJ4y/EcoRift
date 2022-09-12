@@ -12,7 +12,6 @@ public class PlayerInput : MonoBehaviour
     public CharacterController2D controller;
     public float runSpeed = 30f;
     public event Action<Vector2> OnMovement;
-
     private float playerDirection = 0f;
     private bool jump = false;
 
