@@ -17,7 +17,7 @@ public class CharacterController2D : MonoBehaviour
     private bool m_Grounded;            // Whether or not the player is grounded.
     const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
     private Rigidbody2D m_Rigidbody2D;
-    private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+    public bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
     private float moveInput = 0; // Addition
 
@@ -55,12 +55,13 @@ public class CharacterController2D : MonoBehaviour
 
     private void Update() // Addition
     {
-        animator.SetBool("Run", Mathf.Abs(moveInput) > 0.1f);
+        animator.SetBool("Run", Mathf.Abs(moveInput) > 0.0001f);
         animator.SetBool("Jump", !m_Grounded);
     }
 
     private void FixedUpdate()
     {
+        animator.SetBool("Run", Mathf.Abs(moveInput) > 0.0001f);
         bool wasGrounded = m_Grounded;
         m_Grounded = false;
 

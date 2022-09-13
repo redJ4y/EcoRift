@@ -9,15 +9,19 @@ public class PlayerJoyStickMovement : MonoBehaviour
     private MobileJoyStick joystick;
     public Vector2 MovementVector { get; private set; }
     public CharacterController2D controller;
+    public float runSpeed = 150f;
 
 
     private void Move(Vector2 input)
     {
         MovementVector = input;
-        //controller.Move;
-        
+        controller.Move(input.x * runSpeed * Time.fixedDeltaTime, false, false);
     }
-    
+
+    private void FixedUpdate()
+    {
+        Move(MovementVector);
+    }
 
     // Start is called before the first frame update
     void Start()
