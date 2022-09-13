@@ -20051,7 +20051,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.05
+  m_GravityScale: 0.02
   m_Material: {fileID: 6200000, guid: eb3023985bee63347af797636044c5a3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -20091,7 +20091,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   movementSpeed: 30
-  targetHeight: 4
+  targetHeight: 5
   minimumHeight: 3
   minimumYLevel: 5
   aggroDistance: 10
