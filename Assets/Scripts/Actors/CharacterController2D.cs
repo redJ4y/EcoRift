@@ -11,6 +11,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     [SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
     [SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
+    [SerializeField] public bool currentlyTeleporting;                         // A boolean determining whether player is currently teleporting
     [SerializeReference] private Animator animator; // Addition
 
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
@@ -77,6 +78,14 @@ public class CharacterController2D : MonoBehaviour
                     OnLandEvent.Invoke();
             }
         }
+
+        // Check if player is falling through void, if so teleport to spawn
+        
+        if (transform.localPosition.y < -20.0f) // -20.0f is arbitrary
+        {
+            transform.localPosition = new Vector3(0, 0, 0); // (0, 0, 0) is spawn (can be changed)
+        }
+        
     }
 
 
