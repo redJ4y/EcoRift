@@ -34,12 +34,10 @@ public class PlayerInput : MonoBehaviour
         controls.Ground.Jump.performed += ctx =>
         {
             jump = true;
-            usingNewInput = true;
         };
         controls.Ground.Shoot.performed += ctx =>
         {
             handler.OnShoot();
-            usingNewInput = true;
         };
     }
 
