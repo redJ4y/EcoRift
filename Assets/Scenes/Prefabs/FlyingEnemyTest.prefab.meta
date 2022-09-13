@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Prefabs/FlyingEnemyTest.prefab.meta
+guid: 346c35af0c8a46d40be13aeb88a667cb
+PrefabImporter:
+========
+guid: ec974af23af7c934c808f3af4ecd656f
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> origin/platform-levels:Assets/Scripts/Rift.meta
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
