@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Script responsible for taking joystick movement and converting coordinates into
+ * 2D Char controller script
+ */
+
 public class PlayerJoyStickMovement : MonoBehaviour
 {
     [SerializeField]

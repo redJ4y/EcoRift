@@ -13676,7 +13676,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ea1ea60e87cd9c4e8d639435e8b8e8a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2605358108538b47b8efc1e28382ebd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14482,7 +14482,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joyStick: {fileID: 1147813772}
   twistPoint: {fileID: 1477507712}
-  returnTime: 0.4
 --- !u!1 &1537134677
 GameObject:
   m_ObjectHideFlags: 0
@@ -15228,6 +15227,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8396136382275733296, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: eb3023985bee63347af797636044c5a3, type: 2}
     - target: {fileID: 8396136382275733298, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
       propertyPath: handler
       value: 
@@ -15235,6 +15238,10 @@ PrefabInstance:
     - target: {fileID: 8396136382275733298, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
       propertyPath: runSpeed
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396136382275733298, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8396136382275733300, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
       propertyPath: m_Name
@@ -15292,7 +15299,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8396136382275733303, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396136382275733303, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: eb3023985bee63347af797636044c5a3, type: 2}
+    m_RemovedComponents:
+    - {fileID: 8396136382275733302, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
 --- !u!1 &2010308900
 GameObject:

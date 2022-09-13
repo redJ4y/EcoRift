@@ -34,11 +34,10 @@ public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
 
     private Vector2 CalculateMovementInput(Vector2 offset)
     {
+        aimVector = new Vector2(offset.x, offset.y);
         float x = Mathf.Abs(offset.x) > dragThreshold ? offset.x : 0;
         float y = Mathf.Abs(offset.y) > dragThreshold ? offset.y : 0;
-        aimVector = new Vector2(x, y);
         Debug.Log(x + y);
-        //Debug.Log(offset);
         return new Vector2(x, y);
     }
 

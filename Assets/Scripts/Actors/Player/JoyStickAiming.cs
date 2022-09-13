@@ -7,7 +7,6 @@ public class JoyStickAiming : MonoBehaviour
 
     public MobileJoyStick joyStick;
     public Transform twistPoint;
-    public float returnTime = 0.4f;
 
     private void Awake()
     {
@@ -28,7 +27,7 @@ public class JoyStickAiming : MonoBehaviour
 
     public void Aim()
     {
-        Vector3 angle = twistPoint.transform.localEulerAngles;
+        //Vector3 angle = twistPoint.transform.localEulerAngles;
 
         float Horizontal = joyStick.aimVector.x;
         float Vertical = joyStick.aimVector.y;
@@ -36,10 +35,12 @@ public class JoyStickAiming : MonoBehaviour
         if(Horizontal < 0)
         {
             twistPoint.transform.localEulerAngles = new Vector3(0f, 0f, Mathf.Atan2(Horizontal, Vertical) * 180 / Mathf.PI);
+            Debug.Log(Mathf.Atan2(Horizontal, Vertical) * 180 / Mathf.PI);
         }
         else
         {
             twistPoint.transform.localEulerAngles = new Vector3(0f, 0f, Mathf.Atan2(Horizontal, Vertical) * -180 / Mathf.PI);
+            Debug.Log(Mathf.Atan2(Horizontal, Vertical) * 180 / Mathf.PI);
         }
         
        
