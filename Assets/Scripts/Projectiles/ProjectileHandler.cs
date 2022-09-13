@@ -6,6 +6,7 @@ public class ProjectileHandler : MonoBehaviour
 {
     [SerializeField] private GameObject playerWeapon;
     [SerializeField] private GameObject player;
+    [SerializeField] private MobileJoyStick joyStick;
 
     public GameObject[] weapons;
 
@@ -19,8 +20,7 @@ public class ProjectileHandler : MonoBehaviour
         float horizontalOffset = 0.1f;
         float verticalOffset = 0.1f;
 
-        // Flip bullet based on direction the player is facing
-        
+        /*
         if (player.transform.localScale.x < 0)
         {
             horizontalOffset *= -1.0f;
@@ -29,7 +29,11 @@ public class ProjectileHandler : MonoBehaviour
             col.offset = new Vector2(col.offset.x * -1.0f, col.offset.y);
             bulletSpeed *= -1.0f;
         }
+        */
+        // Shoot at the angle 
         
+
+
         // Set starting position
         bullet.transform.position += new Vector3(horizontalOffset, verticalOffset, 0);
 
@@ -39,7 +43,7 @@ public class ProjectileHandler : MonoBehaviour
         bullet.transform.localScale += scaleChange;
         */
         // Move the bullet
-        bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right*bulletSpeed, ForceMode2D.Impulse);
+        bullet.GetComponent<Rigidbody2D>().AddForce(joyStick.aimVector.normalized*bulletSpeed, ForceMode2D.Impulse);
 
         // Use 2D collider
         CircleCollider2D collider = bullet.GetComponent<CircleCollider2D>();

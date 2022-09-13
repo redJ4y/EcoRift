@@ -35,12 +35,12 @@ public class JoyStickAiming : MonoBehaviour
         if (Horizontal < 0)
         {
             twistPoint.transform.localEulerAngles = new Vector3(0f, 0f, Mathf.Atan2(Horizontal, Vertical) * 180 / Mathf.PI);
-            // Debug.Log(Mathf.Atan2(Horizontal, Vertical) * 180 / Mathf.PI);
+            Debug.Log(Mathf.Atan2(Horizontal, Vertical) * 180 / Mathf.PI);
         }
         else
         {
             twistPoint.transform.localEulerAngles = new Vector3(0f, 0f, Mathf.Atan2(Horizontal, Vertical) * -180 / Mathf.PI);
-            // Debug.Log(Mathf.Atan2(Horizontal, Vertical) * 180 / Mathf.PI);
+            Debug.Log(Mathf.Atan2(Horizontal, Vertical) * 180 / Mathf.PI);
         }
     }
 }
