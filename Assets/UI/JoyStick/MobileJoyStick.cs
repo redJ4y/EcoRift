@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IPointerDownHandler
 {
     private RectTransform joystickTransform;
-    
+
 
     [SerializeField]
     private float dragThreshold = 0.0001f;
@@ -27,7 +27,6 @@ public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
 
         Vector2 inputVector = CalculateMovementInput(offset);
         OnMove?.Invoke(inputVector);
-        Debug.Log(offset);
     }
 
 
@@ -37,12 +36,11 @@ public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
         aimVector = new Vector2(offset.x, offset.y);
         float x = Mathf.Abs(offset.x) > dragThreshold ? offset.x : 0;
         float y = Mathf.Abs(offset.y) > dragThreshold ? offset.y : 0;
-        Debug.Log(x + y);
         return new Vector2(x, y);
     }
 
     public void OnPointerDown(PointerEventData eventData)
-    { 
+    {
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -59,12 +57,12 @@ public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
