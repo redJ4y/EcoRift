@@ -16,7 +16,7 @@ public class PlayerJoyStickMovement : MonoBehaviour
     public CharacterController2D controller;
     public float runSpeed = 150f;
 
-
+    //Uses inner joyStick object to convert x and y from Vector 2
     private void Move(Vector2 input)
     {
         MovementVector = input;
