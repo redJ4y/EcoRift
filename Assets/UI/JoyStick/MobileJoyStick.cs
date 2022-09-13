@@ -7,14 +7,15 @@ using UnityEngine.EventSystems;
 public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IPointerDownHandler
 {
     private RectTransform joystickTransform;
+    
 
     [SerializeField]
-    private float dragThreshold = 0.6f;
+    private float dragThreshold = 0.0001f;
     [SerializeField]
     private int dragMovementDistance = 30;
     [SerializeField]
     private int dragOffsetDistance = 100;
-
+    public Vector2 aimVector;
     public event Action<Vector2> OnMove;
 
     public void OnDrag(PointerEventData eventData)
@@ -26,13 +27,18 @@ public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
 
         Vector2 inputVector = CalculateMovementInput(offset);
         OnMove?.Invoke(inputVector);
+        Debug.Log(offset);
     }
+
+
 
     private Vector2 CalculateMovementInput(Vector2 offset)
     {
         float x = Mathf.Abs(offset.x) > dragThreshold ? offset.x : 0;
         float y = Mathf.Abs(offset.y) > dragThreshold ? offset.y : 0;
-        Debug.Log(offset);
+        aimVector = new Vector2(x, y);
+        Debug.Log(x + y);
+        //Debug.Log(offset);
         return new Vector2(x, y);
     }
 
