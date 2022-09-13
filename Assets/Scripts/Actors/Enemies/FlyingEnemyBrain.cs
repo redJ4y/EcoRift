@@ -150,7 +150,7 @@ public class FlyingEnemyBrain : MonoBehaviour
         if (Physics2D.Raycast(transform.position, Vector2.down, minimumHeight, whatIsGround))
         { // Within minimum height, move up...
             Vector2 correctedMovement = preferredMovement.normalized;
-            correctedMovement.y = 0.5f;
+            correctedMovement.y += 0.1f;
             return correctedMovement.normalized * movementSpeed;
         }
         return preferredMovement;
