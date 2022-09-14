@@ -33,6 +33,13 @@ public class CharacterController2D : MonoBehaviour
     public BoolEvent OnCrouchEvent;
     private bool m_wasCrouching = false;
 
+    private SpriteRenderer renderer;
+
+    void Start()
+    {
+        renderer = gameObject.GetComponent<SpriteRenderer>();
+    }
+
     public Vector2 GetJumpVector() // Addition: returns the velocity vector for if the character were to jump
     {
         return new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y + m_JumpForce);
@@ -80,7 +87,6 @@ public class CharacterController2D : MonoBehaviour
         }
 
         // Check if player is falling through void, if so teleport to spawn
-        
         if (transform.localPosition.y < -20.0f) // -20.0f is arbitrary
         {
             transform.localPosition = new Vector3(0, 0, 0); // (0, 0, 0) is spawn (can be changed)
@@ -165,12 +171,16 @@ public class CharacterController2D : MonoBehaviour
 
     private void Flip()
     {
+        
         // Switch the way the player is labelled as facing.
         m_FacingRight = !m_FacingRight;
-
+        /*
         // Multiply the player's x local scale by -1.
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+        */
+
+        renderer.flipX = !renderer.flipX;
     }
 }
