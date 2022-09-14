@@ -29,6 +29,7 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+
         if (col.gameObject.tag == "Terrain")
         {
             Destroy(gameObject);
@@ -39,9 +40,14 @@ public class Projectile : MonoBehaviour
         //Vector3 endPos = thisCollider.bounds.center + new Vector3(gameObject.transform.position.x,0,0);
 
         GameObject target = col.gameObject;
-        float newDamage = InflictDamage(damage, target);
+        //float newDamage = InflictDamage(damage, target);
         Destroy(gameObject);
         //DisplayDamage(endPos, newDamage);
+
+        if (target.layer == 10 || target.layer == 9) // Check if collider is enemy or player
+        {
+            target.transform.Find("HealthBar").GetComponent<Health>().TakeDamage(15.0f);
+        }
     }
 
     void DisplayDamage(Vector2 endPosition, float newDamage)

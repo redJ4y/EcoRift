@@ -9,6 +9,12 @@ public class FlyingCharacterController2D : MonoBehaviour
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;
     private Vector3 m_Velocity = Vector3.zero;
+    private SpriteRenderer renderer;
+
+    private void Start()
+    {
+        renderer = gameObject.GetComponent<SpriteRenderer>();
+    }
 
     private void Awake()
     {
@@ -44,8 +50,12 @@ public class FlyingCharacterController2D : MonoBehaviour
         m_FacingRight = !m_FacingRight;
 
         // Multiply the player's x local scale by -1.
+        /*
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+        */
+
+        renderer.flipX = !renderer.flipX;
     }
 }
