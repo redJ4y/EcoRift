@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeReference] private ProjectileHandler handler;
+    [SerializeField] private MobileJoyStick joystick;
+
     public PlayerControls controls;
     public CharacterController2D controller;
     public float runSpeed = 30f;
 
-    private float playerDirection = 0f;
+    private bool usingNewInput = false;
+    private float newInputDirection = 0f;
+    private float joystickDirection = 0f;
     private bool jump = false;
+    private bool shoot = false;
+
+    void Start()
+    {
+        joystick.OnMove += JoystickMove;
+    }
 
     private void Awake()
     {
@@ -17,18 +28,35 @@ public class PlayerInput : MonoBehaviour
         controls.Enable();
         controls.Ground.Run.performed += ctx =>
         {
-            playerDirection = ctx.ReadValue<float>();
+            newInputDirection = ctx.ReadValue<float>();
+            usingNewInput = true;
         };
         controls.Ground.Jump.performed += ctx =>
         {
             jump = true;
+        };
+        controls.Ground.Shoot.performed += ctx =>
+        {
+            handler.OnShoot();
         };
     }
 
     // Called a fixed number of times per second
     void FixedUpdate()
     {
-        controller.Move(playerDirection * runSpeed * Time.fixedDeltaTime, false, jump);
+        if (usingNewInput)
+        {
+            controller.Move(newInputDirection * runSpeed * Time.fixedDeltaTime, false, jump);
+        }
+        else
+        {
+            controller.Move(joystickDirection * runSpeed * Time.fixedDeltaTime, false, jump);
+        }
         jump = false;
+    }
+
+    private void JoystickMove(Vector2 input)
+    {
+        joystickDirection = input.normalized.x;
     }
 }
