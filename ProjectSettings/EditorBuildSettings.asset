@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: d45155f6ba4854dfab509725082fcba3
   - enabled: 1
+    path: Assets/Scenes/Sun Level.unity
+    guid: fa2691a2b120afb4fa11dba503727d35
+  - enabled: 0
     path: Assets/Scenes/Level One.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   m_configObjects:

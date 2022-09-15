@@ -11,6 +11,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     [SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
     [SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
+    [SerializeField] public bool currentlyTeleporting;                         // A boolean determining whether player is currently teleporting
     [SerializeReference] private Animator animator; // Addition
 
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
@@ -31,6 +32,13 @@ public class CharacterController2D : MonoBehaviour
 
     public BoolEvent OnCrouchEvent;
     private bool m_wasCrouching = false;
+
+    private SpriteRenderer renderer;
+
+    void Start()
+    {
+        renderer = gameObject.GetComponent<SpriteRenderer>();
+    }
 
     public Vector2 GetJumpVector() // Addition: returns the velocity vector for if the character were to jump
     {
@@ -55,12 +63,13 @@ public class CharacterController2D : MonoBehaviour
 
     private void Update() // Addition
     {
-        animator.SetBool("Run", Mathf.Abs(moveInput) > 0.1f);
+        animator.SetBool("Run", Mathf.Abs(moveInput) > 0.0001f);
         animator.SetBool("Jump", !m_Grounded);
     }
 
     private void FixedUpdate()
     {
+        animator.SetBool("Run", Mathf.Abs(moveInput) > 0.0001f);
         bool wasGrounded = m_Grounded;
         m_Grounded = false;
 
@@ -76,6 +85,13 @@ public class CharacterController2D : MonoBehaviour
                     OnLandEvent.Invoke();
             }
         }
+
+        // Check if player is falling through void, if so teleport to spawn
+        if (transform.localPosition.y < -20.0f) // -20.0f is arbitrary
+        {
+            transform.localPosition = new Vector3(0, 0, 0); // (0, 0, 0) is spawn (can be changed)
+        }
+        
     }
 
 
@@ -155,12 +171,16 @@ public class CharacterController2D : MonoBehaviour
 
     private void Flip()
     {
+        
         // Switch the way the player is labelled as facing.
         m_FacingRight = !m_FacingRight;
-
+        /*
         // Multiply the player's x local scale by -1.
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+        */
+
+        renderer.flipX = !renderer.flipX;
     }
 }
