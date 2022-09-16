@@ -14,6 +14,7 @@ public class ProjectileHandler : MonoBehaviour
     {
         GameObject bullet = Instantiate(playerWeapon, player.transform.position, player.transform.rotation);
         bullet.transform.SetParent(gameObject.transform);
+        // TODO: SetIgnoreCollision
         Destroy(bullet, 3.0f);
 
         float bulletSpeed = 20.0f;

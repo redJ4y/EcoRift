@@ -18426,7 +18426,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.165849, y: 1}
+    m_SensorSize: {x: 2.0068307, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -19196,6 +19196,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 385384374}
+    - target: {fileID: 924235679759638095, guid: 346c35af0c8a46d40be13aeb88a667cb, type: 3}
+      propertyPath: enemyWeapon
+      value: 
+      objectReference: {fileID: 6958890066831099034, guid: 98bc9ac8e3d797648ac94e3862c0b91b, type: 3}
     - target: {fileID: 924235679759638129, guid: 346c35af0c8a46d40be13aeb88a667cb, type: 3}
       propertyPath: m_Name
       value: FlyingSnowEnemy
@@ -19257,6 +19261,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 385384374}
+    - target: {fileID: 924235679759638095, guid: 346c35af0c8a46d40be13aeb88a667cb, type: 3}
+      propertyPath: enemyWeapon
+      value: 
+      objectReference: {fileID: 6958890066831099034, guid: 9649aeaf7c73f134e884631fab844b2e, type: 3}
     - target: {fileID: 924235679759638129, guid: 346c35af0c8a46d40be13aeb88a667cb, type: 3}
       propertyPath: m_Name
       value: FlyingEnemyTest

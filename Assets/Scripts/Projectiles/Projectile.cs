@@ -12,8 +12,9 @@ public class Projectile : MonoBehaviour
     private Collider2D thisCollider;
     private IEnumerator coroutine;
     private GetWeather getWeather;
+    private bool damageEnemies = false;
 
-    void Start()
+    void Awake()
     {
         thisCollider = gameObject.GetComponent<Collider2D>();
         thisCollider.enabled = false;
@@ -26,8 +27,9 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void SetIgnoreCollision(Collider2D collider)
+    public void SetIgnoreCollision(Collider2D collider, bool damageEnemies)
     {
+        this.damageEnemies = damageEnemies;
         Physics2D.IgnoreCollision(thisCollider, collider);
         thisCollider.enabled = true;
     }
@@ -48,7 +50,8 @@ public class Projectile : MonoBehaviour
 
         if (target.layer == 10 || target.layer == 9) // Check if collider is enemy or player
         {
-            target.transform.Find("HealthBar").GetComponent<Health>().TakeDamage(15.0f);
+            if (target.layer == 9 || damageEnemies)
+                target.transform.Find("HealthBar").GetComponent<Health>().TakeDamage(15.0f);
             Destroy(gameObject);
         }
     }
@@ -58,7 +61,7 @@ public class Projectile : MonoBehaviour
         Transform damageTemp = GameObject.Find("DamageMarkers").transform;
         GameObject text = Instantiate(damageText, damageTemp);
         TMP_Text tmp = text.GetComponent<TMP_Text>();
-        tmp.text = "-"+newDamage;
+        tmp.text = "-" + newDamage;
 
         // Positioning
         Vector2 textPos = cam.WorldToScreenPoint(endPosition);
@@ -67,7 +70,7 @@ public class Projectile : MonoBehaviour
         Vector3 endTextPos = textTrans.position + new Vector3(0, 20.0f, 0);
 
         // Animation
-        coroutine = moveSmoothly(tmp,textTrans, textTrans.position, endTextPos);
+        coroutine = moveSmoothly(tmp, textTrans, textTrans.position, endTextPos);
         CoroutineManager.Instance.StartCoroutine(coroutine);
         Destroy(text, 1.5f);
         Destroy(gameObject);
