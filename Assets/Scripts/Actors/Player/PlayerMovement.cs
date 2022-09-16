@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isFacingRight = true;
     public float speed = 800f;
     public float jumpForce = 5;
+    AudioSource jumpsound;
 
     public LayerMask groundLayer;
 
@@ -27,13 +28,13 @@ public class PlayerMovement : MonoBehaviour
         };
 
         controls.Ground.Jump.performed += ctx => Jump();
-        
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        jumpsound = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -51,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void Flip()
@@ -65,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         if(isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumpsound.Play();
         }
     }
 }
