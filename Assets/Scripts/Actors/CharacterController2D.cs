@@ -34,10 +34,13 @@ public class CharacterController2D : MonoBehaviour
     private bool m_wasCrouching = false;
 
     private SpriteRenderer renderer;
+    private SwitchStaff switchStaffScript;
 
     void Start()
     {
         renderer = gameObject.GetComponent<SpriteRenderer>();
+        if (gameObject.tag == "Player")
+            switchStaffScript = transform.Find("Staff").gameObject.GetComponent<SwitchStaff>();
     }
 
     public Vector2 GetJumpVector() // Addition: returns the velocity vector for if the character were to jump
@@ -174,13 +177,8 @@ public class CharacterController2D : MonoBehaviour
         
         // Switch the way the player is labelled as facing.
         m_FacingRight = !m_FacingRight;
-        /*
-        // Multiply the player's x local scale by -1.
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
-        */
-
         renderer.flipX = !renderer.flipX;
+        if (gameObject.tag == "Player")
+            switchStaffScript.FlipStaff();
     }
 }

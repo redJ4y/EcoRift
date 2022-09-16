@@ -14,7 +14,7 @@ public class ProjectileHandler : MonoBehaviour
     {
         GameObject bullet = Instantiate(playerWeapon, player.transform.position, player.transform.rotation);
         bullet.transform.SetParent(gameObject.transform);
-        Destroy(bullet, 1.0f);
+        Destroy(bullet, 3.0f);
 
         float bulletSpeed = 20.0f;
         float horizontalOffset = 0.1f;
@@ -27,6 +27,7 @@ public class ProjectileHandler : MonoBehaviour
         float hori = joyStick.aimVector.x;
         float vert = joyStick.aimVector.y;
         float angle = 0.0f ;
+
         if (vert < 0.0f)
         {
             angle = (Mathf.Atan2(hori, Mathf.Abs(vert)) * Mathf.Rad2Deg) + 270.0f;
