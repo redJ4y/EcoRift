@@ -64,7 +64,7 @@ public class FlyingEnemyBrain : MonoBehaviour
 
     private void TryShoot()
     {
-        if (200 - shotDelay < 0 && Random.value > 0.5f)
+        if ((200 - attackSpeed) - shotDelay < 0 && Random.value > 0.9f)
         {
             if (toPlayer.magnitude < attackRange && toPlayer.normalized.y < -0.9f)
             {

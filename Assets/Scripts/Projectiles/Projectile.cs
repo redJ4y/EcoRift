@@ -34,6 +34,15 @@ public class Projectile : MonoBehaviour
         thisCollider.enabled = true;
     }
 
+    public void SetIgnoreCollision(Collider2D[] colliders, bool damageEnemies)
+    {
+        this.damageEnemies = damageEnemies;
+        foreach (Collider2D current in colliders) {
+            Physics2D.IgnoreCollision(thisCollider, current);
+        }
+        thisCollider.enabled = true;
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
 
