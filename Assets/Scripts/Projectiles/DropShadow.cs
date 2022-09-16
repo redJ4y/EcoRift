@@ -21,7 +21,7 @@ public class DropShadow : MonoBehaviour
 
         //create a new SpriteRenderer for Shadow gameobject
         SpriteRenderer shadowSpriteRenderer = shadowGameobject.AddComponent<SpriteRenderer>();
-        shadowSpriteRenderer.flipX = spriteRenderer.flipX;
+        shadowGameobject.transform.rotation = transform.rotation;
 
         //set the shadow gameobject's sprite to the original sprite
         shadowSpriteRenderer.sprite = spriteRenderer.sprite;
