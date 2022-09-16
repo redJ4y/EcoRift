@@ -27,7 +27,7 @@ public class FlyingEnemyBrain : MonoBehaviour
 
     [Header("Combat")]
     [Range(1, 50)] [SerializeField] private int attackRange = 10;
-    [Range(1, 50)] [SerializeField] private int attackSpeed = 1;
+    [Range(1, 200)] [SerializeField] private int attackSpeed = 1;
     [Range(1, 50)] [SerializeField] private float projectileSpeed = 20.0f;
 
     // For ray casting:
@@ -64,35 +64,26 @@ public class FlyingEnemyBrain : MonoBehaviour
 
     private void TryShoot()
     {
-        if (Random.value > 0.5f && shotDelay < 0)
+        if (200 - shotDelay < 0 && Random.value > 0.5f)
         {
-            if (toPlayer.magnitude < attackRange && toPlayer.normalized.y < -0.5f)
+            if (toPlayer.magnitude < attackRange && toPlayer.normalized.y < -0.9f)
             {
-                Debug.Log("Shoot");
                 Shoot();
             }
-            shotDelay = attackSpeed;
+            shotDelay = 0;
         }
         else
         {
-            shotDelay--;
+            shotDelay++;
         }
-        Debug.Log("shotDelay: " + shotDelay);
     }
 
     private void Shoot()
     {
         GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
-        bullet.transform.SetParent(GameObject.Find("ProjectileTemp").transform);
-        bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>());
+        bullet.transform.SetParent(transform);
+        bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), false);
         Destroy(bullet, 3.0f);
-
-        float horizontalOffset = 0.1f;
-        float verticalOffset = 0.1f;
-
-        // Set starting position
-        bullet.transform.position += new Vector3(horizontalOffset, verticalOffset, 0);
-
         // Rotate sprite
         float hori = toPlayer.x;
         float vert = toPlayer.y;
@@ -106,10 +97,8 @@ public class FlyingEnemyBrain : MonoBehaviour
             angle = 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
         }
         bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
         // Move the bullet
         bullet.GetComponent<Rigidbody2D>().velocity = toPlayer.normalized * projectileSpeed;
-
         // Use 2D collider
         CircleCollider2D collider = bullet.GetComponent<CircleCollider2D>();
         collider.enabled = true;
