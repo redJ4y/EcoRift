@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Prefabs/FlyingSnowEnemy.prefab.meta
 guid: e9eecd41fe229484b94a64ddc7801614
+========
+guid: 1065d59dbbff9c04b81250ed0160f8a0
+>>>>>>>> origin/pause-and-reset-menu:Assets/Scenes/Prefabs/MainHUD.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
