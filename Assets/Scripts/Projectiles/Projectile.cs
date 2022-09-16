@@ -16,8 +16,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         thisCollider = gameObject.GetComponent<Collider2D>();
-        Collider2D playerCollision = GameObject.Find("Player").GetComponent<Collider2D>();
-        Physics2D.IgnoreCollision(thisCollider, playerCollision);
+        thisCollider.enabled = false;
         cam = Camera.main;
         getWeather = GameObject.Find("Backgrounds").GetComponent<GetWeather>();
 
@@ -25,6 +24,12 @@ public class Projectile : MonoBehaviour
         {
             Debug.Log("Camera is null");
         }
+    }
+
+    public void SetIgnoreCollision(Collider2D collider)
+    {
+        Physics2D.IgnoreCollision(thisCollider, collider);
+        thisCollider.enabled = true;
     }
 
     void OnCollisionEnter2D(Collision2D col)

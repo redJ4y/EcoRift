@@ -8,6 +8,7 @@ public class FlyingEnemyBrain : MonoBehaviour
 {
     [SerializeReference] public FlyingCharacterController2D controller;
     [SerializeReference] public GameObject player;
+    [SerializeReference] private GameObject enemyWeapon;
     [SerializeField] private LayerMask whatIsGround;
 
     [Header("Movement")]
@@ -24,15 +25,22 @@ public class FlyingEnemyBrain : MonoBehaviour
     [Tooltip("The distance the enemy may travel from its origin while not aggroed")]
     [Range(0, 50)] [SerializeField] private int patrolDistance = 5;
 
+    [Header("Combat")]
+    [Range(1, 50)] [SerializeField] private int attackRange = 10;
+    [Range(1, 50)] [SerializeField] private int attackSpeed = 1;
+    [Range(1, 50)] [SerializeField] private float projectileSpeed = 20.0f;
+
     // For ray casting:
     private Vector2 downRightRay;
     private Vector2 downLeftRay;
 
+    private Vector2 toPlayer;
     private Vector2 currentMovement = Vector2.zero;
     private bool patrolling = false;
     private float patrolPostX = 0; // The x position to patrol around
     private bool permanentAggro = false; // If enemy was aggroed and keepAgro is enabled
     private float timeSinceDirectionChange = 0;
+    private int shotDelay = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -48,9 +56,63 @@ public class FlyingEnemyBrain : MonoBehaviour
     void FixedUpdate()
     {
         currentMovement = ValidateMovement(SmoothMovement(GetPreferredMovement()));
+        TryShoot();
 
         controller.Move(currentMovement * Time.fixedDeltaTime);
         timeSinceDirectionChange += Time.fixedDeltaTime;
+    }
+
+    private void TryShoot()
+    {
+        if (Random.value > 0.5f && shotDelay < 0)
+        {
+            if (toPlayer.magnitude < attackRange && toPlayer.normalized.y < -0.5f)
+            {
+                Debug.Log("Shoot");
+                Shoot();
+            }
+            shotDelay = attackSpeed;
+        }
+        else
+        {
+            shotDelay--;
+        }
+        Debug.Log("shotDelay: " + shotDelay);
+    }
+
+    private void Shoot()
+    {
+        GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
+        bullet.transform.SetParent(GameObject.Find("ProjectileTemp").transform);
+        bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>());
+        Destroy(bullet, 3.0f);
+
+        float horizontalOffset = 0.1f;
+        float verticalOffset = 0.1f;
+
+        // Set starting position
+        bullet.transform.position += new Vector3(horizontalOffset, verticalOffset, 0);
+
+        // Rotate sprite
+        float hori = toPlayer.x;
+        float vert = toPlayer.y;
+        float angle;
+        if (vert < 0.0f)
+        {
+            angle = (Mathf.Atan2(hori, Mathf.Abs(vert)) * Mathf.Rad2Deg) + 270.0f;
+        }
+        else
+        {
+            angle = 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
+        }
+        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        // Move the bullet
+        bullet.GetComponent<Rigidbody2D>().velocity = toPlayer.normalized * projectileSpeed;
+
+        // Use 2D collider
+        CircleCollider2D collider = bullet.GetComponent<CircleCollider2D>();
+        collider.enabled = true;
     }
 
     // Returns the preferred movement value (not scaled by movement speed)
@@ -58,7 +120,7 @@ public class FlyingEnemyBrain : MonoBehaviour
     {
         Vector3 myPos = gameObject.transform.position;
         Vector3 playerPos = player.transform.position;
-        Vector2 toPlayer = playerPos - myPos;
+        toPlayer = playerPos - myPos;
 
         Vector2 preferredMovement;
         if (permanentAggro || toPlayer.magnitude < aggroDistance)
