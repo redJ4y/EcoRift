@@ -42,9 +42,12 @@ public class FlyingEnemyBrain : MonoBehaviour
     private float timeSinceDirectionChange = 0;
     private int shotDelay = 0;
 
+    private GameObject projectileStorage;
+
     // Start is called before the first frame update
     void Start()
     {
+        projectileStorage = GameObject.Find("ProjectileStorage");
         targetHeight *= 2; // Start correcting sooner
         // Set up ray casting variables:
         downRightRay = (new Vector2(0.05f, -1)).normalized;
@@ -81,7 +84,7 @@ public class FlyingEnemyBrain : MonoBehaviour
     private void Shoot()
     {
         GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
-        bullet.transform.SetParent(transform);
+        bullet.transform.SetParent(projectileStorage.transform);
         bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), false);
         Destroy(bullet, 3.0f);
         // Rotate sprite

@@ -51,9 +51,13 @@ public class GroundEnemyBrain : MonoBehaviour
     private bool currentlyLeaping = false;
     private int shotDelay = 0;
 
+    private GameObject projectileStorage;
+
     // Start is called before the first frame update
     void Start()
     {
+        projectileStorage = GameObject.Find("ProjectileStorage");
+
         float enemyHeight = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;
         halfEnemyHeight = enemyHeight / 2.0f;
         halfEnemyHeightSquared = Mathf.Pow(halfEnemyHeight, 2);
@@ -110,7 +114,7 @@ public class GroundEnemyBrain : MonoBehaviour
     private void Shoot()
     {
         GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
-        bullet.transform.SetParent(transform);
+        bullet.transform.SetParent(projectileStorage.transform);
         bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponentsInChildren<Collider2D>(), false);
         Destroy(bullet, 3.0f);
         // Set starting position

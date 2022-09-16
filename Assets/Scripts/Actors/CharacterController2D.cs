@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -35,10 +37,13 @@ public class CharacterController2D : MonoBehaviour
 
     private SpriteRenderer renderer;
     private SwitchStaff switchStaffScript;
+    private healthBarScript UIHealth;
+    private bool flashing = false;
 
     void Start()
     {
         renderer = gameObject.GetComponent<SpriteRenderer>();
+        UIHealth = GameObject.Find("HpBar").GetComponent<healthBarScript>();
         if (gameObject.tag == "Player")
             switchStaffScript = transform.Find("Staff").gameObject.GetComponent<SwitchStaff>();
     }
@@ -180,5 +185,32 @@ public class CharacterController2D : MonoBehaviour
         renderer.flipX = !renderer.flipX;
         if (gameObject.tag == "Player")
             switchStaffScript.FlipStaff();
+    }
+
+    public void HitInflicted()
+    {
+        UIHealth.SetValue();
+
+        if (flashing == false)
+        {
+            flashing = true;
+            StartCoroutine(flashRed(renderer));
+        }
+    }
+
+    private IEnumerator flashRed(SpriteRenderer spriteRenderer)
+    {
+        Color currentColor = spriteRenderer.color;
+        Color32 redColor = new Color32(255, 200, 200, 255);
+
+        for (int i = 0; i < 3; i++)
+        {
+            spriteRenderer.color = redColor;
+            yield return new WaitForSeconds(.1f);
+            spriteRenderer.color = currentColor;
+            yield return new WaitForSeconds(.1f);
+        }
+
+        flashing = false;
     }
 }
