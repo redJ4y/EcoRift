@@ -13,13 +13,16 @@ public class Projectile : MonoBehaviour
     private IEnumerator coroutine;
     private GetWeather getWeather;
     private bool damageEnemies = false;
+    private bool flashing;
 
     void Awake()
     {
         thisCollider = gameObject.GetComponent<Collider2D>();
         thisCollider.enabled = false;
+        flashing = false;
         cam = Camera.main;
         getWeather = GameObject.Find("Backgrounds").GetComponent<GetWeather>();
+        Physics2D.IgnoreLayerCollision(11, 11);
 
         if (cam == null)
         {
@@ -45,7 +48,6 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-
         if (col.gameObject.layer == 8)
         {
             Destroy(gameObject);
@@ -59,12 +61,20 @@ public class Projectile : MonoBehaviour
 
         if (target.layer == 10 || target.layer == 9) // Check if collider is enemy or player
         {
-            if (target.layer == 9 || damageEnemies)
+
+            if (target.layer == 9 || damageEnemies) // If target is player or has damageEnemies enabled
+            {
                 target.transform.Find("HealthBar").GetComponent<Health>().TakeDamage(15.0f);
+                if (target.layer == 9)
+                {
+                    target.GetComponent<CharacterController2D>().HitInflicted();
+                }
+            }
             Destroy(gameObject);
         }
     }
 
+    // Not used
     void DisplayDamage(Vector2 endPosition, float newDamage)
     {
         Transform damageTemp = GameObject.Find("DamageMarkers").transform;
