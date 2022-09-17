@@ -19,7 +19,6 @@ public class healthBarScript : MonoBehaviour
         //x = left , w = top , y = bottom , z = right
         maxRightMask = barRect.rect.width - mask.padding.x - mask.padding.z;
         initialRightMask = mask.padding.z;
-        Debug.Log("healthBarScript start method successfully called");
     }
 
     public void SetValue()
@@ -30,6 +29,5 @@ public class healthBarScript : MonoBehaviour
       var padding = mask.padding;
       padding.z = newRightMask;
       mask.padding = padding;
-      Debug.Log("healthBarScript setValue successfully called");
     }
 }
