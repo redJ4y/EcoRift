@@ -12034,7 +12034,7 @@ GameObject:
   - component: {fileID: 1047446591}
   - component: {fileID: 1047446590}
   - component: {fileID: 1047446589}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20069,6 +20069,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 385384374}
+    - target: {fileID: 8687342891672159368, guid: e9eecd41fe229484b94a64ddc7801614, type: 3}
+      propertyPath: enemyWeapon
+      value: 
+      objectReference: {fileID: 6958890066831099034, guid: f5ebd922824f4a440af9aedd99574578, type: 3}
     - target: {fileID: 8687342891672159374, guid: e9eecd41fe229484b94a64ddc7801614, type: 3}
       propertyPath: m_RootOrder
       value: 5

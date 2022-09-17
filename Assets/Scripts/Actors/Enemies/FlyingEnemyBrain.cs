@@ -103,7 +103,7 @@ public class FlyingEnemyBrain : MonoBehaviour
         // Move the bullet
         bullet.GetComponent<Rigidbody2D>().velocity = toPlayer.normalized * projectileSpeed;
         // Use 2D collider
-        CircleCollider2D collider = bullet.GetComponent<CircleCollider2D>();
+        Collider2D collider = bullet.GetComponent<Collider2D>();
         collider.enabled = true;
     }
 
