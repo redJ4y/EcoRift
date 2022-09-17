@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -120871672431923471}
   - component: {fileID: 4221439398019739133}
   - component: {fileID: 6512161085064558953}
-  - component: {fileID: 6155129669727879180}
   m_Layer: 11
   m_Name: SunProjectile
   m_TagString: Untagged
@@ -77,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -758989850, guid: dc2b17fe38fb9f1439d06ec8fe9f47ad, type: 3}
+  m_Sprite: {fileID: -701285868, guid: 8b62037253cd1444db26bc132b9e9d6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -140,17 +139,3 @@ MonoBehaviour:
   damageText: {fileID: 0}
   damage: 0
   element: 
---- !u!114 &6155129669727879180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6958890066831099034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3bf811ba93d87f4da64d68fe48089df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShadowOffset: {x: 0, y: -0.05}
-  ShadowMaterial: {fileID: 2100000, guid: 98b78a084732d3246a735e87d223e4c8, type: 2}
