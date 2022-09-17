@@ -93,24 +93,24 @@ public class GetWeather : MonoBehaviour
         {
             weatherBackgrounds.Find(obj => obj.name == "Cloudy").SetActive(true);
             weatherBackgrounds.Find(obj => obj.name == "Cloud Particles").SetActive(true);
-            replaceCurrentTiles(normalSprites);
+            //replaceCurrentTiles(normalSprites);
         }
         else if (currentWeather == "Clear")
         {
             weatherBackgrounds.Find(obj => obj.name == "Sunny").SetActive(true);
-            replaceCurrentTiles(sunSprites);
+            //replaceCurrentTiles(sunSprites);
         }
         else if (currentWeather == "Rain")
         {
             weatherBackgrounds.Find(obj => obj.name == "Rainy").SetActive(true);
             weatherBackgrounds.Find(obj => obj.name == "Rain Particles").SetActive(true);
-            replaceCurrentTiles(rainSprites);
+            //replaceCurrentTiles(rainSprites);
         }
         else if (currentWeather == "Snow")
         {
             weatherBackgrounds.Find(obj => obj.name == "Snowy").SetActive(true);
             weatherBackgrounds.Find(obj => obj.name == "Snow Particles").SetActive(true);
-            replaceCurrentTiles(snowSprites);
+            //replaceCurrentTiles(snowSprites);
         }
         else
         {
