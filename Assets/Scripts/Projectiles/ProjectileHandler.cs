@@ -7,17 +7,24 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] private GameObject playerWeapon;
     [SerializeField] private GameObject player;
     [SerializeField] private MobileJoyStick joyStick;
+    [SerializeField] private float bulletSpeed;
 
     [SerializeReference] private GameObject[] weapons;
+    private GameObject projectileStorage;
+
+    void Start()
+    {
+        bulletSpeed = 20.0f;
+        projectileStorage = GameObject.Find("ProjectileStorage");
+    }
 
     public void OnShoot()
     {
         GameObject bullet = Instantiate(playerWeapon, player.transform.position, player.transform.rotation);
-        bullet.transform.SetParent(gameObject.transform);
-        // TODO: SetIgnoreCollision
+        bullet.transform.SetParent(projectileStorage.transform);
         Destroy(bullet, 3.0f);
+        bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), true);
 
-        float bulletSpeed = 20.0f;
         float horizontalOffset = 0.1f;
         float verticalOffset = 0.1f;
         

@@ -8,6 +8,7 @@ public class GroundEnemyBrain : MonoBehaviour
 {
     [SerializeReference] public CharacterController2D controller;
     [SerializeReference] public GameObject player;
+    [SerializeReference] private GameObject enemyWeapon;
     [SerializeField] private LayerMask whatIsGround;
 
     [Header("Movement")]
@@ -23,12 +24,13 @@ public class GroundEnemyBrain : MonoBehaviour
     [Range(0, 20)] [SerializeField] private int keepDistance = 0;
     [Tooltip("The distance the enemy may travel from its origin while not aggroed")]
     [Range(0, 50)] [SerializeField] private int patrolDistance = 5;
-    // [Tooltip("The health at which the enemy retreats")]
-    // [Range(0.0f, 99.9f)] [SerializeField] private float retreatHealth = 5;
+    [Tooltip("The health at which the enemy retreats")]
+    [Range(0.0f, 99.9f)] [SerializeField] private float retreatHealth = 5;
 
-    // [Header("Combat")]
-    // [Range(1, 50)] [SerializeField] private int attackRange = 5;
-    // [Range(1, 50)] [SerializeField] private int attackSpeed = 1;
+    [Header("Combat")]
+    [Range(1, 50)] [SerializeField] private int attackRange = 10;
+    [Range(1, 200)] [SerializeField] private int attackSpeed = 1;
+    [Range(1, 50)] [SerializeField] private float projectileSpeed = 5.0f;
 
     private float halfEnemyHeight;
     private float halfEnemyHeightSquared;
@@ -39,6 +41,7 @@ public class GroundEnemyBrain : MonoBehaviour
     private Vector2 rightRayNormalized;
     private Vector2 leftRayNormalized;
 
+    private Vector2 toPlayer;
     private float currentMovement = 0;
     private bool patrolling = false;
     private float patrolPostX = 0; // The x position to patrol around
@@ -46,10 +49,15 @@ public class GroundEnemyBrain : MonoBehaviour
     private bool permanentAggro = false; // If enemy was aggroed and keepAgro is enabled
     private float timeSinceDirectionChange = 0;
     private bool currentlyLeaping = false;
+    private int shotDelay = 0;
+
+    private GameObject projectileStorage;
 
     // Start is called before the first frame update
     void Start()
     {
+        projectileStorage = GameObject.Find("ProjectileStorage");
+
         float enemyHeight = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;
         halfEnemyHeight = enemyHeight / 2.0f;
         halfEnemyHeightSquared = Mathf.Pow(halfEnemyHeight, 2);
@@ -68,10 +76,67 @@ public class GroundEnemyBrain : MonoBehaviour
     void FixedUpdate()
     {
         currentMovement = ValidateMovement(SmoothMovement(GetPreferredMovement()));
+        TryShoot();
 
         controller.Move(currentMovement * Time.fixedDeltaTime, false, jump);
         timeSinceDirectionChange += Time.fixedDeltaTime;
         jump = false;
+    }
+
+    private void TryShoot()
+    {
+        Vector3 myPos = gameObject.transform.position;
+        Vector3 playerPos = player.transform.position;
+        toPlayer = playerPos - myPos;
+        if ((200 - attackSpeed) - shotDelay < 0 && Random.value > 0.9f)
+        {
+            if (toPlayer.magnitude < attackRange && Mathf.Abs(playerPos.y - myPos.y) < 2)
+            {
+                Shoot();
+                if (myPos.x < playerPos.x)
+                {
+                    currentMovement = 1;
+                }
+                else
+                {
+                    currentMovement = -1;
+                }
+                timeSinceDirectionChange = 0; // Count shooting as a direction change
+            }
+            shotDelay = 0;
+        }
+        else
+        {
+            shotDelay++;
+        }
+    }
+
+    private void Shoot()
+    {
+        GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
+        bullet.transform.SetParent(projectileStorage.transform);
+        bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponentsInChildren<Collider2D>(), false);
+        Destroy(bullet, 3.0f);
+        // Set starting position
+        bullet.transform.position += new Vector3(0, 0.1f, 0);
+        // Rotate sprite
+        float hori = toPlayer.x;
+        float vert = toPlayer.y;
+        float angle;
+        if (vert < 0.0f)
+        {
+            angle = (Mathf.Atan2(hori, Mathf.Abs(vert)) * Mathf.Rad2Deg) + 270.0f;
+        }
+        else
+        {
+            angle = 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
+        }
+        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // Move the bullet
+        bullet.GetComponent<Rigidbody2D>().velocity = toPlayer.normalized * projectileSpeed;
+        // Use 2D collider
+        CircleCollider2D collider = bullet.GetComponent<CircleCollider2D>();
+        collider.enabled = true;
     }
 
     // Returns the preferred movement value (not scaled by movement speed)

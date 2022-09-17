@@ -140,14 +140,12 @@ public class Health : MonoBehaviour
     public float GetHp()
     {
       return hp;
-      Debug.Log("Health.cs GetHp method called");
       Debug.Log($"hp = {hp}");
     }
 
     public float GetMaxHp()
     {
       return maxHp;
-      Debug.Log("Health.cs GetMaxHp method called");
       Debug.Log($"hp = {hp}");
     }
 
@@ -156,7 +154,6 @@ public class Health : MonoBehaviour
       if(hp>=11)
       {
         hp-=10;
-        Debug.Log("Health.cs lowerHP method called");
         Debug.Log($"hp = {hp}");
       }
     }
@@ -166,7 +163,6 @@ public class Health : MonoBehaviour
       if(hp<=(maxHp-11))
       {
         hp+=10;
-        Debug.Log("Health.cs raiseHP method called");
         Debug.Log($"hp = {hp}");
       }
     }
