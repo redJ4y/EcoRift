@@ -21077,7 +21077,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d464663c8d2a9104e976801252ccae0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staves: []
+  staves:
+  - {fileID: 21300000, guid: 8fa36b1de7ca8034c8bc2d0df9616c0d, type: 3}
+  - {fileID: -171556665, guid: 88de9030e2b9ae14d81e3d66e3c2d25c, type: 3}
+  - {fileID: -1548334152, guid: 441042524329e134dbd15db622709fc6, type: 3}
+  - {fileID: -1581608687, guid: 2eb2b6f5e20eef445bb38e8ad8f4159d, type: 3}
 --- !u!1 &1759261593
 GameObject:
   m_ObjectHideFlags: 0

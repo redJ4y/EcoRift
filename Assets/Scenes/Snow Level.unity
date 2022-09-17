@@ -392,6 +392,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8396136382275733301, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
   m_PrefabInstance: {fileID: 1991063543}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &385384376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385384374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4120d77920c1c1c4586a12e9b7e8f7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerWeapon: {fileID: 6958890066831099034, guid: 9649aeaf7c73f134e884631fab844b2e, type: 3}
+  player: {fileID: 385384374}
+  joyStick: {fileID: 1083278164}
+  bulletSpeed: 20
+  weapons:
+  - {fileID: 6958890066831099034, guid: 14532a76b7dd40c428b2f5fc0db3c523, type: 3}
+  - {fileID: 6958890066831099034, guid: 9649aeaf7c73f134e884631fab844b2e, type: 3}
+  - {fileID: 6958890066831099034, guid: d75151a8c0ca76f4b999ab858e875e0e, type: 3}
+  - {fileID: 6958890066831099034, guid: 98bc9ac8e3d797648ac94e3862c0b91b, type: 3}
 --- !u!1 &397588992
 GameObject:
   m_ObjectHideFlags: 0
@@ -19639,7 +19660,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2, y: 1}
+    m_SensorSize: {x: 2.2157636, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -20165,7 +20186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -16.000061, y: 1}
+  m_AnchoredPosition: {x: -16, y: 1}
   m_SizeDelta: {x: 608.266, y: 134.0592}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1486316917
@@ -20695,7 +20716,7 @@ PrefabInstance:
     - target: {fileID: 6201448051622118748, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
       propertyPath: projectileScript
       value: 
-      objectReference: {fileID: 2010308901}
+      objectReference: {fileID: 385384376}
     - target: {fileID: 6454883291454334368, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -20828,7 +20849,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d464663c8d2a9104e976801252ccae0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staves: []
+  staves:
+  - {fileID: -171556665, guid: 88de9030e2b9ae14d81e3d66e3c2d25c, type: 3}
+  - {fileID: 21300000, guid: 8fa36b1de7ca8034c8bc2d0df9616c0d, type: 3}
+  - {fileID: -1548334152, guid: 441042524329e134dbd15db622709fc6, type: 3}
+  - {fileID: -1581608687, guid: 2eb2b6f5e20eef445bb38e8ad8f4159d, type: 3}
 --- !u!1 &1759261593
 GameObject:
   m_ObjectHideFlags: 0
@@ -21557,7 +21582,7 @@ PrefabInstance:
     - target: {fileID: 8396136382275733298, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
       propertyPath: handler
       value: 
-      objectReference: {fileID: 2010308901}
+      objectReference: {fileID: 385384376}
     - target: {fileID: 8396136382275733298, guid: be2b9f4bbe039cd44aa8de34cbfd1c05, type: 3}
       propertyPath: joystick
       value: 
@@ -21645,35 +21670,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2010308902}
-  - component: {fileID: 2010308901}
   m_Layer: 0
-  m_Name: ProjectileTemp
+  m_Name: ProjectileStorage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2010308901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010308900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4120d77920c1c1c4586a12e9b7e8f7e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerWeapon: {fileID: 6958890066831099034, guid: 9649aeaf7c73f134e884631fab844b2e, type: 3}
-  player: {fileID: 385384374}
-  joyStick: {fileID: 1083278164}
-  bulletSpeed: 0
-  weapons:
-  - {fileID: 6958890066831099034, guid: 14532a76b7dd40c428b2f5fc0db3c523, type: 3}
-  - {fileID: 6958890066831099034, guid: 9649aeaf7c73f134e884631fab844b2e, type: 3}
-  - {fileID: 6958890066831099034, guid: d75151a8c0ca76f4b999ab858e875e0e, type: 3}
-  - {fileID: 6958890066831099034, guid: 98bc9ac8e3d797648ac94e3862c0b91b, type: 3}
 --- !u!4 &2010308902
 Transform:
   m_ObjectHideFlags: 0
