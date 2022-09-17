@@ -10,6 +10,7 @@ public class GetWeather : MonoBehaviour
     [SerializeField] private GameObject tileGrid;     // The game's tile grid to be altered with weather
     [SerializeField] private Sprite[] snowSprites;    // Snow tile sprites for snowy conditions
     [SerializeField] private Sprite[] rainSprites;    // Rain tile sprites for rainy conditions
+    [SerializeField] private Sprite[] sunSprites;    // Rain tile sprites for rainy conditions
     [SerializeField] private Sprite[] normalSprites;  // Sunny/cloudy tile sprites for 'normal' conditions
     private Sprite[] activeSprites;                   // Currently used tile sprites
     private GameObject activeTileMap;                 // Currently used tile map
@@ -97,7 +98,7 @@ public class GetWeather : MonoBehaviour
         else if (currentWeather == "Clear")
         {
             weatherBackgrounds.Find(obj => obj.name == "Sunny").SetActive(true);
-            replaceCurrentTiles(normalSprites);
+            replaceCurrentTiles(sunSprites);
         }
         else if (currentWeather == "Rain")
         {

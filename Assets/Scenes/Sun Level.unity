@@ -19362,6 +19362,23 @@ MonoBehaviour:
   - {fileID: -1501854071, guid: e4a04fc8d42312649b029ec704da8e90, type: 3}
   - {fileID: -75390111, guid: e4a04fc8d42312649b029ec704da8e90, type: 3}
   - {fileID: -2117291714, guid: e4a04fc8d42312649b029ec704da8e90, type: 3}
+  sunSprites:
+  - {fileID: -1891184957, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: 748261762, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: 584102500, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: -1088282653, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: -196754321, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: 1179364090, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: 1398870309, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: -882157525, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: 977896722, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: -706582697, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: 589608496, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: 1679822797, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: 731394684, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: 1823312417, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: -1712859721, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
+  - {fileID: 1134650706, guid: 87fd3620d1b3c40ca9c6b1a667cec43d, type: 3}
   normalSprites:
   - {fileID: 8284008178146917663, guid: e85c6e02fda4a004b84664f435ad4d73, type: 3}
   - {fileID: -7516653739194389164, guid: e85c6e02fda4a004b84664f435ad4d73, type: 3}
@@ -19761,7 +19778,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2, y: 1}
+    m_SensorSize: {x: 2.2070658, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -20287,7 +20304,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -16.000061, y: 1}
+  m_AnchoredPosition: {x: -16.000122, y: 1}
   m_SizeDelta: {x: 608.266, y: 134.0592}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1486316917
