@@ -53,6 +53,11 @@ public class CharacterController2D : MonoBehaviour
         return new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y + m_JumpForce);
     }
 
+    public Vector2 GetMovementVector()
+    {
+        return new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y);
+    }
+
     public bool IsPlayerGrounded() // Addition
     {
         return m_Grounded && Mathf.Abs(m_Rigidbody2D.velocity.y) < 0.1f;

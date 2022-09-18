@@ -7,6 +7,7 @@ using UnityEngine;
 public class FlyingEnemyBrain : MonoBehaviour
 {
     [SerializeReference] public FlyingCharacterController2D controller;
+    [SerializeReference] public CharacterController2D playerController;
     [SerializeReference] public GameObject player;
     [SerializeReference] private GameObject enemyWeapon;
     [SerializeField] private LayerMask whatIsGround;
@@ -43,6 +44,7 @@ public class FlyingEnemyBrain : MonoBehaviour
     private int shotDelay = 0;
 
     private GameObject projectileStorage;
+    private float time = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -88,6 +90,12 @@ public class FlyingEnemyBrain : MonoBehaviour
         bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), false);
         Destroy(bullet, 3.0f);
         // Rotate sprite
+
+        if (PredictTrajectory(player.transform.position, playerController.GetMovementVector(), bullet.transform.position) == true)
+        {
+            Debug.Log("True");
+        }
+
         float hori = toPlayer.x;
         float vert = toPlayer.y;
         float angle;
@@ -99,12 +107,44 @@ public class FlyingEnemyBrain : MonoBehaviour
         {
             angle = 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
         }
+
         bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         // Move the bullet
         bullet.GetComponent<Rigidbody2D>().velocity = toPlayer.normalized * projectileSpeed;
         // Use 2D collider
         Collider2D collider = bullet.GetComponent<Collider2D>();
         collider.enabled = true;
+    }
+
+    private bool PredictTrajectory(Vector3 playerPosition, Vector2 playerVelocity, Vector3 projectileLaunchPos)
+    {
+        bool valid;
+        Vector3 targetDifference = playerPosition - projectileLaunchPos;
+        targetDifference.y = 0;
+        playerVelocity.y = 0;
+
+        float a = Vector3.Dot(playerVelocity, playerVelocity) - (projectileSpeed * projectileSpeed);
+        float b = 2 * Vector3.Dot(targetDifference, playerVelocity);
+        float c = Vector3.Dot(targetDifference, targetDifference);
+
+        float Determinant = Mathf.Sqrt((b * b) - 4 * a * c);
+        float t = 0;
+
+        if (Determinant > 0)
+        {
+            valid = true;
+            float t1 = (-b + Determinant) / (2 * a);
+            float t2 = (-b - Determinant) / (2 * a);
+            t = Mathf.Max(t1, t2);
+        }
+        else
+        {
+            valid = false;
+            Debug.Log("Invalid, det is less than 0");
+        }
+
+        time = t;
+        return valid;
     }
 
     // Returns the preferred movement value (not scaled by movement speed)
