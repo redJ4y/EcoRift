@@ -7,7 +7,7 @@ using UnityEngine;
 public class GroundEnemyBrain : MonoBehaviour
 {
     [SerializeReference] public CharacterController2D controller;
-    [SerializeReference] public GameObject player;
+    private GameObject player;
     [SerializeReference] private GameObject enemyWeapon;
     [SerializeField] private LayerMask whatIsGround;
 
@@ -56,6 +56,7 @@ public class GroundEnemyBrain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         projectileStorage = GameObject.Find("ProjectileStorage");
 
         float enemyHeight = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;

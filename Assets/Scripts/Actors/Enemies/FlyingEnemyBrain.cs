@@ -8,12 +8,12 @@ public class FlyingEnemyBrain : MonoBehaviour
 {
     [SerializeReference] public FlyingCharacterController2D controller;
     [SerializeReference] public CharacterController2D playerController;
-    [SerializeReference] public GameObject player;
+    private GameObject player;
     [SerializeReference] private GameObject enemyWeapon;
     [SerializeField] private LayerMask whatIsGround;
 
     [Header("Movement")]
-    [Range(1.0f, 60.0f)] [SerializeField] private float movementSpeed = 30f;
+    [Range(1.0f, 200.0f)] [SerializeField] private float movementSpeed = 30f;
     [Range(1, 10)] [SerializeField] private int targetHeight = 5;
     [Range(1, 5)] [SerializeField] private int minimumHeight = 2;
     [SerializeField] private int minimumYLevel = 5;
@@ -49,6 +49,10 @@ public class FlyingEnemyBrain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+
+        movementSpeed *= 2; // Adjust movement speed to account for increased smoothing
+
         projectileStorage = GameObject.Find("ProjectileStorage");
         targetHeight *= 2; // Start correcting sooner
         // Set up ray casting variables:
@@ -73,9 +77,24 @@ public class FlyingEnemyBrain : MonoBehaviour
         {
             if (toPlayer.magnitude < attackRange && toPlayer.normalized.y < -0.7f)
             {
-                Shoot();
+                if (canLeadShots)
+                {
+                    if (Mathf.Abs(transform.position.x - player.transform.position.x) > 3)
+                    {
+                        Shoot(); // Only shoot when the player is 3 units away (dead zone) to avoid inaccurate leading
+                        shotDelay = 0;
+                    }
+                    else
+                    {
+                        shotDelay++;
+                    }
+                }
+                else
+                {
+                    Shoot();
+                    shotDelay = 0;
+                }
             }
-            shotDelay = 0;
         }
         else
         {
@@ -129,21 +148,19 @@ public class FlyingEnemyBrain : MonoBehaviour
         float c = Vector3.Dot(targetDifference, targetDifference);
 
         float determinant = Mathf.Sqrt(Mathf.Pow(b, 2) - 4 * a * c);
-        Debug.Log("determinant: " + determinant);
         float t = 0;
         if (determinant > 0)
         {
             valid = true;
             float t1 = (-b + determinant) / (2 * a);
             float t2 = (-b - determinant) / (2 * a);
-            Debug.Log("t1: " + t1 + ", t2: " + t2);
             t = Mathf.Max(t1, t2);
         }
 
         if (valid)
         {
-            Vector2 futurePosition = (Vector2) playerPosition + playerVelocity * t;
-            Vector2 toFuturePosition = futurePosition - (Vector2) transform.position;
+            Vector2 futurePosition = (Vector2)playerPosition + playerVelocity * t;
+            Vector2 toFuturePosition = futurePosition - (Vector2)transform.position;
             return toFuturePosition;
         }
         return Vector2.zero;
@@ -163,7 +180,10 @@ public class FlyingEnemyBrain : MonoBehaviour
             if (keepAggro)
                 permanentAggro = true; // Lock in aggro if keepAggro is enabled
 
-            preferredMovement = toPlayer.normalized;
+            Vector2 toPlayerCorrected = toPlayer;
+            if (canLeadShots)
+                toPlayerCorrected.x += 3.1f * Mathf.Sign(myPos.x - playerPos.x); // Try to stay slightly out of aiming dead zone
+            preferredMovement = toPlayerCorrected.normalized;
         }
         else
         { // The enemy is not aggroed, patrol...
