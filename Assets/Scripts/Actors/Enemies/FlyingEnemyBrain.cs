@@ -29,7 +29,7 @@ public class FlyingEnemyBrain : MonoBehaviour
     [Header("Combat")]
     [Range(1, 50)] [SerializeField] private int attackRange = 10;
     [Range(1, 200)] [SerializeField] private int attackSpeed = 1;
-    [Range(1, 50)] [SerializeField] private float projectileSpeed = 20.0f;
+    [Range(1, 50)] [SerializeField] private float projectileSpeed = 5.0f;
 
     // For ray casting:
     private Vector2 downRightRay;
@@ -93,7 +93,7 @@ public class FlyingEnemyBrain : MonoBehaviour
 
         if (PredictTrajectory(player.transform.position, playerController.GetMovementVector(), bullet.transform.position) == true)
         {
-            Debug.Log("True");
+            Debug.Log("Time is "+time);
         }
 
         float hori = toPlayer.x;
