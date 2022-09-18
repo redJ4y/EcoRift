@@ -30,6 +30,7 @@ public class FlyingEnemyBrain : MonoBehaviour
     [Range(1, 50)] [SerializeField] private int attackRange = 10;
     [Range(1, 200)] [SerializeField] private int attackSpeed = 1;
     [Range(1, 50)] [SerializeField] private float projectileSpeed = 5.0f;
+    [SerializeField] private bool canLeadShots = false;
 
     // For ray casting:
     private Vector2 downRightRay;
@@ -44,7 +45,6 @@ public class FlyingEnemyBrain : MonoBehaviour
     private int shotDelay = 0;
 
     private GameObject projectileStorage;
-    private float time = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -71,7 +71,7 @@ public class FlyingEnemyBrain : MonoBehaviour
     {
         if ((200 - attackSpeed) - shotDelay < 0 && Random.value > 0.9f)
         {
-            if (toPlayer.magnitude < attackRange && toPlayer.normalized.y < -0.9f)
+            if (toPlayer.magnitude < attackRange && toPlayer.normalized.y < -0.7f)
             {
                 Shoot();
             }
@@ -89,15 +89,16 @@ public class FlyingEnemyBrain : MonoBehaviour
         bullet.transform.SetParent(projectileStorage.transform);
         bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), false);
         Destroy(bullet, 3.0f);
+
+        Vector2 aimVector = Vector2.zero;
+        if (canLeadShots)
+            aimVector = PredictTrajectory(player.transform.position, playerController.GetMovementVector(), bullet.transform.position);
+        if (aimVector == Vector2.zero)
+            aimVector = toPlayer;
+
         // Rotate sprite
-
-        if (PredictTrajectory(player.transform.position, playerController.GetMovementVector(), bullet.transform.position) == true)
-        {
-            Debug.Log("Time is "+time);
-        }
-
-        float hori = toPlayer.x;
-        float vert = toPlayer.y;
+        float hori = aimVector.x;
+        float vert = aimVector.y;
         float angle;
         if (vert < 0.0f)
         {
@@ -110,41 +111,42 @@ public class FlyingEnemyBrain : MonoBehaviour
 
         bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         // Move the bullet
-        bullet.GetComponent<Rigidbody2D>().velocity = toPlayer.normalized * projectileSpeed;
+        bullet.GetComponent<Rigidbody2D>().velocity = aimVector.normalized * projectileSpeed;
         // Use 2D collider
         Collider2D collider = bullet.GetComponent<Collider2D>();
         collider.enabled = true;
     }
 
-    private bool PredictTrajectory(Vector3 playerPosition, Vector2 playerVelocity, Vector3 projectileLaunchPos)
+    private Vector2 PredictTrajectory(Vector3 playerPosition, Vector2 playerVelocity, Vector3 projectileLaunchPos)
     {
-        bool valid;
+        bool valid = false;
         Vector3 targetDifference = playerPosition - projectileLaunchPos;
         targetDifference.y = 0;
         playerVelocity.y = 0;
 
-        float a = Vector3.Dot(playerVelocity, playerVelocity) - (projectileSpeed * projectileSpeed);
+        float a = Vector3.Dot(playerVelocity, playerVelocity) - Mathf.Pow(projectileSpeed, 2);
         float b = 2 * Vector3.Dot(targetDifference, playerVelocity);
         float c = Vector3.Dot(targetDifference, targetDifference);
 
-        float Determinant = Mathf.Sqrt((b * b) - 4 * a * c);
+        float determinant = Mathf.Sqrt(Mathf.Pow(b, 2) - 4 * a * c);
+        Debug.Log("determinant: " + determinant);
         float t = 0;
-
-        if (Determinant > 0)
+        if (determinant > 0)
         {
             valid = true;
-            float t1 = (-b + Determinant) / (2 * a);
-            float t2 = (-b - Determinant) / (2 * a);
+            float t1 = (-b + determinant) / (2 * a);
+            float t2 = (-b - determinant) / (2 * a);
+            Debug.Log("t1: " + t1 + ", t2: " + t2);
             t = Mathf.Max(t1, t2);
         }
-        else
-        {
-            valid = false;
-            Debug.Log("Invalid, det is less than 0");
-        }
 
-        time = t;
-        return valid;
+        if (valid)
+        {
+            Vector2 futurePosition = (Vector2) playerPosition + playerVelocity * t;
+            Vector2 toFuturePosition = futurePosition - (Vector2) transform.position;
+            return toFuturePosition;
+        }
+        return Vector2.zero;
     }
 
     // Returns the preferred movement value (not scaled by movement speed)
