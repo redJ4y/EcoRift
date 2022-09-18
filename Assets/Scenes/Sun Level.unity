@@ -472,7 +472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8687342891672159368, guid: e9eecd41fe229484b94a64ddc7801614, type: 3}
       propertyPath: attackSpeed
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8687342891672159368, guid: e9eecd41fe229484b94a64ddc7801614, type: 3}
       propertyPath: enemyWeapon
@@ -488,7 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8687342891672159368, guid: e9eecd41fe229484b94a64ddc7801614, type: 3}
       propertyPath: movementSpeed
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8687342891672159368, guid: e9eecd41fe229484b94a64ddc7801614, type: 3}
       propertyPath: projectileSpeed
