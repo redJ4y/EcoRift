@@ -6202,7 +6202,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5fbd4d3ad9fd34aa6820cacce495896e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.689
+  m_Volume: 0.445
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -19648,7 +19648,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.8673469, y: 1}
+    m_SensorSize: {x: 1.9821428, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -20174,7 +20174,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -16.000061, y: 1}
+  m_AnchoredPosition: {x: -16.000061, y: 0.9999695}
   m_SizeDelta: {x: 608.266, y: 134.0592}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1486316917
@@ -20768,7 +20768,7 @@ PrefabInstance:
       objectReference: {fileID: 385384376}
     - target: {fileID: 6454883291454334368, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7735589925919775921, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
