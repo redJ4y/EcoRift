@@ -17960,7 +17960,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0654936, y: 1}
+    m_SensorSize: {x: 1.7780429, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -18212,6 +18212,54 @@ PrefabInstance:
     - target: {fileID: 2476311659432952330, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
       propertyPath: m_Name
       value: MainHUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476311659868404142, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476311659868404143, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 447.841
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476311659868404143, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 464.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476311659868404143, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476311659868404143, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476311660119872227, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
+      propertyPath: dragThreshold
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476311660119872227, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
+      propertyPath: dragOffsetDistance
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476311660119872227, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
+      propertyPath: dragMovementDistance
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476311660119872228, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 308.352
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476311660119872228, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 306.448
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476311660119872228, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000091552734
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476311660119872228, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6201448051622118748, guid: 1065d59dbbff9c04b81250ed0160f8a0, type: 3}
       propertyPath: staffScript
