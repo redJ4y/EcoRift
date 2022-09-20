@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
     private volatile bool isFading;
     private volatile bool isVisible;
     private volatile bool justHit;
+    public ParticleSystem hitParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        emitParticles();
         justHit = true;
         hp -= damage;
 
@@ -165,5 +167,9 @@ public class Health : MonoBehaviour
         hp+=10;
         Debug.Log($"hp = {hp}");
       }
+    }
+
+    void emitParticles(){
+      hitParticles.Play();
     }
 }
