@@ -11794,6 +11794,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8396136383527940291}
+    - target: {fileID: 5719815873473920947, guid: d18c86d5f584b4ab291d19e8d384397a, type: 3}
+      propertyPath: enemyWeapon
+      value: 
+      objectReference: {fileID: 6958890066831099034, guid: 2ef832ee0b4aed746a285bcb6b372b48, type: 3}
     - target: {fileID: 5719815873473920948, guid: d18c86d5f584b4ab291d19e8d384397a, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -19719,7 +19723,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.269425, y: 1}
+    m_SensorSize: {x: 2.2935119, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
