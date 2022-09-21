@@ -23,6 +23,7 @@ public class healthBarScript : MonoBehaviour
 
     public void SetValue()
     {
+      //Debug.Log("Started Health script");
       float currentHealth = health.GetHp();
       var targetWidth = currentHealth * maxRightMask / health.GetMaxHp();
       var newRightMask = maxRightMask + initialRightMask - targetWidth;
