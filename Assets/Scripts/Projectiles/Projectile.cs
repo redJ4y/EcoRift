@@ -18,25 +18,28 @@ public class Projectile : MonoBehaviour
     void Awake()
     {
         thisCollider = gameObject.GetComponent<Collider2D>();
-        thisCollider.enabled = false;
         flashing = false;
         cam = Camera.main;
         getWeather = GameObject.Find("Backgrounds").GetComponent<GetWeather>();
-        Physics2D.IgnoreLayerCollision(11, 11);
 
         if (cam == null)
         {
             Debug.Log("Camera is null");
         }
     }
-
-    public void SetIgnoreCollision(Collider2D collider, bool damageEnemies)
+    // Redundant
+    private void SetIgnoreCollision()
     {
-        this.damageEnemies = damageEnemies;
-        Physics2D.IgnoreCollision(thisCollider, collider);
+        Physics2D.IgnoreLayerCollision(11, 11); // Ignore collision with other projectiles
+        if (damageEnemies == true) // if can damage enemies
+            Physics2D.IgnoreLayerCollision(11, 9);
+        else // if unable to damage enemies
+            Physics2D.IgnoreLayerCollision(11, 10); // ignore between projectiles
+
         thisCollider.enabled = true;
     }
 
+    // Redundant
     public void SetIgnoreCollision(Collider2D[] colliders, bool damageEnemies)
     {
         this.damageEnemies = damageEnemies;
@@ -48,7 +51,7 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.layer == 8)
+        if (col.gameObject.layer == 8) // If collides with ground
         {
             Destroy(gameObject);
         }
@@ -61,15 +64,11 @@ public class Projectile : MonoBehaviour
 
         if (target.layer == 10 || target.layer == 9) // Check if collider is enemy or player
         {
-
-            if (target.layer == 9 || damageEnemies) // If target is player or has damageEnemies enabled
-            {
-                target.transform.Find("HealthBar").GetComponent<Health>().TakeDamage(15.0f);
-                if (target.layer == 9)
+                target.transform.Find("HealthBar").GetComponent<Health>().TakeDamage(damage);
+                if (target.layer == 9) // if hit player then initiate hit effects
                 {
                     target.GetComponent<CharacterController2D>().HitInflicted();
                 }
-            }
             Destroy(gameObject);
         }
     }

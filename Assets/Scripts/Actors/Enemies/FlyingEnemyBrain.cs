@@ -13,7 +13,11 @@ public class FlyingEnemyBrain : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
 
     [Header("Movement")]
+<<<<<<< Updated upstream
     [Range(1.0f, 200.0f)] [SerializeField] private float movementSpeed = 30f;
+=======
+    [Range(1.0f, 100.0f)] [SerializeField] private float movementSpeed = 100f;
+>>>>>>> Stashed changes
     [Range(1, 10)] [SerializeField] private int targetHeight = 5;
     [Range(1, 5)] [SerializeField] private int minimumHeight = 2;
     [SerializeField] private int minimumYLevel = 5;
@@ -75,7 +79,7 @@ public class FlyingEnemyBrain : MonoBehaviour
     {
         if ((200 - attackSpeed) - shotDelay < 0 && Random.value > 0.9f)
         {
-            if (toPlayer.magnitude < attackRange && toPlayer.normalized.y < -0.7f)
+            if (toPlayer.magnitude < attackRange && toPlayer.normalized.y < -0.5f)
             {
                 if (canLeadShots)
                 {
@@ -106,7 +110,7 @@ public class FlyingEnemyBrain : MonoBehaviour
     {
         GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
         bullet.transform.SetParent(projectileStorage.transform);
-        bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), false);
+        //bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), false);
         Destroy(bullet, 3.0f);
 
         Vector2 aimVector = Vector2.zero;
@@ -116,6 +120,18 @@ public class FlyingEnemyBrain : MonoBehaviour
             aimVector = toPlayer;
 
         // Rotate sprite
+        float angle = GetAimAngle(aimVector);
+
+        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // Move the bullet
+        bullet.GetComponent<Rigidbody2D>().velocity = aimVector.normalized * projectileSpeed;
+        // Use 2D collider
+        Collider2D collider = bullet.GetComponent<Collider2D>();
+        collider.enabled = true;
+    }
+
+    private static float GetAimAngle(Vector2 aimVector)
+    {
         float hori = aimVector.x;
         float vert = aimVector.y;
         float angle;
@@ -128,17 +144,15 @@ public class FlyingEnemyBrain : MonoBehaviour
             angle = 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
         }
 
-        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        // Move the bullet
-        bullet.GetComponent<Rigidbody2D>().velocity = aimVector.normalized * projectileSpeed;
-        // Use 2D collider
-        Collider2D collider = bullet.GetComponent<Collider2D>();
-        collider.enabled = true;
+        return angle;
     }
 
     private Vector2 PredictTrajectory(Vector3 playerPosition, Vector2 playerVelocity, Vector3 projectileLaunchPos)
     {
+        Debug.Log("Player pos: " + playerPosition + ", Enemy pos: "+ projectileLaunchPos+", Player vel: " + playerVelocity);
+
         bool valid = false;
+
         Vector3 targetDifference = playerPosition - projectileLaunchPos;
         targetDifference.y = 0;
         playerVelocity.y = 0;
@@ -152,8 +166,14 @@ public class FlyingEnemyBrain : MonoBehaviour
         if (determinant > 0)
         {
             valid = true;
+<<<<<<< Updated upstream
             float t1 = (-b + determinant) / (2 * a);
             float t2 = (-b - determinant) / (2 * a);
+=======
+            float t1 = (-1*b + determinant) / (2 * a);
+            float t2 = (-1*b - determinant) / (2 * a);
+            Debug.Log("t1: " + t1 + ", t2: " + t2);
+>>>>>>> Stashed changes
             t = Mathf.Max(t1, t2);
         }
 
