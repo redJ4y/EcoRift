@@ -774,8 +774,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 55, y: 27}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 519.883, y: 507.529}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &2476311659868404141
 CanvasRenderer:
@@ -792,7 +792,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2476311659868404176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -851,8 +851,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 175, y: 175}
+  m_AnchoredPosition: {x: -0.000091552734, y: 0}
+  m_SizeDelta: {x: 345.471, y: 343.001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2476311660119872225
 CanvasRenderer:
@@ -904,13 +904,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a06e3935dc10346a5b1200b6500e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-  dragThreshold: 0.6
-  dragMovementDistance: 30
-=======
-  dragThreshold: 0.8
+  dragThreshold: 0.00001
   dragMovementDistance: 70
->>>>>>> Stashed changes
   dragOffsetDistance: 100
   aimVector: {x: 0, y: 0}
 --- !u!1 &2476311660739999640

@@ -27,13 +27,12 @@ public class PlayerMovement : MonoBehaviour
         };
 
         controls.Ground.Jump.performed += ctx => Jump();
-        
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     private void FixedUpdate()
@@ -51,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void Flip()

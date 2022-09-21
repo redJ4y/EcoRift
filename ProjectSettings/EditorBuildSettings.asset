@@ -11,12 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: d45155f6ba4854dfab509725082fcba3
-  - enabled: 0
-    path: Assets/Scenes/Level One.unity
-    guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 1
-    path: Assets/Scenes/Sun Level.unity
-    guid: fa2691a2b120afb4fa11dba503727d35
+    path: Assets/Scenes/Rain Level.unity
+    guid: 2b668c31582a749e2bd490dbcdc2a714
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 8447e1acf49f6b148a0ae1e52dc5d8b3, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: c4aa8dab4091d499abff31eb1dcb4379, type: 2}

@@ -12,12 +12,13 @@ public class Projectile : MonoBehaviour
     private Collider2D thisCollider;
     private IEnumerator coroutine;
     private GetWeather getWeather;
+    private bool damageEnemies = false;
+    private bool flashing;
 
-    void Start()
+    void Awake()
     {
         thisCollider = gameObject.GetComponent<Collider2D>();
-        Collider2D playerCollision = GameObject.Find("Player").GetComponent<Collider2D>();
-        Physics2D.IgnoreCollision(thisCollider, playerCollision);
+        flashing = false;
         cam = Camera.main;
         getWeather = GameObject.Find("Backgrounds").GetComponent<GetWeather>();
 
@@ -26,10 +27,31 @@ public class Projectile : MonoBehaviour
             Debug.Log("Camera is null");
         }
     }
+    // Redundant
+    private void SetIgnoreCollision()
+    {
+        Physics2D.IgnoreLayerCollision(11, 11); // Ignore collision with other projectiles
+        if (damageEnemies == true) // if can damage enemies
+            Physics2D.IgnoreLayerCollision(11, 9);
+        else // if unable to damage enemies
+            Physics2D.IgnoreLayerCollision(11, 10); // ignore between projectiles
+
+        thisCollider.enabled = true;
+    }
+
+    // Redundant
+    public void SetIgnoreCollision(Collider2D[] colliders, bool damageEnemies)
+    {
+        this.damageEnemies = damageEnemies;
+        foreach (Collider2D current in colliders) {
+            Physics2D.IgnoreCollision(thisCollider, current);
+        }
+        thisCollider.enabled = true;
+    }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Terrain")
+        if (col.gameObject.layer == 8) // If collides with ground
         {
             Destroy(gameObject);
         }
@@ -39,17 +61,25 @@ public class Projectile : MonoBehaviour
         //Vector3 endPos = thisCollider.bounds.center + new Vector3(gameObject.transform.position.x,0,0);
 
         GameObject target = col.gameObject;
-        float newDamage = InflictDamage(damage, target);
-        Destroy(gameObject);
-        //DisplayDamage(endPos, newDamage);
+
+        if (target.layer == 10 || target.layer == 9) // Check if collider is enemy or player
+        {
+                target.transform.Find("HealthBar").GetComponent<Health>().TakeDamage(damage);
+                if (target.layer == 9) // if hit player then initiate hit effects
+                {
+                    target.GetComponent<CharacterController2D>().HitInflicted();
+                }
+            Destroy(gameObject);
+        }
     }
 
+    // Not used
     void DisplayDamage(Vector2 endPosition, float newDamage)
     {
         Transform damageTemp = GameObject.Find("DamageMarkers").transform;
         GameObject text = Instantiate(damageText, damageTemp);
         TMP_Text tmp = text.GetComponent<TMP_Text>();
-        tmp.text = "-"+newDamage;
+        tmp.text = "-" + newDamage;
 
         // Positioning
         Vector2 textPos = cam.WorldToScreenPoint(endPosition);
@@ -58,7 +88,7 @@ public class Projectile : MonoBehaviour
         Vector3 endTextPos = textTrans.position + new Vector3(0, 20.0f, 0);
 
         // Animation
-        coroutine = moveSmoothly(tmp,textTrans, textTrans.position, endTextPos);
+        coroutine = moveSmoothly(tmp, textTrans, textTrans.position, endTextPos);
         CoroutineManager.Instance.StartCoroutine(coroutine);
         Destroy(text, 1.5f);
         Destroy(gameObject);

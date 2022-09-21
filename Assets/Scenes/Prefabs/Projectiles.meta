@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Prefabs/Projectiles.meta
 guid: c91298acace948a4da9910074908b08f
+========
+guid: e88704fec72204cd49d0fd385387440a
+>>>>>>>> origin/pause-and-reset-menu:Assets/Medieval Backgrounds.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
