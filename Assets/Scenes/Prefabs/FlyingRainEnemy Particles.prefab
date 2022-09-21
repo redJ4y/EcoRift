@@ -358,8 +358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1095444792620742708}
-  player: {fileID: 0}
-  enemyWeapon: {fileID: 6958890066831099034, guid: 98bc9ac8e3d797648ac94e3862c0b91b, type: 3}
+  playerController: {fileID: 0}
+  enemyWeapon: {fileID: 6958890066831099034, guid: 2ef832ee0b4aed746a285bcb6b372b48, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -373,6 +373,7 @@ MonoBehaviour:
   attackRange: 10
   attackSpeed: 1
   projectileSpeed: 20
+  canLeadShots: 1
 --- !u!1001 &8627886886165661808
 PrefabInstance:
   m_ObjectHideFlags: 0

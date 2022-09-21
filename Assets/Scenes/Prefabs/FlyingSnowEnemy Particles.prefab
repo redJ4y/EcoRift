@@ -173,8 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1366036007167688216}
-  player: {fileID: 0}
-  enemyWeapon: {fileID: 6958890066831099034, guid: 98bc9ac8e3d797648ac94e3862c0b91b, type: 3}
+  playerController: {fileID: 0}
+  enemyWeapon: {fileID: 6958890066831099034, guid: f5ebd922824f4a440af9aedd99574578, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -188,6 +188,7 @@ MonoBehaviour:
   attackRange: 10
   attackSpeed: 1
   projectileSpeed: 20
+  canLeadShots: 1
 --- !u!1 &2172610746514945056
 GameObject:
   m_ObjectHideFlags: 0
