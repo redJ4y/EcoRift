@@ -71,7 +71,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7977492489572996693, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Name
-      value: Rain Enemy
+      value: Rain Enemy Particles
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996712, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -88,7 +88,7 @@ PrefabInstance:
     - target: {fileID: 7977492489572996714, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: enemyWeapon
       value: 
-      objectReference: {fileID: 6958890066831099034, guid: 98bc9ac8e3d797648ac94e3862c0b91b, type: 3}
+      objectReference: {fileID: 6958890066831099034, guid: 2ef832ee0b4aed746a285bcb6b372b48, type: 3}
     - target: {fileID: 7977492489572996716, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -103,11 +103,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.31
+      value: -2.891701
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.39
+      value: -1.5401071
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.z
