@@ -13,11 +13,7 @@ public class FlyingEnemyBrain : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
 
     [Header("Movement")]
-<<<<<<< Updated upstream
-    [Range(1.0f, 200.0f)] [SerializeField] private float movementSpeed = 30f;
-=======
     [Range(1.0f, 100.0f)] [SerializeField] private float movementSpeed = 100f;
->>>>>>> Stashed changes
     [Range(1, 10)] [SerializeField] private int targetHeight = 5;
     [Range(1, 5)] [SerializeField] private int minimumHeight = 2;
     [SerializeField] private int minimumYLevel = 5;
@@ -166,14 +162,8 @@ public class FlyingEnemyBrain : MonoBehaviour
         if (determinant > 0)
         {
             valid = true;
-<<<<<<< Updated upstream
             float t1 = (-b + determinant) / (2 * a);
             float t2 = (-b - determinant) / (2 * a);
-=======
-            float t1 = (-1*b + determinant) / (2 * a);
-            float t2 = (-1*b - determinant) / (2 * a);
-            Debug.Log("t1: " + t1 + ", t2: " + t2);
->>>>>>> Stashed changes
             t = Mathf.Max(t1, t2);
         }
 
