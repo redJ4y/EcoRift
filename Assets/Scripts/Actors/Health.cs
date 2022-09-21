@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -50,9 +51,19 @@ public class Health : MonoBehaviour
         }
     }
 
+    IEnumerator GoToMainMenu()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        SceneManager.LoadScene(0);
+    }
+
     private void Death()
     {
-        Destroy(actor);
+        if (actor.layer == 9)
+            StartCoroutine(GoToMainMenu());
+        else
+            Destroy(actor);
     }
 
     public void TakeDamage(float damage)
