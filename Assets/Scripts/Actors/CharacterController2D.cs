@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,9 +35,27 @@ public class CharacterController2D : MonoBehaviour
     public BoolEvent OnCrouchEvent;
     private bool m_wasCrouching = false;
 
+    private SpriteRenderer renderer;
+    private SwitchStaff switchStaffScript;
+    private healthBarScript UIHealth;
+    private bool flashing = false;
+
+    void Start()
+    {
+        renderer = gameObject.GetComponent<SpriteRenderer>();
+        UIHealth = GameObject.Find("HpBar").GetComponent<healthBarScript>();
+        if (gameObject.tag == "Player")
+            switchStaffScript = transform.Find("Staff").gameObject.GetComponent<SwitchStaff>();
+    }
+
     public Vector2 GetJumpVector() // Addition: returns the velocity vector for if the character were to jump
     {
         return new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y + m_JumpForce);
+    }
+
+    public Vector2 GetMovementVector()
+    {
+        return new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y);
     }
 
     public bool IsPlayerGrounded() // Addition
@@ -80,7 +100,6 @@ public class CharacterController2D : MonoBehaviour
         }
 
         // Check if player is falling through void, if so teleport to spawn
-        
         if (transform.localPosition.y < -20.0f) // -20.0f is arbitrary
         {
             transform.localPosition = new Vector3(0, 0, 0); // (0, 0, 0) is spawn (can be changed)
@@ -165,12 +184,38 @@ public class CharacterController2D : MonoBehaviour
 
     private void Flip()
     {
+        
         // Switch the way the player is labelled as facing.
         m_FacingRight = !m_FacingRight;
+        renderer.flipX = !renderer.flipX;
+        if (gameObject.tag == "Player")
+            switchStaffScript.FlipStaff();
+    }
 
-        // Multiply the player's x local scale by -1.
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+    public void HitInflicted()
+    {
+        UIHealth.SetValue();
+
+        if (flashing == false)
+        {
+            flashing = true;
+            StartCoroutine(flashRed(renderer));
+        }
+    }
+
+    private IEnumerator flashRed(SpriteRenderer spriteRenderer)
+    {
+        Color currentColor = spriteRenderer.color;
+        Color32 redColor = new Color32(255, 200, 200, 255);
+
+        for (int i = 0; i < 3; i++)
+        {
+            spriteRenderer.color = redColor;
+            yield return new WaitForSeconds(.1f);
+            spriteRenderer.color = currentColor;
+            yield return new WaitForSeconds(.1f);
+        }
+
+        flashing = false;
     }
 }

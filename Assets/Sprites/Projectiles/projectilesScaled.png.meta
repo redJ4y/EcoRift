@@ -144,8 +144,8 @@ TextureImporter:
         y: 240
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,12 +161,12 @@ TextureImporter:
       name: Sun
       rect:
         serializedVersion: 2
-        x: 160
+        x: 161
         y: 240
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,8 +186,8 @@ TextureImporter:
         y: 240
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

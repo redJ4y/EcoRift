@@ -7,11 +7,13 @@ using UnityEngine;
 public class FlyingEnemyBrain : MonoBehaviour
 {
     [SerializeReference] public FlyingCharacterController2D controller;
-    [SerializeReference] public GameObject player;
+    [SerializeReference] public CharacterController2D playerController;
+    private GameObject player;
+    [SerializeReference] private GameObject enemyWeapon;
     [SerializeField] private LayerMask whatIsGround;
 
     [Header("Movement")]
-    [Range(1.0f, 60.0f)] [SerializeField] private float movementSpeed = 30f;
+    [Range(1.0f, 100.0f)] [SerializeField] private float movementSpeed = 100f;
     [Range(1, 10)] [SerializeField] private int targetHeight = 5;
     [Range(1, 5)] [SerializeField] private int minimumHeight = 2;
     [SerializeField] private int minimumYLevel = 5;
@@ -24,19 +26,34 @@ public class FlyingEnemyBrain : MonoBehaviour
     [Tooltip("The distance the enemy may travel from its origin while not aggroed")]
     [Range(0, 50)] [SerializeField] private int patrolDistance = 5;
 
+    [Header("Combat")]
+    [Range(1, 50)] [SerializeField] private int attackRange = 10;
+    [Range(1, 200)] [SerializeField] private int attackSpeed = 1;
+    [Range(1, 50)] [SerializeField] private float projectileSpeed = 5.0f;
+    [SerializeField] private bool canLeadShots = false;
+
     // For ray casting:
     private Vector2 downRightRay;
     private Vector2 downLeftRay;
 
+    private Vector2 toPlayer;
     private Vector2 currentMovement = Vector2.zero;
     private bool patrolling = false;
     private float patrolPostX = 0; // The x position to patrol around
     private bool permanentAggro = false; // If enemy was aggroed and keepAgro is enabled
     private float timeSinceDirectionChange = 0;
+    private int shotDelay = 0;
+
+    private GameObject projectileStorage;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+
+        movementSpeed *= 2; // Adjust movement speed to account for increased smoothing
+
+        projectileStorage = GameObject.Find("ProjectileStorage");
         targetHeight *= 2; // Start correcting sooner
         // Set up ray casting variables:
         downRightRay = (new Vector2(0.05f, -1)).normalized;
@@ -48,9 +65,115 @@ public class FlyingEnemyBrain : MonoBehaviour
     void FixedUpdate()
     {
         currentMovement = ValidateMovement(SmoothMovement(GetPreferredMovement()));
+        TryShoot();
 
         controller.Move(currentMovement * Time.fixedDeltaTime);
         timeSinceDirectionChange += Time.fixedDeltaTime;
+    }
+
+    private void TryShoot()
+    {
+        if ((200 - attackSpeed) - shotDelay < 0 && Random.value > 0.9f)
+        {
+            if (toPlayer.magnitude < attackRange && toPlayer.normalized.y < -0.5f)
+            {
+                if (canLeadShots)
+                {
+                    if (Mathf.Abs(transform.position.x - player.transform.position.x) > 3)
+                    {
+                        Shoot(); // Only shoot when the player is 3 units away (dead zone) to avoid inaccurate leading
+                        shotDelay = 0;
+                    }
+                    else
+                    {
+                        shotDelay++;
+                    }
+                }
+                else
+                {
+                    Shoot();
+                    shotDelay = 0;
+                }
+            }
+        }
+        else
+        {
+            shotDelay++;
+        }
+    }
+
+    private void Shoot()
+    {
+        GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
+        bullet.transform.SetParent(projectileStorage.transform);
+        //bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), false);
+        Destroy(bullet, 3.0f);
+
+        Vector2 aimVector = Vector2.zero;
+        if (canLeadShots)
+            aimVector = PredictTrajectory(player.transform.position, playerController.GetMovementVector(), bullet.transform.position);
+        if (aimVector == Vector2.zero)
+            aimVector = toPlayer;
+
+        // Rotate sprite
+        float angle = GetAimAngle(aimVector);
+
+        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // Move the bullet
+        bullet.GetComponent<Rigidbody2D>().velocity = aimVector.normalized * projectileSpeed;
+        // Use 2D collider
+        Collider2D collider = bullet.GetComponent<Collider2D>();
+        collider.enabled = true;
+    }
+
+    private static float GetAimAngle(Vector2 aimVector)
+    {
+        float hori = aimVector.x;
+        float vert = aimVector.y;
+        float angle;
+        if (vert < 0.0f)
+        {
+            angle = (Mathf.Atan2(hori, Mathf.Abs(vert)) * Mathf.Rad2Deg) + 270.0f;
+        }
+        else
+        {
+            angle = 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
+        }
+
+        return angle;
+    }
+
+    private Vector2 PredictTrajectory(Vector3 playerPosition, Vector2 playerVelocity, Vector3 projectileLaunchPos)
+    {
+        Debug.Log("Player pos: " + playerPosition + ", Enemy pos: "+ projectileLaunchPos+", Player vel: " + playerVelocity);
+
+        bool valid = false;
+
+        Vector3 targetDifference = playerPosition - projectileLaunchPos;
+        targetDifference.y = 0;
+        playerVelocity.y = 0;
+
+        float a = Vector3.Dot(playerVelocity, playerVelocity) - Mathf.Pow(projectileSpeed, 2);
+        float b = 2 * Vector3.Dot(targetDifference, playerVelocity);
+        float c = Vector3.Dot(targetDifference, targetDifference);
+
+        float determinant = Mathf.Sqrt(Mathf.Pow(b, 2) - 4 * a * c);
+        float t = 0;
+        if (determinant > 0)
+        {
+            valid = true;
+            float t1 = (-b + determinant) / (2 * a);
+            float t2 = (-b - determinant) / (2 * a);
+            t = Mathf.Max(t1, t2);
+        }
+
+        if (valid)
+        {
+            Vector2 futurePosition = (Vector2)playerPosition + playerVelocity * t;
+            Vector2 toFuturePosition = futurePosition - (Vector2)transform.position;
+            return toFuturePosition;
+        }
+        return Vector2.zero;
     }
 
     // Returns the preferred movement value (not scaled by movement speed)
@@ -58,7 +181,7 @@ public class FlyingEnemyBrain : MonoBehaviour
     {
         Vector3 myPos = gameObject.transform.position;
         Vector3 playerPos = player.transform.position;
-        Vector2 toPlayer = playerPos - myPos;
+        toPlayer = playerPos - myPos;
 
         Vector2 preferredMovement;
         if (permanentAggro || toPlayer.magnitude < aggroDistance)
@@ -67,7 +190,10 @@ public class FlyingEnemyBrain : MonoBehaviour
             if (keepAggro)
                 permanentAggro = true; // Lock in aggro if keepAggro is enabled
 
-            preferredMovement = toPlayer.normalized;
+            Vector2 toPlayerCorrected = toPlayer;
+            if (canLeadShots)
+                toPlayerCorrected.x += 3.1f * Mathf.Sign(myPos.x - playerPos.x); // Try to stay slightly out of aiming dead zone
+            preferredMovement = toPlayerCorrected.normalized;
         }
         else
         { // The enemy is not aggroed, patrol...
