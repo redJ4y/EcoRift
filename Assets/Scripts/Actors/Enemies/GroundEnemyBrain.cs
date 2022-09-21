@@ -116,7 +116,7 @@ public class GroundEnemyBrain : MonoBehaviour
     {
         GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
         bullet.transform.SetParent(projectileStorage.transform);
-        bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponentsInChildren<Collider2D>(), false);
+        //bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponentsInChildren<Collider2D>(), false);
         Destroy(bullet, 3.0f);
         // Set starting position
         bullet.transform.position += new Vector3(0, 0.1f, 0);
