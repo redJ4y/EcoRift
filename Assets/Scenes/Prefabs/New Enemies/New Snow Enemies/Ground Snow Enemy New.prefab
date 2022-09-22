@@ -92,7 +92,7 @@ PrefabInstance:
     - target: {fileID: 7977492489572996716, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 543cbc130b95949f0942d5861accc981, type: 3}
+      objectReference: {fileID: -1982902316, guid: ce7b9bf642f364c179ff33deb9a83de4, type: 3}
     - target: {fileID: 7977492489572996716, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -144,7 +144,7 @@ PrefabInstance:
     - target: {fileID: 7977492489572996719, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 45c8aebdf3b644561a4f371d9a713530, type: 2}
+      objectReference: {fileID: 9100000, guid: cc5ee70cb59c94e9e949c960569c9a10, type: 2}
     - target: {fileID: 9008795432840087178, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: hitParticles
       value: 
