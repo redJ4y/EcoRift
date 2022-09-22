@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class APIData
 {
     // Brisbane: lat: -27.469770, lon: 153.025131
