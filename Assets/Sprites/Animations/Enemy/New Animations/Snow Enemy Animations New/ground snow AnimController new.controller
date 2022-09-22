@@ -48,7 +48,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3e44446617fe343bc8ad82a59c3a6535, type: 2}
+  m_Motion: {fileID: 7400000, guid: 88e0e2c59b4004daba06070bc4c5b511, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -61,7 +61,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: groundSunIdle
+  m_Name: groundRainIdle
   m_Speed: 0.5
   m_CycleOffset: 1
   m_Transitions:
@@ -76,7 +76,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: aef28819809e7432fb371803099681b1, type: 2}
+  m_Motion: {fileID: 7400000, guid: 68d91b9d78cc84dafa2768b837acc7f6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -89,7 +89,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: groundSunRun
+  m_Name: groundRainRun
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -104,7 +104,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8ab782cf1fe9f4c6e9f2317714c9e361, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0e0f572e3e47a43d393e0b56759b83be, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -116,7 +116,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: groundSunAnimController New
+  m_Name: ground snow AnimController new
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Run
@@ -164,7 +164,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: aef28819809e7432fb371803099681b1, type: 2}
+  m_Motion: {fileID: 7400000, guid: 68d91b9d78cc84dafa2768b837acc7f6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -190,7 +190,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5b649b271c2794c7ebb313617568a870, type: 2}
+  m_Motion: {fileID: 7400000, guid: a5b05f4196a1a4eb7bd120f1f0e1e39e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -281,7 +281,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GroundSunJump
+  m_Name: GroundRainJump
   m_Speed: 0.2
   m_CycleOffset: 0
   m_Transitions:
@@ -296,7 +296,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5b649b271c2794c7ebb313617568a870, type: 2}
+  m_Motion: {fileID: 7400000, guid: a5b05f4196a1a4eb7bd120f1f0e1e39e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -362,7 +362,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8ab782cf1fe9f4c6e9f2317714c9e361, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0e0f572e3e47a43d393e0b56759b83be, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
