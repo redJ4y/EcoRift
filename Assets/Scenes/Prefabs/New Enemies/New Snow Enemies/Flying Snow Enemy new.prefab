@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1095444792620742708}
   playerController: {fileID: 0}
-  enemyWeapon: {fileID: 6958890066831099034, guid: 2ef832ee0b4aed746a285bcb6b372b48, type: 3}
+  enemyWeapon: {fileID: 6958890066831099034, guid: f5ebd922824f4a440af9aedd99574578, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
