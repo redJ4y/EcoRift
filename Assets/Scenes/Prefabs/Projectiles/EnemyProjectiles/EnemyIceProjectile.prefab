@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageText: {fileID: 0}
   damage: 5
-  element: 
+  element: Snow
 --- !u!60 &2084859593008772908
 PolygonCollider2D:
   m_ObjectHideFlags: 0

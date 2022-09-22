@@ -10,6 +10,7 @@ public class GroundEnemyBrain : MonoBehaviour
     private GameObject player;
     [SerializeReference] private GameObject enemyWeapon;
     [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] string enemyType;
 
     [Header("Movement")]
     [Range(1.0f, 60.0f)] [SerializeField] private float movementSpeed = 30f;
@@ -50,7 +51,9 @@ public class GroundEnemyBrain : MonoBehaviour
     private float timeSinceDirectionChange = 0;
     private bool currentlyLeaping = false;
     private int shotDelay = 0;
+    private bool isBuffed;
 
+    private Health healthScript;
     private GameObject projectileStorage;
 
     // Start is called before the first frame update
@@ -58,6 +61,7 @@ public class GroundEnemyBrain : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         projectileStorage = GameObject.Find("ProjectileStorage");
+        healthScript = transform.Find("HealthBar").GetComponent<Health>();
 
         float enemyHeight = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;
         halfEnemyHeight = enemyHeight / 2.0f;
@@ -116,6 +120,7 @@ public class GroundEnemyBrain : MonoBehaviour
     {
         GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
         bullet.transform.SetParent(projectileStorage.transform);
+        bullet.GetComponent<Projectile>().isBuffed = isBuffed;
         //bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponentsInChildren<Collider2D>(), false);
         Destroy(bullet, 3.0f);
         // Set starting position
@@ -138,6 +143,16 @@ public class GroundEnemyBrain : MonoBehaviour
         // Use 2D collider
         Collider2D collider = bullet.GetComponent<Collider2D>();
         collider.enabled = true;
+    }
+
+    public void updateBuff(string weatherType)
+    {
+        isBuffed = (weatherType == enemyType);
+
+        healthScript.buffHp(1.2f);
+        attackSpeed++;
+        attackRange++;
+        aggroDistance++;
     }
 
     // Returns the preferred movement value (not scaled by movement speed)
