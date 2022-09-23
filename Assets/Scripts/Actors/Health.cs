@@ -183,4 +183,9 @@ public class Health : MonoBehaviour
     void emitParticles(){
       hitParticles.Play();
     }
+
+    public void buffHp(float multiplier)
+    {
+        hp *= multiplier;
+    }
 }
