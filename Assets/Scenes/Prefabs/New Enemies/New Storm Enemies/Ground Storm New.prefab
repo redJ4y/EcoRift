@@ -86,6 +86,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996714, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
+      propertyPath: enemyType
+      value: Clouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977492489572996714, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: enemyWeapon
       value: 
       objectReference: {fileID: 6958890066831099034, guid: 0de2b659c18d44293baf64855ba1fafc, type: 3}
