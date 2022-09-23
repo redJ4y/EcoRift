@@ -71,7 +71,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7977492489572996693, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Name
-      value: Sun Ground Enemy Particles
+      value: Sun Ground Enemy New
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996712, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -84,6 +84,10 @@ PrefabInstance:
     - target: {fileID: 7977492489572996714, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977492489572996714, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
+      propertyPath: enemyType
+      value: Clear
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996714, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: enemyWeapon

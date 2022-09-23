@@ -363,6 +363,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  enemyType: Rain
   movementSpeed: 30
   targetHeight: 5
   minimumHeight: 3
