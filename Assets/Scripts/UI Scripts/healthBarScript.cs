@@ -1,16 +1,17 @@
+//script to control player's health bar
 using UnityEngine;
 using UnityEngine.UI;
 
 public class healthBarScript : MonoBehaviour
 {
     [SerializeField]
-    private Health health;
+    private Health health; // Player's health
 
     [SerializeField]
-    private RectTransform barRect;
+    private RectTransform barRect; // healthbar rect
 
     [SerializeField]
-    private RectMask2D mask;
+    private RectMask2D mask; // using mask to grow or shrink bar
 
     private float maxRightMask;
     private float initialRightMask;
@@ -21,9 +22,8 @@ public class healthBarScript : MonoBehaviour
         initialRightMask = mask.padding.z;
     }
 
-    public void SetValue()
+    public void SetValue() // updates visual of healthbar according to player HP
     {
-      //Debug.Log("Started Health script");
       float currentHealth = health.GetHp();
       var targetWidth = currentHealth * maxRightMask / health.GetMaxHp();
       var newRightMask = maxRightMask + initialRightMask - targetWidth;
