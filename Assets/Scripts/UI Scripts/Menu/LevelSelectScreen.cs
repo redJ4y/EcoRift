@@ -1,3 +1,4 @@
+//script to control level select screen functions, including loading the scene, //opening and closing the level select panel.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class LevelSelectScreen : MonoBehaviour
     {
         levelSelectCanvas.SetActive(false);
     }
-    
+
     public void LoadSnowLevel() {
         SceneManager.LoadScene(1);
     }

@@ -1,4 +1,4 @@
-//Chris Young 077497 COMP602_2022_S2
+//script to control main menu quit button, closes the app
 
 using System.Collections;
 using System.Collections.Generic;
@@ -19,12 +19,11 @@ public class QuitGameButton : MonoBehaviour
 
     public void Exit()
     {
-      
+
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
         Application.Quit();
-    
+
     }
 }
-
