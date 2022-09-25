@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -50,14 +51,24 @@ public class Health : MonoBehaviour
         }
     }
 
+    IEnumerator GoToMainMenu()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        SceneManager.LoadScene(0);
+    }
+
     private void Death()
     {
-        Destroy(actor);
+        if (actor.layer == 9)
+            StartCoroutine(GoToMainMenu());
+        else
+            Destroy(actor);
     }
 
     public void TakeDamage(float damage)
     {
-        emitParticles();
+        emitParticles(); // emit blood particles on hit
         justHit = true;
         hp -= damage;
 
@@ -151,6 +162,7 @@ public class Health : MonoBehaviour
       Debug.Log($"hp = {hp}");
     }
 
+    //debug tool for testing healthbar
     public void lowerHP()
     {
       if(hp>=11)
@@ -160,6 +172,7 @@ public class Health : MonoBehaviour
       }
     }
 
+    //debug tool for testing healthbar
     public void raiseHP()
     {
       if(hp<=(maxHp-11))
@@ -169,7 +182,13 @@ public class Health : MonoBehaviour
       }
     }
 
+    //blood particle emission
     void emitParticles(){
       hitParticles.Play();
+    }
+
+    public void buffHp(float multiplier)
+    {
+        hp *= multiplier;
     }
 }
