@@ -68,7 +68,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        emitParticles();
+        emitParticles(); // emit blood particles on hit
         justHit = true;
         hp -= damage;
 
@@ -162,6 +162,7 @@ public class Health : MonoBehaviour
       Debug.Log($"hp = {hp}");
     }
 
+    //debug tool for testing healthbar
     public void lowerHP()
     {
       if(hp>=11)
@@ -171,6 +172,7 @@ public class Health : MonoBehaviour
       }
     }
 
+    //debug tool for testing healthbar
     public void raiseHP()
     {
       if(hp<=(maxHp-11))
@@ -180,7 +182,13 @@ public class Health : MonoBehaviour
       }
     }
 
+    //blood particle emission
     void emitParticles(){
       hitParticles.Play();
+    }
+
+    public void buffHp(float multiplier)
+    {
+        hp *= multiplier;
     }
 }

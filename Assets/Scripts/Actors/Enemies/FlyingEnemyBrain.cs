@@ -8,9 +8,10 @@ public class FlyingEnemyBrain : MonoBehaviour
 {
     [SerializeReference] public FlyingCharacterController2D controller;
     [SerializeReference] public CharacterController2D playerController;
-    private GameObject player;
     [SerializeReference] private GameObject enemyWeapon;
     [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private string enemyType;
+    private GameObject player;
 
     [Header("Movement")]
     [Range(1.0f, 100.0f)] [SerializeField] private float movementSpeed = 100f;
@@ -36,6 +37,8 @@ public class FlyingEnemyBrain : MonoBehaviour
     private Vector2 downRightRay;
     private Vector2 downLeftRay;
 
+    private GameObject projectileStorage;
+    private Health healthScript;
     private Vector2 toPlayer;
     private Vector2 currentMovement = Vector2.zero;
     private bool patrolling = false;
@@ -43,14 +46,13 @@ public class FlyingEnemyBrain : MonoBehaviour
     private bool permanentAggro = false; // If enemy was aggroed and keepAgro is enabled
     private float timeSinceDirectionChange = 0;
     private int shotDelay = 0;
-
-    private GameObject projectileStorage;
+    private bool isBuffed;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-
+        healthScript = transform.Find("HealthBar").GetComponent<Health>();
         movementSpeed *= 2; // Adjust movement speed to account for increased smoothing
 
         projectileStorage = GameObject.Find("ProjectileStorage");
@@ -106,7 +108,8 @@ public class FlyingEnemyBrain : MonoBehaviour
     {
         GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
         bullet.transform.SetParent(projectileStorage.transform);
-        //bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), false);
+        bullet.GetComponent<Projectile>().isBuffed = isBuffed;
+        // bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), false);
         Destroy(bullet, 3.0f);
 
         Vector2 aimVector = Vector2.zero;
@@ -124,6 +127,18 @@ public class FlyingEnemyBrain : MonoBehaviour
         // Use 2D collider
         Collider2D collider = bullet.GetComponent<Collider2D>();
         collider.enabled = true;
+    }
+
+    public void UpdateBuff(string weatherType)
+    {
+        isBuffed = (weatherType == enemyType);
+
+        healthScript.buffHp(1.2f);
+        attackSpeed++;
+        attackRange++;
+        aggroDistance++;
+
+        Debug.Log(enemyType + " enemy is buffed: " + isBuffed + " (current weather: " + weatherType);
     }
 
     private static float GetAimAngle(Vector2 aimVector)
@@ -145,8 +160,6 @@ public class FlyingEnemyBrain : MonoBehaviour
 
     private Vector2 PredictTrajectory(Vector3 playerPosition, Vector2 playerVelocity, Vector3 projectileLaunchPos)
     {
-        Debug.Log("Player pos: " + playerPosition + ", Enemy pos: "+ projectileLaunchPos+", Player vel: " + playerVelocity);
-
         bool valid = false;
 
         Vector3 targetDifference = playerPosition - projectileLaunchPos;
