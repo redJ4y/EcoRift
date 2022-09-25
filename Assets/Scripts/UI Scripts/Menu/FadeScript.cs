@@ -1,4 +1,5 @@
-//Chris Young 077497 COMP602_2022_S2
+//deprecated
+//script to fade menu in and out
 
 using System.Collections;
 using System.Collections.Generic;
@@ -49,4 +50,3 @@ public class FadeScript : MonoBehaviour
         }
     }
 }
-
