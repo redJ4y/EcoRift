@@ -76,3 +76,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 ProjectSettings/ProjectVersion.txt
+
+#Ignore key
+Assets/Scripts/WeatherAPI/APIData.cs

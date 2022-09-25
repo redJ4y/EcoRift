@@ -274,9 +274,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1095444792620742709, guid: d715fe29e5bf84709a3bbb2caa30c5dd, type: 3}
-      propertyPath: player
+      propertyPath: playerController
       value: 
-      objectReference: {fileID: 8396136383527940291}
+      objectReference: {fileID: 8396136383527940293}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d715fe29e5bf84709a3bbb2caa30c5dd, type: 3}
 --- !u!1 &170749416
@@ -11794,6 +11794,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8396136383527940291}
+    - target: {fileID: 5719815873473920947, guid: d18c86d5f584b4ab291d19e8d384397a, type: 3}
+      propertyPath: enemyWeapon
+      value: 
+      objectReference: {fileID: 6958890066831099034, guid: 2ef832ee0b4aed746a285bcb6b372b48, type: 3}
     - target: {fileID: 5719815873473920948, guid: d18c86d5f584b4ab291d19e8d384397a, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -19348,10 +19352,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 308962701905040522, guid: 08f8dfa54ff664a20bca4e532e219e67, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 8396136383527940291}
     - target: {fileID: 308962701905040525, guid: 08f8dfa54ff664a20bca4e532e219e67, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -19723,7 +19723,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.2935119, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -26573,6 +26573,10 @@ PrefabInstance:
       propertyPath: joyStick
       value: 
       objectReference: {fileID: 1083278164}
+    - target: {fileID: 2776217061378404766, guid: 35076e2c472514909b829d62a8d417ad, type: 3}
+      propertyPath: projectileStorage
+      value: 
+      objectReference: {fileID: 2010308900}
     - target: {fileID: 5909298009728138979, guid: 35076e2c472514909b829d62a8d417ad, type: 3}
       propertyPath: joystick
       value: 
@@ -26637,3 +26641,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5909298009728138981, guid: 35076e2c472514909b829d62a8d417ad, type: 3}
   m_PrefabInstance: {fileID: 2776217061132520998}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8396136383527940293 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5909298009728138978, guid: 35076e2c472514909b829d62a8d417ad, type: 3}
+  m_PrefabInstance: {fileID: 2776217061132520998}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8396136383527940291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c612efadf77ad4abc699e433d6d4c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

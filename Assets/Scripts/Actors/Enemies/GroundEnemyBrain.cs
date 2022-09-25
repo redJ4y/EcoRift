@@ -7,9 +7,10 @@ using UnityEngine;
 public class GroundEnemyBrain : MonoBehaviour
 {
     [SerializeReference] public CharacterController2D controller;
-    private GameObject player;
     [SerializeReference] private GameObject enemyWeapon;
     [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] string enemyType;
+    private GameObject player;
 
     [Header("Movement")]
     [Range(1.0f, 60.0f)] [SerializeField] private float movementSpeed = 30f;
@@ -41,6 +42,8 @@ public class GroundEnemyBrain : MonoBehaviour
     private Vector2 rightRayNormalized;
     private Vector2 leftRayNormalized;
 
+    private Health healthScript;
+    private GameObject projectileStorage;
     private Vector2 toPlayer;
     private float currentMovement = 0;
     private bool patrolling = false;
@@ -50,14 +53,14 @@ public class GroundEnemyBrain : MonoBehaviour
     private float timeSinceDirectionChange = 0;
     private bool currentlyLeaping = false;
     private int shotDelay = 0;
-
-    private GameObject projectileStorage;
+    private bool isBuffed;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         projectileStorage = GameObject.Find("ProjectileStorage");
+        healthScript = transform.Find("HealthBar").GetComponent<Health>();
 
         float enemyHeight = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;
         halfEnemyHeight = enemyHeight / 2.0f;
@@ -116,7 +119,8 @@ public class GroundEnemyBrain : MonoBehaviour
     {
         GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
         bullet.transform.SetParent(projectileStorage.transform);
-        //bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponentsInChildren<Collider2D>(), false);
+        bullet.GetComponent<Projectile>().isBuffed = isBuffed;
+        // bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponentsInChildren<Collider2D>(), false);
         Destroy(bullet, 3.0f);
         // Set starting position
         bullet.transform.position += new Vector3(0, 0.1f, 0);
@@ -138,6 +142,18 @@ public class GroundEnemyBrain : MonoBehaviour
         // Use 2D collider
         Collider2D collider = bullet.GetComponent<Collider2D>();
         collider.enabled = true;
+    }
+
+    public void UpdateBuff(string weatherType)
+    {
+        isBuffed = (weatherType == enemyType);
+
+        healthScript.buffHp(1.2f);
+        attackSpeed++;
+        attackRange++;
+        aggroDistance++;
+
+        Debug.Log(enemyType + " enemy is buffed: " + isBuffed + " (current weather: " + weatherType);
     }
 
     // Returns the preferred movement value (not scaled by movement speed)

@@ -89,6 +89,16 @@ public class GetWeather : MonoBehaviour
         // Ensure no backgrounds are currently set
         disableBackgrounds();
 
+        // Buff enemies after weather is updated:
+        foreach (FlyingEnemyBrain brain in FindObjectsOfType<FlyingEnemyBrain>())
+        {
+            brain.UpdateBuff(currentWeather);
+        }
+        foreach (GroundEnemyBrain brain in FindObjectsOfType<GroundEnemyBrain>())
+        {
+            brain.UpdateBuff(currentWeather);
+        }
+
         if (currentWeather == "Clouds")
         {
             weatherBackgrounds.Find(obj => obj.name == "Cloudy").SetActive(true);
