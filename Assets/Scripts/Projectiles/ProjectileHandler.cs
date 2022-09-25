@@ -6,7 +6,7 @@ public class ProjectileHandler : MonoBehaviour
 {
     [SerializeField] private GameObject playerWeapon;
     [SerializeField] private GameObject player;
-    [SerializeField] private MobileJoyStick joyStick;
+    [SerializeField] private AimingJoyStick joyStick;
     [SerializeField] private float bulletSpeed;
 
     [SerializeReference] private InfoScript infoScript;
