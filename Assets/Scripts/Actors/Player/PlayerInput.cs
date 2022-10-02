@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeReference] private ProjectileHandler handler;
     [SerializeField] private MobileJoyStick joystick;
+    
 
     public PlayerControls controls;
     public CharacterController2D controller;
@@ -15,7 +16,6 @@ public class PlayerInput : MonoBehaviour
     private float newInputDirection = 0f;
     private float joystickDirection = 0f;
     private bool jump = false;
-    private bool shoot = false;
 
     void Start()
     {
@@ -44,6 +44,7 @@ public class PlayerInput : MonoBehaviour
     // Called a fixed number of times per second
     void FixedUpdate()
     {
+
         if (usingNewInput)
         {
             controller.Move(newInputDirection * runSpeed * Time.fixedDeltaTime, false, jump);
@@ -52,6 +53,7 @@ public class PlayerInput : MonoBehaviour
         {
             controller.Move(joystickDirection * runSpeed * Time.fixedDeltaTime, false, jump);
         }
+
         jump = false;
     }
 
