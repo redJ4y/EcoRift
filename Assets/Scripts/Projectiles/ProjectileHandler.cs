@@ -8,6 +8,7 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private AimingJoyStick joyStick;
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private int tier;
 
     [SerializeReference] private InfoScript infoScript;
     [SerializeReference] private GameObject[] weapons;
@@ -29,19 +30,20 @@ public class ProjectileHandler : MonoBehaviour
     {
         GameObject bullet = Instantiate(playerWeapon, player.transform.position, player.transform.rotation);
         bullet.transform.SetParent(projectileStorage.transform);
-        Destroy(bullet, 3.0f);
-        //bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), true);
-
-        float horizontalOffset = 0.1f;
-        float verticalOffset = 0.1f;
 
         // Set starting position
+        float horizontalOffset = 0.1f;
+        float verticalOffset = 0.1f;
         bullet.transform.position += new Vector3(horizontalOffset, verticalOffset, 0);
+        // Ensure bullet is destroyed after 3 seconds
+        Destroy(bullet, 3.0f);
 
         // Rotate sprite
-        float angle = GetAimAngle();
-
-        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (tier == 1)
+        {
+            float angle = GetAimAngle();
+            bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
 
         // Move the bullet
         bullet.GetComponent<Rigidbody2D>().velocity = joyStick.aimVector.normalized * bulletSpeed;
