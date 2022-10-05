@@ -22318,7 +22318,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1543896, y: 1}
+    m_SensorSize: {x: 2.0236967, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -30168,7 +30168,7 @@ PrefabInstance:
     - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: playerWeapon
       value: 
-      objectReference: {fileID: 6958890066831099034, guid: 33f3fd3bdae496e4d8811cc234baef2d, type: 3}
+      objectReference: {fileID: 6958890066831099034, guid: 7be35d6c01fb19d4284a568c18eaf845, type: 3}
     - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: projectileStorage
       value: 

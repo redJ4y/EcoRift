@@ -7,8 +7,6 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] private GameObject playerWeapon;
     [SerializeField] private GameObject player;
     [SerializeField] private AimingJoyStick joyStick;
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private int tier;
 
     [SerializeReference] private InfoScript infoScript;
     [SerializeReference] private GameObject[] weapons;
@@ -30,23 +28,25 @@ public class ProjectileHandler : MonoBehaviour
     {
         GameObject bullet = Instantiate(playerWeapon, player.transform.position, player.transform.rotation);
         bullet.transform.SetParent(projectileStorage.transform);
+        Projectile projectileScript = bullet.GetComponent<Projectile>();
 
         // Set starting position
         float horizontalOffset = 0.1f;
         float verticalOffset = 0.1f;
         bullet.transform.position += new Vector3(horizontalOffset, verticalOffset, 0);
-        // Ensure bullet is destroyed after 3 seconds
-        Destroy(bullet, 3.0f);
+
+        // Ensure bullet is destroyed after its set lifespan in seconds
+        Destroy(bullet, projectileScript.lifeSpan);
 
         // Rotate sprite
-        if (tier == 1)
+        if (projectileScript.isRotatable)
         {
             float angle = GetAimAngle();
             bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
         // Move the bullet
-        bullet.GetComponent<Rigidbody2D>().velocity = joyStick.aimVector.normalized * bulletSpeed;
+        bullet.GetComponent<Rigidbody2D>().velocity = joyStick.aimVector.normalized * projectileScript.bulletSpeed;
     }
 
     private void AlertGemNotSelected()

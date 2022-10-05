@@ -95,12 +95,10 @@ public class Health : MonoBehaviour
 
     private IEnumerator fadeOut()
     {
-
         while (justHit == true)
         {
             justHit = false;
             yield return new WaitForSeconds(3);
-
         }
 
         var t = 0f;
