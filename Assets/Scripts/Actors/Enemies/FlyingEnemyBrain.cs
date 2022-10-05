@@ -266,7 +266,7 @@ public class FlyingEnemyBrain : MonoBehaviour
         if (Random.value < timeSinceDirectionChange / 5.0f) // Do not always respond immediately (increase chance as time passes)
         {
             timeSinceDirectionChange = 0; // Reset duration since change (increased in every fixed update)
-            return preferredMovement * movementSpeed; // Accept preferredMovement
+            return preferredMovement * (movementSpeed-controller.GetMovementDebuff()); // Accept preferredMovement
         }
         else
         { // Randomly pick one of two options instead of switching directions...
@@ -290,7 +290,7 @@ public class FlyingEnemyBrain : MonoBehaviour
         { // Within minimum height, move up...
             Vector2 correctedMovement = preferredMovement.normalized;
             correctedMovement.y += 0.1f;
-            return correctedMovement.normalized * movementSpeed;
+            return correctedMovement.normalized * (movementSpeed - controller.GetMovementDebuff());
         }
         return preferredMovement;
     }

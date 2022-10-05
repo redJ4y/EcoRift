@@ -120,7 +120,6 @@ public class GroundEnemyBrain : MonoBehaviour
         GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
         bullet.transform.SetParent(projectileStorage.transform);
         bullet.GetComponent<Projectile>().isBuffed = isBuffed;
-        // bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponentsInChildren<Collider2D>(), false);
         Destroy(bullet, 3.0f);
         // Set starting position
         bullet.transform.position += new Vector3(0, 0.1f, 0);
@@ -224,13 +223,14 @@ public class GroundEnemyBrain : MonoBehaviour
     // Returns a less annoying movement value (now scaled by movement speed)
     private float SmoothMovement(float preferredMovement)
     {
+        float movementSpeedDebuffed = movementSpeed - controller.GetMovementDebuff(); // Subtracts slowed movement speed from controller
         int currentMovementRaw = System.Math.Sign(currentMovement);
         if (currentMovementRaw != preferredMovement) // Check for direction change
         { // Apply smoothing to direction change...
             if (timeSinceDirectionChange > 0.5f && Random.value < timeSinceDirectionChange / 10.0f) // Do not always switch directions immediately (increase chance as time passes)
             {
                 timeSinceDirectionChange = 0; // Reset duration since change (increased in every fixed update)
-                return preferredMovement * movementSpeed; // Accept preferredMovement
+                return preferredMovement * movementSpeedDebuffed; // Accept preferredMovement
             }
             else
             {
@@ -246,7 +246,7 @@ public class GroundEnemyBrain : MonoBehaviour
                 }
             }
         }
-        return currentMovementRaw * movementSpeed;
+        return currentMovementRaw * movementSpeedDebuffed;
     }
 
     private float ValidateMovement(float preferredMovement)

@@ -39,9 +39,17 @@ public class CharacterController2D : MonoBehaviour
     private SwitchStaff switchStaffScript;
     private healthBarScript UIHealth;
     private bool flashing = false;
+    private bool slowed = false;
+
+    IDictionary<string, Color32> colourReference;
 
     void Start()
     {
+        // add colours to dictionary
+        colourReference = new Dictionary<string, Color32>();
+        colourReference.Add("Red", new Color32(255, 200, 200, 255));
+        colourReference.Add("Light Blue", new Color32(153, 204, 255, 255));
+
         renderer = gameObject.GetComponent<SpriteRenderer>();
         UIHealth = GameObject.Find("HpBar").GetComponent<healthBarScript>();
         if (gameObject.tag == "Player")
@@ -199,23 +207,60 @@ public class CharacterController2D : MonoBehaviour
         if (flashing == false)
         {
             flashing = true;
-            StartCoroutine(flashRed(renderer));
+            StartCoroutine(flashColour(renderer));
         }
     }
 
-    private IEnumerator flashRed(SpriteRenderer spriteRenderer)
+    public void SlowInflicted()
+    {
+        if (slowed == false)
+        {
+            slowed = true;
+            StartCoroutine(overlayColour(renderer, "Light Blue"));
+        }
+    }
+
+    private IEnumerator flashColour(SpriteRenderer spriteRenderer)
     {
         Color currentColor = spriteRenderer.color;
-        Color32 redColor = new Color32(255, 200, 200, 255);
+        Color32 newColor = colourReference["Red"];
 
         for (int i = 0; i < 3; i++)
         {
-            spriteRenderer.color = redColor;
+            spriteRenderer.color = newColor;
             yield return new WaitForSeconds(.1f);
             spriteRenderer.color = currentColor;
             yield return new WaitForSeconds(.1f);
         }
 
         flashing = false;
+    }
+
+    private IEnumerator overlayColour(SpriteRenderer spriteRenderer, string newColour)
+    {
+        bool staySlowed = true;
+        Color currentColor = spriteRenderer.color;
+        Color32 newColor = colourReference[newColour];
+
+        spriteRenderer.color = newColor;
+
+        while (staySlowed)
+        {
+            staySlowed = false;
+            yield return new WaitForSeconds(3);
+        }
+
+        spriteRenderer.color = currentColor;
+        slowed = false;
+    }
+
+    public float GetMovementDebuff()
+    {
+        float movementDebuff = 0.0f;
+        if (slowed)
+        {
+            movementDebuff = 8.0f; // this will be subtracted from the normal speed
+        }
+        return movementDebuff;
     }
 }
