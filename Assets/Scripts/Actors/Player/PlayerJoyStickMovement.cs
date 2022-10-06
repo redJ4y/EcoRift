@@ -20,7 +20,7 @@ public class PlayerJoyStickMovement : MonoBehaviour
     private void Move(Vector2 input)
     {
         MovementVector = input;
-        controller.Move(input.x * runSpeed * Time.fixedDeltaTime, false, false);
+        controller.Move(input.x * runSpeed * Time.fixedDeltaTime, false);
     }
 
     private void FixedUpdate()

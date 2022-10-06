@@ -358,22 +358,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2098920219063282052}
-  playerController: {fileID: 0}
   enemyWeapon: {fileID: 6958890066831099034, guid: 30620ca3d18a940348eeaa65016fcb0d, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
   enemyType: Clear
-  movementSpeed: 40
-  targetHeight: 5
-  minimumHeight: 3
-  minimumYLevel: 5
-  aggroDistance: 10
+  movementSpeed: 35
+  targetHeight: 6
+  minimumHeight: 4
+  minimumYLevel: -5
+  aggroDistance: 15
   keepAggro: 0
   patrolDistance: 5
   attackRange: 10
   attackSpeed: 1
-  projectileSpeed: 20
+  projectileSpeed: 15
+  shootRadius: 0.5
   canLeadShots: 1
 --- !u!1 &8272800020882129883
 GameObject:

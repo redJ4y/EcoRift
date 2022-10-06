@@ -46,11 +46,11 @@ public class PlayerInput : MonoBehaviour
     {
         if (usingNewInput)
         {
-            controller.Move(newInputDirection * runSpeed * Time.fixedDeltaTime, false, jump);
+            controller.Move(newInputDirection * runSpeed * Time.fixedDeltaTime, jump);
         }
         else
         {
-            controller.Move(joystickDirection * runSpeed * Time.fixedDeltaTime, false, jump);
+            controller.Move(joystickDirection * runSpeed * Time.fixedDeltaTime, jump);
         }
         jump = false;
     }
