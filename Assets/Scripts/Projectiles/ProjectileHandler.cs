@@ -11,14 +11,16 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeReference] private InfoScript infoScript;
     [SerializeReference] private GameObject[] weapons;
     [SerializeReference] private GameObject projectileStorage;
+    [SerializeReference] private GameObject currentLaserProjectile;
+    [SerializeReference] private GameObject bulletStart;
 
     public void OnShoot()
     {
-        if (playerWeapon != null)
+        if (playerWeapon != null && currentLaserProjectile == null)
         {
             CreateBullet();
         }
-        else
+        else if (playerWeapon == null)
         {
             AlertGemNotSelected();
         }
@@ -26,14 +28,9 @@ public class ProjectileHandler : MonoBehaviour
 
     private void CreateBullet()
     {
-        GameObject bullet = Instantiate(playerWeapon, player.transform.position, player.transform.rotation);
+        GameObject bullet = Instantiate(playerWeapon, bulletStart.transform.position, player.transform.rotation);
         bullet.transform.SetParent(projectileStorage.transform);
         Projectile projectileScript = bullet.GetComponent<Projectile>();
-
-        // Set starting position
-        float horizontalOffset = 0.1f;
-        float verticalOffset = 0.1f;
-        bullet.transform.position += new Vector3(horizontalOffset, verticalOffset, 0);
 
         // Ensure bullet is destroyed after its set lifespan in seconds
         Destroy(bullet, projectileScript.lifeSpan);
@@ -46,7 +43,14 @@ public class ProjectileHandler : MonoBehaviour
         }
 
         // Move the bullet
-        bullet.GetComponent<Rigidbody2D>().velocity = joyStick.aimVector.normalized * projectileScript.bulletSpeed;
+        if (bullet.tag != "Laser")
+            bullet.GetComponent<Rigidbody2D>().velocity = joyStick.aimVector.normalized * projectileScript.bulletSpeed;
+        else
+        {
+            bullet.GetComponent<LaserProjectile>().StartLaser();
+            currentLaserProjectile = bullet;
+        }
+
     }
 
     private void AlertGemNotSelected()
@@ -80,6 +84,22 @@ public class ProjectileHandler : MonoBehaviour
             if (item.name == weapon)
             {
                 playerWeapon = item;
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (currentLaserProjectile)
+        {
+            if (joyStick.isShooting)
+            {
+                currentLaserProjectile.GetComponent<LaserProjectile>().UpdateLaser(bulletStart.transform.position, joyStick.aimVector);
+            }
+            else
+            {
+                Destroy(currentLaserProjectile);
+                currentLaserProjectile = null;
             }
         }
     }
