@@ -5044,7 +5044,7 @@ MonoBehaviour:
   keepDistance: 3
   patrolDistance: 3
   retreatHealth: 0
-  attackRange: 10
+  attackRange: 20
   attackSpeed: 1
   projectileSpeed: 5
 --- !u!1 &7310329012680368919

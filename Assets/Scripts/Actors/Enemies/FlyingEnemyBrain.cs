@@ -1,23 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/* 
+ * Flying Enemy Brain
+ * This script is responsible for generating flying enemy movement instructions.
+ * It handles shooting and player targeting.
+ * Author: Jared
+ */
 [RequireComponent(typeof(FlyingCharacterController2D))]
-
 public class FlyingEnemyBrain : MonoBehaviour
 {
-    [SerializeReference] public FlyingCharacterController2D controller;
-    [SerializeReference] public CharacterController2D playerController;
-    [SerializeReference] private GameObject enemyWeapon;
+    [SerializeReference] private FlyingCharacterController2D controller;
+    [SerializeField] private GameObject enemyWeapon;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private string enemyType;
-    private GameObject player;
 
     [Header("Movement")]
     [Range(1.0f, 100.0f)] [SerializeField] private float movementSpeed = 100f;
     [Range(1, 10)] [SerializeField] private int targetHeight = 5;
     [Range(1, 5)] [SerializeField] private int minimumHeight = 2;
-    [SerializeField] private int minimumYLevel = 5;
+    [Tooltip("This will need to be adjusted on a per-map basis")]
+    [SerializeField] private int minimumYLevel = -5;
 
     [Header("Behavior")]
     [Tooltip("The distance at which the enemy will begin tracking the player")]
@@ -31,12 +33,13 @@ public class FlyingEnemyBrain : MonoBehaviour
     [Range(1, 50)] [SerializeField] private int attackRange = 10;
     [Range(1, 200)] [SerializeField] private int attackSpeed = 1;
     [Range(1, 50)] [SerializeField] private float projectileSpeed = 5.0f;
+    [Tooltip("Best explanation: 0 = enemy can only shoot straight down, 1 = enemy may shoot at any (downwards) angle")]
+    [Range(0.4f, 0.9f)] [SerializeField] private float shootRadius = 0.5f;
+    [Tooltip("Whether or not the enemy can predict player movement")]
     [SerializeField] private bool canLeadShots = false;
 
-    // For ray casting:
-    private Vector2 downRightRay;
-    private Vector2 downLeftRay;
-
+    private GameObject player;
+    private CharacterController2D playerController;
     private GameObject projectileStorage;
     private Health healthScript;
     private Vector2 toPlayer;
@@ -47,16 +50,23 @@ public class FlyingEnemyBrain : MonoBehaviour
     private float timeSinceDirectionChange = 0;
     private int shotDelay = 0;
     private bool isBuffed;
+    private readonly float shootingDeadzone = 2; // The deadzone if canLeadShots is enabled (avoid inaccurate leading)
+
+    // For ray casting:
+    private Vector2 downRightRay;
+    private Vector2 downLeftRay;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        healthScript = transform.Find("HealthBar").GetComponent<Health>();
-        movementSpeed *= 2; // Adjust movement speed to account for increased smoothing
-
+        playerController = player.GetComponent<CharacterController2D>();
         projectileStorage = GameObject.Find("ProjectileStorage");
+        healthScript = transform.Find("HealthBar").GetComponent<Health>();
+
+        movementSpeed *= 2; // Adjust movement speed to account for increased smoothing
         targetHeight *= 2; // Start correcting sooner
+
         // Set up ray casting variables:
         downRightRay = (new Vector2(0.05f, -1)).normalized;
         downLeftRay = downRightRay;
@@ -74,16 +84,16 @@ public class FlyingEnemyBrain : MonoBehaviour
     }
 
     private void TryShoot()
-    {
+    { // Only shoot when the shotDelay has exceeded the attackSpeed (inverted)
         if ((200 - attackSpeed) - shotDelay < 0 && Random.value > 0.9f)
         {
-            if (toPlayer.magnitude < attackRange && toPlayer.normalized.y < -0.5f)
-            {
+            if (toPlayer.magnitude < attackRange && toPlayer.normalized.y < shootRadius - 1)
+            { // Player is within range and below the enemy (according to shootRadius)...
                 if (canLeadShots)
                 {
-                    if (Mathf.Abs(transform.position.x - player.transform.position.x) > 3)
+                    if (Mathf.Abs(transform.position.x - player.transform.position.x) > shootingDeadzone)
                     {
-                        Shoot(); // Only shoot when the player is 3 units away (dead zone) to avoid inaccurate leading
+                        Shoot(); // Only shoot when the player is shootingDeadzone units away to avoid inaccurate leading
                         shotDelay = 0;
                     }
                     else
@@ -109,80 +119,65 @@ public class FlyingEnemyBrain : MonoBehaviour
         GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
         bullet.transform.SetParent(projectileStorage.transform);
         bullet.GetComponent<Projectile>().isBuffed = isBuffed;
-        // bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), false);
         Destroy(bullet, 3.0f);
-
-        Vector2 aimVector = Vector2.zero;
+        Vector2 aimVector;
         if (canLeadShots)
+        { // Aim at the players predicted location...
             aimVector = PredictTrajectory(player.transform.position, playerController.GetMovementVector(), bullet.transform.position);
-        if (aimVector == Vector2.zero)
+        }
+        else
+        {
             aimVector = toPlayer;
-
-        // Rotate sprite
-        float angle = GetAimAngle(aimVector);
-
-        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        // Move the bullet
+        }
+        bullet.transform.rotation = Quaternion.AngleAxis(GetAimAngle(aimVector), Vector3.forward); // Rotate sprite according to shoot angle
+        // Fire the projectile:
         bullet.GetComponent<Rigidbody2D>().velocity = aimVector.normalized * projectileSpeed;
-        // Use 2D collider
-        Collider2D collider = bullet.GetComponent<Collider2D>();
-        collider.enabled = true;
+        bullet.GetComponent<Collider2D>().enabled = true;
+    }
+
+    // Returns an angle float corresponding to the Vector2 passed in
+    private static float GetAimAngle(Vector2 aimVector)
+    {
+        float hori = aimVector.x;
+        float vert = aimVector.y;
+        if (vert < 0.0f)
+        {
+            return Mathf.Atan2(hori, Mathf.Abs(vert)) * Mathf.Rad2Deg + 270.0f;
+        }
+        else
+        {
+            return 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
+        }
     }
 
     public void UpdateBuff(string weatherType)
     {
         isBuffed = (weatherType == enemyType);
-
+        // Apply effects:
         healthScript.buffHp(1.2f);
         attackSpeed++;
         attackRange++;
         aggroDistance++;
-
-        Debug.Log(enemyType + " enemy is buffed: " + isBuffed + " (current weather: " + weatherType);
     }
 
-    private static float GetAimAngle(Vector2 aimVector)
+    private Vector2 PredictTrajectory(Vector2 playerPosition, Vector2 playerVelocity, Vector2 projectileLaunchPos)
     {
-        float hori = aimVector.x;
-        float vert = aimVector.y;
-        float angle;
-        if (vert < 0.0f)
-        {
-            angle = (Mathf.Atan2(hori, Mathf.Abs(vert)) * Mathf.Rad2Deg) + 270.0f;
-        }
-        else
-        {
-            angle = 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
-        }
-
-        return angle;
-    }
-
-    private Vector2 PredictTrajectory(Vector3 playerPosition, Vector2 playerVelocity, Vector3 projectileLaunchPos)
-    {
-        bool valid = false;
-
-        Vector3 targetDifference = playerPosition - projectileLaunchPos;
+        Vector2 targetDifference = playerPosition - projectileLaunchPos;
         targetDifference.y = 0;
         playerVelocity.y = 0;
 
-        float a = Vector3.Dot(playerVelocity, playerVelocity) - Mathf.Pow(projectileSpeed, 2);
-        float b = 2 * Vector3.Dot(targetDifference, playerVelocity);
-        float c = Vector3.Dot(targetDifference, targetDifference);
+        // Set up an approximated quadratic formula:
+        float a = Vector2.Dot(playerVelocity, playerVelocity) - Mathf.Pow(projectileSpeed, 2);
+        float b = 2 * Vector2.Dot(targetDifference, playerVelocity);
+        float c = Vector2.Dot(targetDifference, targetDifference);
 
         float determinant = Mathf.Sqrt(Mathf.Pow(b, 2) - 4 * a * c);
-        float t = 0;
         if (determinant > 0)
-        {
-            valid = true;
+        {   // Calculate intercepts:
             float t1 = (-b + determinant) / (2 * a);
             float t2 = (-b - determinant) / (2 * a);
-            t = Mathf.Max(t1, t2);
-        }
 
-        if (valid)
-        {
-            Vector2 futurePosition = (Vector2)playerPosition + playerVelocity * t;
+            Vector2 futurePosition = playerPosition + playerVelocity * Mathf.Max(t1, t2);
             Vector2 toFuturePosition = futurePosition - (Vector2)transform.position;
             return toFuturePosition;
         }
@@ -192,8 +187,10 @@ public class FlyingEnemyBrain : MonoBehaviour
     // Returns the preferred movement value (not scaled by movement speed)
     private Vector2 GetPreferredMovement()
     {
-        Vector3 myPos = gameObject.transform.position;
-        Vector3 playerPos = player.transform.position;
+        Vector2 myPos = gameObject.transform.position;
+        Vector2 playerPos = player.transform.position;
+        if (canLeadShots) // Try to stay slightly out of aiming dead zone...
+            playerPos.x += (shootingDeadzone + 0.1f) * Mathf.Sign(myPos.x - playerPos.x);
         toPlayer = playerPos - myPos;
 
         Vector2 preferredMovement;
@@ -202,11 +199,7 @@ public class FlyingEnemyBrain : MonoBehaviour
             patrolling = false;
             if (keepAggro)
                 permanentAggro = true; // Lock in aggro if keepAggro is enabled
-
-            Vector2 toPlayerCorrected = toPlayer;
-            if (canLeadShots)
-                toPlayerCorrected.x += 3.1f * Mathf.Sign(myPos.x - playerPos.x); // Try to stay slightly out of aiming dead zone
-            preferredMovement = toPlayerCorrected.normalized;
+            preferredMovement = toPlayer.normalized;
         }
         else
         { // The enemy is not aggroed, patrol...
@@ -290,6 +283,12 @@ public class FlyingEnemyBrain : MonoBehaviour
         { // Within minimum height, move up...
             Vector2 correctedMovement = preferredMovement.normalized;
             correctedMovement.y += 0.1f;
+            return correctedMovement.normalized * movementSpeed;
+        }
+        if (transform.position.y < minimumYLevel)
+        { // Under minimum y level, move up forcefully...
+            Vector2 correctedMovement = preferredMovement.normalized;
+            correctedMovement.y += 0.5f;
             return correctedMovement.normalized * movementSpeed;
         }
         return preferredMovement;

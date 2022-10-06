@@ -5257,13 +5257,9 @@ MonoBehaviour:
     m_Bits: 256
   m_GroundCheck: {fileID: 8195552514103202912}
   m_CeilingCheck: {fileID: 8195552513483324967}
-  m_CrouchDisableCollider: {fileID: 0}
   currentlyTeleporting: 0
   animator: {fileID: 8195552514184523926}
   OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &8195552514184523923
@@ -5290,7 +5286,7 @@ MonoBehaviour:
   keepAggro: 0
   keepDistance: 2
   patrolDistance: 2
-  retreatHealth: 10
+  retreatHealth: 20
   attackRange: 10
   attackSpeed: 1
   projectileSpeed: 5
