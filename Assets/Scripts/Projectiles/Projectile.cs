@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private float damage;
     [Range(1f, 30f)] [SerializeField] public float bulletSpeed;
-    [Range(1f, 15f)] [SerializeField] public float lifeSpan;
+    [Range(0f, 15f)] [SerializeField] public float lifeSpan;
     [Range(1, 3)] [SerializeField] public int tier;
 
     private Collider2D thisCollider;
@@ -68,6 +68,7 @@ public class Projectile : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        
     }
     // TODO: 
     // Collapse both functions below into one

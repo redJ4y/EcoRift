@@ -38,7 +38,6 @@ public class AimingJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
         {
             if(isShooting)
             {
-                Debug.Log("Trying to shoot");
                 handler.OnShoot();
             }
                 yield return new WaitForSeconds(0.1f);
