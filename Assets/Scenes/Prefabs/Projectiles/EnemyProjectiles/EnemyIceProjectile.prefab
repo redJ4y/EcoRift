@@ -120,9 +120,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9c87ce40b70e24c9c02b7947741f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageText: {fileID: 0}
-  damage: 5
   element: Snow
+  projectileDisabled: 0
+  isBuffed: 0
+  isRotatable: 1
+  damage: 5
+  bulletSpeed: 0
+  lifeSpan: 1.5
+  tier: 0
+  projectileID: 50
 --- !u!60 &2084859593008772908
 PolygonCollider2D:
   m_ObjectHideFlags: 0

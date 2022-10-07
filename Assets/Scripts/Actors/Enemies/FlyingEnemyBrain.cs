@@ -51,6 +51,7 @@ public class FlyingEnemyBrain : MonoBehaviour
     private int shotDelay = 0;
     private bool isBuffed;
     private readonly float shootingDeadzone = 2; // The deadzone if canLeadShots is enabled (avoid inaccurate leading)
+	private ProjectilePool projectilePool;
 
     // For ray casting:
     private Vector2 downRightRay;
@@ -63,6 +64,7 @@ public class FlyingEnemyBrain : MonoBehaviour
         playerController = player.GetComponent<CharacterController2D>();
         projectileStorage = GameObject.Find("ProjectileStorage");
         healthScript = transform.Find("HealthBar").GetComponent<Health>();
+		projectilePool = projectileStorage.GetComponent<ProjectilePool>();
 
         movementSpeed *= 2; // Adjust movement speed to account for increased smoothing
         targetHeight *= 2; // Start correcting sooner
@@ -116,38 +118,11 @@ public class FlyingEnemyBrain : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
-        bullet.transform.SetParent(projectileStorage.transform);
-        bullet.GetComponent<Projectile>().isBuffed = isBuffed;
-        Destroy(bullet, 3.0f);
-        Vector2 aimVector;
+        Vector2 aimVector = toPlayer;
         if (canLeadShots)
-        { // Aim at the players predicted location...
-            aimVector = PredictTrajectory(player.transform.position, playerController.GetMovementVector(), bullet.transform.position);
-        }
-        else
-        {
-            aimVector = toPlayer;
-        }
-        bullet.transform.rotation = Quaternion.AngleAxis(GetAimAngle(aimVector), Vector3.forward); // Rotate sprite according to shoot angle
-        // Fire the projectile:
-        bullet.GetComponent<Rigidbody2D>().velocity = aimVector.normalized * projectileSpeed;
-        bullet.GetComponent<Collider2D>().enabled = true;
-    }
+            aimVector = PredictTrajectory(player.transform.position, playerController.GetMovementVector(), transform.position);
 
-    // Returns an angle float corresponding to the Vector2 passed in
-    private static float GetAimAngle(Vector2 aimVector)
-    {
-        float hori = aimVector.x;
-        float vert = aimVector.y;
-        if (vert < 0.0f)
-        {
-            return Mathf.Atan2(hori, Mathf.Abs(vert)) * Mathf.Rad2Deg + 270.0f;
-        }
-        else
-        {
-            return 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
-        }
+        projectilePool.Shoot(enemyWeapon, transform, aimVector, projectileSpeed);
     }
 
     public void UpdateBuff(string weatherType)
@@ -259,7 +234,7 @@ public class FlyingEnemyBrain : MonoBehaviour
         if (Random.value < timeSinceDirectionChange / 5.0f) // Do not always respond immediately (increase chance as time passes)
         {
             timeSinceDirectionChange = 0; // Reset duration since change (increased in every fixed update)
-            return preferredMovement * movementSpeed; // Accept preferredMovement
+            return preferredMovement * (movementSpeed-controller.GetMovementDebuff()); // Accept preferredMovement
         }
         else
         { // Randomly pick one of two options instead of switching directions...
@@ -283,7 +258,7 @@ public class FlyingEnemyBrain : MonoBehaviour
         { // Within minimum height, move up...
             Vector2 correctedMovement = preferredMovement.normalized;
             correctedMovement.y += 0.1f;
-            return correctedMovement.normalized * movementSpeed;
+            return correctedMovement.normalized * (movementSpeed - controller.GetMovementDebuff());
         }
         if (transform.position.y < minimumYLevel)
         { // Under minimum y level, move up forcefully...
