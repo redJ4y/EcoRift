@@ -47,6 +47,7 @@ public class FlyingEnemyBrain : MonoBehaviour
     private float timeSinceDirectionChange = 0;
     private int shotDelay = 0;
     private bool isBuffed;
+    private ProjectilePool pool;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,7 @@ public class FlyingEnemyBrain : MonoBehaviour
         movementSpeed *= 2; // Adjust movement speed to account for increased smoothing
 
         projectileStorage = GameObject.Find("ProjectileStorage");
+        pool = projectileStorage.GetComponent<ProjectilePool>();
         targetHeight *= 2; // Start correcting sooner
         // Set up ray casting variables:
         downRightRay = (new Vector2(0.05f, -1)).normalized;
@@ -106,27 +108,11 @@ public class FlyingEnemyBrain : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
-        bullet.transform.SetParent(projectileStorage.transform);
-        bullet.GetComponent<Projectile>().isBuffed = isBuffed;
-        // bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponent<Collider2D>(), false);
-        Destroy(bullet, 3.0f);
-
-        Vector2 aimVector = Vector2.zero;
+        Vector2 aimVector = toPlayer;
         if (canLeadShots)
-            aimVector = PredictTrajectory(player.transform.position, playerController.GetMovementVector(), bullet.transform.position);
-        if (aimVector == Vector2.zero)
-            aimVector = toPlayer;
+            aimVector = PredictTrajectory(player.transform.position, playerController.GetMovementVector(), transform.position);
 
-        // Rotate sprite
-        float angle = GetAimAngle(aimVector);
-
-        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        // Move the bullet
-        bullet.GetComponent<Rigidbody2D>().velocity = aimVector.normalized * projectileSpeed;
-        // Use 2D collider
-        Collider2D collider = bullet.GetComponent<Collider2D>();
-        collider.enabled = true;
+        pool.Shoot(enemyWeapon, transform, aimVector, projectileSpeed);
     }
 
     public void UpdateBuff(string weatherType)

@@ -144,3 +144,4 @@ MonoBehaviour:
   bulletSpeed: 20
   lifeSpan: 3
   tier: 1
+  projectileID: 1

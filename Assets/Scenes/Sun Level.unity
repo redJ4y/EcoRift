@@ -664,6 +664,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 208014157}
+  - component: {fileID: 208014158}
   m_Layer: 0
   m_Name: ProjectileStorage
   m_TagString: Untagged
@@ -686,6 +687,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &208014158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208014156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 179e24885990a154fa766000890adbcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &210582926
 GameObject:
   m_ObjectHideFlags: 0
@@ -30212,7 +30225,7 @@ PrefabInstance:
     - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: playerWeapon
       value: 
-      objectReference: {fileID: 6958890066831099034, guid: 81be965210c036f43bf1efcf6c3c7f27, type: 3}
+      objectReference: {fileID: 6958890066831099034, guid: 9649aeaf7c73f134e884631fab844b2e, type: 3}
     - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: projectileStorage
       value: 

@@ -93,6 +93,7 @@ MonoBehaviour:
   bulletSpeed: 20
   lifeSpan: 10
   tier: 1
+  projectileID: 5
 --- !u!120 &6456758279234420471
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -187,7 +188,7 @@ LineRenderer:
     numCornerVertices: 5
     numCapVertices: 5
     alignment: 0
-    textureMode: 0
+    textureMode: 3
     shadowBias: 0
     generateLightingData: 0
   m_UseWorldSpace: 1

@@ -14,6 +14,13 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeReference] private GameObject currentLaserProjectile;
     [SerializeReference] private GameObject bulletStart;
 
+    private ProjectilePool pool;
+
+    void Start()
+    {
+        pool = projectileStorage.GetComponent<ProjectilePool>();
+    }
+
     public void OnShoot()
     {
         if (playerWeapon != null && currentLaserProjectile == null)
@@ -28,53 +35,13 @@ public class ProjectileHandler : MonoBehaviour
 
     private void CreateBullet()
     {
-        GameObject bullet = Instantiate(playerWeapon, bulletStart.transform.position, player.transform.rotation);
-        bullet.transform.SetParent(projectileStorage.transform);
-        Projectile projectileScript = bullet.GetComponent<Projectile>();
-
-        // Ensure bullet is destroyed after its set lifespan in seconds
-        Destroy(bullet, projectileScript.lifeSpan);
-
-        // Rotate sprite
-        if (projectileScript.isRotatable)
-        {
-            float angle = GetAimAngle();
-            bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
-
-        // Move the bullet
-        if (bullet.tag != "Laser")
-            bullet.GetComponent<Rigidbody2D>().velocity = joyStick.aimVector.normalized * projectileScript.bulletSpeed;
-        else
-        {
-            bullet.GetComponent<LaserProjectile>().StartLaser();
-            currentLaserProjectile = bullet;
-        }
-
+        pool.Shoot(playerWeapon, bulletStart.transform, joyStick.aimVector);
     }
 
     private void AlertGemNotSelected()
     {
         Debug.Log("Weapon not selected");
         infoScript.Alert("You need to select a gem first!");
-    }
-
-    private float GetAimAngle()
-    {
-        float hori = joyStick.aimVector.x;
-        float vert = joyStick.aimVector.y;
-        float angle = 0.0f;
-
-        if (vert < 0.0f)
-        {
-            angle = (Mathf.Atan2(hori, Mathf.Abs(vert)) * Mathf.Rad2Deg) + 270.0f;
-        }
-        else
-        {
-            angle = 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
-        }
-
-        return angle;
     }
 
     public void SwitchWeapon(string weapon) // for buttons

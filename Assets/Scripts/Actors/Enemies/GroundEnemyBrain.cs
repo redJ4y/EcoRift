@@ -54,12 +54,14 @@ public class GroundEnemyBrain : MonoBehaviour
     private bool currentlyLeaping = false;
     private int shotDelay = 0;
     private bool isBuffed;
+    private ProjectilePool pool;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         projectileStorage = GameObject.Find("ProjectileStorage");
+        pool = projectileStorage.GetComponent<ProjectilePool>();
         healthScript = transform.Find("HealthBar").GetComponent<Health>();
 
         float enemyHeight = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;
@@ -117,30 +119,7 @@ public class GroundEnemyBrain : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
-        bullet.transform.SetParent(projectileStorage.transform);
-        bullet.GetComponent<Projectile>().isBuffed = isBuffed;
-        Destroy(bullet, 3.0f);
-        // Set starting position
-        bullet.transform.position += new Vector3(0, 0.1f, 0);
-        // Rotate sprite
-        float hori = toPlayer.x;
-        float vert = toPlayer.y;
-        float angle;
-        if (vert < 0.0f)
-        {
-            angle = (Mathf.Atan2(hori, Mathf.Abs(vert)) * Mathf.Rad2Deg) + 270.0f;
-        }
-        else
-        {
-            angle = 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
-        }
-        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        // Move the bullet
-        bullet.GetComponent<Rigidbody2D>().velocity = toPlayer.normalized * projectileSpeed;
-        // Use 2D collider
-        Collider2D collider = bullet.GetComponent<Collider2D>();
-        collider.enabled = true;
+        pool.Shoot(enemyWeapon, transform, toPlayer, projectileSpeed);
     }
 
     public void UpdateBuff(string weatherType)
