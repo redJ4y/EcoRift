@@ -24,7 +24,6 @@ public class ParticleProjectile : MonoBehaviour
         int i = 0;
         while (i < numCollisionEvents)
         {
-
             if (rb)
             {
                 target.transform.Find("HealthBar").GetComponent<Health>().TakeDamage(particleDamage);
