@@ -86,7 +86,6 @@ public class Projectile : MonoBehaviour
         switch(element)
         {
             case "Snow":
-                Debug.Log("Is snow");
                 if (tier == 2)
                     targetController.SlowInflicted();
                 break;
@@ -98,7 +97,6 @@ public class Projectile : MonoBehaviour
         switch (element)
         {
             case "Snow":
-                Debug.Log("Is snow");
                 if (tier == 2)
                     targetController.SlowInflicted();
                 break;
