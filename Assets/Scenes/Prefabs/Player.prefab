@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &543423572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 543423573}
+  m_Layer: 0
+  m_Name: StartBullet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &543423573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543423572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.19, y: 0.89, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3807157755806988595}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3807157755351374350
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615f5a266f199514d9cd0892145f297a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 2000
   hitParticles: {fileID: 2572723635491087378}
 --- !u!1 &3807157755706595439
 GameObject:
@@ -214,7 +245,8 @@ Transform:
   m_LocalPosition: {x: 0.569313, y: 0.041896205, z: 0.9424691}
   m_LocalScale: {x: 0.22551756, y: 0.21316734, z: 0.2092293}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 543423573}
   m_Father: {fileID: 4634393410713347043}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 16.91}
@@ -503,7 +535,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 600
-  m_CrouchSpeed: 0
   m_MovementSmoothing: 0.05
   m_AirControl: 1
   m_WhatIsGround:
@@ -511,13 +542,9 @@ MonoBehaviour:
     m_Bits: 256
   m_GroundCheck: {fileID: 4634393411582981508}
   m_CeilingCheck: {fileID: 4634393409609155705}
-  m_CrouchDisableCollider: {fileID: 0}
   currentlyTeleporting: 0
   animator: {fileID: 4634393410713346842}
   OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &4634393410713347044
@@ -551,7 +578,6 @@ MonoBehaviour:
   playerWeapon: {fileID: 6958890066831099034, guid: 9649aeaf7c73f134e884631fab844b2e, type: 3}
   player: {fileID: 4634393410713347042}
   joyStick: {fileID: 0}
-  bulletSpeed: 20
   infoScript: {fileID: 0}
   weapons:
   - {fileID: 6958890066831099034, guid: 14532a76b7dd40c428b2f5fc0db3c523, type: 3}
@@ -559,6 +585,8 @@ MonoBehaviour:
   - {fileID: 6958890066831099034, guid: d75151a8c0ca76f4b999ab858e875e0e, type: 3}
   - {fileID: 6958890066831099034, guid: 98bc9ac8e3d797648ac94e3862c0b91b, type: 3}
   projectileStorage: {fileID: 0}
+  currentLaserProjectile: {fileID: 0}
+  bulletStart: {fileID: 543423572}
 --- !u!1 &4634393411582981511
 GameObject:
   m_ObjectHideFlags: 0
