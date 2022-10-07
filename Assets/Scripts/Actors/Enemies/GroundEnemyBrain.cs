@@ -49,6 +49,7 @@ public class GroundEnemyBrain : MonoBehaviour
     private int shotDelay = 0;
     private bool isBuffed;
     private float gravity;
+	private ProjectilePool projectilePool;
 
     // Save common operations for performance:
     private float halfEnemyHeight;
@@ -65,6 +66,7 @@ public class GroundEnemyBrain : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         projectileStorage = GameObject.Find("ProjectileStorage");
+        projectilePool = projectileStorage.GetComponent<ProjectilePool>();
         healthScript = transform.Find("HealthBar").GetComponent<Health>();
         gravity = gameObject.GetComponent<Rigidbody2D>().gravityScale * 9.8f;
 
@@ -124,29 +126,7 @@ public class GroundEnemyBrain : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
-        bullet.transform.SetParent(projectileStorage.transform);
-        bullet.GetComponent<Projectile>().isBuffed = isBuffed;
-        Destroy(bullet, 3.0f);
-        bullet.transform.rotation = Quaternion.AngleAxis(GetAimAngle(toPlayer), Vector3.forward); // Rotate sprite according to shoot angle
-        // Fire the projectile:
-        bullet.GetComponent<Rigidbody2D>().velocity = toPlayer.normalized * projectileSpeed;
-        bullet.GetComponent<Collider2D>().enabled = true;
-    }
-
-    // Returns an angle float corresponding to the Vector2 passed in
-    private static float GetAimAngle(Vector2 aimVector)
-    {
-        float hori = aimVector.x;
-        float vert = aimVector.y;
-        if (vert < 0.0f)
-        {
-            return Mathf.Atan2(hori, Mathf.Abs(vert)) * Mathf.Rad2Deg + 270.0f;
-        }
-        else
-        {
-            return 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
-        }
+        projectilePool.Shoot(enemyWeapon, transform, toPlayer, projectileSpeed);
     }
 
     public void UpdateBuff(string weatherType)
@@ -235,13 +215,14 @@ public class GroundEnemyBrain : MonoBehaviour
     // Returns a less annoying movement value (now scaled by movement speed)
     private float SmoothMovement(float preferredMovement)
     {
+        float movementSpeedDebuffed = movementSpeed - controller.GetMovementDebuff(); // Subtracts slowed movement speed from controller
         int currentMovementRaw = System.Math.Sign(currentMovement);
         if (currentMovementRaw != preferredMovement) // Check for direction change
         { // Apply smoothing to direction change...
             if (timeSinceDirectionChange > 0.5f && Random.value < timeSinceDirectionChange / 10.0f) // Do not always switch directions immediately (increase chance as time passes)
             {
                 timeSinceDirectionChange = 0; // Reset duration since change (increased in every fixed update)
-                return preferredMovement * movementSpeed; // Accept preferredMovement
+                return preferredMovement * movementSpeedDebuffed; // Accept preferredMovement
             }
             else
             {
@@ -257,7 +238,7 @@ public class GroundEnemyBrain : MonoBehaviour
                 }
             }
         }
-        return currentMovementRaw * movementSpeed;
+        return currentMovementRaw * movementSpeedDebuffed;
     }
 
     private float ValidateMovement(float preferredMovement)
