@@ -34,7 +34,7 @@ public class ProjectilePool : MonoBehaviour
         GameObject newBullet;
         if (currentPool.Count == 0)
         {
-            newBullet = Instantiate(weapon, bulletStart.position, bulletStart.rotation);
+            newBullet = Instantiate(weapon, bulletStart.position, Quaternion.identity);
             newBullet.transform.SetParent(transform);
             newBullet.GetComponent<Projectile>().SetPool(this);
         }
