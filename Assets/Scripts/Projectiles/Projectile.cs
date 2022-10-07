@@ -9,16 +9,19 @@ public class Projectile : MonoBehaviour
     [SerializeField] private string element;
     [SerializeField] private bool projectileDisabled;
     [SerializeField] public bool isBuffed;
-    [SerializeField] public bool isRotatable;
+    [SerializeField] public bool isRotatable = true;
 
     [SerializeField] private float damage;
     [Range(1f, 30f)] [SerializeField] public float bulletSpeed;
     [Range(0f, 15f)] [SerializeField] public float lifeSpan;
     [Range(1, 3)] [SerializeField] public int tier;
 
+
     private Collider2D thisCollider;
+    private ProjectilePool pool;
     private IEnumerator coroutine;
     private bool damageEnemies = false;
+    public int projectileID;
 
     void Awake()
     {
@@ -31,13 +34,18 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    public void SetPool(ProjectilePool pool)
+    {
+        this.pool = pool;
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
         if (!projectileDisabled)
         {
             if (col.gameObject.layer == 8) // If collides with ground
             {
-                Destroy(gameObject);
+                pool.DestroyBullet(gameObject);
             }
 
             Vector2 endPos = col.contacts[0].point + new Vector2(1.5f, 0);
@@ -65,7 +73,7 @@ public class Projectile : MonoBehaviour
                     if (flyingTargetController)
                         InitiateEnemyHitEffect(flyingTargetController);
                 }
-                Destroy(gameObject);
+                pool.DestroyBullet(gameObject);
             }
         }
         
@@ -96,28 +104,6 @@ public class Projectile : MonoBehaviour
                 break;
         }
     }
-
-    // Not used
-    /*
-    void DisplayDamage(Vector2 endPosition, float newDamage)
-    {
-        Transform damageTemp = GameObject.Find("DamageMarkers").transform;
-        GameObject text = Instantiate(damageText, damageTemp);
-        TMP_Text tmp = text.GetComponent<TMP_Text>();
-        tmp.text = "-" + newDamage;
-
-        // Positioning
-        Vector2 textPos = cam.WorldToScreenPoint(endPosition);
-        Transform textTrans = text.GetComponent<RectTransform>().transform;
-        textTrans.position = textPos;
-        Vector3 endTextPos = textTrans.position + new Vector3(0, 20.0f, 0);
-
-        // Animation
-        coroutine = moveSmoothly(tmp, textTrans, textTrans.position, endTextPos);
-        CoroutineManager.Instance.StartCoroutine(coroutine);
-        Destroy(text, 1.5f);
-        Destroy(gameObject);
-    }*/
 
     private IEnumerator moveSmoothly(TMP_Text tmp, Transform tra, Vector3 from, Vector3 to)
     {

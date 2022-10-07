@@ -142,5 +142,6 @@ MonoBehaviour:
   isRotatable: 1
   damage: 10
   bulletSpeed: 6
-  lifeSpan: 6
+  lifeSpan: 1.5
   tier: 1
+  projectileID: 3
