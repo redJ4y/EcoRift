@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/* 
+ * Ground Enemy Brain
+ * This script is responsible for generating ground enemy movement instructions.
+ * It handles shooting and player targeting.
+ * Author: Jared
+ */
 [RequireComponent(typeof(CharacterController2D))]
-
 public class GroundEnemyBrain : MonoBehaviour
 {
-    [SerializeReference] public CharacterController2D controller;
-    [SerializeReference] private GameObject enemyWeapon;
+    [SerializeReference] private CharacterController2D controller;
+    [SerializeField] private GameObject enemyWeapon;
     [SerializeField] private LayerMask whatIsGround;
-    [SerializeField] string enemyType;
-    private GameObject player;
+    [SerializeField] private string enemyType;
 
     [Header("Movement")]
     [Range(1.0f, 60.0f)] [SerializeField] private float movementSpeed = 30f;
@@ -26,22 +28,14 @@ public class GroundEnemyBrain : MonoBehaviour
     [Tooltip("The distance the enemy may travel from its origin while not aggroed")]
     [Range(0, 50)] [SerializeField] private int patrolDistance = 5;
     [Tooltip("The health at which the enemy retreats")]
-    [Range(0.0f, 99.9f)] [SerializeField] private float retreatHealth = 5;
+    [Range(0.0f, 99.9f)] [SerializeField] private float retreatHealth = 0;
 
     [Header("Combat")]
     [Range(1, 50)] [SerializeField] private int attackRange = 10;
     [Range(1, 200)] [SerializeField] private int attackSpeed = 1;
     [Range(1, 50)] [SerializeField] private float projectileSpeed = 5.0f;
 
-    private float halfEnemyHeight;
-    private float halfEnemyHeightSquared;
-    private float halfMovementSpeed;
-    private float gravity;
-    // For ray casting:
-    private float rayLength;
-    private Vector2 rightRayNormalized;
-    private Vector2 leftRayNormalized;
-
+    private GameObject player;
     private Health healthScript;
     private GameObject projectileStorage;
     private Vector2 toPlayer;
@@ -54,19 +48,32 @@ public class GroundEnemyBrain : MonoBehaviour
     private bool currentlyLeaping = false;
     private int shotDelay = 0;
     private bool isBuffed;
+    private float gravity;
+	private ProjectilePool projectilePool;
+
+    // Save common operations for performance:
+    private float halfEnemyHeight;
+    private float halfEnemyHeightSquared;
+    private float halfMovementSpeed;
+
+    // For ray casting:
+    private float rayLength;
+    private Vector2 rightRayNormalized;
+    private Vector2 leftRayNormalized;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         projectileStorage = GameObject.Find("ProjectileStorage");
+        projectilePool = projectileStorage.GetComponent<ProjectilePool>();
         healthScript = transform.Find("HealthBar").GetComponent<Health>();
+        gravity = gameObject.GetComponent<Rigidbody2D>().gravityScale * 9.8f;
 
         float enemyHeight = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;
         halfEnemyHeight = enemyHeight / 2.0f;
         halfEnemyHeightSquared = Mathf.Pow(halfEnemyHeight, 2);
         halfMovementSpeed = movementSpeed / 2.0f;
-        gravity = gameObject.GetComponent<Rigidbody2D>().gravityScale * 9.8f;
 
         // Set up ray casting variables:
         Vector2 rightRay = new Vector2(gameObject.GetComponent<SpriteRenderer>().bounds.size.x / 4.0f, -(enemyHeight / 2.0f));
@@ -82,7 +89,7 @@ public class GroundEnemyBrain : MonoBehaviour
         currentMovement = ValidateMovement(SmoothMovement(GetPreferredMovement()));
         TryShoot();
 
-        controller.Move(currentMovement * Time.fixedDeltaTime, false, jump);
+        controller.Move(currentMovement * Time.fixedDeltaTime, jump);
         timeSinceDirectionChange += Time.fixedDeltaTime;
         jump = false;
     }
@@ -92,11 +99,13 @@ public class GroundEnemyBrain : MonoBehaviour
         Vector3 myPos = gameObject.transform.position;
         Vector3 playerPos = player.transform.position;
         toPlayer = playerPos - myPos;
+        // Only shoot when the shotDelay has exceeded the attackSpeed (inverted)
         if ((200 - attackSpeed) - shotDelay < 0 && Random.value > 0.9f)
         {
             if (toPlayer.magnitude < attackRange && Mathf.Abs(playerPos.y - myPos.y) < 2)
-            {
+            { // Player is within range at a similar y-value...
                 Shoot();
+                // Make enemy face in the direction of shot:
                 if (myPos.x < playerPos.x)
                 {
                     currentMovement = 1;
@@ -117,59 +126,33 @@ public class GroundEnemyBrain : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bullet = Instantiate(enemyWeapon, transform.position, transform.rotation);
-        bullet.transform.SetParent(projectileStorage.transform);
-        bullet.GetComponent<Projectile>().isBuffed = isBuffed;
-        // bullet.GetComponent<Projectile>().SetIgnoreCollision(gameObject.GetComponentsInChildren<Collider2D>(), false);
-        Destroy(bullet, 3.0f);
-        // Set starting position
-        bullet.transform.position += new Vector3(0, 0.1f, 0);
-        // Rotate sprite
-        float hori = toPlayer.x;
-        float vert = toPlayer.y;
-        float angle;
-        if (vert < 0.0f)
-        {
-            angle = (Mathf.Atan2(hori, Mathf.Abs(vert)) * Mathf.Rad2Deg) + 270.0f;
-        }
-        else
-        {
-            angle = 90.0f - (Mathf.Atan2(hori, vert) * Mathf.Rad2Deg);
-        }
-        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        // Move the bullet
-        bullet.GetComponent<Rigidbody2D>().velocity = toPlayer.normalized * projectileSpeed;
-        // Use 2D collider
-        Collider2D collider = bullet.GetComponent<Collider2D>();
-        collider.enabled = true;
+        projectilePool.Shoot(enemyWeapon, transform, toPlayer, projectileSpeed);
     }
 
     public void UpdateBuff(string weatherType)
     {
         isBuffed = (weatherType == enemyType);
-
+        // Apply effects:
         healthScript.buffHp(1.2f);
         attackSpeed++;
         attackRange++;
         aggroDistance++;
-
-        Debug.Log(enemyType + " enemy is buffed: " + isBuffed + " (current weather: " + weatherType);
     }
 
     // Returns the preferred movement value (not scaled by movement speed)
     private float GetPreferredMovement()
     {
-        Vector3 myPos = gameObject.transform.position;
-        Vector3 playerPos = player.transform.position;
+        Vector2 myPos = gameObject.transform.position;
+        Vector2 playerPos = player.transform.position;
         float distance = Mathf.Sqrt(Mathf.Pow(myPos.y - playerPos.y, 2) + Mathf.Pow(myPos.x - playerPos.x, 2));
 
-        float preferredMovement = 0;
+        float preferredMovement;
         if (permanentAggro || distance < aggroDistance)
         { // The enemy is aggroed...
             patrolling = false;
             if (keepAggro)
                 permanentAggro = true; // Lock in aggro if keepAggro is enabled
-            // Determine movement direction:
+            // Determine movement direction (towards player):
             if (myPos.x < playerPos.x)
             {
                 preferredMovement = 1;
@@ -178,9 +161,17 @@ public class GroundEnemyBrain : MonoBehaviour
             {
                 preferredMovement = -1;
             }
-
-            if (distance < keepDistance && Random.value < 0.6f) // Ensure keepDistance is loosely obeyed
-                preferredMovement *= -1; // Invert movement direction (away from player)
+            // Invert movement (away from player) if necessary:
+            if (healthScript.GetHp() <= retreatHealth && distance < aggroDistance) // Retreat
+            { // Either move away or stop moving towards player...
+                preferredMovement *= -1;
+                if (Random.value < 0.2f)
+                    preferredMovement = 0;
+            }
+            else if (distance < keepDistance && Random.value < 0.6f) // Ensure keepDistance is loosely obeyed
+            {
+                preferredMovement *= -1;
+            }
         }
         else
         { // The enemy is not aggroed, patrol...
@@ -224,13 +215,14 @@ public class GroundEnemyBrain : MonoBehaviour
     // Returns a less annoying movement value (now scaled by movement speed)
     private float SmoothMovement(float preferredMovement)
     {
+        float movementSpeedDebuffed = movementSpeed - controller.GetMovementDebuff(); // Subtracts slowed movement speed from controller
         int currentMovementRaw = System.Math.Sign(currentMovement);
         if (currentMovementRaw != preferredMovement) // Check for direction change
         { // Apply smoothing to direction change...
             if (timeSinceDirectionChange > 0.5f && Random.value < timeSinceDirectionChange / 10.0f) // Do not always switch directions immediately (increase chance as time passes)
             {
                 timeSinceDirectionChange = 0; // Reset duration since change (increased in every fixed update)
-                return preferredMovement * movementSpeed; // Accept preferredMovement
+                return preferredMovement * movementSpeedDebuffed; // Accept preferredMovement
             }
             else
             {
@@ -246,17 +238,11 @@ public class GroundEnemyBrain : MonoBehaviour
                 }
             }
         }
-        return currentMovementRaw * movementSpeed;
+        return currentMovementRaw * movementSpeedDebuffed;
     }
 
     private float ValidateMovement(float preferredMovement)
     {
-        /* Debugging visuals:
-        * float jumpDistanceT = GetApproximateJumpDistance();
-        * float jumpRayLengthT = Mathf.Sqrt(Mathf.Pow(jumpDistanceT, 2) + halfPlayerHeightSquared) * 1.01f;
-        * Vector2 jumpToRayT = new Vector2(preferredMovement < 0 ? -jumpDistanceT : jumpDistanceT, -halfPlayerHeight);
-        * Debug.DrawRay(transform.position, jumpToRayT.normalized * jumpRayLengthT, Color.red); 
-        */
         if (currentlyLeaping)
         {
             jump = true;

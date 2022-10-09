@@ -136,6 +136,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9c87ce40b70e24c9c02b7947741f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageText: {fileID: 0}
+  element: Sun
+  projectileDisabled: 0
+  isBuffed: 0
+  isRotatable: 1
   damage: 10
-  element: 
+  bulletSpeed: 20
+  lifeSpan: 1.5
+  tier: 1
+  projectileID: 2
