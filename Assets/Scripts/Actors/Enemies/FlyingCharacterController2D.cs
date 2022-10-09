@@ -5,14 +5,20 @@ using UnityEngine;
 public class FlyingCharacterController2D : MonoBehaviour
 {
     [SerializeReference] private Animator animator;
+    IDictionary<string, Color32> colourReference;
 
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;
     private Vector3 m_Velocity = Vector3.zero;
     private SpriteRenderer renderer;
+    private bool slowed = false;
 
     private void Start()
     {
+        // add colours to dictionary
+        colourReference = new Dictionary<string, Color32>();
+        colourReference.Add("Red", new Color32(255, 200, 200, 255));
+        colourReference.Add("Light Blue", new Color32(153, 204, 255, 255));
         renderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
@@ -21,41 +27,60 @@ public class FlyingCharacterController2D : MonoBehaviour
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-        // TODO: Animator
-    }
-
     public void Move(Vector2 move)
     {
         m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, move * 10.0f, ref m_Velocity, 0.5f);
-
-        // If the input is moving the player right and the player is facing left...
-        if (move.x > 0 && !m_FacingRight)
+        if (move.x > 0 && !m_FacingRight) // If the input is moving the player right and the player is facing left...
         {
-            // ... flip the player.
             Flip();
         }
-        // Otherwise if the input is moving the player left and the player is facing right...
-        else if (move.x < 0 && m_FacingRight)
+        else if (move.x < 0 && m_FacingRight) // Otherwise if the input is moving the player left and the player is facing right...
         {
-            // ... flip the player.
             Flip();
         }
     }
 
     private void Flip()
     {
-        // Switch the way the player is labelled as facing.
+        // Switch the way the player is labelled as facing
         m_FacingRight = !m_FacingRight;
-
-        // Multiply the player's x local scale by -1.
-        /*
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
-        */
-
         renderer.flipX = !renderer.flipX;
+    }
+
+    public void SlowInflicted()
+    {
+        if (slowed == false)
+        {
+            slowed = true;
+            StartCoroutine(overlayColour(renderer, "Light Blue"));
+        }
+    }
+
+    private IEnumerator overlayColour(SpriteRenderer spriteRenderer, string newColour)
+    {
+        bool staySlowed = true;
+        Color currentColor = spriteRenderer.color;
+        Color32 newColor = colourReference[newColour];
+
+        spriteRenderer.color = newColor;
+
+        while (staySlowed)
+        {
+            staySlowed = false;
+            yield return new WaitForSeconds(3);
+        }
+
+        spriteRenderer.color = currentColor;
+        slowed = false;
+    }
+
+    public float GetMovementDebuff()
+    {
+        float movementDebuff = 0.0f;
+        if (slowed)
+        {
+            movementDebuff = 50.0f; // this will be subtracted from the normal speed
+        }
+        return movementDebuff;
     }
 }

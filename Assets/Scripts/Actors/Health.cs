@@ -95,12 +95,10 @@ public class Health : MonoBehaviour
 
     private IEnumerator fadeOut()
     {
-
         while (justHit == true)
         {
             justHit = false;
             yield return new WaitForSeconds(3);
-
         }
 
         var t = 0f;
@@ -153,13 +151,11 @@ public class Health : MonoBehaviour
     public float GetHp()
     {
       return hp;
-      Debug.Log($"hp = {hp}");
     }
 
     public float GetMaxHp()
     {
       return maxHp;
-      Debug.Log($"hp = {hp}");
     }
 
     //debug tool for testing healthbar
@@ -168,7 +164,6 @@ public class Health : MonoBehaviour
       if(hp>=11)
       {
         hp-=10;
-        Debug.Log($"hp = {hp}");
       }
     }
 
@@ -178,7 +173,6 @@ public class Health : MonoBehaviour
       if(hp<=(maxHp-11))
       {
         hp+=10;
-        Debug.Log($"hp = {hp}");
       }
     }
 

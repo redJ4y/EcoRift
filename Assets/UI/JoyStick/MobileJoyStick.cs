@@ -24,23 +24,21 @@ public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
         RectTransformUtility.ScreenPointToLocalPointInRectangle(joystickTransform, eventData.position, null, out offset);
         offset = Vector2.ClampMagnitude(offset, dragOffsetDistance) / dragOffsetDistance;
         joystickTransform.anchoredPosition = offset * dragMovementDistance;
-
         Vector2 inputVector = CalculateMovementInput(offset);
         OnMove?.Invoke(inputVector);
     }
 
-
-
     private Vector2 CalculateMovementInput(Vector2 offset)
     {
         aimVector = new Vector2(offset.x, offset.y);
-        float x = Mathf.Abs(offset.x) > dragThreshold ? offset.x : 0;
-        float y = Mathf.Abs(offset.y) > dragThreshold ? offset.y : 0;
+        float x = Mathf.Abs(offset.normalized.x) > dragThreshold ? offset.x : 0;
+        float y = Mathf.Abs(offset.normalized.y) > dragThreshold ? offset.y : 0;
         return new Vector2(x, y);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        
     }
 
     public void OnPointerUp(PointerEventData eventData)

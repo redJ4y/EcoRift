@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TeleportScript : MonoBehaviour
 {
@@ -30,11 +31,21 @@ public class TeleportScript : MonoBehaviour
             if (controller.currentlyTeleporting == false)
             {
                 controller.currentlyTeleporting = true;
-                obj.transform.localPosition = pairedPortal.transform.localPosition + teleportOffset;
+                teleportToMainMenu();
 
                 StartCoroutine(TeleportDelay(controller));
             }
         }
+    }
+
+    private void teleportToMainMenu()
+    {
+        StartCoroutine(GoToMainMenu());
+    }
+
+    private void teleportToOtherPortal(Transform objTrans)
+    {
+        objTrans.localPosition = pairedPortal.transform.localPosition + teleportOffset;
     }
 
     private IEnumerator TeleportDelay(CharacterController2D controller)
@@ -42,5 +53,12 @@ public class TeleportScript : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         controller.currentlyTeleporting = false;
+    }
+
+    IEnumerator GoToMainMenu()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        SceneManager.LoadScene(0);
     }
 }

@@ -16,11 +16,10 @@ public class PlayerJoyStickMovement : MonoBehaviour
     public CharacterController2D controller;
     public float runSpeed = 150f;
 
-
     private void Move(Vector2 input)
     {
         MovementVector = input;
-        controller.Move(input.x * runSpeed * Time.fixedDeltaTime, false, false);
+        controller.Move(input.x * runSpeed * Time.fixedDeltaTime, false);
     }
 
     private void FixedUpdate()
