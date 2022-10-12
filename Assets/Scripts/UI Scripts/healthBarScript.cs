@@ -22,6 +22,11 @@ public class healthBarScript : MonoBehaviour
         initialRightMask = mask.padding.z;
     }
 
+    private void Update()
+    {
+        SetValue();
+    }
+
     public void SetValue() // updates visual of healthbar according to player HP
     {
       float currentHealth = health.GetHp();
