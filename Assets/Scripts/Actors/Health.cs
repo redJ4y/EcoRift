@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float hp;
+    [SerializeField] private int hpRegenRate = 5;
     private float maxHp;
 
     private float barWidth;
@@ -37,6 +38,11 @@ public class Health : MonoBehaviour
             Debug.Log("HPBar not found");
         }
 
+        if (actor.Equals(GameObject.FindWithTag("Player")))
+        {
+            StartCoroutine(RegenHealth());
+        }
+
         barWidth = hpBar.localScale.x;
         startXPos = hpBar.localPosition.x + (barWidth / 2);
     }
@@ -64,6 +70,23 @@ public class Health : MonoBehaviour
             StartCoroutine(GoToMainMenu());
         else
             Destroy(actor);
+    }
+
+
+    private IEnumerator RegenHealth()
+    {
+        while (true)
+        {
+            if(hp < maxHp)
+            {
+                hp += hpRegenRate;
+                yield return new WaitForSeconds(5);
+            }
+            else
+            {
+                yield return null;
+            }
+        }
     }
 
     public void TakeDamage(float damage)

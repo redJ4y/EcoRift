@@ -124,7 +124,7 @@ MonoBehaviour:
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
-  damage: 5
+  damage: 20
   bulletSpeed: 0
   lifeSpan: 1.5
   tier: 0
