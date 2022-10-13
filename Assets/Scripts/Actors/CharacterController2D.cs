@@ -34,6 +34,7 @@ public class CharacterController2D : MonoBehaviour
     private healthBarScript UIHealth;
     private bool flashing = false;
     private bool slowed = false;
+    private bool frozen = false;
 
     IDictionary<string, Color32> colourReference;
 
@@ -168,6 +169,28 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+    public void FreezeInflicted(GameObject freezeObject)
+    {
+        if (frozen == false)
+        {
+            frozen = true;
+
+            GameObject newFreeze = Instantiate(freezeObject, transform.position, Quaternion.identity);
+            newFreeze.transform.SetParent(transform);
+            Destroy(newFreeze, 5.0f);
+            StartCoroutine(Thaw());
+        }
+    }
+
+    private IEnumerator Thaw()
+    {
+        RigidbodyConstraints2D currentConstraints = m_Rigidbody2D.constraints;
+        m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+        yield return new WaitForSeconds(5);
+        m_Rigidbody2D.constraints = currentConstraints;
+        frozen = false;
+    }
+
     private IEnumerator FlashColour(SpriteRenderer spriteRenderer)
     {
         Color currentColor = spriteRenderer.color;
@@ -204,11 +227,16 @@ public class CharacterController2D : MonoBehaviour
 
     public float GetMovementDebuff()
     {
-        float movementDebuff = 0.0f;
+        float movementDebuff = 1.0f;
         if (slowed)
         {
-            movementDebuff = 8.0f; // this will be subtracted from the normal speed
+            movementDebuff = .5f; // this will be multiplied from the normal speed
         }
+        else if (frozen)
+        {
+            movementDebuff = 0.0f;
+        }
+
         return movementDebuff;
     }
 }

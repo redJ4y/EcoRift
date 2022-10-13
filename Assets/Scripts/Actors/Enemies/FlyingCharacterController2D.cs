@@ -12,6 +12,7 @@ public class FlyingCharacterController2D : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
     private SpriteRenderer renderer;
     private bool slowed = false;
+    private bool frozen = false;
 
     private void Start()
     {
@@ -56,12 +57,33 @@ public class FlyingCharacterController2D : MonoBehaviour
         }
     }
 
+    public void FreezeInflicted(GameObject freezeObject)
+    {
+        if (frozen == false)
+        {
+            frozen = true;
+
+            GameObject newFreeze = Instantiate(freezeObject, transform.position, Quaternion.identity);
+            newFreeze.transform.SetParent(transform);
+            Destroy(newFreeze, 5.0f);
+            StartCoroutine(Thaw());
+        }
+    }
+
+    private IEnumerator Thaw()
+    {
+        RigidbodyConstraints2D currentConstraints = m_Rigidbody2D.constraints;
+        m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+        yield return new WaitForSeconds(5);
+        m_Rigidbody2D.constraints = currentConstraints;
+        frozen = false;
+    }
+
     private IEnumerator overlayColour(SpriteRenderer spriteRenderer, string newColour)
     {
         bool staySlowed = true;
         Color currentColor = spriteRenderer.color;
         Color32 newColor = colourReference[newColour];
-
         spriteRenderer.color = newColor;
 
         while (staySlowed)
@@ -76,10 +98,14 @@ public class FlyingCharacterController2D : MonoBehaviour
 
     public float GetMovementDebuff()
     {
-        float movementDebuff = 0.0f;
+        float movementDebuff = 1.0f;
         if (slowed)
         {
-            movementDebuff = 50.0f; // this will be subtracted from the normal speed
+            movementDebuff = .5f; // this will be multiplied from the normal speed
+        }
+        else if (frozen)
+        {
+            movementDebuff = 0.0f;
         }
         return movementDebuff;
     }
