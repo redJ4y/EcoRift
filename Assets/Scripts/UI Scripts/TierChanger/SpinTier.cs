@@ -23,7 +23,6 @@ public class SpinTier : MonoBehaviour
     private int selectedTierNumber;
     private bool currentlyAnimating;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -73,10 +72,7 @@ public class SpinTier : MonoBehaviour
     {
         if (!currentlyAnimating) // if wheel is not currently in animation
         {
-            Image previousTierObject = selectedTierObject;
-            increaseTier(); // increase tier level
-            ChangeProjectile();
-            StartCoroutine(SpinAnimation(previousTierObject, FindAngleToTier(selectedTierNumber))); // execute animation
+            IncreaseTier(); // increase tier level
         }
     }
 
@@ -104,19 +100,93 @@ public class SpinTier : MonoBehaviour
         currentlyAnimating = false;
     }
 
-    private void increaseTier()
+    private IEnumerator BudgeAnimation() // called when current tier is unchangable
     {
-        selectedTierObject.color = deselectedColour; // deselect colour
+        currentlyAnimating = true;
+        float currentTime = 0f;
+        float angleOffset = 15f;
+        float currentAngle = transform.eulerAngles.z;
+        int switchAnimation = 3;
+        bool turn = false;
 
-        // increase tier, if max then set to 1
-        selectedTierNumber++;
-        if (selectedTierNumber > 3)
-            selectedTierNumber = 1;
-        
-        selectedTierObject = tierObjects[selectedTierNumber - 1];
-        selectedTierObject.color = selectedColour; // selected colour
+        while (switchAnimation >= 0)
+        {
+            currentTime += Time.deltaTime * 3;
+
+            if (switchAnimation == 3)
+            {
+                currentAngle -= angleOffset / 2;
+            }
+            else if (switchAnimation == 0)
+            {
+                currentAngle += angleOffset / 2;
+            }
+            else
+            {
+                if (turn)
+                {
+                    currentAngle -= angleOffset;
+                    turn = false;
+                }
+                else
+                {
+                    currentAngle += angleOffset;
+                    turn = true;
+                }
+            }
+
+            transform.eulerAngles = new Vector3(0.0f, 0.0f, currentAngle);
+            // animate rotation
+            switchAnimation--;
+
+            yield return null;
+        }
+
+        currentlyAnimating = false;
     }
-    
+
+    private void IncreaseTier()
+    {
+        if (!currentlyAnimating)
+        {
+            int newTier = selectedTierNumber;
+            bool nextTierUnlocked = false;
+
+            while (!nextTierUnlocked) // keep rotating until next tier is unlocked
+            {
+                newTier++;
+                if (newTier > 3)
+                    newTier = 1;
+
+                nextTierUnlocked = CheckTierUnlocked(newTier); // will be true if next tier is unlocked, breaking the loop
+            }
+
+            if (newTier != selectedTierNumber) // doesn't need to spin if it is the same tier
+                SetToTier(newTier);
+            else
+                StartCoroutine(BudgeAnimation());
+        }
+    }
+
+    private void SetToTier(int tierNum)
+    {
+        if (!currentlyAnimating) // if wheel is not currently in animation
+        {
+            Image previousTierObject = selectedTierObject;
+            StartCoroutine(SpinAnimation(previousTierObject, FindAngleToTier(tierNum))); // execute animation
+
+            selectedTierNumber = tierNum;
+            selectedTierObject = tierObjects[selectedTierNumber - 1];
+
+            ChangeProjectile();
+        }
+    }
+
+    private bool CheckTierUnlocked(int checkTier)
+    {
+        return tierUnlocked[currentWeather][checkTier];
+    }
+
     public int GetCurrentTier()
     {
         int returningTier = 0; // 0 is for locked tier
@@ -142,20 +212,7 @@ public class SpinTier : MonoBehaviour
         currentWeather = newWeather;
         UpdateLockImages();
         if (selectedTierNumber != 1)
-            SetToTierOne();
-    }
-
-    private void SetToTierOne()
-    {
-        if (!currentlyAnimating) // if wheel is not currently in animation
-        {
-            Image previousTierObject = selectedTierObject;
-            StartCoroutine(SpinAnimation(previousTierObject, FindAngleToTier(1))); // execute animation
-            selectedTierNumber = 1;
-
-            selectedTierObject = tierObjects[selectedTierNumber - 1];
-            selectedTierObject.color = selectedColour; // selected colour
-        }
+            SetToTier(1);
     }
 
     private float FindAngleToTier(int targetTier)
