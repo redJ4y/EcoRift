@@ -16,6 +16,7 @@ public class Projectile : MonoBehaviour
     [Range(0f, 15f)] [SerializeField] public float lifeSpan;
     [Range(1, 3)] [SerializeField] public int tier;
 
+    [SerializeReference] GameObject freezeObject; 
 
     private Collider2D thisCollider;
     private ProjectilePool pool;
@@ -88,6 +89,8 @@ public class Projectile : MonoBehaviour
             case "Snow":
                 if (tier == 2)
                     targetController.SlowInflicted();
+                if (tier == 3)
+                    targetController.FreezeInflicted(freezeObject);
                 break;
         }
     }
@@ -99,11 +102,14 @@ public class Projectile : MonoBehaviour
             case "Snow":
                 if (tier == 2)
                     targetController.SlowInflicted();
+                if (tier == 3)
+                    targetController.FreezeInflicted(freezeObject);
                 break;
         }
     }
+   
 
-    private IEnumerator moveSmoothly(TMP_Text tmp, Transform tra, Vector3 from, Vector3 to)
+    private IEnumerator MoveSmoothly(TMP_Text tmp, Transform tra, Vector3 from, Vector3 to)
     {
         var t = 0f;
 
