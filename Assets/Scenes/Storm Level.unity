@@ -5469,7 +5469,7 @@ PrefabInstance:
     - target: {fileID: 824385670941183684, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: selectedCard
       value: 
-      objectReference: {fileID: 1576928600}
+      objectReference: {fileID: 0}
     - target: {fileID: 824385670941183684, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: projectileScript
       value: 
@@ -18914,7 +18914,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2222223, y: 1}
+    m_SensorSize: {x: 2.0068307, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -19317,11 +19317,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99f76a90222c99946acd93a421aefc8f, type: 3}
---- !u!1 &1576928600 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5482672706824105882, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
-  m_PrefabInstance: {fileID: 640582641}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1617350944
 GameObject:
   m_ObjectHideFlags: 3

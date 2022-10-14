@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 
 public class AimingJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IPointerDownHandler
 {
-    private RectTransform joystickTransform;
-
     [SerializeReference] private ProjectileHandler handler;
     [SerializeField]
     private float dragThreshold = 0.0001f;
@@ -15,9 +13,18 @@ public class AimingJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
     private int dragMovementDistance = 30;
     [SerializeField]
     private int dragOffsetDistance = 100;
+
     public Vector2 aimVector;
-    //public event Action<Vector2> OnMove;
-    public bool isShooting = false;
+    private RectTransform joystickTransform;
+    private Coroutine shootRoutine;
+    private float shootDelay;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        joystickTransform = (RectTransform)transform;
+        handler = GameObject.Find("Player").GetComponent<ProjectileHandler>();
+    }
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -26,27 +33,20 @@ public class AimingJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
         offset = Vector2.ClampMagnitude(offset, dragOffsetDistance) / dragOffsetDistance;
         joystickTransform.anchoredPosition = offset * dragMovementDistance;
 
-        Vector2 inputVector = CalculateAim(offset);
-       //OnMove?.Invoke(inputVector);
-        isShooting = true;
+        aimVector = CalculateAim(offset);
     }
-
 
     private IEnumerator ShootRoutine()
     {
-        while(true)
+        while (true)
         {
-            if(isShooting)
-            {
-                handler.OnShoot();
-            }
-                yield return new WaitForSeconds(0.1f);
+            handler.OnShoot();
+            yield return new WaitForSeconds(shootDelay);
         }
     }
 
     private Vector2 CalculateAim(Vector2 offset)
     {
-        aimVector = new Vector2(offset.x, offset.y);
         float x = Mathf.Abs(offset.x) > dragThreshold ? offset.x : 0;
         float y = Mathf.Abs(offset.y) > dragThreshold ? offset.y : 0;
         return new Vector2(x, y);
@@ -54,32 +54,13 @@ public class AimingJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        
+        shootDelay = 10.0f / handler.GetWeapon().GetComponent<Projectile>().GetFireRate();
+        shootRoutine = StartCoroutine(ShootRoutine());
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        StopCoroutine(shootRoutine);
         joystickTransform.anchoredPosition = Vector2.zero;
-        //OnMove?.Invoke(Vector2.zero);
-        isShooting = false;
-    }
-
-    private void Awake()
-    {
-        joystickTransform = (RectTransform)transform;
-        
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        handler = GameObject.Find("Player").GetComponent<ProjectileHandler>();
-        StartCoroutine(ShootRoutine());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

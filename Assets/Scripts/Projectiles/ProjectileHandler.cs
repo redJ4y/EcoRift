@@ -55,6 +55,7 @@ public class ProjectileHandler : MonoBehaviour
         }
     }
 
+    /*
     void FixedUpdate()
     {
         if (currentLaserProjectile)
@@ -69,5 +70,10 @@ public class ProjectileHandler : MonoBehaviour
                 currentLaserProjectile = null;
             }
         }
+    }*/
+
+    public GameObject GetWeapon()
+    {
+        return playerWeapon;
     }
 }

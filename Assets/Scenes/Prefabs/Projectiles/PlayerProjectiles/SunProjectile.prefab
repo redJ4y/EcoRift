@@ -140,6 +140,7 @@ MonoBehaviour:
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
+  fireRate: 100
   damage: 10
   bulletSpeed: 20
   lifeSpan: 1.5
