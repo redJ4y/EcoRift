@@ -31,7 +31,7 @@ public class CharacterController2D : MonoBehaviour
 
     private SpriteRenderer renderer;
     private SwitchStaff switchStaffScript;
-    private healthBarScript UIHealth;
+    private HealthBarScript UIHealth;
     private bool flashing = false;
     private bool slowed = false;
 
@@ -45,7 +45,7 @@ public class CharacterController2D : MonoBehaviour
         colourReference.Add("Light Blue", new Color32(153, 204, 255, 255));
 
         renderer = gameObject.GetComponent<SpriteRenderer>();
-        UIHealth = GameObject.Find("HpBar").GetComponent<healthBarScript>();
+        UIHealth = GameObject.Find("HpBar").GetComponent<HealthBarScript>();
         if (gameObject.tag == "Player")
             switchStaffScript = transform.Find("Staff").gameObject.GetComponent<SwitchStaff>();
     }

@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private float hp;
     [SerializeField] private int hpRegenRate = 5;
+    [SerializeField] private HealthBarScript healthBarScript;
     private float maxHp;
 
     private float barWidth;
@@ -19,6 +20,7 @@ public class Health : MonoBehaviour
     private volatile bool isVisible;
     private volatile bool justHit;
     public ParticleSystem hitParticles;
+    private bool isPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,7 @@ public class Health : MonoBehaviour
 
         if (actor.Equals(GameObject.FindWithTag("Player")))
         {
+            isPlayer = true;
             StartCoroutine(RegenHealth());
         }
 
@@ -78,13 +81,14 @@ public class Health : MonoBehaviour
         while (true)
         {
             if(hp < maxHp)
-            {
+            { 
                 hp += hpRegenRate;
+                healthBarScript.SetValue();
                 yield return new WaitForSeconds(5);
             }
             else
             {
-                yield return null;
+                yield return new WaitForSeconds(2);
             }
         }
     }
@@ -94,6 +98,11 @@ public class Health : MonoBehaviour
         emitParticles(); // emit blood particles on hit
         justHit = true;
         hp -= damage;
+
+        if(isPlayer)
+        {
+            healthBarScript.SetValue();
+        }
 
         if (hp <= 0.0f)
         {

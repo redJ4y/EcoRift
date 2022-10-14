@@ -10643,6 +10643,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 2123262015}
+  dataManager: {fileID: 0}
+  currentLevel: 
 --- !u!70 &1047446590
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -18662,7 +18664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9161049615910193566, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 9161049615910193566, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -18738,6 +18740,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+--- !u!114 &1567869030 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3189422368365407948, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 1567869029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0af1b68eac7dcd48981ccab85703807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1592142494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24096,6 +24109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 1047446588}
+  dataManager: {fileID: 1567869030}
+  currentLevel: sun
 --- !u!70 &2123262017
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -142,16 +142,16 @@ public class GetWeather : MonoBehaviour
         switch (dropDown.value)
         {
             case 1:
-                currentWeather = "Rain";
+                currentWeather = "Rain";//rain
                 break;
             case 2:
-                currentWeather = "Snow";
+                currentWeather = "Snow";//snow
                 break;
             case 3:
-                currentWeather = "Clear";
+                currentWeather = "Clear";//sun
                 break;
             case 4:
-                currentWeather = "Clouds";
+                currentWeather = "Clouds";//storm
                 break;
         }
 
