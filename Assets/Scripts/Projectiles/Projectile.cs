@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private bool projectileDisabled;
     [SerializeField] public bool isBuffed;
     [SerializeField] public bool isRotatable = true;
+    [SerializeField] private float fireRate = 10;
 
     [SerializeField] private float damage;
     [Range(1f, 30f)] [SerializeField] public float bulletSpeed;
@@ -114,5 +115,10 @@ public class Projectile : MonoBehaviour
             tra.position = Vector3.Lerp(from, to, t);
             yield return null;
         }
+    }
+
+    public float GetFireRate()
+    {
+        return fireRate;
     }
 }
