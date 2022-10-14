@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class healthBarScript : MonoBehaviour
+public class HealthBarScript : MonoBehaviour
 {
     [SerializeField]
     private Health health; // Player's health
@@ -22,10 +22,6 @@ public class healthBarScript : MonoBehaviour
         initialRightMask = mask.padding.z;
     }
 
-    private void Update()
-    {
-        SetValue();
-    }
 
     public void SetValue() // updates visual of healthbar according to player HP
     {

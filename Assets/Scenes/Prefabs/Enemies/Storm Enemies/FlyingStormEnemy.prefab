@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 8582433180453949581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.3, y: 0.78, z: 0}
-  m_LocalScale: {x: 0.90303034, y: 0.90303034, z: 0.90303034}
+  m_LocalScale: {x: 1.5342486, y: 1.3675492, z: 0.90303034}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8919773742441917728}
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 8582433180453949581}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 062ac90ee4846e048a756a70a1702424, type: 2}
+  m_Controller: {fileID: 9100000, guid: af92a579bc4370943a75e7795195c4e6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -179,9 +179,9 @@ MonoBehaviour:
     m_Bits: 256
   enemyType: Clouds
   movementSpeed: 30
-  targetHeight: 5
-  minimumHeight: 3
-  minimumYLevel: 5
+  targetHeight: 2
+  minimumHeight: 2
+  minimumYLevel: -5
   aggroDistance: 10
   keepAggro: 0
   patrolDistance: 5
@@ -290,6 +290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  hpRegenRate: 5
+  healthBarScript: {fileID: 0}
   hitParticles: {fileID: 1798293709001538280}
 --- !u!1 &8919773742890785418
 GameObject:

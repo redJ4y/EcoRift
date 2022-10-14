@@ -130,7 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615f5a266f199514d9cd0892145f297a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2000
+  hp: 200
+  hpRegenRate: 10
+  healthBarScript: {fileID: 0}
   hitParticles: {fileID: 2572723635491087378}
 --- !u!1 &3807157755706595439
 GameObject:

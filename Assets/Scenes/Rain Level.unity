@@ -5471,7 +5471,7 @@ Transform:
   - {fileID: 1176291672}
   - {fileID: 647720528}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -5536,7 +5536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9161049615910193566, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 9161049615910193566, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5632,6 +5632,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82a06e3935dc10346a5b1200b6500e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &551129189 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3189422368365407948, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 551129186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0af1b68eac7dcd48981ccab85703807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &647720527
@@ -10804,6 +10815,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 2123262015}
+  dataManager: {fileID: 0}
+  currentLevel: 
 --- !u!70 &1047446590
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -10885,7 +10898,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066112725
 GameObject:
@@ -11037,7 +11050,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1072377738
 PrefabInstance:
@@ -19126,7 +19139,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2010308903
 MonoBehaviour:
@@ -24125,6 +24138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 1047446588}
+  dataManager: {fileID: 551129189}
+  currentLevel: rain
 --- !u!70 &2123262017
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -24206,5 +24221,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

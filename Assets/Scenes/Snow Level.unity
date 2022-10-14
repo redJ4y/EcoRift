@@ -153,11 +153,11 @@ Transform:
   m_Children:
   - {fileID: 446542637}
   - {fileID: 1650422925}
-  - {fileID: 489595805}
   - {fileID: 279173420}
   - {fileID: 1970533584}
   - {fileID: 732675171}
   - {fileID: 134924453}
+  - {fileID: 489595805}
   - {fileID: 107885072}
   - {fileID: 1825667970}
   - {fileID: 451904214}
@@ -10793,6 +10793,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 2123262015}
+  dataManager: {fileID: 0}
+  currentLevel: 
 --- !u!70 &1047446590
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -19201,6 +19203,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a06e3935dc10346a5b1200b6500e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1918785200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3189422368365407948, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 1918785197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0af1b68eac7dcd48981ccab85703807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1970533583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24191,6 +24204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 1047446588}
+  dataManager: {fileID: 1918785200}
+  currentLevel: snow
 --- !u!70 &2123262017
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

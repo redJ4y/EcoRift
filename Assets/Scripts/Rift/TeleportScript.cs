@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class TeleportScript : MonoBehaviour
 {
-    private Collider2D collider;
     [SerializeReference] private GameObject pairedPortal;
+    [SerializeReference] private DataManager dataManager;
+    [SerializeField] private string currentLevel;
     private Vector3 teleportOffset;
+    private Collider2D collider;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,8 @@ public class TeleportScript : MonoBehaviour
 
         if (obj.tag == "Player")
         {
+            UpdateLevelData();
+
             CharacterController2D controller = obj.GetComponent<CharacterController2D>();
             if (controller.currentlyTeleporting == false)
             {
@@ -35,6 +39,28 @@ public class TeleportScript : MonoBehaviour
 
                 StartCoroutine(TeleportDelay(controller));
             }
+        }
+    }
+
+
+    private void UpdateLevelData()
+    {
+        switch(currentLevel)
+        {
+            case "sun":
+                dataManager.SunLevelComplete();
+                break;
+            case "rain":
+                dataManager.RainLevelComplete();
+                break;
+            case "storm":
+                dataManager.StormLevelComplete();
+                break;
+            case "snow":
+                dataManager.SnowLevelComplete();
+                break;
+            default:
+                break;
         }
     }
 

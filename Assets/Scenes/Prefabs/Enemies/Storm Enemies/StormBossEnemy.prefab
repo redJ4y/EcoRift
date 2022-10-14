@@ -179,11 +179,11 @@ MonoBehaviour:
     m_Bits: 256
   enemyType: Clouds
   movementSpeed: 30
-  targetHeight: 5
-  minimumHeight: 3
-  minimumYLevel: 5
-  aggroDistance: 10
-  keepAggro: 0
+  targetHeight: 2
+  minimumHeight: 2
+  minimumYLevel: -5
+  aggroDistance: 20
+  keepAggro: 1
   patrolDistance: 5
   attackRange: 10
   attackSpeed: 1
@@ -290,6 +290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  hpRegenRate: 5
+  healthBarScript: {fileID: 0}
   hitParticles: {fileID: 1798293709001538280}
 --- !u!1 &8919773742890785418
 GameObject:
