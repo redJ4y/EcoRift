@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1902767014, guid: cc2a9e7dd08dead41b1f5a6a4d47af4a, type: 3}
+  m_Sprite: {fileID: -1765286308, guid: 46e7167419c464e47a67a5152f4fe184, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -144,4 +144,5 @@ MonoBehaviour:
   bulletSpeed: 15
   lifeSpan: 1.5
   tier: 1
+  freezeObject: {fileID: 0}
   projectileID: 0

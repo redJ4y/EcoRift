@@ -4971,4 +4971,5 @@ MonoBehaviour:
   bulletSpeed: 1
   lifeSpan: 4
   tier: 2
+  freezeObject: {fileID: 0}
   projectileID: 6

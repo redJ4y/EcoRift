@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1293804090, guid: 31716ebc254ee3043913084351924107, type: 3}
+  m_Sprite: {fileID: 1824850708, guid: 46e7167419c464e47a67a5152f4fe184, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.52, y: 0.52}
+  m_Size: {x: 0.8475, y: 0.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -140,9 +140,11 @@ MonoBehaviour:
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
+  passThroughObjects: 0
+  thrust: 0
   damage: 5
   bulletSpeed: 4.4
-  lifeSpan: 1.5
+  lifeSpan: 3
   tier: 3
   freezeObject: {fileID: 7135104924555295601, guid: d254e4306c2bd7847a1e813ddecb3bdf, type: 3}
   projectileID: 7

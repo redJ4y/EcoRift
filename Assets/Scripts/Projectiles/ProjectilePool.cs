@@ -65,12 +65,23 @@ public class ProjectilePool : MonoBehaviour
         }
 
         // Move the bullet
-        if (newBullet.tag != "Laser")
-            newBullet.GetComponent<Rigidbody2D>().velocity = aimVector.normalized * bulletSpeed;
-        else
+        if (newBullet.tag == "Laser")
         {
             newBullet.GetComponent<LaserProjectile>().StartLaser();
             //currentLaserProjectile = newBullet;
+        }
+        else if (newBullet.tag == "Tornado")
+        {
+            newBullet.GetComponent<Projectile>().SetTranslateVelocity(aimVector);
+        }
+        else if (newBullet.tag == "Homing")
+        {
+            newBullet.GetComponent<Projectile>().SetLooking(true);
+            newBullet.GetComponent<Projectile>().SetTranslateVelocity(aimVector);
+        }
+        else
+        {
+            newBullet.GetComponent<Rigidbody2D>().velocity = aimVector.normalized * bulletSpeed;
         }
     }
 
@@ -82,7 +93,11 @@ public class ProjectilePool : MonoBehaviour
 
     public void DestroyBullet(GameObject bullet)
     {
-        bullet.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        if (bullet.tag != "Tornado" && bullet.tag != "Homing")
+            bullet.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        else
+            bullet.GetComponent<Projectile>().SetTranslateVelocity(Vector2.zero);
+
         bullet.SetActive(false);
         StopCoroutine(destroyCoroutines[bullet]);
         poolMap[bullet.GetComponent<Projectile>().projectileID].Push(bullet);
