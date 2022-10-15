@@ -11,6 +11,15 @@ public class Projectile : MonoBehaviour
     [SerializeField] public bool isBuffed;
     [SerializeField] public bool isRotatable = true;
 
+    // Tornado impact thrust up
+    [SerializeField] private float thrust;
+
+    // HOMING projectile variables
+    [SerializeField] private float rotationSpeed = 1000;
+    [SerializeField] private float focusDistance = 5;
+    private bool isLookingAtObject = true;
+    private Transform homingTarget;
+
     [SerializeField] private float damage;
     [Range(1f, 30f)] [SerializeField] public float bulletSpeed;
     [Range(0f, 15f)] [SerializeField] public float lifeSpan;
@@ -22,6 +31,8 @@ public class Projectile : MonoBehaviour
     private ProjectilePool pool;
     private IEnumerator coroutine;
     private bool damageEnemies = false;
+    private Vector2 velocityTranslate;
+    private Vector3 targetDirection;
     public int projectileID;
 
     void Awake()
@@ -35,6 +46,67 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if (gameObject.tag == "Tornado")
+        {
+            transform.Translate(velocityTranslate * Time.fixedDeltaTime*bulletSpeed);
+        }
+
+        if (gameObject.tag == "Homing")
+        {
+            if (homingTarget)
+            {
+                targetDirection = homingTarget.position - transform.position;
+                targetDirection = targetDirection.normalized;
+
+                if (Vector3.Distance(transform.position, homingTarget.position) < focusDistance)
+                {
+                    isLookingAtObject = false;
+                }
+
+                if (isLookingAtObject)
+                {
+                    transform.rotation = Quaternion.LookRotation(transform.forward, targetDirection);
+                }
+            }
+
+            transform.position += targetDirection * bulletSpeed * Time.fixedDeltaTime;
+        }
+    }
+
+    private Transform GetClosestEnemy(GameObject[] enemies)
+    {
+        Transform bestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+
+        foreach (GameObject potentialTarget in enemies)
+        {
+            Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = potentialTarget.transform;
+            }
+        }
+
+        return bestTarget;
+    }
+
+    public void SetLooking(bool isLooking)
+    {
+        homingTarget = GetClosestEnemy(GameObject.FindGameObjectsWithTag("Enemy"));
+        isLookingAtObject = isLooking;
+    }
+
+    public void SetTranslateVelocity(Vector2 velocity) // ONLY for tornado and homing currently
+    {
+        velocityTranslate = velocity;
+        targetDirection = velocityTranslate.normalized;
+    }
+
     public void SetPool(ProjectilePool pool)
     {
         this.pool = pool;
@@ -42,7 +114,7 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (!projectileDisabled)
+        if (!projectileDisabled && gameObject.tag != "Tornado")
         {
             if (col.gameObject.layer == 8) // If collides with ground
             {
@@ -55,7 +127,7 @@ public class Projectile : MonoBehaviour
 
             GameObject target = col.gameObject;
 
-            if (target.layer == 10 || target.layer == 9) // Check if collider is enemy or player
+            if ((target.layer == 10 || target.layer == 9)) // Check if collider is enemy or player
             {
                 if (isBuffed)
                     damage *= 1.2f;
@@ -77,7 +149,14 @@ public class Projectile : MonoBehaviour
                 pool.DestroyBullet(gameObject);
             }
         }
-        
+        else if (gameObject.tag == "Tornado")
+        {
+            GameObject target = col.gameObject;
+            if (target.layer == 10) // if target is enemy
+            {
+                target.GetComponent<Rigidbody2D>().AddForce(target.transform.up*thrust, ForceMode2D.Impulse);
+            }
+        }
     }
     // TODO: 
     // Collapse both functions below into one
@@ -108,6 +187,7 @@ public class Projectile : MonoBehaviour
         }
     }
    
+        
 
     private IEnumerator MoveSmoothly(TMP_Text tmp, Transform tra, Vector3 from, Vector3 to)
     {

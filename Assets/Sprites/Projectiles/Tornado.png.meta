@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 31716ebc254ee3043913084351924107
+guid: 758dab01992f0b549aafd59e221e649a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 480
+  spritePixelsToUnits: 35
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IceSprite
+      name: Tornado_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 1344
-        width: 384
-        height: 176
+        x: 0
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ddcbbc5285520b4d8d9767203a77a3f
-      internalID: 441462216
+      spriteID: d25e30492dcd2c54ea358a2fbd2df854
+      internalID: -1055324698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaterSprite
+      name: Tornado_1
       rect:
         serializedVersion: 2
-        x: 528
-        y: 1312
-        width: 288
-        height: 208
+        x: 128
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7629d2f847fc41847b9447a2e18461a0
-      internalID: -944493254
+      spriteID: eded51e41f4b7e94da52e7adf423e427
+      internalID: 1392043105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LightningSprite
+      name: Tornado_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 896
-        width: 304
-        height: 112
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5dc38da63b4b08c498eeb69f886e7155
-      internalID: -1918578593
+      spriteID: 412865d27be19274cb59fe7ca471560c
+      internalID: -1443195675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SnowSprite
+      name: Tornado_3
       rect:
         serializedVersion: 2
-        x: 528
-        y: 800
-        width: 208
-        height: 208
+        x: 128
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,50 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1a52b56365b18143bb16f28070f0e6b
-      internalID: 1254738883
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SunSprite
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 416
-        width: 256
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5fc758c10f52557468c95afe363d3786
-      internalID: -2045665428
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IceCubeSprite
-      rect:
-        serializedVersion: 2
-        x: 520
-        y: 320
-        width: 344
-        height: 176
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 234e34cd9fd61c34487b81661f1f8f56
-      internalID: -1293804090
+      spriteID: 922729bdef6a6b7409ac3bbcd476222d
+      internalID: -1087505986
       vertices: []
       indices: 
       edges: []
@@ -252,39 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NewProjectiles2_27: -834097174
-      NewProjectiles2_28: 402566708
-      NewProjectiles2_3: -1035976139
-      NewProjectiles2_6: -1466979507
-      NewProjectiles2_24: 1717753297
-      NewProjectiles2_29: 1224043437
-      NewProjectiles2_20: -172985972
-      SunSprite: -2045665428
-      NewProjectiles2_4: 1681746355
-      NewProjectiles2_22: 1982851351
-      NewProjectiles2_14: 2115685034
-      SnowSprite: 1254738883
-      NewProjectiles2_32: 824141576
-      NewProjectiles2_13: 313973403
-      NewProjectiles2_21: -1430289191
-      NewProjectiles2_23: -845766426
-      NewProjectiles2_8: 1961297662
-      LightningSprite: -1918578593
-      NewProjectiles2_26: 257633075
-      NewProjectiles2_5: -1258140418
-      IceSprite: 441462216
-      NewProjectiles2_7: 539523545
-      WaterSprite: -944493254
-      IceCubeSprite: -1293804090
-      NewProjectiles2_2: -1513879751
-      NewProjectiles2_25: 226179042
-      NewProjectiles2_9: 1786081954
-      NewProjectiles2_12: 1544701253
-      NewProjectiles2_18: 303026269
-      NewProjectiles2_16: 98344366
-      NewProjectiles2_19: 27648870
-      NewProjectiles2_15: -1682062190
-      NewProjectiles2_17: 1228950076
+      Tornado_2: -1443195675
+      Tornado_3: -1087505986
+      Tornado_1: 1392043105
+      Tornado_0: -1055324698
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
