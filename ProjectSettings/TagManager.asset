@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Laser
   - Tornado
+  - Enemy
+  - Homing
   layers:
   - Default
   - TransparentFX
