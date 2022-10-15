@@ -24,6 +24,10 @@ public class ProjectilePool : MonoBehaviour
             Shoot(weapon, bulletStart, new Vector2(.5f, .5f), weapon.GetComponent<Projectile>().bulletSpeed);
             Shoot(weapon, bulletStart, Vector2.right, weapon.GetComponent<Projectile>().bulletSpeed);
         }
+        else if (weapon.tag == "WaterJet")
+        {
+            Shoot(weapon, bulletStart, aimVector, weapon.GetComponent<Projectile>().bulletSpeed*aimVector.magnitude);
+        }
         else
         {
             Shoot(weapon, bulletStart, aimVector, weapon.GetComponent<Projectile>().bulletSpeed);

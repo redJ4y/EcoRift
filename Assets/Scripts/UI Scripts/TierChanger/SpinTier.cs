@@ -30,6 +30,7 @@ public class SpinTier : MonoBehaviour
 
         // for testing purposes
         UnlockTier("Water", 2);
+        UnlockTier("Water", 3);
         UnlockTier("Snow", 2);
         UnlockTier("Snow", 3);
         UnlockTier("Lightning", 2);

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5510983642888593106}
   - component: {fileID: 4221439398019739133}
   - component: {fileID: 6512161085064558953}
+  - component: {fileID: 7109523301631907410}
   m_Layer: 11
   m_Name: SunProjectile3
   m_TagString: Homing
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1896129319, guid: 46e7167419c464e47a67a5152f4fe184, type: 3}
+  m_Sprite: {fileID: -1154490309, guid: cd1f94906e73c0d48a4d06ba94153149, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -114,16 +115,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9c87ce40b70e24c9c02b7947741f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileID: 10
   element: Sun
+  tier: 3
+  damage: 5
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
+  bulletSpeed: 3
+  lifeSpan: 4
   thrust: 0
   rotationSpeed: 1000
   focusDistance: 5
-  damage: 5
-  bulletSpeed: 3
-  lifeSpan: 4
-  tier: 3
   freezeObject: {fileID: 0}
-  projectileID: 10
+--- !u!95 &7109523301631907410
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958890066831099034}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4501e0839ac3f24cab7ee74f06dc9d3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
