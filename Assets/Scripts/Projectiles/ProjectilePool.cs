@@ -15,7 +15,19 @@ public class ProjectilePool : MonoBehaviour
 
     public void Shoot(GameObject weapon, Transform bulletStart, Vector2 aimVector)
     {
-        Shoot(weapon, bulletStart, aimVector, weapon.GetComponent<Projectile>().bulletSpeed);
+
+        if (weapon.tag == "MiniSun") // shoots in four directions
+        {
+            Shoot(weapon, bulletStart, Vector2.left, weapon.GetComponent<Projectile>().bulletSpeed);
+            Shoot(weapon, bulletStart, new Vector2(-.5f,.5f), weapon.GetComponent<Projectile>().bulletSpeed);
+            Shoot(weapon, bulletStart, Vector2.up, weapon.GetComponent<Projectile>().bulletSpeed);
+            Shoot(weapon, bulletStart, new Vector2(.5f, .5f), weapon.GetComponent<Projectile>().bulletSpeed);
+            Shoot(weapon, bulletStart, Vector2.right, weapon.GetComponent<Projectile>().bulletSpeed);
+        }
+        else
+        {
+            Shoot(weapon, bulletStart, aimVector, weapon.GetComponent<Projectile>().bulletSpeed);
+        }
     }
 
     public void Shoot(GameObject weapon, Transform bulletStart, Vector2 aimVector, float bulletSpeed)

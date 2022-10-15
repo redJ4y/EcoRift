@@ -6,34 +6,36 @@ using TMPro;
 public class Projectile : MonoBehaviour
 {
     Camera cam;
+
+    [Header("Base Projectile Fields")]
+    public int projectileID;
     [SerializeField] private string element;
+    [Range(1, 3)] [SerializeField] public int tier;
+    [SerializeField] private float damage;
     [SerializeField] private bool projectileDisabled;
     [SerializeField] public bool isBuffed;
     [SerializeField] public bool isRotatable = true;
+    [Range(1f, 30f)] [SerializeField] public float bulletSpeed;
+    [Range(0f, 15f)] [SerializeField] public float lifeSpan;
 
-    // Tornado impact thrust up
+    [Header("Tornado Settings")]
     [SerializeField] private float thrust;
+    private Vector2 velocityTranslate;
 
-    // HOMING projectile variables
+    [Header("Homing Settings")]
     [SerializeField] private float rotationSpeed = 1000;
     [SerializeField] private float focusDistance = 5;
     private bool isLookingAtObject = true;
     private Transform homingTarget;
+    private Vector3 targetDirection;
 
-    [SerializeField] private float damage;
-    [Range(1f, 30f)] [SerializeField] public float bulletSpeed;
-    [Range(0f, 15f)] [SerializeField] public float lifeSpan;
-    [Range(1, 3)] [SerializeField] public int tier;
-
+    [Header("Ice Settings")]
     [SerializeReference] GameObject freezeObject; 
 
     private Collider2D thisCollider;
     private ProjectilePool pool;
     private IEnumerator coroutine;
     private bool damageEnemies = false;
-    private Vector2 velocityTranslate;
-    private Vector3 targetDirection;
-    public int projectileID;
 
     void Awake()
     {
@@ -70,7 +72,6 @@ public class Projectile : MonoBehaviour
                     transform.rotation = Quaternion.LookRotation(transform.forward, targetDirection);
                 }
             }
-
             transform.position += targetDirection * bulletSpeed * Time.fixedDeltaTime;
         }
     }
@@ -186,8 +187,6 @@ public class Projectile : MonoBehaviour
                 break;
         }
     }
-   
-        
 
     private IEnumerator MoveSmoothly(TMP_Text tmp, Transform tra, Vector3 from, Vector3 to)
     {
