@@ -8,6 +8,8 @@ TagManager:
   - Tornado
   - Enemy
   - Homing
+  - MiniSun
+  - WaterJet
   layers:
   - Default
   - TransparentFX

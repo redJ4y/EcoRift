@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1540939757, guid: 46e7167419c464e47a67a5152f4fe184, type: 3}
+  m_Sprite: {fileID: -1893480078, guid: 46e7167419c464e47a67a5152f4fe184, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.56, y: 0.52}
+  m_Size: {x: 0.53333336, y: 0.16666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -136,13 +136,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9c87ce40b70e24c9c02b7947741f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileID: 2
   element: Sun
+  tier: 1
+  damage: 10
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
-  damage: 10
   bulletSpeed: 20
   lifeSpan: 1.5
-  tier: 1
+  thrust: 0
+  rotationSpeed: 1000
+  focusDistance: 5
   freezeObject: {fileID: 0}
-  projectileID: 2

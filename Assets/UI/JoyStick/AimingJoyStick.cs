@@ -15,13 +15,13 @@ public class AimingJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
     private int dragMovementDistance = 30;
     [SerializeField]
     private int dragOffsetDistance = 100;
+    private Vector2 offset;
     public Vector2 aimVector;
     //public event Action<Vector2> OnMove;
     public bool isShooting = false;
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector2 offset;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(joystickTransform, eventData.position, null, out offset);
         offset = Vector2.ClampMagnitude(offset, dragOffsetDistance) / dragOffsetDistance;
         joystickTransform.anchoredPosition = offset * dragMovementDistance;
@@ -30,7 +30,6 @@ public class AimingJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
        //OnMove?.Invoke(inputVector);
         isShooting = true;
     }
-
 
     private IEnumerator ShootRoutine()
     {

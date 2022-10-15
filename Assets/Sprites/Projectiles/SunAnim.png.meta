@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 46e7167419c464e47a67a5152f4fe184
+guid: cd1f94906e73c0d48a4d06ba94153149
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 480
+  spritePixelsToUnits: 400
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,160 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IceSprite
+      name: SunAnim_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 1344
-        width: 384
-        height: 176
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a527f8d63a372954696493eb2bbbf40f
-      internalID: 320480093
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WaterSprite
-      rect:
-        serializedVersion: 2
-        x: 528
-        y: 1312
-        width: 288
-        height: 208
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed6b949f5f0ac044184cf2e80eeac466
-      internalID: -1756732418
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LightningSprite
-      rect:
-        serializedVersion: 2
-        x: 1040
-        y: 1408
-        width: 304
-        height: 112
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1dffb3934678ba428a08097924e17f5
-      internalID: 562265230
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SnowSprite
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 800
-        width: 208
-        height: 208
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b98ec357bae6344f9c32e1373475f0d
-      internalID: -112694279
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SunBulletSprite
-      rect:
-        serializedVersion: 2
-        x: 528
-        y: 928
-        width: 256
-        height: 80
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 793261160be7dff4cab16a595a900af9
-      internalID: -1893480078
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IceCubeSprite
-      rect:
-        serializedVersion: 2
-        x: 1040
-        y: 832
-        width: 335
-        height: 176
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7732d7664c7a036438dd60565cf48136
-      internalID: -1124487995
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WaterBallSprite
-      rect:
-        serializedVersion: 2
-        x: 528
-        y: 288
-        width: 208
-        height: 208
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 715656e166886ed4d928ca0871fe1bd6
-      internalID: -288162317
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SunBallSprite
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 288
-        width: 208
-        height: 208
+        x: 0
+        y: 480
+        width: 240
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,8 +130,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f0bc234d97144c478dd864e9110a9c6
-      internalID: -480826526
+      spriteID: a0d51fc8635f3c44c8be39613b348703
+      internalID: -1154490309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunAnim_1
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 480
+        width: 240
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fb23c8c21d3dd54f9521f04a7680d0f
+      internalID: 373048897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunAnim_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 240
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f0b9ae64775a9c439026b0161d33f74
+      internalID: 474446411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunAnim_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 240
+        width: 240
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb3231beb17f0884884210f58f0ca544
+      internalID: -1169917036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunAnim_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 240
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e6770ce8369e0b4d9f7e70082fe4a64
+      internalID: 707181018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunAnim_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 240
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e21343b5f63b5b43b8d40d187876f67
+      internalID: -1894966947
       vertices: []
       indices: 
       edges: []
@@ -294,31 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NewProjectiles_7: 985129671
-      NewProjectiles_0: 1259510011
-      NewProjectiles_16: -1694250948
-      NewProjectiles_22: -1096449771
-      NewProjectiles_20: -1998063473
-      NewProjectiles_23: -298456091
-      NewProjectiles_19: -878913209
-      NewProjectiles_12: -1948081623
-      NewProjectiles_9: 1369083419
-      NewProjectiles_14: -245803356
-      SnowSprite: -112694279
-      SunBallSprite: -480826526
-      LightningSprite: 562265230
-      IceSprite: 320480093
-      IceCubeSprite: -1124487995
-      NewProjectiles_13: 1692245440
-      SunBulletSprite: -1893480078
-      WaterSprite: -1756732418
-      NewProjectiles_1: 1469938215
-      NewProjectiles_15: -1430006747
-      NewProjectiles_21: -380947889
-      NewProjectiles_8: 1236234420
-      NewProjectiles_18: -74157390
-      WaterBallSprite: -288162317
-      NewProjectiles_2: -2056107341
+      SunAnim_0: -1154490309
+      SunAnim_2: 474446411
+      SunAnim_3: -1169917036
+      SunAnim_1: 373048897
+      SunAnim_4: 707181018
+      SunAnim_5: -1894966947
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
