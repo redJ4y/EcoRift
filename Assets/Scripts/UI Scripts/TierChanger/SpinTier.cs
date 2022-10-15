@@ -34,6 +34,7 @@ public class SpinTier : MonoBehaviour
         UnlockTier("Snow", 3);
         UnlockTier("Lightning", 2);
         UnlockTier("Sun", 3);
+        UnlockTier("Sun", 2);
 
         UpdateLockImages();
         selectedTierNumber = 1;
