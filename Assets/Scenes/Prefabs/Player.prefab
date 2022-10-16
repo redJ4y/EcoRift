@@ -583,9 +583,17 @@ MonoBehaviour:
   infoScript: {fileID: 0}
   weapons:
   - {fileID: 6958890066831099034, guid: 14532a76b7dd40c428b2f5fc0db3c523, type: 3}
+  - {fileID: 6958890066831099034, guid: 86e86c9579b60c049a0359fc3570cbf7, type: 3}
+  - {fileID: 6958890066831099034, guid: e6fc57d44ffb39843add99d0e5a8529c, type: 3}
   - {fileID: 6958890066831099034, guid: 9649aeaf7c73f134e884631fab844b2e, type: 3}
+  - {fileID: 6958890066831099034, guid: 7be35d6c01fb19d4284a568c18eaf845, type: 3}
+  - {fileID: 6958890066831099034, guid: 248af272a761ed94da8afd6844b87a57, type: 3}
   - {fileID: 6958890066831099034, guid: d75151a8c0ca76f4b999ab858e875e0e, type: 3}
+  - {fileID: 6958890066831099034, guid: 6016e04c3cb354547be473269b5916dd, type: 3}
+  - {fileID: 6958890066831099034, guid: 7efebb198aa0f954da6115a63d2bdf7f, type: 3}
   - {fileID: 6958890066831099034, guid: 98bc9ac8e3d797648ac94e3862c0b91b, type: 3}
+  - {fileID: 6958890066831099034, guid: ae1eeeea4d5ce734caee57d4e0bfdb76, type: 3}
+  - {fileID: 6958890066831099034, guid: fa0b4924645c0814b8e65f6c00ba468b, type: 3}
   projectileStorage: {fileID: 0}
   currentLaserProjectile: {fileID: 0}
   bulletStart: {fileID: 543423572}

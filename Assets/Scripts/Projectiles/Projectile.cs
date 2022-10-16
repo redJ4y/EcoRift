@@ -16,7 +16,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] public bool isBuffed;
     [SerializeField] public bool isRotatable = true;
     [SerializeField] private float fireRate = 10;
-    [SerializeField] private float damage;
 
     [Range(1f, 30f)] [SerializeField] public float bulletSpeed;
     [Range(0f, 15f)] [SerializeField] public float lifeSpan;

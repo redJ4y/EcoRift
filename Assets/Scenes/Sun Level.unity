@@ -128,27 +128,31 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 7310329012665108442, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
       propertyPath: m_Name
       value: Boss Sun Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7310329012665108442, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7310329012665108450, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7310329012665108450, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 93.145706
+      value: 89.273895
       objectReference: {fileID: 0}
     - target: {fileID: 7310329012665108450, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6412683
+      value: 1.5892045
       objectReference: {fileID: 0}
     - target: {fileID: 7310329012665108450, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2606501
+      value: 0.037154526
       objectReference: {fileID: 0}
     - target: {fileID: 7310329012665108450, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
       propertyPath: m_LocalRotation.w
@@ -180,6 +184,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
+--- !u!4 &56758978 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7310329012665108450, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
+  m_PrefabInstance: {fileID: 56758977}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &151275451
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +303,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &208014158
 MonoBehaviour:
@@ -324,23 +333,23 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.1517153
+      value: 3.2799044
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0409331
+      value: 0.9888694
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.17376673
+      value: -0.04972884
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -374,8 +383,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Sun Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+--- !u!4 &326293832 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+  m_PrefabInstance: {fileID: 326293831}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &430689065
 GameObject:
   m_ObjectHideFlags: 0
@@ -5399,23 +5417,23 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.253967
+      value: 30.382156
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.056239
+      value: 1.0041752
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.086883366
+      value: -0.1366122
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5449,30 +5467,39 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying Sun Enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2098920219063282107, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+--- !u!4 &575685470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+  m_PrefabInstance: {fileID: 575685469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &622320786
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.768856
+      value: 25.897045
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.9813123
+      value: 3.9292486
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.086883366
+      value: -0.1366122
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5506,8 +5533,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying Sun Enemy (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2098920219063282107, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+--- !u!4 &622320787 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+  m_PrefabInstance: {fileID: 622320786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &634510176 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6737163229685888559, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
@@ -5747,23 +5783,23 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6299076
+      value: -4.5017185
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.042812
+      value: -3.0948758
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.17376673
+      value: -0.04972884
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5797,8 +5833,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Sun Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+--- !u!4 &727061478 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+  m_PrefabInstance: {fileID: 727061477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1003634919
 GameObject:
   m_ObjectHideFlags: 0
@@ -10726,7 +10771,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066112725
 GameObject:
@@ -10878,7 +10923,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1091767315
 GameObject:
@@ -18386,7 +18431,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2222223, y: 1}
+    m_SensorSize: {x: 2.0068307, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -18416,23 +18461,23 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 78.3903
+      value: 74.518486
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.9214525
+      value: 8.869389
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.17376673
+      value: -0.04972884
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18466,8 +18511,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Sun Enemy (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+--- !u!4 &1329671819 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+  m_PrefabInstance: {fileID: 1329671818}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1439510271
 GameObject:
   m_ObjectHideFlags: 0
@@ -18511,34 +18565,38 @@ Transform:
   m_Children:
   - {fileID: 1091767316}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1554131085
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 7310329012665108442, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
       propertyPath: m_Name
       value: Boss Sun Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7310329012665108442, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7310329012665108450, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7310329012665108450, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 47.442665
+      value: 43.570854
       objectReference: {fileID: 0}
     - target: {fileID: 7310329012665108450, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.5447145
+      value: -4.596778
       objectReference: {fileID: 0}
     - target: {fileID: 7310329012665108450, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2606501
+      value: 0.037154526
       objectReference: {fileID: 0}
     - target: {fileID: 7310329012665108450, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18570,28 +18628,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
+--- !u!4 &1554131086 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7310329012665108450, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
+  m_PrefabInstance: {fileID: 1554131085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1567590513
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.8680744
+      value: -10.739885
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.198537
+      value: 2.1464734
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.086883366
+      value: -0.1366122
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18625,8 +18688,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying Sun Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2098920219063282107, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+--- !u!4 &1567590514 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+  m_PrefabInstance: {fileID: 1567590513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1567869029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18664,7 +18736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9161049615910193566, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9161049615910193566, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -18740,39 +18812,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
---- !u!114 &1567869030 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3189422368365407948, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
-  m_PrefabInstance: {fileID: 1567869029}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0af1b68eac7dcd48981ccab85703807, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1592142494
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.961959
+      value: 2.090148
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.272389
+      value: -0.7796747
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.17376673
+      value: -0.04972884
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18806,8 +18867,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Sun Enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+--- !u!4 &1592142495 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+  m_PrefabInstance: {fileID: 1592142494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1617350944
 GameObject:
   m_ObjectHideFlags: 3
@@ -18901,23 +18971,23 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.424324
+      value: 44.552513
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6412535
+      value: 1.5891898
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.17376673
+      value: -0.04972884
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18951,30 +19021,39 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Sun Enemy (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+--- !u!4 &1620629865 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+  m_PrefabInstance: {fileID: 1620629864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1636081920
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.325212
+      value: -0.5465989
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.5458865
+      value: 4.493823
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.086883366
+      value: -0.1366122
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19008,14 +19087,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying Sun Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2098920219063282107, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+--- !u!4 &1636081921 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+  m_PrefabInstance: {fileID: 1636081920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1811215220
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_RootOrder
@@ -19023,15 +19111,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 55.639503
+      value: 51.767693
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.69120455
+      value: -0.36085916
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.17376673
+      value: -0.04972884
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19065,30 +19153,85 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Sun Enemy (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+--- !u!4 &1811215221 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+  m_PrefabInstance: {fileID: 1811215220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1904867114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904867115}
+  m_Layer: 0
+  m_Name: Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1904867115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904867114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.871811, y: 1.0520637, z: 0.22349557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1981692879}
+  - {fileID: 1811215221}
+  - {fileID: 1620629865}
+  - {fileID: 1592142495}
+  - {fileID: 1329671819}
+  - {fileID: 622320787}
+  - {fileID: 575685470}
+  - {fileID: 56758978}
+  - {fileID: 2137721091}
+  - {fileID: 2052476911}
+  - {fileID: 1636081921}
+  - {fileID: 1567590514}
+  - {fileID: 326293832}
+  - {fileID: 727061478}
+  - {fileID: 1554131086}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1981692878
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.949135
+      value: 37.077324
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6012275
+      value: 0.5491638
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.17376673
+      value: -0.04972884
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19122,30 +19265,39 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Sun Enemy (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+--- !u!4 &1981692879 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+  m_PrefabInstance: {fileID: 1981692878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2052476910
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5945756
+      value: -5.466387
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.706664
+      value: 4.6546
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.086883366
+      value: -0.1366122
       objectReference: {fileID: 0}
     - target: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19179,8 +19331,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying Sun Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2098920219063282107, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+--- !u!4 &2052476911 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2098920219063282051, guid: 90c29a42ab50202479e88ab542dd9763, type: 3}
+  m_PrefabInstance: {fileID: 2052476910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2107121717
 GameObject:
   m_ObjectHideFlags: 0
@@ -24109,7 +24270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 1047446588}
-  dataManager: {fileID: 1567869030}
+  dataManager: {fileID: 0}
   currentLevel: sun
 --- !u!70 &2123262017
 CapsuleCollider2D:
@@ -24192,30 +24353,30 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2137721090
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1904867115}
     m_Modifications:
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.289274
+      value: -10.161085
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.949519
+      value: -2.0015826
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.17376673
+      value: -0.04972884
       objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24249,8 +24410,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Sun Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+--- !u!4 &2137721091 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
+  m_PrefabInstance: {fileID: 2137721090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3807157755208307489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24284,7 +24454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4634393410713347043, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4634393410713347043, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: m_LocalPosition.x

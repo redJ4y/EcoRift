@@ -4027,7 +4027,6 @@ MonoBehaviour:
   dragMovementDistance: 30
   dragOffsetDistance: 100
   aimVector: {x: 0, y: 0}
-  isShooting: 0
 --- !u!1 &6737163229833235736
 GameObject:
   m_ObjectHideFlags: 0
@@ -5267,7 +5266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 56, y: 165}
+  m_AnchoredPosition: {x: 56, y: -23}
   m_SizeDelta: {x: 519.88306, y: 507.529}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &6737163230573683762
