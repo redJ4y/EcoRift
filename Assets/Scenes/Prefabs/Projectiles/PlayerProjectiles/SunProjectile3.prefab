@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 9066088410662718609}
   - component: {fileID: 5510983642888593106}
-  - component: {fileID: -120871672431923471}
   - component: {fileID: 4221439398019739133}
   - component: {fileID: 6512161085064558953}
+  - component: {fileID: 7109523301631907410}
   m_Layer: 11
-  m_Name: SunProjectile
-  m_TagString: Untagged
+  m_Name: SunProjectile3
+  m_TagString: Homing
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6958890066831099034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.2425, y: 0.2252, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,38 +76,17 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -701285868, guid: 8b62037253cd1444db26bc132b9e9d6a, type: 3}
+  m_Sprite: {fileID: -1154490309, guid: cd1f94906e73c0d48a4d06ba94153149, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.56, y: 0.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &-120871672431923471
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6958890066831099034}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.2
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &4221439398019739133
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -121,9 +100,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2, y: 0}
+  m_Offset: {x: 0.015875429, y: 0}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.20349821
 --- !u!114 &6512161085064558953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,13 +115,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9c87ce40b70e24c9c02b7947741f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileID: 10
   element: Sun
+  tier: 3
+  damage: 5
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
-  fireRate: 100
-  damage: 10
-  bulletSpeed: 20
-  lifeSpan: 1.5
-  tier: 1
-  projectileID: 2
+  bulletSpeed: 3
+  lifeSpan: 4
+  thrust: 0
+  rotationSpeed: 1000
+  focusDistance: 5
+  freezeObject: {fileID: 0}
+--- !u!95 &7109523301631907410
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958890066831099034}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4501e0839ac3f24cab7ee74f06dc9d3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

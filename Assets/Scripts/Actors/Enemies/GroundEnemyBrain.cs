@@ -215,7 +215,7 @@ public class GroundEnemyBrain : MonoBehaviour
     // Returns a less annoying movement value (now scaled by movement speed)
     private float SmoothMovement(float preferredMovement)
     {
-        float movementSpeedDebuffed = movementSpeed - controller.GetMovementDebuff(); // Subtracts slowed movement speed from controller
+        float movementSpeedDebuffed = movementSpeed*controller.GetMovementDebuff(); // Subtracts slowed movement speed from controller
         int currentMovementRaw = System.Math.Sign(currentMovement);
         if (currentMovementRaw != preferredMovement) // Check for direction change
         { // Apply smoothing to direction change...

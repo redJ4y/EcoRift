@@ -14,6 +14,7 @@ public class AimingJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
     [SerializeField]
     private int dragOffsetDistance = 100;
 
+    private Vector2 offset;
     public Vector2 aimVector;
     private RectTransform joystickTransform;
     private Coroutine shootRoutine;
@@ -28,7 +29,6 @@ public class AimingJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector2 offset;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(joystickTransform, eventData.position, null, out offset);
         offset = Vector2.ClampMagnitude(offset, dragOffsetDistance) / dragOffsetDistance;
         joystickTransform.anchoredPosition = offset * dragMovementDistance;
