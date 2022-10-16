@@ -28,6 +28,10 @@ public class ProjectilePool : MonoBehaviour
         {
             Shoot(weapon, bulletStart, aimVector, weapon.GetComponent<Projectile>().bulletSpeed*aimVector.magnitude);
         }
+        else if (weapon.tag == "LightningChain")
+        {
+            Shoot(weapon, bulletStart, aimVector,0f);
+        }
         else
         {
             Shoot(weapon, bulletStart, aimVector, weapon.GetComponent<Projectile>().bulletSpeed);
@@ -81,12 +85,7 @@ public class ProjectilePool : MonoBehaviour
         }
 
         // Move the bullet
-        if (newBullet.tag == "Laser")
-        {
-            newBullet.GetComponent<LaserProjectile>().StartLaser();
-            //currentLaserProjectile = newBullet;
-        }
-        else if (newBullet.tag == "Tornado")
+        if (newBullet.tag == "Tornado")
         {
             newBullet.GetComponent<Projectile>().SetTranslateVelocity(aimVector);
         }
@@ -94,6 +93,10 @@ public class ProjectilePool : MonoBehaviour
         {
             newBullet.GetComponent<Projectile>().SetLooking(true);
             newBullet.GetComponent<Projectile>().SetTranslateVelocity(aimVector);
+        }
+        else if (newBullet.tag == "LightningChain")
+        {
+            newBullet.GetComponent<LaserProjectile>().UpdateLaser(bulletStart.position, aimVector);
         }
         else
         {

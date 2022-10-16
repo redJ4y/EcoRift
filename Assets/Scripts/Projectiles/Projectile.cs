@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
     private Vector3 targetDirection;
 
     [Header("Ice Settings")]
-    [SerializeReference] GameObject freezeObject; 
+    [SerializeReference] GameObject freezeObject;
 
     private Collider2D thisCollider;
     private ProjectilePool pool;
