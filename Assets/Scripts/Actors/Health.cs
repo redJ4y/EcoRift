@@ -80,8 +80,8 @@ public class Health : MonoBehaviour
     {
         while (true)
         {
-            if(hp < maxHp)
-            { 
+            if (hp < maxHp)
+            {
                 hp += hpRegenRate;
                 healthBarScript.SetValue();
                 yield return new WaitForSeconds(5);
@@ -99,7 +99,7 @@ public class Health : MonoBehaviour
         justHit = true;
         hp -= damage;
 
-        if(isPlayer)
+        if (isPlayer)
         {
             healthBarScript.SetValue();
         }
@@ -182,39 +182,52 @@ public class Health : MonoBehaviour
 
     public float GetHp()
     {
-      return hp;
+        return hp;
     }
 
     public float GetMaxHp()
     {
-      return maxHp;
+        return maxHp;
     }
 
     //debug tool for testing healthbar
     public void lowerHP()
     {
-      if(hp>=11)
-      {
-        hp-=10;
-      }
+        if (hp >= 11)
+        {
+            hp -= 10;
+        }
     }
 
     //debug tool for testing healthbar
     public void raiseHP()
     {
-      if(hp<=(maxHp-11))
-      {
-        hp+=10;
-      }
+        hp += 10;
+        if (hp > maxHp)
+        {
+            hp = maxHp;
+        }
     }
 
     //blood particle emission
-    void emitParticles(){
-      hitParticles.Play();
+    void emitParticles()
+    {
+        if (hitParticles != null)
+        {
+            hitParticles.Play();
+        }
     }
 
     public void buffHp(float multiplier)
     {
-        hp *= multiplier;
+        maxHp *= multiplier;
+    }
+
+    public void PrepareForTest()
+    {
+        isFading = true; // block fading
+        hp = 100.0f;
+        maxHp = hp;
+        StartCoroutine(RegenHealth());
     }
 }
