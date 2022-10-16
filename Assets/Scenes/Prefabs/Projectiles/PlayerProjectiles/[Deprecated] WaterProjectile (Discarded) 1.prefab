@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6456758279234420471}
   - component: {fileID: -4072156353000271634}
   m_Layer: 11
-  m_Name: '[Deprecated] WaterProjectile (Discarded)'
+  m_Name: '[Deprecated] WaterProjectile (Discarded) 1'
   m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

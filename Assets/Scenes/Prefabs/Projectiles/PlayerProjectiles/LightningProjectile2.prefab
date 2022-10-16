@@ -99,18 +99,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9c87ce40b70e24c9c02b7947741f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileID: 8
   element: Clouds
+  tier: 2
+  damage: 7
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 0
-  passThroughObjects: 1
-  thrust: 20
-  damage: 7
   bulletSpeed: 2
   lifeSpan: 5
-  tier: 2
+  thrust: 20
+  rotationSpeed: 1000
+  focusDistance: 5
   freezeObject: {fileID: 0}
-  projectileID: 8
 --- !u!95 &-6474073694185309471
 Animator:
   serializedVersion: 4

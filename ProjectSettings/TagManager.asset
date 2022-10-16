@@ -10,6 +10,7 @@ TagManager:
   - Homing
   - MiniSun
   - WaterJet
+  - LightningChain
   layers:
   - Default
   - TransparentFX
