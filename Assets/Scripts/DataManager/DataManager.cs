@@ -3,26 +3,64 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-
+/*
+* Emblem return:
+*    0      1       2      3
+*   sun    snow   storm   rain
+*  [false, false, false, false]
+*
+* Weather type to emblem type:
+* "Clear" = sun
+* "Snow" = snow
+* "Clouds" = storm
+* "Rain" = rain
+*/
 public class DataManager : MonoBehaviour
 {
-    [SerializeReference] private GameObject textObj;
+    [SerializeReference] private GameObject textObj; // For testing purposes
     [SerializeReference] private GetWeather weatherState;
+    private string[] weatherNames;
 
-    /*
-    * Emblem return:
-    *    0      1       2      3
-    *   sun    snow   storm   rain
-    *  [false, false, false, false]
-    **/
+    public void Start()
+    {
+        weatherNames = GameObject.Find("TierWheel").GetComponent<SpinTier>().weatherNames;
+    }
 
-    /*
-     * Weather type to emblem type:
-     * "Clear" = sun
-     * "Snow" = snow
-     * "Clouds" = storm
-     * "Rain" = rain
-     **/
+    public Dictionary<string, Dictionary<int, bool>> GetUnlockedTiers()
+    {
+        Dictionary<string, Dictionary<int, bool>> unlockedTiers = new();
+        foreach (string weatherName in weatherNames)
+        {
+            Dictionary<int, bool> newDict = new();
+            for (int i = 1; i <= 3; i++)
+            {
+                newDict.Add(i, false);
+            }
+            for (int i = 0; i <= GetProg(weatherName); i++)
+            {
+                newDict.Add(i + 1, true);
+            }
+            unlockedTiers.Add(weatherName, newDict);
+        }
+        return unlockedTiers;
+    }
+
+    private int GetProg(string weatherName)
+    {
+        switch (weatherName)
+        {
+            case "Water":
+                return GetRainProg();
+            case "Snow":
+                return GetSnowProg();
+            case "Lightning":
+                return GetStormProg();
+            case "Sun":
+                return GetSunProg();
+        }
+        Debug.Log("WEATHER NAMES DO NOT MATCH");
+        return 0;
+    }
 
     private bool IncreaseSunProg()
     {

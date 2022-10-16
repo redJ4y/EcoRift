@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class SpinTier : MonoBehaviour
 {
+    [SerializeReference] private DataManager dataManager;
+
     [SerializeField] private float animationSpeed;
 
     [SerializeField] private Color32 selectedColour;
@@ -13,7 +15,7 @@ public class SpinTier : MonoBehaviour
     [SerializeField] private Sprite lockedSprite;
     [SerializeField] private Sprite unlockedSprite;
 
-    [SerializeField] private string[] weatherNames;
+    [SerializeField] public string[] weatherNames;
     [SerializeField] private string currentWeather;
 
     [SerializeReference] private Image[] tierObjects;
@@ -45,6 +47,7 @@ public class SpinTier : MonoBehaviour
 
     private void InitialiseDictionaries()
     {
+        /*
         tierUnlocked = new Dictionary<string, Dictionary<int, bool>>();
         foreach (string name in weatherNames)
         {
@@ -54,7 +57,9 @@ public class SpinTier : MonoBehaviour
             newDict[3] = false;
 
             tierUnlocked.Add(name, newDict);
-        }
+        } */
+        // Get the saved progress from data manager:
+        tierUnlocked = dataManager.GetUnlockedTiers();
     }
 
     private void UpdateLockImages()

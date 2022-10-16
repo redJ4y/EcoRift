@@ -23310,6 +23310,10 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 683655098}
+    - target: {fileID: 8777416959861273287, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: weatherState
+      value: 
+      objectReference: {fileID: 1745627691}
     - target: {fileID: 9161049615910193554, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_Name
       value: MainHUD
@@ -23400,6 +23404,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+--- !u!114 &1567869030 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8777416959861273287, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 1567869029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0af1b68eac7dcd48981ccab85703807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1592142494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24270,7 +24285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 1047446588}
-  dataManager: {fileID: 0}
+  dataManager: {fileID: 1567869030}
   currentLevel: sun
 --- !u!70 &2123262017
 CapsuleCollider2D:
