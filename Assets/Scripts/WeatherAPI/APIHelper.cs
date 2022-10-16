@@ -14,7 +14,7 @@ public class APIHelper : MonoBehaviour
         StartCoroutine(MakeRequests());
     }
 
-    private IEnumerator MakeRequests()
+    public IEnumerator MakeRequests()
     {
         // GET
         UnityWebRequest getRequest = CreateRequest(APIData.APIurl);
@@ -25,7 +25,7 @@ public class APIHelper : MonoBehaviour
         // Trigger continuation of game flow
     }
 
-    private UnityWebRequest CreateRequest(string path, RequestType type = RequestType.GET, object data = null)
+    public UnityWebRequest CreateRequest(string path, RequestType type = RequestType.GET, object data = null)
     {
         UnityWebRequest request = new UnityWebRequest(path, type.ToString());
 
