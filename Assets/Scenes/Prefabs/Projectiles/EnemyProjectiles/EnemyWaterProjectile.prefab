@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1919924782, guid: 8b62037253cd1444db26bc132b9e9d6a, type: 3}
+  m_Sprite: {fileID: -1756732418, guid: 46e7167419c464e47a67a5152f4fe184, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6, y: 0.43333334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -136,12 +136,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9c87ce40b70e24c9c02b7947741f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileID: 53
   element: Water
+  tier: 0
+  damage: 10
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
-  damage: 10
   bulletSpeed: 10
   lifeSpan: 1.5
-  tier: 0
-  projectileID: 53
+  thrust: 0
+  rotationSpeed: 1000
+  focusDistance: 5
+  freezeObject: {fileID: 0}

@@ -14,6 +14,7 @@ public class SelectCard : MonoBehaviour
     private bool currentlyAnimating;
     [SerializeReference] ProjectileHandler projectileScript;
     [SerializeReference] SwitchStaff staffScript;
+    [SerializeReference] SpinTier tierScript;
 
     private void Start()
     {
@@ -36,7 +37,9 @@ public class SelectCard : MonoBehaviour
             }
 
             selectedCard = cardClicked;
-            projectileScript.SwitchWeapon(cardClicked.name+"Projectile");
+            projectileScript.SwitchWeapon(cardClicked.name+"Projectile1");
+            tierScript.SetNewWeather(cardClicked.name);
+
             staffScript.changeStaff(cardClicked.name + "Staff");
             // Now animate up the current selected card
             cardTrans = cardClicked.GetComponent<RectTransform>();

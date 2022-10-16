@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8b62037253cd1444db26bc132b9e9d6a
+guid: 46e7167419c464e47a67a5152f4fe184
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 480
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,97 +116,160 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ice
+      name: IceSprite
       rect:
         serializedVersion: 2
-        x: 4
-        y: 336
-        width: 96
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 16
+        y: 1344
+        width: 384
+        height: 176
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74934f03fadbd094fa4d2f1515d1f6d8
-      internalID: 1822515678
+      spriteID: a527f8d63a372954696493eb2bbbf40f
+      internalID: 320480093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Water
+      name: WaterSprite
       rect:
         serializedVersion: 2
-        x: 132
-        y: 328
-        width: 72
-        height: 52
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 528
+        y: 1312
+        width: 288
+        height: 208
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bc4b3c94de0f40429c4dd7b61752cc0
-      internalID: -1919924782
+      spriteID: ed6b949f5f0ac044184cf2e80eeac466
+      internalID: -1756732418
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lightning
+      name: LightningSprite
       rect:
         serializedVersion: 2
-        x: 4
-        y: 223
-        width: 76
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1040
+        y: 1408
+        width: 304
+        height: 112
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40ce289827c5dd94abc02a0a856eb922
-      internalID: -625569540
+      spriteID: e1dffb3934678ba428a08097924e17f5
+      internalID: 562265230
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow
+      name: SnowSprite
       rect:
         serializedVersion: 2
-        x: 132
-        y: 200
-        width: 52
-        height: 52
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 16
+        y: 800
+        width: 208
+        height: 208
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6141f54d2b294d45b219543f4b83d42
-      internalID: 874484551
+      spriteID: 2b98ec357bae6344f9c32e1373475f0d
+      internalID: -112694279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Light
+      name: SunBulletSprite
       rect:
         serializedVersion: 2
-        x: 4
-        y: 104
-        width: 64
-        height: 20
+        x: 528
+        y: 928
+        width: 256
+        height: 80
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 793261160be7dff4cab16a595a900af9
+      internalID: -1893480078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCubeSprite
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 832
+        width: 335
+        height: 176
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7732d7664c7a036438dd60565cf48136
+      internalID: -1124487995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBallSprite
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 288
+        width: 208
+        height: 208
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 715656e166886ed4d928ca0871fe1bd6
+      internalID: -288162317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SunBallSprite
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 288
+        width: 208
+        height: 208
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,8 +277,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44d07c68f2c2a9749ac5e992a27088ad
-      internalID: -701285868
+      spriteID: 1f0bc234d97144c478dd864e9110a9c6
+      internalID: -480826526
       vertices: []
       indices: 
       edges: []
@@ -231,30 +294,31 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NewProjectiles_7: 247393041
-      NewProjectiles_16: 441150891
-      NewProjectiles_22: -318536890
-      NewProjectiles_20: 962779410
-      NewProjectiles_19: -312242503
-      NewProjectiles_12: -158628332
-      NewProjectiles_9: 2120645371
-      NewProjectiles_14: 1192254902
-      Water: -1919924782
-      Lightning: -625569540
-      NewProjectiles_17: 560577402
-      Light: -701285868
-      NewProjectiles_6: 95732830
-      NewProjectiles_13: -45375771
-      NewProjectiles_15: 432005402
-      NewProjectiles_21: 911000110
-      NewProjectiles_4: 1393833713
-      Snow: 874484551
-      NewProjectiles_3: -1750031475
-      NewProjectiles_5: 1867128433
-      NewProjectiles_8: 200597372
-      NewProjectiles_18: 1265985765
-      Ice: 1822515678
-      NewProjectiles_2: -1000439740
+      NewProjectiles_7: 985129671
+      NewProjectiles_0: 1259510011
+      NewProjectiles_16: -1694250948
+      NewProjectiles_22: -1096449771
+      NewProjectiles_20: -1998063473
+      NewProjectiles_23: -298456091
+      NewProjectiles_19: -878913209
+      NewProjectiles_12: -1948081623
+      NewProjectiles_9: 1369083419
+      NewProjectiles_14: -245803356
+      SnowSprite: -112694279
+      SunBallSprite: -480826526
+      LightningSprite: 562265230
+      IceSprite: 320480093
+      IceCubeSprite: -1124487995
+      NewProjectiles_13: 1692245440
+      SunBulletSprite: -1893480078
+      WaterSprite: -1756732418
+      NewProjectiles_1: 1469938215
+      NewProjectiles_15: -1430006747
+      NewProjectiles_21: -380947889
+      NewProjectiles_8: 1236234420
+      NewProjectiles_18: -74157390
+      WaterBallSprite: -288162317
+      NewProjectiles_2: -2056107341
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

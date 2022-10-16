@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9066088410662718609}
   - component: {fileID: 5510983642888593106}
   - component: {fileID: -120871672431923471}
-  - component: {fileID: 4221439398019739133}
   - component: {fileID: 6512161085064558953}
+  - component: {fileID: 946850317210464619}
   m_Layer: 11
   m_Name: SnowProjectile2
   m_TagString: Untagged
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1822515678, guid: 8b62037253cd1444db26bc132b9e9d6a, type: 3}
+  m_Sprite: {fileID: 320480093, guid: 46e7167419c464e47a67a5152f4fe184, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 0.36666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -108,22 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &4221439398019739133
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6958890066831099034}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.07, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.25
 --- !u!114 &6512161085064558953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,12 +120,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9c87ce40b70e24c9c02b7947741f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileID: 4
   element: Snow
+  tier: 2
+  damage: 5
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
-  damage: 5
   bulletSpeed: 10
   lifeSpan: 1.5
-  tier: 2
-  projectileID: 4
+  thrust: 0
+  rotationSpeed: 1000
+  focusDistance: 5
+  freezeObject: {fileID: 0}
+--- !u!60 &946850317210464619
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958890066831099034}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 1}
+    oldSize: {x: 0.8, y: 0.36666667}
+    newSize: {x: 0.8, y: 0.36666667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.050323993, y: -0.1858361}
+      - {x: -0.39803258, y: 0.009024225}
+      - {x: -0.051762223, y: 0.1721305}
+      - {x: 0.40000004, y: -0.0018682927}

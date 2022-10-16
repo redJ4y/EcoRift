@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Laser
+  - Tornado
+  - Enemy
+  - Homing
+  - MiniSun
+  - WaterJet
+  - LightningChain
   layers:
   - Default
   - TransparentFX

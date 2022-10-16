@@ -15,7 +15,27 @@ public class ProjectilePool : MonoBehaviour
 
     public void Shoot(GameObject weapon, Transform bulletStart, Vector2 aimVector)
     {
-        Shoot(weapon, bulletStart, aimVector, weapon.GetComponent<Projectile>().bulletSpeed);
+
+        if (weapon.tag == "MiniSun") // shoots in four directions
+        {
+            Shoot(weapon, bulletStart, Vector2.left, weapon.GetComponent<Projectile>().bulletSpeed);
+            Shoot(weapon, bulletStart, new Vector2(-.5f,.5f), weapon.GetComponent<Projectile>().bulletSpeed);
+            Shoot(weapon, bulletStart, Vector2.up, weapon.GetComponent<Projectile>().bulletSpeed);
+            Shoot(weapon, bulletStart, new Vector2(.5f, .5f), weapon.GetComponent<Projectile>().bulletSpeed);
+            Shoot(weapon, bulletStart, Vector2.right, weapon.GetComponent<Projectile>().bulletSpeed);
+        }
+        else if (weapon.tag == "WaterJet")
+        {
+            Shoot(weapon, bulletStart, aimVector, weapon.GetComponent<Projectile>().bulletSpeed*aimVector.magnitude);
+        }
+        else if (weapon.tag == "LightningChain")
+        {
+            Shoot(weapon, bulletStart, aimVector,0f);
+        }
+        else
+        {
+            Shoot(weapon, bulletStart, aimVector, weapon.GetComponent<Projectile>().bulletSpeed);
+        }
     }
 
     public void Shoot(GameObject weapon, Transform bulletStart, Vector2 aimVector, float bulletSpeed)
@@ -65,12 +85,22 @@ public class ProjectilePool : MonoBehaviour
         }
 
         // Move the bullet
-        if (newBullet.tag != "Laser")
-            newBullet.GetComponent<Rigidbody2D>().velocity = aimVector.normalized * bulletSpeed;
+        if (newBullet.tag == "Tornado")
+        {
+            newBullet.GetComponent<Projectile>().SetTranslateVelocity(aimVector);
+        }
+        else if (newBullet.tag == "Homing")
+        {
+            newBullet.GetComponent<Projectile>().SetLooking(true);
+            newBullet.GetComponent<Projectile>().SetTranslateVelocity(aimVector);
+        }
+        else if (newBullet.tag == "LightningChain")
+        {
+            newBullet.GetComponent<LaserProjectile>().UpdateLaser(bulletStart.position, aimVector);
+        }
         else
         {
-            newBullet.GetComponent<LaserProjectile>().StartLaser();
-            //currentLaserProjectile = newBullet;
+            newBullet.GetComponent<Rigidbody2D>().velocity = aimVector.normalized * bulletSpeed;
         }
     }
 
@@ -82,7 +112,11 @@ public class ProjectilePool : MonoBehaviour
 
     public void DestroyBullet(GameObject bullet)
     {
-        bullet.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        if (bullet.tag != "Tornado" && bullet.tag != "Homing")
+            bullet.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        else
+            bullet.GetComponent<Projectile>().SetTranslateVelocity(Vector2.zero);
+
         bullet.SetActive(false);
         StopCoroutine(destroyCoroutines[bullet]);
         poolMap[bullet.GetComponent<Projectile>().projectileID].Push(bullet);
