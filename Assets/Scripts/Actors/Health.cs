@@ -25,29 +25,32 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isFading = false;
-        isVisible = false;
-        justHit = false;
-        actor = transform.parent.gameObject;
-
-        maxHp = hp;
-        hpBar = transform.Find("InnerHealth");
-        innerHpRenderer = hpBar.GetComponent<SpriteRenderer>();
-        hpRenderer = transform.gameObject.GetComponent<SpriteRenderer>();
-
-        if (hpBar == null)
+        if (actor != null)
         {
-            Debug.Log("HPBar not found");
-        }
+            isFading = false;
+            isVisible = false;
+            justHit = false;
+            actor = transform.parent.gameObject;
 
-        if (actor.Equals(GameObject.FindWithTag("Player")))
-        {
-            isPlayer = true;
-            StartCoroutine(RegenHealth());
-        }
+            maxHp = hp;
+            hpBar = transform.Find("InnerHealth");
+            innerHpRenderer = hpBar.GetComponent<SpriteRenderer>();
+            hpRenderer = transform.gameObject.GetComponent<SpriteRenderer>();
 
-        barWidth = hpBar.localScale.x;
-        startXPos = hpBar.localPosition.x + (barWidth / 2);
+            if (hpBar == null)
+            {
+                Debug.Log("HPBar not found");
+            }
+
+            if (actor.Equals(GameObject.FindWithTag("Player")))
+            {
+                isPlayer = true;
+                StartCoroutine(RegenHealth());
+            }
+
+            barWidth = hpBar.localScale.x;
+            startXPos = hpBar.localPosition.x + (barWidth / 2);
+        }
     }
 
     void FixedUpdate()
@@ -83,7 +86,8 @@ public class Health : MonoBehaviour
             if (hp < maxHp)
             {
                 hp += hpRegenRate;
-                healthBarScript.SetValue();
+                if (healthBarScript != null)
+                    healthBarScript.SetValue();
                 yield return new WaitForSeconds(5);
             }
             else

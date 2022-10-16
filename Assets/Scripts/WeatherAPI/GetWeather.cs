@@ -19,11 +19,13 @@ public class GetWeather : MonoBehaviour
 
     void Start()
     {
-        activeTileMap = tileGrid.transform.Find("Ground").gameObject;
-        activeSprites = normalSprites;
+        if (tileGrid != null)
+        {
+            activeTileMap = tileGrid.transform.Find("Ground").gameObject;
+            activeSprites = normalSprites;
 
-        // populate weather backgrounds
-        GameObject[] bgs = {
+            // populate weather backgrounds
+            GameObject[] bgs = {
             transform.Find("Rainy").gameObject,
             transform.Find("Cloudy").gameObject,
             transform.Find("Snowy").gameObject,
@@ -32,8 +34,9 @@ public class GetWeather : MonoBehaviour
             transform.Find("Snow Particles").gameObject,
             transform.Find("Cloud Particles").gameObject,
             transform.Find("Default").gameObject
-        };
-        weatherBackgrounds = new List<GameObject>(bgs);
+            };
+            weatherBackgrounds = new List<GameObject>(bgs);
+        }
     }
 
     private void replaceCurrentTiles(Sprite[] newSprites)
@@ -72,24 +75,20 @@ public class GetWeather : MonoBehaviour
         }
         return null;
     }
-    
+
     public void fetchAPIData(Weather[] weatherList)
     {
         // json object is a list for some reason so parse through that
         foreach (Weather w in weatherList)
         {
             currentWeather = w.main;
-            Debug.Log("Current weather: " + w.main);
         }
 
         updateWeather();
     }
-    
+
     private void updateWeather()
     {
-        // Ensure no backgrounds are currently set
-        disableBackgrounds();
-
         // Buff enemies after weather is updated:
         foreach (FlyingEnemyBrain brain in FindObjectsOfType<FlyingEnemyBrain>())
         {
@@ -100,32 +99,38 @@ public class GetWeather : MonoBehaviour
             brain.UpdateBuff(currentWeather);
         }
 
-        if (currentWeather == "Clouds")
+        if (weatherBackgrounds != null)
         {
-            weatherBackgrounds.Find(obj => obj.name == "Cloudy").SetActive(true);
-            weatherBackgrounds.Find(obj => obj.name == "Cloud Particles").SetActive(true);
-            //replaceCurrentTiles(normalSprites);
-        }
-        else if (currentWeather == "Clear")
-        {
-            weatherBackgrounds.Find(obj => obj.name == "Sunny").SetActive(true);
-            //replaceCurrentTiles(sunSprites);
-        }
-        else if (currentWeather == "Rain")
-        {
-            weatherBackgrounds.Find(obj => obj.name == "Rainy").SetActive(true);
-            weatherBackgrounds.Find(obj => obj.name == "Rain Particles").SetActive(true);
-            //replaceCurrentTiles(rainSprites);
-        }
-        else if (currentWeather == "Snow")
-        {
-            weatherBackgrounds.Find(obj => obj.name == "Snowy").SetActive(true);
-            weatherBackgrounds.Find(obj => obj.name == "Snow Particles").SetActive(true);
-            //replaceCurrentTiles(snowSprites);
-        }
-        else
-        {
-            Debug.Log("Weather not found! "+currentWeather);
+            // Ensure no backgrounds are currently set
+            disableBackgrounds();
+
+            if (currentWeather == "Clouds")
+            {
+                weatherBackgrounds.Find(obj => obj.name == "Cloudy").SetActive(true);
+                weatherBackgrounds.Find(obj => obj.name == "Cloud Particles").SetActive(true);
+                //replaceCurrentTiles(normalSprites);
+            }
+            else if (currentWeather == "Clear")
+            {
+                weatherBackgrounds.Find(obj => obj.name == "Sunny").SetActive(true);
+                //replaceCurrentTiles(sunSprites);
+            }
+            else if (currentWeather == "Rain")
+            {
+                weatherBackgrounds.Find(obj => obj.name == "Rainy").SetActive(true);
+                weatherBackgrounds.Find(obj => obj.name == "Rain Particles").SetActive(true);
+                //replaceCurrentTiles(rainSprites);
+            }
+            else if (currentWeather == "Snow")
+            {
+                weatherBackgrounds.Find(obj => obj.name == "Snowy").SetActive(true);
+                weatherBackgrounds.Find(obj => obj.name == "Snow Particles").SetActive(true);
+                //replaceCurrentTiles(snowSprites);
+            }
+            else
+            {
+                Debug.Log("Weather not found! " + currentWeather);
+            }
         }
     }
 
