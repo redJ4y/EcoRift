@@ -92,8 +92,9 @@ MonoBehaviour:
   projectileDisabled: 1
   isBuffed: 0
   isRotatable: 1
+  fireRate: 50
   bulletSpeed: 20
-  lifeSpan: 1
+  lifeSpan: 0.1
   thrust: 0
   rotationSpeed: 1000
   focusDistance: 5
@@ -118,7 +119,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -214,4 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletForce: 1000
-  maxLength: 5
+  maxLength: 10
+  lineLength: 6
+  damage: 2.5
+  maxChainDistance: 20
