@@ -3,34 +3,68 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-
+/*
+* Emblem return:
+*    0      1       2      3
+*   sun    snow   storm   rain
+*  [false, false, false, false]
+*
+* Weather type to emblem type:
+* "Clear" = sun
+* "Snow" = snow
+* "Clouds" = storm
+* "Rain" = rain
+*/
 public class DataManager : MonoBehaviour
 {
-    [SerializeReference] private GameObject textObj;
+    [SerializeReference] private GameObject textObj; // For testing purposes
     [SerializeReference] private GetWeather weatherState;
+    private string[] weatherNames;
 
-
-    public void SunProgTest()
+    public void SetWeatherNames(string[] weatherNames) // Must be called before using GetUnlockedTiers
     {
-        IncreaseSunProg();
+        this.weatherNames = weatherNames;
     }
 
-
-    public void ResetData()
+    public Dictionary<string, Dictionary<int, bool>> GetUnlockedTiers()
     {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-    }
-
-    public void Alert()
-    {
-        TMP_Text text = textObj.GetComponent<TMP_Text>();
-        text.text = GetSunProg().ToString();
-        Debug.Log(GetSunProg().ToString());
-    }
-
-        private bool IncreaseSunProg()
+        Dictionary<string, Dictionary<int, bool>> unlockedTiers = new();
+        foreach (string weatherName in weatherNames)
         {
+            Dictionary<int, bool> newDict = new();
+            for (int i = 1; i <= 3; i++)
+            {
+                newDict.Add(i, false);
+            }
+            for (int i = 0; i <= GetProg(weatherName); i++)
+            {
+                newDict.Remove(i + 1);
+                newDict.Add(i + 1, true);
+            }
+            unlockedTiers.Add(weatherName, newDict);
+        }
+        return unlockedTiers;
+    }
+
+    private int GetProg(string weatherName)
+    {
+        switch (weatherName)
+        {
+            case "Water":
+                return GetRainProg();
+            case "Snow":
+                return GetSnowProg();
+            case "Lightning":
+                return GetStormProg();
+            case "Sun":
+                return GetSunProg();
+        }
+        Debug.Log("WEATHER NAMES DO NOT MATCH (DataManager.cs/49)");
+        return 0;
+    }
+
+    private bool IncreaseSunProg()
+    {
         int current = PlayerPrefs.GetInt("sun", 0);
 
         if (current >= 2)
@@ -39,7 +73,7 @@ public class DataManager : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt("sun", current+1);
+            PlayerPrefs.SetInt("sun", current + 1);
             return true;
         }
     }
@@ -90,20 +124,6 @@ public class DataManager : MonoBehaviour
 
     }
 
-    //sun emblems
-    //  0      1      2      3
-    // sun    snow  storm  rain
-    //[false,false,false,false]
-
-    /*
-     * 
-     * 
-                currentWeather = "Clear";//sun
-                currentWeather = "Snow";//snow
-                currentWeather = "Clouds";//storm
-     *          currentWeather = "Rain";//rain
-     * */
-
     public bool[] GetRainLevelEmblems()
     {
         bool[] emblems = new bool[4];
@@ -144,13 +164,13 @@ public class DataManager : MonoBehaviour
         emblems[1] = PlayerPrefs.GetInt("sunSnow", 0) == 1;
         emblems[2] = PlayerPrefs.GetInt("sunClouds", 0) == 1;
         emblems[3] = PlayerPrefs.GetInt("sunRain", 0) == 1;
-        
+
         return emblems;
     }
 
     public void SunLevelComplete()
     {
-        PlayerPrefs.SetInt("sun"+ weatherState.getWeatherType(), 1);
+        PlayerPrefs.SetInt("sun" + weatherState.getWeatherType(), 1);
         IncreaseSunProg();
         PlayerPrefs.Save();
     }
@@ -178,7 +198,7 @@ public class DataManager : MonoBehaviour
 
     public int GetSunProg()
     {
-        return PlayerPrefs.GetInt("sun", 0);    
+        return PlayerPrefs.GetInt("sun", 0);
     }
 
     public int GetSnowProg()
@@ -193,5 +213,38 @@ public class DataManager : MonoBehaviour
     public int GetRainProg()
     {
         return PlayerPrefs.GetInt("rain", 0);
+    }
+    public void SunProgTest()
+    {
+        IncreaseSunProg();
+    }
+
+    public void SnowProgTest()
+    {
+        IncreaseSnowProg();
+    }
+
+    public void StormProgTest()
+    {
+        IncreaseStormProg();
+    }
+
+    public void RainProgTest()
+    {
+        IncreaseRainProg();
+    }
+
+    public void ResetData()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+    }
+
+    // Used for updating on screen debugging text:
+    public void Alert()
+    {
+        TMP_Text text = textObj.GetComponent<TMP_Text>();
+        text.text = GetSunProg().ToString();
+        Debug.Log(GetSunProg().ToString());
     }
 }
