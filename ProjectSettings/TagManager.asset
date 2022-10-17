@@ -11,6 +11,7 @@ TagManager:
   - MiniSun
   - WaterJet
   - LightningChain
+  - deathFX
   layers:
   - Default
   - TransparentFX
