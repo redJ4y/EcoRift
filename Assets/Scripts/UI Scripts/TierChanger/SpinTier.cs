@@ -28,6 +28,7 @@ public class SpinTier : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dataManager.SetWeatherNames(weatherNames);
         InitialiseDictionaries();
 
         // for testing purposes
@@ -215,7 +216,7 @@ public class SpinTier : MonoBehaviour
     private void ChangeProjectile()
     {
         if (GetCurrentTier() != 0)
-            projectileScript.SwitchWeapon(currentWeather + "Projectile"+selectedTierNumber);
+            projectileScript.SwitchWeapon(currentWeather + "Projectile" + selectedTierNumber);
     }
 
     public void SetNewWeather(string newWeather)
