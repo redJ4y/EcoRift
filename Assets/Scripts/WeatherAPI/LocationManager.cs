@@ -7,7 +7,7 @@ public class LocationManager : MonoBehaviour
     [SerializeReference]
     public APIHelper apiHelperScript;
 
-    IEnumerator Start()
+    public IEnumerator Start()
     {
         // Wait until the editor and unity remote are connected before starting a location service
         yield return new WaitForSeconds(5);

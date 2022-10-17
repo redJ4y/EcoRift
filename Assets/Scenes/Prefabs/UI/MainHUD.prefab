@@ -558,6 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcbd337de961d6847a31a7c57383f243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataManager: {fileID: 8777416959861273287}
   animationSpeed: 3
   selectedColour:
     serializedVersion: 2
@@ -568,10 +569,10 @@ MonoBehaviour:
   lockedSprite: {fileID: 21300000, guid: 203aa6ac0bbed404ebe0712e259cdb24, type: 3}
   unlockedSprite: {fileID: -2413806693520163455, guid: 1d4e790c5bd49a24f94d97d0f3b24bcb, type: 3}
   weatherNames:
-  - Water
   - Sun
-  - Lightning
   - Snow
+  - Lightning
+  - Water
   currentWeather: Snow
   tierObjects:
   - {fileID: 861685521}
@@ -1931,6 +1932,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 48.537}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!1 &3936211313038015004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2128897302889383486}
+  - component: {fileID: 8777416959861273287}
+  m_Layer: 0
+  m_Name: DataHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2128897302889383486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3936211313038015004}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1014.5944, y: -506.78876, z: 0.31035945}
+  m_LocalScale: {x: 1.3886604, y: 1.3886604, z: 1.3886604}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9161049615910193566}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8777416959861273287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3936211313038015004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0af1b68eac7dcd48981ccab85703807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textObj: {fileID: 0}
+  weatherState: {fileID: 0}
 --- !u!1 &4185615709055093598
 GameObject:
   m_ObjectHideFlags: 0
@@ -5716,6 +5763,7 @@ RectTransform:
   - {fileID: 6737163229833235737}
   - {fileID: 6737163230573683764}
   - {fileID: 1815037238}
+  - {fileID: 2128897302889383486}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
