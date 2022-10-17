@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float hp;
     [SerializeField] private int hpRegenRate = 5;
     [SerializeField] private HealthBarScript healthBarScript;
+
     private float maxHp;
 
     private float barWidth;
@@ -21,6 +22,9 @@ public class Health : MonoBehaviour
     private volatile bool justHit;
     public ParticleSystem hitParticles;
     private bool isPlayer;
+
+    public GameObject deathPrefab;
+    private GameObject[] gameObjects;
 
     // Start is called before the first frame update
     void Start()
@@ -72,10 +76,15 @@ public class Health : MonoBehaviour
 
     private void Death()
     {
+
+
         if (actor.layer == 9)
             StartCoroutine(GoToMainMenu());
         else
+        {
+            Instantiate(deathPrefab, transform.position, Quaternion.identity);
             Destroy(actor);
+        }
     }
 
 
@@ -234,4 +243,5 @@ public class Health : MonoBehaviour
         maxHp = hp;
         StartCoroutine(RegenHealth());
     }
+
 }
