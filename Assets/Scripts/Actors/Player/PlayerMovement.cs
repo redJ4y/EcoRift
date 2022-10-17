@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     public Transform groundCheck;
 
+    public AudioSource jumpsound;
+
+
     private void Awake()
     {
         controls = new PlayerControls();
@@ -33,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        jumpsound = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -64,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         if(isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumpsound.Play();
         }
     }
 }
