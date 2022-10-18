@@ -5475,6 +5475,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1151957378, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 1815037239, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: projectileScript
       value: 
@@ -5581,6 +5585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+--- !u!95 &640582642 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1151957379, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 640582641}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &640582643 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6737163230760215428, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
@@ -5590,6 +5599,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5ef65fc1949c4fd787f92275e3176f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &640582644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8777416959861273287, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 640582641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0af1b68eac7dcd48981ccab85703807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &647720527
@@ -10932,7 +10952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 2123262015}
-  dataManager: {fileID: 0}
+  dataManager: {fileID: 640582644}
+  crossFade: {fileID: 640582642}
   currentLevel: 
 --- !u!70 &1047446590
 CapsuleCollider2D:
@@ -18757,7 +18778,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0068307, y: 1}
+    m_SensorSize: {x: 2.2222223, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -24270,9 +24291,13 @@ PrefabInstance:
       value: Portal2
       objectReference: {fileID: 0}
     - target: {fileID: 6774231420249921753, guid: 18ca27cfea6c7934b840fe3b8e8fe7e4, type: 3}
+      propertyPath: crossFade
+      value: 
+      objectReference: {fileID: 640582642}
+    - target: {fileID: 6774231420249921753, guid: 18ca27cfea6c7934b840fe3b8e8fe7e4, type: 3}
       propertyPath: dataManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 640582644}
     - target: {fileID: 6774231420249921753, guid: 18ca27cfea6c7934b840fe3b8e8fe7e4, type: 3}
       propertyPath: currentLevel
       value: storm

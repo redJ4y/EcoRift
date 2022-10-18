@@ -5880,7 +5880,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 2123262015}
-  dataManager: {fileID: 0}
+  dataManager: {fileID: 1567869030}
+  crossFade: {fileID: 1103646358}
   currentLevel: 
 --- !u!70 &1047446590
 CapsuleCollider2D:
@@ -18142,6 +18143,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!95 &1103646358 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1151957379, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 1567869029}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1176291672
 Transform:
   m_ObjectHideFlags: 0
@@ -18211,7 +18217,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0068307, y: 1}
+    m_SensorSize: {x: 2.2222223, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -23298,6 +23304,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1151957378, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 1815037239, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: projectileScript
       value: 
@@ -24309,6 +24319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 1047446588}
   dataManager: {fileID: 1567869030}
+  crossFade: {fileID: 1103646358}
   currentLevel: sun
 --- !u!70 &2123262017
 CapsuleCollider2D:

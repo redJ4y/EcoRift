@@ -7,6 +7,7 @@ public class TeleportScript : MonoBehaviour
 {
     [SerializeReference] private GameObject pairedPortal;
     [SerializeReference] private DataManager dataManager;
+    [SerializeReference] private Animator crossFade;
     [SerializeField] private string currentLevel;
     private Vector3 teleportOffset;
     private Collider2D collider;
@@ -83,8 +84,8 @@ public class TeleportScript : MonoBehaviour
 
     IEnumerator GoToMainMenu()
     {
-        yield return new WaitForSeconds(0.5f);
-
+        crossFade.SetTrigger("Start");
+        yield return new WaitForSeconds(1.4f);
         SceneManager.LoadScene(0);
     }
 }
