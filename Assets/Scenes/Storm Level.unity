@@ -161,7 +161,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9161049616030685563, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
   m_PrefabInstance: {fileID: 640582641}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2112403132}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82a06e3935dc10346a5b1200b6500e89, type: 3}
@@ -5487,6 +5487,22 @@ PrefabInstance:
       propertyPath: projectileScript
       value: 
       objectReference: {fileID: 1447149631}
+    - target: {fileID: 6737163229685888547, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 305.3808
+      objectReference: {fileID: 0}
+    - target: {fileID: 6737163229685888547, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 319.5444
+      objectReference: {fileID: 0}
+    - target: {fileID: 6737163230573683764, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6737163230573683764, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -71
+      objectReference: {fileID: 0}
     - target: {fileID: 6737163230760215428, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: health
       value: 
@@ -5578,6 +5594,38 @@ PrefabInstance:
     - target: {fileID: 9161049615910193566, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9161049616030685562, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b2605358108538b47b8efc1e28382ebd, type: 3}
+    - target: {fileID: 9161049616030685563, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: spriteArray.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9161049616030685563, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: spriteArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 813835b98ff3ac9488d1c4fb6298aa33, type: 3}
+    - target: {fileID: 9161049616030685563, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: spriteArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: db69907ea0400514ea170389ffb7e86a, type: 3}
+    - target: {fileID: 9161049616030685563, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: spriteArray.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 38425fabe2e763e4799f47218234c9b2, type: 3}
+    - target: {fileID: 9161049616030685563, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: spriteArray.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1303c471fffb0ce41b637202884fdd44, type: 3}
+    - target: {fileID: 9161049616222026514, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -101
+      objectReference: {fileID: 0}
+    - target: {fileID: 9161049616222026514, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 359
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
@@ -18502,7 +18550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfbfeb80f6bfa94785e45a54fff3672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeather: 
+  currentWeather: Clouds
   tileGrid: {fileID: 1439510271}
   snowSprites:
   - {fileID: 1821478100, guid: 4903cac9351200f40bac45dc3f63c6f1, type: 3}
@@ -18572,6 +18620,7 @@ MonoBehaviour:
   - {fileID: 4294643669078967044, guid: e85c6e02fda4a004b84664f435ad4d73, type: 3}
   - {fileID: -5365963968028550086, guid: e85c6e02fda4a004b84664f435ad4d73, type: 3}
   - {fileID: 8598293912659149021, guid: e85c6e02fda4a004b84664f435ad4d73, type: 3}
+  updateJoyStick: {fileID: 2112403133}
 --- !u!4 &1176291672
 Transform:
   m_ObjectHideFlags: 0
@@ -18757,7 +18806,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0068307, y: 1}
+    m_SensorSize: {x: 2.2222223, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -24248,6 +24297,30 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &2112403132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9161049616030685565, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 640582641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2112403133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112403132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74aa0f24359eefd4996e120da2318d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joySticks:
+  - {fileID: 21300000, guid: 813835b98ff3ac9488d1c4fb6298aa33, type: 3}
+  - {fileID: 21300000, guid: db69907ea0400514ea170389ffb7e86a, type: 3}
+  - {fileID: 21300000, guid: 38425fabe2e763e4799f47218234c9b2, type: 3}
+  - {fileID: 21300000, guid: 1303c471fffb0ce41b637202884fdd44, type: 3}
+  - {fileID: 21300000, guid: b2605358108538b47b8efc1e28382ebd, type: 3}
+  weatherState: {fileID: 1176291671}
 --- !u!1 &2123262015 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6774231420249921702, guid: 18ca27cfea6c7934b840fe3b8e8fe7e4, type: 3}
