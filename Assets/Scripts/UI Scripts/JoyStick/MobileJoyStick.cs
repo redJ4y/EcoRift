@@ -6,9 +6,9 @@ using UnityEngine.EventSystems;
 
 public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IPointerDownHandler
 {
+
     private RectTransform joystickTransform;
-
-
+   
     [SerializeField]
     private float dragThreshold = 0.0001f;
     [SerializeField]

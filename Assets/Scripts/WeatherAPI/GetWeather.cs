@@ -12,10 +12,12 @@ public class GetWeather : MonoBehaviour
     [SerializeField] private Sprite[] rainSprites;    // Rain tile sprites for rainy conditions
     [SerializeField] private Sprite[] sunSprites;     // Rain tile sprites for rainy conditions
     [SerializeField] private Sprite[] normalSprites;  // Sunny/cloudy tile sprites for 'normal' conditions
+    [SerializeField] private UpdateJoyStickImage updateJoyStick;
 
     private Sprite[] activeSprites;                   // Currently used tile sprites
     private GameObject activeTileMap;                 // Currently used tile map
     private List<GameObject> weatherBackgrounds;      // Array of background gameobjects for each weather
+
 
     void Start()
     {
@@ -131,6 +133,9 @@ public class GetWeather : MonoBehaviour
             {
                 Debug.Log("Weather not found! " + currentWeather);
             }
+
+            updateJoyStick.ChangeImage(currentWeather);
+
         }
     }
 
