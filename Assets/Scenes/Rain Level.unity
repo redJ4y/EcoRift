@@ -5376,6 +5376,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1815037239, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: projectileScript
+      value: 
+      objectReference: {fileID: 465854089}
     - target: {fileID: 824385670941183684, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: staffScript
       value: 
@@ -5386,11 +5390,11 @@ PrefabInstance:
       objectReference: {fileID: 465854089}
     - target: {fileID: 6737163230573683764, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 56.00006
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 6737163230573683764, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -23.00003
+      value: -23
       objectReference: {fileID: 0}
     - target: {fileID: 6737163230760215428, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: health
@@ -5398,7 +5402,7 @@ PrefabInstance:
       objectReference: {fileID: 1234232023}
     - target: {fileID: 6737163230760215429, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -16.000061
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 9161049615910193554, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_Name
@@ -5490,11 +5494,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9161049616282268215, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -60.804993
+      value: -60.80493
       objectReference: {fileID: 0}
     - target: {fileID: 9161049616282268215, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -74.76895
+      value: -74.76892
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
@@ -18560,7 +18564,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2, y: 1}
+    m_SensorSize: {x: 2.2222223, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
