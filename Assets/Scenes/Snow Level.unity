@@ -227,6 +227,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 308962701905040525, guid: 0bd32fa738f514751922fe1aec5b7e24, type: 3}
   m_PrefabInstance: {fileID: 22791646}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &54891512 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8777416959861273287, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 1918785197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0af1b68eac7dcd48981ccab85703807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &151275451
 GameObject:
   m_ObjectHideFlags: 0
@@ -10696,7 +10707,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 2123262015}
-  dataManager: {fileID: 0}
+  dataManager: {fileID: 54891512}
+  crossFade: {fileID: 1151957379}
   currentLevel: 
 --- !u!70 &1047446590
 CapsuleCollider2D:
@@ -18353,7 +18365,7 @@ PrefabInstance:
       objectReference: {fileID: 208014156}
     - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: weapons.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: weapons.Array.data[4]
@@ -18386,7 +18398,7 @@ PrefabInstance:
     - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: weapons.Array.data[11]
       value: 
-      objectReference: {fileID: 6958890066831099034, guid: ae1eeeea4d5ce734caee57d4e0bfdb76, type: 3}
+      objectReference: {fileID: 6958890066831099034, guid: fa0b4924645c0814b8e65f6c00ba468b, type: 3}
     - target: {fileID: 4634393410713347042, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: m_Name
       value: Player
@@ -18479,6 +18491,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d464663c8d2a9104e976801252ccae0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1151957379 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1151957379, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 1918785197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1176291670
 GameObject:
   m_ObjectHideFlags: 0
@@ -18989,10 +19006,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1815037239, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
-      propertyPath: animationSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1815037239, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: projectileScript
       value: 
       objectReference: {fileID: 1148289992}
@@ -19008,10 +19021,6 @@ PrefabInstance:
       propertyPath: handler
       value: 
       objectReference: {fileID: 1148289992}
-    - target: {fileID: 6737163230573683764, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 6737163230760215428, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: health
       value: 
@@ -24057,6 +24066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 1047446588}
   dataManager: {fileID: 0}
+  crossFade: {fileID: 1151957379}
   currentLevel: 
 --- !u!70 &2123262017
 CapsuleCollider2D:

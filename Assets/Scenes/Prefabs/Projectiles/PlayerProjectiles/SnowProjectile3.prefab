@@ -127,6 +127,7 @@ MonoBehaviour:
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
+  fireRate: 10
   bulletSpeed: 4.4
   lifeSpan: 3
   thrust: 0
@@ -146,7 +147,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.35, y: -0.18}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 1}

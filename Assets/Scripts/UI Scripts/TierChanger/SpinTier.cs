@@ -95,6 +95,10 @@ public class SpinTier : MonoBehaviour
         float currentAngle = transform.eulerAngles.z;
         float targetAngle = currentAngle - angleRotate;
 
+        // for getting the right ratio for lerping
+        float angleDiff = currentAngle - targetAngle;
+        float currentAngleDiff = 0f;
+
         while (currentAngle >= targetAngle)
         {
             currentTime += Time.deltaTime * animationSpeed;
@@ -102,10 +106,11 @@ public class SpinTier : MonoBehaviour
             // animate rotation
             transform.eulerAngles = new Vector3(0.0f, 0.0f, currentAngle);
             currentAngle -= 10f;
+            currentAngleDiff += 10f;
 
             // animate colours
-            previousTierObject.color = Color.Lerp(selectedColour, deselectedColour, currentTime);
-            selectedTierObject.color = Color.Lerp(deselectedColour, selectedColour, currentTime);
+            previousTierObject.color = Color.Lerp(selectedColour, deselectedColour, currentAngleDiff / angleDiff);
+            selectedTierObject.color = Color.Lerp(deselectedColour, selectedColour, currentAngleDiff / angleDiff);
             yield return null;
         }
 
