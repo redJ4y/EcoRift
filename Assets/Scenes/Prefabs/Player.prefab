@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615f5a266f199514d9cd0892145f297a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 200
+  hp: 100
   hpRegenRate: 10
   healthBarScript: {fileID: 0}
   hitParticles: {fileID: 2572723635491087378}
@@ -577,7 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4120d77920c1c1c4586a12e9b7e8f7e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWeapon: {fileID: 6958890066831099034, guid: 7be35d6c01fb19d4284a568c18eaf845, type: 3}
+  playerWeapon: {fileID: 0}
   player: {fileID: 4634393410713347042}
   joyStick: {fileID: 0}
   infoScript: {fileID: 0}
@@ -589,8 +589,8 @@ MonoBehaviour:
   - {fileID: 6958890066831099034, guid: 7be35d6c01fb19d4284a568c18eaf845, type: 3}
   - {fileID: 6958890066831099034, guid: 248af272a761ed94da8afd6844b87a57, type: 3}
   - {fileID: 6958890066831099034, guid: d75151a8c0ca76f4b999ab858e875e0e, type: 3}
-  - {fileID: 6958890066831099034, guid: 6016e04c3cb354547be473269b5916dd, type: 3}
   - {fileID: 6958890066831099034, guid: 7efebb198aa0f954da6115a63d2bdf7f, type: 3}
+  - {fileID: 6958890066831099034, guid: 6016e04c3cb354547be473269b5916dd, type: 3}
   - {fileID: 6958890066831099034, guid: 98bc9ac8e3d797648ac94e3862c0b91b, type: 3}
   - {fileID: 6958890066831099034, guid: ae1eeeea4d5ce734caee57d4e0bfdb76, type: 3}
   - {fileID: 6958890066831099034, guid: fa0b4924645c0814b8e65f6c00ba468b, type: 3}

@@ -139,7 +139,7 @@ MonoBehaviour:
   projectileID: 1
   element: Snow
   tier: 1
-  damage: 10
+  damage: 6
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 0

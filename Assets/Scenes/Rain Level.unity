@@ -417,6 +417,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1095444792620742707, guid: d715fe29e5bf84709a3bbb2caa30c5dd, type: 3}
   m_PrefabInstance: {fileID: 157538974}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &333630843 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 691409796, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 551129186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c808f9e2436dd0148b7ebb6bb1d41945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &430689065
 GameObject:
   m_ObjectHideFlags: 0
@@ -5253,6 +5264,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 551129187}
     - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
+      propertyPath: infoScript
+      value: 
+      objectReference: {fileID: 333630843}
+    - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: projectileStorage
       value: 
       objectReference: {fileID: 2010308900}
@@ -5545,6 +5560,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 691409795, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1151957378, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -18584,6 +18603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfbfeb80f6bfa94785e45a54fff3672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infoScript: {fileID: 333630843}
   currentWeather: 
   tileGrid: {fileID: 1439510271}
   snowSprites:

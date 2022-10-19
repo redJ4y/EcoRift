@@ -182,6 +182,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8557847619007862533, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
+      propertyPath: hp
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
 --- !u!4 &56758978 stripped
@@ -466,10 +470,6 @@ PrefabInstance:
     - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_Name
       value: Small Sun Enemy (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
@@ -5692,6 +5692,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 615f5a266f199514d9cd0892145f297a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &691409796 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 691409796, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 1567869029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c808f9e2436dd0148b7ebb6bb1d41945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &727061477
@@ -23224,6 +23235,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8557847619007862533, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
+      propertyPath: hp
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0de0e0754b208942a8e9f6f7ca40e15, type: 3}
 --- !u!4 &1554131086 stripped
@@ -23785,6 +23800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfbfeb80f6bfa94785e45a54fff3672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infoScript: {fileID: 691409796}
   currentWeather: 
   tileGrid: {fileID: 1439510271}
   snowSprites:
@@ -23910,10 +23926,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Sun Enemy (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
 --- !u!4 &1811215221 stripped
@@ -23974,10 +23986,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1904867115}
     m_Modifications:
-    - target: {fileID: 7065135194155982963, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
-      propertyPath: healthBarScript
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8195552514184523924, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -24025,10 +24033,6 @@ PrefabInstance:
     - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
       propertyPath: m_Name
       value: Small Sun Enemy (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8195552514184523948, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874a8c684cf55514690947d0e588e4be, type: 3}
@@ -24481,6 +24485,14 @@ PrefabInstance:
       propertyPath: joyStick
       value: 
       objectReference: {fileID: 634510176}
+    - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
+      propertyPath: infoScript
+      value: 
+      objectReference: {fileID: 691409796}
+    - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: projectileStorage
       value: 

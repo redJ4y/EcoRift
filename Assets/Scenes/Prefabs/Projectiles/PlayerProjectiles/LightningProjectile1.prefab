@@ -139,11 +139,11 @@ MonoBehaviour:
   projectileID: 0
   element: Clouds
   tier: 1
-  damage: 7
+  damage: 2.5
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
-  fireRate: 70
+  fireRate: 80
   bulletSpeed: 15
   lifeSpan: 1.5
   thrust: 0
