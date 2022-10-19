@@ -34,14 +34,15 @@ public class SpinTier : MonoBehaviour
         // for testing purposes
         UnlockTier("Water", 2);
         UnlockTier("Water", 3);
-        //UnlockTier("Snow", 2);
+        UnlockTier("Snow", 2);
         UnlockTier("Snow", 3);
         UnlockTier("Lightning", 2);
-        //UnlockTier("Lightning", 3);
-        //UnlockTier("Sun", 3);
-        //UnlockTier("Sun", 2);
+        UnlockTier("Lightning", 3);
+        UnlockTier("Sun", 3);
+        UnlockTier("Sun", 2);
 
-        UpdateLockImages();
+        if (currentWeather != "None")
+            UpdateLockImages();
         selectedTierNumber = 1;
         currentlyAnimating = false;
     }
@@ -67,13 +68,17 @@ public class SpinTier : MonoBehaviour
     {
         foreach (KeyValuePair<int, bool> pair in tierUnlocked[currentWeather])
         {
+
             if (pair.Value == true) // if tier is unlocked
             {
+                if (tierObjects[pair.Key - 1] == selectedTierObject)
+                    tierObjects[pair.Key - 1].color = selectedColour;
                 tierObjects[pair.Key - 1].sprite = unlockedSprite;
                 tierObjects[pair.Key - 1].transform.GetChild(0).gameObject.SetActive(true); // getting the only child which is text
             }
             else
             {
+                tierObjects[pair.Key - 1].color = deselectedColour;
                 tierObjects[pair.Key - 1].sprite = lockedSprite;
                 tierObjects[pair.Key - 1].transform.GetChild(0).gameObject.SetActive(false);
             }
@@ -164,7 +169,7 @@ public class SpinTier : MonoBehaviour
 
     private void IncreaseTier()
     {
-        if (!currentlyAnimating)
+        if (!currentlyAnimating && currentWeather != "None")
         {
             int newTier = selectedTierNumber;
             bool nextTierUnlocked = false;
@@ -183,6 +188,8 @@ public class SpinTier : MonoBehaviour
             else
                 StartCoroutine(BudgeAnimation());
         }
+        else if (currentWeather == "None")
+            StartCoroutine(BudgeAnimation());
     }
 
     private void SetToTier(int tierNum)

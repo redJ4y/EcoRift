@@ -143,7 +143,7 @@ MonoBehaviour:
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
-  fireRate: 10
+  fireRate: 20
   bulletSpeed: 6
   lifeSpan: 1.5
   thrust: 0

@@ -118,7 +118,7 @@ MonoBehaviour:
   projectileID: 10
   element: Sun
   tier: 3
-  damage: 5
+  damage: 10
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1

@@ -54,13 +54,22 @@ public class AimingJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        shootDelay = 10.0f / handler.GetWeapon().GetComponent<Projectile>().GetFireRate();
-        shootRoutine = StartCoroutine(ShootRoutine());
+        GameObject playerWeapon = handler.GetWeapon();
+        if (playerWeapon)
+        {
+            shootDelay = 10.0f / playerWeapon.GetComponent<Projectile>().GetFireRate();
+            shootRoutine = StartCoroutine(ShootRoutine());
+        }
+        else
+        {
+            handler.AlertGemNotSelected();
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        StopCoroutine(shootRoutine);
+        if (handler.GetWeapon())
+            StopCoroutine(shootRoutine);
         joystickTransform.anchoredPosition = Vector2.zero;
     }
 }
