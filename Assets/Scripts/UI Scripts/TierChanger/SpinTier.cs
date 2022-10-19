@@ -34,12 +34,12 @@ public class SpinTier : MonoBehaviour
         // for testing purposes
         UnlockTier("Water", 2);
         UnlockTier("Water", 3);
-        UnlockTier("Snow", 2);
+        //UnlockTier("Snow", 2);
         UnlockTier("Snow", 3);
         UnlockTier("Lightning", 2);
-        UnlockTier("Lightning", 3);
-        UnlockTier("Sun", 3);
-        UnlockTier("Sun", 2);
+        //UnlockTier("Lightning", 3);
+        //UnlockTier("Sun", 3);
+        //UnlockTier("Sun", 2);
 
         UpdateLockImages();
         selectedTierNumber = 1;
