@@ -7,7 +7,6 @@ public class PlayerInput : MonoBehaviour
     [SerializeReference] private ProjectileHandler handler;
     [SerializeField] private MobileJoyStick joystick;
     
-
     public PlayerControls controls;
     public CharacterController2D controller;
     public float runSpeed = 30f;
@@ -26,15 +25,18 @@ public class PlayerInput : MonoBehaviour
     {
         controls = new PlayerControls();
         controls.Enable();
+
         controls.Ground.Run.performed += ctx =>
         {
             newInputDirection = ctx.ReadValue<float>();
             usingNewInput = true;
         };
-        controls.Ground.Jump.performed += ctx =>
+
+        controls.Ground.Jump.started += ctx =>
         {
             jump = true;
         };
+
         controls.Ground.Shoot.performed += ctx =>
         {
             handler.OnShoot();
