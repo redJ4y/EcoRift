@@ -25,12 +25,12 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        actor = transform.parent.gameObject;
         if (actor != null)
         {
             isFading = false;
             isVisible = false;
             justHit = false;
-            actor = transform.parent.gameObject;
 
             maxHp = hp;
             hpBar = transform.Find("InnerHealth");

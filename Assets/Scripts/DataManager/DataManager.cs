@@ -21,9 +21,9 @@ public class DataManager : MonoBehaviour
     [SerializeReference] private GetWeather weatherState;
     private string[] weatherNames;
 
-    public void Start()
+    public void SetWeatherNames(string[] weatherNames) // Must be called before using GetUnlockedTiers
     {
-        weatherNames = GameObject.Find("TierWheel").GetComponent<SpinTier>().weatherNames;
+        this.weatherNames = weatherNames;
     }
 
     public Dictionary<string, Dictionary<int, bool>> GetUnlockedTiers()
@@ -38,6 +38,7 @@ public class DataManager : MonoBehaviour
             }
             for (int i = 0; i <= GetProg(weatherName); i++)
             {
+                newDict.Remove(i + 1);
                 newDict.Add(i + 1, true);
             }
             unlockedTiers.Add(weatherName, newDict);
@@ -58,7 +59,7 @@ public class DataManager : MonoBehaviour
             case "Sun":
                 return GetSunProg();
         }
-        Debug.Log("WEATHER NAMES DO NOT MATCH");
+        Debug.Log("WEATHER NAMES DO NOT MATCH (DataManager.cs/49)");
         return 0;
     }
 
