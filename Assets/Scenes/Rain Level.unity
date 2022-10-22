@@ -5549,6 +5549,10 @@ PrefabInstance:
       propertyPath: projectileScript
       value: 
       objectReference: {fileID: 465854089}
+    - target: {fileID: 6737163230760215428, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 858673262}
     - target: {fileID: 9161049615910193554, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: m_Name
       value: MainHUD
@@ -5939,6 +5943,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &858673262 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3807157755351374352, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
+  m_PrefabInstance: {fileID: 465854087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615f5a266f199514d9cd0892145f297a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &993260572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18767,7 +18782,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0068307, y: 1}
+    m_SensorSize: {x: 2.2222223, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
