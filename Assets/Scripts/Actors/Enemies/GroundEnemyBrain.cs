@@ -10,7 +10,10 @@ using UnityEngine;
 public class GroundEnemyBrain : MonoBehaviour
 {
     [SerializeReference] private CharacterController2D controller;
-    [SerializeField] private GameObject enemyWeapon;
+    [SerializeField] private GameObject enemyTargetedWeapon; // regular projectile shooting at player
+    [SerializeField] private GameObject enemySpecialWeapon; // special projectile shooting less frequently at player
+    [SerializeField] private GameObject enemyDirectionalWeapon; // projectile aiming in specific directions
+
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private string enemyType;
 
@@ -35,6 +38,11 @@ public class GroundEnemyBrain : MonoBehaviour
     [Range(1, 200)] [SerializeField] private int attackSpeed = 1;
     [Range(1, 50)] [SerializeField] private float projectileSpeed = 5.0f;
 
+    [Header("Projectile Specifications")]
+    [SerializeField] private bool shootUp;
+    [SerializeField] private bool shootSideways;
+    [SerializeField] private bool shootDiagonally;
+
     private GameObject player;
     private Health healthScript;
     private GameObject projectileStorage;
@@ -47,6 +55,8 @@ public class GroundEnemyBrain : MonoBehaviour
     private float timeSinceDirectionChange = 0;
     private bool currentlyLeaping = false;
     private int shotDelay = 0;
+    private int directionalShotDelay = 0;
+    private int specialShotDelay = 0;
     private bool isBuffed;
     private float gravity;
     private ProjectilePool projectilePool;
@@ -122,11 +132,44 @@ public class GroundEnemyBrain : MonoBehaviour
         {
             shotDelay++;
         }
+
+        if (shootUp || shootDiagonally || shootSideways)
+        {
+            directionalShotDelay++;
+            if ((250 - (attackSpeed*2)) - directionalShotDelay < 0 && Random.value > 0.9f) // try shoot directional
+            {
+                if (shootUp)
+                {
+                    projectilePool.Shoot(enemyDirectionalWeapon, transform, Vector2.up, projectileSpeed*2); // sorry for not using Shoot() jared
+                }
+                if (shootDiagonally)
+                {
+                    projectilePool.Shoot(enemyDirectionalWeapon, transform, new Vector2(-.5f, .5f), projectileSpeed * 2);
+                    projectilePool.Shoot(enemyDirectionalWeapon, transform, new Vector2(.5f, .5f), projectileSpeed * 2);
+                }
+                if (shootSideways)
+                {
+                    projectilePool.Shoot(enemyDirectionalWeapon, transform, Vector2.left, projectileSpeed * 2);
+                    projectilePool.Shoot(enemyDirectionalWeapon, transform, Vector2.right, projectileSpeed * 2);
+                }
+                directionalShotDelay = 0;
+            }
+        }
+
+        if (enemySpecialWeapon)
+        {
+            specialShotDelay++;
+            if ((250 - attackSpeed) - specialShotDelay < 0 && Random.value > 0.9f) // try shoot special
+            {
+                projectilePool.Shoot(enemySpecialWeapon, transform, toPlayer.normalized/2f, 0f); // sorry for not using Shoot() jared
+                specialShotDelay = 0;
+            }
+        }
     }
 
     private void Shoot()
     {
-        projectilePool.Shoot(enemyWeapon, transform, toPlayer, projectileSpeed);
+        projectilePool.Shoot(enemyTargetedWeapon, transform, toPlayer, projectileSpeed);
     }
 
     public void UpdateBuff(string weatherType)

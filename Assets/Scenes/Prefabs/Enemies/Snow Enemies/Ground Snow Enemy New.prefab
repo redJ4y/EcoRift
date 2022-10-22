@@ -71,7 +71,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7977492489572996693, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Name
-      value: Ground Snow Enemy New
+      value: Ground Snow Enemy New (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977492489572996693, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996712, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -93,6 +97,10 @@ PrefabInstance:
       propertyPath: enemyWeapon
       value: 
       objectReference: {fileID: 6958890066831099034, guid: f5ebd922824f4a440af9aedd99574578, type: 3}
+    - target: {fileID: 7977492489572996714, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
+      propertyPath: enemyTargetedWeapon
+      value: 
+      objectReference: {fileID: 6958890066831099034, guid: f5ebd922824f4a440af9aedd99574578, type: 3}
     - target: {fileID: 7977492489572996716, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -111,15 +119,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.891701
+      value: 7.1457176
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5401071
+      value: -1.1494694
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.086883366
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalRotation.w

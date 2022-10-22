@@ -155,7 +155,7 @@ public class Projectile : MonoBehaviour
         else if (gameObject.tag == "Tornado")
         {
             GameObject target = col.gameObject;
-            if (target.layer == 10) // if target is enemy
+            if (target.layer == 10 || target.layer == 9) // if target is enemy or player
             {
                 target.GetComponent<Rigidbody2D>().AddForce(target.transform.up*thrust, ForceMode2D.Impulse);
             }
