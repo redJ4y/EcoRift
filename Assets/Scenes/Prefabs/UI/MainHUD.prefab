@@ -4317,7 +4317,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 233.048, y: 241.184}
+  m_SizeDelta: {x: 305.3808, y: 319.5444}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6737163229685888558
 CanvasRenderer:
@@ -5614,7 +5614,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 56, y: -23}
+  m_AnchoredPosition: {x: 56, y: -71}
   m_SizeDelta: {x: 519.88306, y: 507.529}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &6737163230573683762
@@ -6146,6 +6146,8 @@ GameObject:
   - component: {fileID: 9161049616030685561}
   - component: {fileID: 9161049616030685562}
   - component: {fileID: 9161049616030685563}
+  - component: {fileID: 1839945472}
+  - component: {fileID: 2112403133}
   m_Layer: 5
   m_Name: JoyStick
   m_TagString: Untagged
@@ -6201,7 +6203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 813835b98ff3ac9488d1c4fb6298aa33, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2605358108538b47b8efc1e28382ebd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6227,6 +6229,44 @@ MonoBehaviour:
   dragMovementDistance: 70
   dragOffsetDistance: 100
   aimVector: {x: 0, y: 0}
+--- !u!114 &1839945472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9161049616030685565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74aa0f24359eefd4996e120da2318d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joySticks:
+  - {fileID: 21300000, guid: 813835b98ff3ac9488d1c4fb6298aa33, type: 3}
+  - {fileID: 21300000, guid: db69907ea0400514ea170389ffb7e86a, type: 3}
+  - {fileID: 21300000, guid: 38425fabe2e763e4799f47218234c9b2, type: 3}
+  - {fileID: 21300000, guid: 1303c471fffb0ce41b637202884fdd44, type: 3}
+  - {fileID: 21300000, guid: b2605358108538b47b8efc1e28382ebd, type: 3}
+  weatherState: {fileID: 0}
+--- !u!114 &2112403133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9161049616030685565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74aa0f24359eefd4996e120da2318d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joySticks:
+  - {fileID: 21300000, guid: 813835b98ff3ac9488d1c4fb6298aa33, type: 3}
+  - {fileID: 21300000, guid: db69907ea0400514ea170389ffb7e86a, type: 3}
+  - {fileID: 21300000, guid: 38425fabe2e763e4799f47218234c9b2, type: 3}
+  - {fileID: 21300000, guid: 1303c471fffb0ce41b637202884fdd44, type: 3}
+  - {fileID: 21300000, guid: b2605358108538b47b8efc1e28382ebd, type: 3}
+  weatherState: {fileID: 0}
 --- !u!1 &9161049616222026515
 GameObject:
   m_ObjectHideFlags: 0
@@ -6266,7 +6306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -98, y: 43}
+  m_AnchoredPosition: {x: -101, y: 359}
   m_SizeDelta: {x: 194.582, y: 191.279}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &9161049616222026526
