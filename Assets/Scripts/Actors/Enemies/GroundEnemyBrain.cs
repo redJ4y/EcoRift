@@ -49,7 +49,7 @@ public class GroundEnemyBrain : MonoBehaviour
     private int shotDelay = 0;
     private bool isBuffed;
     private float gravity;
-	private ProjectilePool projectilePool;
+    private ProjectilePool projectilePool;
 
     // Save common operations for performance:
     private float halfEnemyHeight;
@@ -131,12 +131,15 @@ public class GroundEnemyBrain : MonoBehaviour
 
     public void UpdateBuff(string weatherType)
     {
-        isBuffed = (weatherType == enemyType);
-        // Apply effects:
-        healthScript.buffHp(1.2f);
-        attackSpeed++;
-        attackRange++;
-        aggroDistance++;
+        if (weatherType == enemyType)
+        {
+            isBuffed = true;
+            // Apply effects:
+            healthScript.buffHp(1.2f);
+            attackSpeed++;
+            attackRange++;
+            aggroDistance++;
+        }
     }
 
     // Returns the preferred movement value (not scaled by movement speed)
@@ -215,7 +218,7 @@ public class GroundEnemyBrain : MonoBehaviour
     // Returns a less annoying movement value (now scaled by movement speed)
     private float SmoothMovement(float preferredMovement)
     {
-        float movementSpeedDebuffed = movementSpeed*controller.GetMovementDebuff(); // Subtracts slowed movement speed from controller
+        float movementSpeedDebuffed = movementSpeed * controller.GetMovementDebuff(); // Subtracts slowed movement speed from controller
         int currentMovementRaw = System.Math.Sign(currentMovement);
         if (currentMovementRaw != preferredMovement) // Check for direction change
         { // Apply smoothing to direction change...

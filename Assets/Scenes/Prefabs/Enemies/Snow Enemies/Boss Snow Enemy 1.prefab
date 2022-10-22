@@ -4913,6 +4913,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  hpRegenRate: 5
+  healthBarScript: {fileID: 0}
+  maxHp: 0
   hitParticles: {fileID: 1023821089956484125}
 --- !u!1 &4936980241372187841
 GameObject:
@@ -5185,7 +5188,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -5278,7 +5281,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  enemyType: Clear
+  enemyType: Snow
   movementSpeed: 7.5
   canJump: 1
   aggroDistance: 10

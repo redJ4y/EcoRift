@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class TeleportScript : MonoBehaviour
 {
+    [SerializeReference] private GetWeather weatherState;
     [SerializeReference] private GameObject pairedPortal;
-    [SerializeReference] private DataManager dataManager;
     [SerializeReference] private Animator crossFade;
     [SerializeField] private string currentLevel;
     private Vector3 teleportOffset;
     private Collider2D collider;
+    private bool collided;
 
     // Start is called before the first frame update
     void Start()
@@ -22,19 +23,29 @@ public class TeleportScript : MonoBehaviour
         {
             teleportOffset = new Vector3(1.0f, 0, 0);
         }
+        collided = false;
     }
 
     void OnCollisionEnter2D(Collision2D col)
+    {
+        if (!collided)
+        {
+            collided = true;
+            Teleport(col);
+        }
+    }
+
+    private void Teleport(Collision2D col)
     {
         GameObject obj = col.gameObject;
 
         if (obj.tag == "Player")
         {
-            UpdateLevelData();
-
+            obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             CharacterController2D controller = obj.GetComponent<CharacterController2D>();
             if (controller.currentlyTeleporting == false)
             {
+                UpdateLevelData();
                 controller.currentlyTeleporting = true;
                 teleportToMainMenu();
 
@@ -43,22 +54,22 @@ public class TeleportScript : MonoBehaviour
         }
     }
 
-
     private void UpdateLevelData()
     {
-        switch(currentLevel)
+        DataManager dataManager = DataManager.Instance;
+        switch (currentLevel)
         {
             case "sun":
-                dataManager.SunLevelComplete();
+                dataManager.SunLevelComplete(weatherState.getWeatherType());
                 break;
             case "rain":
-                dataManager.RainLevelComplete();
+                dataManager.RainLevelComplete(weatherState.getWeatherType());
                 break;
             case "storm":
-                dataManager.StormLevelComplete();
+                dataManager.StormLevelComplete(weatherState.getWeatherType());
                 break;
             case "snow":
-                dataManager.SnowLevelComplete();
+                dataManager.SnowLevelComplete(weatherState.getWeatherType());
                 break;
             default:
                 break;

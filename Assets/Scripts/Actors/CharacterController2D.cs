@@ -40,6 +40,7 @@ public class CharacterController2D : MonoBehaviour
 
     void Start()
     {
+        m_WhatIsGround += LayerMask.GetMask("Enemy");
         // add colours to dictionary
         colourReference = new Dictionary<string, Color32>();
         colourReference.Add("Red", new Color32(255, 200, 200, 255));

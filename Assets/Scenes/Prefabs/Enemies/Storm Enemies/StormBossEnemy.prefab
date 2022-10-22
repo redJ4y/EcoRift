@@ -292,6 +292,7 @@ MonoBehaviour:
   hp: 100
   hpRegenRate: 5
   healthBarScript: {fileID: 0}
+  maxHp: 0
   hitParticles: {fileID: 1798293709001538280}
 --- !u!1 &8919773742890785418
 GameObject:

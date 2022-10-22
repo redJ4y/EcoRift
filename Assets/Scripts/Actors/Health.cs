@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float hp;
     [SerializeField] private int hpRegenRate = 5;
     [SerializeField] private HealthBarScript healthBarScript;
-    private float maxHp;
+    public float maxHp;
 
     private float barWidth;
     private float startXPos;
@@ -224,7 +224,9 @@ public class Health : MonoBehaviour
 
     public void buffHp(float multiplier)
     {
+        float oldMaxHp = maxHp;
         maxHp *= multiplier;
+        hp += maxHp - oldMaxHp;
     }
 
     public void PrepareForTest()
