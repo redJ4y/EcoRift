@@ -5568,7 +5568,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5fbd4d3ad9fd34aa6820cacce495896e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 333635fa994604e4dac1f8a0dbeb1ffd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.141
   m_Pitch: 1
@@ -10685,6 +10685,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 2123262015}
+  dataManager: {fileID: 0}
+  currentLevel: 
 --- !u!70 &1047446590
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -24035,6 +24037,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pairedPortal: {fileID: 1047446588}
+  dataManager: {fileID: 0}
+  currentLevel: 
 --- !u!70 &2123262017
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
