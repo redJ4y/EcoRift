@@ -5244,6 +5244,10 @@ PrefabInstance:
       propertyPath: hpRegenRate
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3807157755351374352, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
+      propertyPath: healthBarScript
+      value: 
+      objectReference: {fileID: 1887935996}
     - target: {fileID: 3807157755524476062, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: joyStick
       value: 
@@ -5541,6 +5545,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1839945472, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+      propertyPath: weatherState
+      value: 
+      objectReference: {fileID: 1176291671}
     - target: {fileID: 824385670941183684, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
       propertyPath: staffScript
       value: 
@@ -18609,6 +18617,7 @@ MonoBehaviour:
   - {fileID: 4294643669078967044, guid: e85c6e02fda4a004b84664f435ad4d73, type: 3}
   - {fileID: -5365963968028550086, guid: e85c6e02fda4a004b84664f435ad4d73, type: 3}
   - {fileID: 8598293912659149021, guid: e85c6e02fda4a004b84664f435ad4d73, type: 3}
+  updateJoyStick: {fileID: 1839945472}
 --- !u!4 &1176291672
 Transform:
   m_ObjectHideFlags: 0
@@ -18782,7 +18791,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2222223, y: 1}
+    m_SensorSize: {x: 2.0068307, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -19212,6 +19221,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1095444792620742707, guid: d715fe29e5bf84709a3bbb2caa30c5dd, type: 3}
   m_PrefabInstance: {fileID: 1751041034}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1839945472 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1839945472, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 551129186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74aa0f24359eefd4996e120da2318d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1887935996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6737163230760215428, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 551129186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ef65fc1949c4fd787f92275e3176f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2010308900
 GameObject:
   m_ObjectHideFlags: 0
