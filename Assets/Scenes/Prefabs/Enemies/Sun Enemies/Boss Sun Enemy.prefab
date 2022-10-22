@@ -4938,7 +4938,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -5002,7 +5002,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 0
-  m_CrouchSpeed: 0
   m_MovementSmoothing: 0.05
   m_AirControl: 0
   m_WhatIsGround:
@@ -5010,13 +5009,9 @@ MonoBehaviour:
     m_Bits: 256
   m_GroundCheck: {fileID: 7310329012680368918}
   m_CeilingCheck: {fileID: 7310329013302348113}
-  m_CrouchDisableCollider: {fileID: 0}
   currentlyTeleporting: 0
   animator: {fileID: 7310329012665108448}
   OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7310329012665108453
@@ -5293,4 +5288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  hpRegenRate: 5
+  healthBarScript: {fileID: 0}
+  maxHp: 0
   hitParticles: {fileID: 4356510901144957010}

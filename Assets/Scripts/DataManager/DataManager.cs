@@ -17,9 +17,22 @@ using UnityEngine;
 */
 public class DataManager : MonoBehaviour
 {
-    [SerializeReference] private GameObject textObj; // For testing purposes
-    [SerializeReference] private GetWeather weatherState;
+    public static DataManager Instance { get; private set; }
+
+    [SerializeReference] private CompletionEmblems menuEmblemsScript;
     private string[] weatherNames;
+
+    public void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     public void SetWeatherNames(string[] weatherNames) // Must be called before using GetUnlockedTiers
     {
@@ -168,30 +181,30 @@ public class DataManager : MonoBehaviour
         return emblems;
     }
 
-    public void SunLevelComplete()
+    public void SunLevelComplete(string currentWeather)
     {
-        PlayerPrefs.SetInt("sun" + weatherState.getWeatherType(), 1);
+        PlayerPrefs.SetInt("sun" + currentWeather, 1);
         IncreaseSunProg();
         PlayerPrefs.Save();
     }
 
-    public void SnowLevelComplete()
+    public void SnowLevelComplete(string currentWeather)
     {
-        PlayerPrefs.SetInt("snow" + weatherState.getWeatherType(), 1);
+        PlayerPrefs.SetInt("snow" + currentWeather, 1);
         IncreaseSnowProg();
         PlayerPrefs.Save();
     }
 
-    public void StormLevelComplete()
+    public void StormLevelComplete(string currentWeather)
     {
-        PlayerPrefs.SetInt("storm" + weatherState.getWeatherType(), 1);
+        PlayerPrefs.SetInt("storm" + currentWeather, 1);
         IncreaseStormProg();
         PlayerPrefs.Save();
     }
 
-    public void RainLevelComplete()
+    public void RainLevelComplete(string currentWeather)
     {
-        PlayerPrefs.SetInt("rain" + weatherState.getWeatherType(), 1);
+        PlayerPrefs.SetInt("rain" + currentWeather, 1);
         IncreaseRainProg();
         PlayerPrefs.Save();
     }
@@ -238,13 +251,5 @@ public class DataManager : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
-    }
-
-    // Used for updating on screen debugging text:
-    public void Alert()
-    {
-        TMP_Text text = textObj.GetComponent<TMP_Text>();
-        text.text = GetSunProg().ToString();
-        Debug.Log(GetSunProg().ToString());
     }
 }

@@ -129,6 +129,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7977492489572996716, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -183,7 +187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996718, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Mass
-      value: 0.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996719, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Controller

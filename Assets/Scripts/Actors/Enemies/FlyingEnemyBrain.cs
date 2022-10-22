@@ -127,12 +127,15 @@ public class FlyingEnemyBrain : MonoBehaviour
 
     public void UpdateBuff(string weatherType)
     {
-        isBuffed = (weatherType == enemyType);
-        // Apply effects:
-        healthScript.buffHp(1.2f);
-        attackSpeed++;
-        attackRange++;
-        aggroDistance++;
+        if (weatherType == enemyType)
+        {
+            isBuffed = true;
+            // Apply effects:
+            healthScript.buffHp(1.2f);
+            attackSpeed++;
+            attackRange++;
+            aggroDistance++;
+        }
     }
 
     private Vector2 PredictTrajectory(Vector2 playerPosition, Vector2 playerVelocity, Vector2 projectileLaunchPos)

@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class SpinTier : MonoBehaviour
 {
-    [SerializeReference] private DataManager dataManager;
-
     [SerializeField] private float animationSpeed;
 
     [SerializeField] private Color32 selectedColour;
@@ -28,10 +26,10 @@ public class SpinTier : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dataManager.SetWeatherNames(weatherNames);
         InitialiseDictionaries();
 
         // for testing purposes
+        /*
         UnlockTier("Water", 2);
         UnlockTier("Water", 3);
         UnlockTier("Snow", 2);
@@ -40,6 +38,7 @@ public class SpinTier : MonoBehaviour
         UnlockTier("Lightning", 3);
         UnlockTier("Sun", 3);
         UnlockTier("Sun", 2);
+        */
 
         if (currentWeather != "None")
             UpdateLockImages();
@@ -61,6 +60,8 @@ public class SpinTier : MonoBehaviour
             tierUnlocked.Add(name, newDict);
         } */
         // Get the saved progress from data manager:
+        DataManager dataManager = DataManager.Instance;
+        dataManager.SetWeatherNames(weatherNames);
         tierUnlocked = dataManager.GetUnlockedTiers();
     }
 
