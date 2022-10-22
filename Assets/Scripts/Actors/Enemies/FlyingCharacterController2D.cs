@@ -72,10 +72,13 @@ public class FlyingCharacterController2D : MonoBehaviour
 
     private IEnumerator Thaw()
     {
-        RigidbodyConstraints2D currentConstraints = m_Rigidbody2D.constraints;
-        m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+        m_Rigidbody2D.gravityScale = 10f; // make them fall
+        //RigidbodyConstraints2D currentConstraints = m_Rigidbody2D.constraints;
+        //m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
         yield return new WaitForSeconds(5);
-        m_Rigidbody2D.constraints = currentConstraints;
+        //m_Rigidbody2D.constraints = currentConstraints;
+        m_Rigidbody2D.gravityScale = .02f;
+
         frozen = false;
     }
 

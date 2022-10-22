@@ -124,7 +124,7 @@ MonoBehaviour:
   projectileID: 7
   element: Snow
   tier: 3
-  damage: 5
+  damage: 10
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
@@ -148,7 +148,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.35, y: -0.18}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 1}

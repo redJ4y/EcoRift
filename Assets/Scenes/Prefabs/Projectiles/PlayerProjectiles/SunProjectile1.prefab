@@ -122,9 +122,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2, y: 0}
+  m_Offset: {x: 0.45281917, y: -0.0914039}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.085834205
 --- !u!114 &6512161085064558953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,11 +140,11 @@ MonoBehaviour:
   projectileID: 2
   element: Sun
   tier: 1
-  damage: 10
+  damage: 3
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
-  fireRate: 50
+  fireRate: 70
   bulletSpeed: 20
   lifeSpan: 1.5
   thrust: 0
