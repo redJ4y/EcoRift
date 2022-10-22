@@ -7,6 +7,7 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] private GameObject playerWeapon;
     [SerializeField] private GameObject player;
     [SerializeField] private AimingJoyStick joyStick;
+    [SerializeField] private Vector2 defaultAimVector;
 
     [SerializeReference] private InfoScript infoScript;
     [SerializeReference] private GameObject[] weapons;
@@ -23,24 +24,23 @@ public class ProjectileHandler : MonoBehaviour
 
     public void OnShoot()
     {
-        if (playerWeapon != null && currentLaserProjectile == null)
+        if (playerWeapon && !currentLaserProjectile)
         {
             CreateBullet();
-        }
-        else if (playerWeapon == null)
-        {
-            AlertGemNotSelected();
         }
     }
 
     private void CreateBullet()
     {
-        pool.Shoot(playerWeapon, bulletStart.transform, joyStick.aimVector);
+        Vector2 newVector = joyStick.aimVector;
+
+        if (newVector.magnitude == 0f)
+            newVector = defaultAimVector;
+        pool.Shoot(playerWeapon, bulletStart.transform, newVector);
     }
 
-    private void AlertGemNotSelected()
+    public void AlertGemNotSelected()
     {
-        Debug.Log("Weapon not selected");
         infoScript.Alert("You need to select a gem first!");
     }
 
@@ -54,23 +54,6 @@ public class ProjectileHandler : MonoBehaviour
             }
         }
     }
-
-    /*
-    void FixedUpdate()
-    {
-        if (currentLaserProjectile)
-        {
-            if (joyStick.isShooting)
-            {
-                currentLaserProjectile.GetComponent<LaserProjectile>().UpdateLaser(bulletStart.transform.position, joyStick.aimVector);
-            }
-            else
-            {
-                Destroy(currentLaserProjectile);
-                currentLaserProjectile = null;
-            }
-        }
-    }*/
 
     public GameObject GetWeapon()
     {

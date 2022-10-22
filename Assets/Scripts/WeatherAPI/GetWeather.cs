@@ -6,6 +6,7 @@ using TMPro;
 
 public class GetWeather : MonoBehaviour
 {
+    [SerializeReference] private InfoScript infoScript; 
     [SerializeField] private string currentWeather;   // String representation of current weather
     [SerializeField] private GameObject tileGrid;     // The game's tile grid to be altered with weather
     [SerializeField] private Sprite[] snowSprites;    // Snow tile sprites for snowy conditions
@@ -91,6 +92,8 @@ public class GetWeather : MonoBehaviour
 
     private void updateWeather()
     {
+        infoScript.Alert("Current weather: " + currentWeather);
+
         // Buff enemies after weather is updated:
         foreach (FlyingEnemyBrain brain in FindObjectsOfType<FlyingEnemyBrain>())
         {

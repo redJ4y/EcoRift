@@ -7,14 +7,19 @@ public class LaserProjectile : MonoBehaviour
     private Vector2 aimVector; 
     private LineRenderer line;
     private Ray2D ray;
+    private List<GameObject> hitEnemies;
     [SerializeField] float bulletForce;
     [SerializeField] float maxLength;
+    [SerializeField] int lineLength;
+    [SerializeField] float damage;
+    [SerializeField] float maxChainDistance;
 
     // Start is called before the first frame update
     public void Awake()
     {
+        hitEnemies = new List<GameObject>();
         line = GetComponent<LineRenderer>();
-        line.SetWidth(.1f, .1f);
+        line.SetWidth(.07f, .07f);
     }
 
     public void UpdateLaser(Vector3 startPos, Vector2 aimVector)
@@ -25,38 +30,79 @@ public class LaserProjectile : MonoBehaviour
 
         if (hit.collider != null)
         {
-            line.SetPosition(1, hit.point);
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            SetAllPoints(1, hit.point);
             if (hit.transform.gameObject.layer == 10)
             {
-                //hit.rigidbody.AddForceAtPosition(aimVector * bulletForce, hit.point); Not needed for lightning
-                Transform nextEnemy = GetClosestEnemy(hit.point, GameObject.FindGameObjectsWithTag("Enemy"));
+                hit.transform.Find("HealthBar").GetComponent<Health>().TakeDamage(damage);
+                hitEnemies.Add(hit.transform.gameObject);
+                Transform nextEnemy = GetClosestEnemy(hit.point, enemies);
+
                 if (nextEnemy)
                 {
-                    line.SetPosition(2, nextEnemy.position);
+                    nextEnemy.Find("HealthBar").GetComponent<Health>().TakeDamage(damage);
+                    hitEnemies.Add(nextEnemy.gameObject);
+                    SetAllPoints(2, nextEnemy.position);
+                    Transform nextEnemy2 = GetClosestEnemy(nextEnemy.position,enemies);
+
+                    if (nextEnemy2)
+                    {
+                        nextEnemy2.Find("HealthBar").GetComponent<Health>().TakeDamage(damage);
+                        hitEnemies.Add(nextEnemy2.gameObject);
+                        SetAllPoints(3, nextEnemy2.position);
+                        Transform nextEnemy3 = GetClosestEnemy(nextEnemy2.position, enemies);
+
+                        if (nextEnemy3)
+                        {
+                            nextEnemy2.Find("HealthBar").GetComponent<Health>().TakeDamage(damage);
+                            hitEnemies.Add(nextEnemy3.gameObject);
+                            SetAllPoints(4, nextEnemy3.position);
+                        }
+                    }
                 }
             }
         }
         else
         {
-            line.SetPosition(1, ray.GetPoint(maxLength));
+            SetAllPoints(1, ray.GetPoint(maxLength));
+        }
+    }
+
+    private void SetAllPoints(int startIndex, Vector3 newPos)
+    {
+        for (int i = startIndex; i < lineLength; i++)
+        {
+            line.SetPosition(i, newPos);
         }
     }
 
     private Transform GetClosestEnemy(Vector3 pos, GameObject[] enemies)
     {
         Transform bestTarget = null;
-        float closestDistanceSqr = Mathf.Infinity;
+        float closestDistanceSqr = maxChainDistance;
 
         foreach (GameObject potentialTarget in enemies)
         {
             Vector3 directionToTarget = potentialTarget.transform.position - pos;
             float dSqrToTarget = directionToTarget.sqrMagnitude;
-            if (dSqrToTarget < closestDistanceSqr)
+            if (dSqrToTarget < closestDistanceSqr) 
             {
-                closestDistanceSqr = dSqrToTarget;
-                bestTarget = potentialTarget.transform;
+                bool sameAsHitEnemy = false;
+                foreach (GameObject hitEnemy in hitEnemies)
+                {
+                    if (hitEnemy == potentialTarget)
+                        sameAsHitEnemy = true;
+                }
+
+                if (!sameAsHitEnemy)
+                {
+                    closestDistanceSqr = dSqrToTarget;
+                    bestTarget = potentialTarget.transform;
+                }
             }
         }
+
+        hitEnemies.Clear();
 
         return bestTarget;
     }
