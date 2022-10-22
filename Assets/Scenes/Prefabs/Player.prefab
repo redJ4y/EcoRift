@@ -365,7 +365,6 @@ GameObject:
   - component: {fileID: 4634393410713346842}
   - component: {fileID: 4634393410713347046}
   - component: {fileID: 4634393410713347041}
-  - component: {fileID: 4634393410713347040}
   - component: {fileID: 4634393410713347045}
   - component: {fileID: 4634393410713347044}
   - component: {fileID: 3807157755524476062}
@@ -505,27 +504,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.021069657, y: 0.00000006038971}
   m_Size: {x: 0.64884233, y: 0.92124635}
   m_Direction: 0
---- !u!114 &4634393410713347040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4634393410713347042}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3144ef4ba4d2c9546a21f28d53c3616f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 4634393410713347046}
-  isFacingRight: 1
-  speed: 200
-  jumpForce: 5
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  groundCheck: {fileID: 4634393411582981508}
-  jumpsound: {fileID: 3992502376964710554}
 --- !u!114 &4634393410713347045
 MonoBehaviour:
   m_ObjectHideFlags: 0

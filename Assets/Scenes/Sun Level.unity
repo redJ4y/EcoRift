@@ -5555,6 +5555,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d116705d579b81d47b85251b7520a45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &640613114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1839945472, guid: 852c95dde9e7cb24d84a5fb81b6d495b, type: 3}
+  m_PrefabInstance: {fileID: 1567869029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74aa0f24359eefd4996e120da2318d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &647720527
 GameObject:
   m_ObjectHideFlags: 0
@@ -18211,7 +18222,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2222223, y: 1}
+    m_SensorSize: {x: 2.0068307, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -23849,6 +23860,7 @@ MonoBehaviour:
   - {fileID: 4294643669078967044, guid: e85c6e02fda4a004b84664f435ad4d73, type: 3}
   - {fileID: -5365963968028550086, guid: e85c6e02fda4a004b84664f435ad4d73, type: 3}
   - {fileID: 8598293912659149021, guid: e85c6e02fda4a004b84664f435ad4d73, type: 3}
+  updateJoyStick: {fileID: 640613114}
 --- !u!1001 &1811215220
 PrefabInstance:
   m_ObjectHideFlags: 0
