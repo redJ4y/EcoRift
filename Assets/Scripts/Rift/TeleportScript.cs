@@ -28,7 +28,7 @@ public class TeleportScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (!collided)
+        if (!collided && col.gameObject.tag == "Player")
         {
             collided = true;
             Teleport(col);
@@ -39,18 +39,15 @@ public class TeleportScript : MonoBehaviour
     {
         GameObject obj = col.gameObject;
 
-        if (obj.tag == "Player")
+        obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        CharacterController2D controller = obj.GetComponent<CharacterController2D>();
+        if (controller.currentlyTeleporting == false)
         {
-            obj.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-            CharacterController2D controller = obj.GetComponent<CharacterController2D>();
-            if (controller.currentlyTeleporting == false)
-            {
-                UpdateLevelData();
-                controller.currentlyTeleporting = true;
-                teleportToMainMenu();
+            UpdateLevelData();
+            controller.currentlyTeleporting = true;
+            teleportToMainMenu();
 
-                StartCoroutine(TeleportDelay(controller));
-            }
+            StartCoroutine(TeleportDelay(controller));
         }
     }
 
