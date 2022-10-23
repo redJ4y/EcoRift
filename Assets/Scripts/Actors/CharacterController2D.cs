@@ -20,6 +20,7 @@ public class CharacterController2D : MonoBehaviour
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
     private float moveInput = 0; // Addition
+    private Vector2 startPosition;
 
     [Header("Events")]
     [Space]
@@ -40,6 +41,7 @@ public class CharacterController2D : MonoBehaviour
 
     void Start()
     {
+        startPosition = gameObject.transform.localPosition;
         m_WhatIsGround += LayerMask.GetMask("Enemy");
         // add colours to dictionary
         colourReference = new Dictionary<string, Color32>();
@@ -99,20 +101,20 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 
-       
-            if (transform.localPosition.y < -20.0f) // -20.0f is arbitrary
+
+        if (transform.localPosition.y < -20.0f) // -20.0f is arbitrary
+        {
+            if (gameObject.tag.Equals("Player"))
             {
-                if (gameObject.tag.Equals("Player"))
-                {
-                    transform.localPosition = new Vector3(0, 0, 0); // (0, 0, 0) is spawn (can be changed)
-                }
-                else if(gameObject.tag.Equals("Enemy"))
-                {
-                    Destroy(gameObject);
-                }
+                transform.localPosition = startPosition;
             }
-        
-       
+            else if (gameObject.tag.Equals("Enemy"))
+            {
+                Destroy(gameObject);
+            }
+        }
+
+
 
         // Check if player is falling through void, if so teleport to spawn
 
