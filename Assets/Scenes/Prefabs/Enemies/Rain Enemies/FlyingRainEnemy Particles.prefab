@@ -99,7 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615f5a266f199514d9cd0892145f297a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 20
+  hpRegenRate: 5
+  healthBarScript: {fileID: 0}
+  maxHp: 0
   hitParticles: {fileID: 6980001234406412910}
 --- !u!1 &279300453820445196
 GameObject:
@@ -358,22 +361,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1095444792620742708}
-  playerController: {fileID: 0}
   enemyWeapon: {fileID: 6958890066831099034, guid: 2ef832ee0b4aed746a285bcb6b372b48, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
   enemyType: Rain
   movementSpeed: 30
-  targetHeight: 5
-  minimumHeight: 3
-  minimumYLevel: 5
+  targetHeight: 3
+  minimumHeight: 2
+  minimumYLevel: 2
   aggroDistance: 10
   keepAggro: 0
   patrolDistance: 5
   attackRange: 10
-  attackSpeed: 1
+  attackSpeed: 5
   projectileSpeed: 20
+  shootRadius: 0.5
   canLeadShots: 1
 --- !u!1001 &8627886886165661808
 PrefabInstance:
