@@ -131,8 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  hpRegenRate: 10
+  hpRegenRate: 5
   healthBarScript: {fileID: 0}
+  maxHp: 0
   hitParticles: {fileID: 2572723635491087378}
 --- !u!1 &3807157755706595439
 GameObject:
