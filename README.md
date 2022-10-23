@@ -34,7 +34,7 @@ Multiple enemies of different types, flying and ground.\
 ![Enemies](Images/enemies.png)\
 Player can shoot in any direction.\
 ![Shooting](Images/shooting.png)\
-Player can select and change from 4 different elemental weapons.\
+Player can select from multiple elemental weapons.\
 ![Sunbullet](Images/sunbullet.png)![Snowbullet](Images/snowbullet.png)![Stormbullet](Images/stormbullet.png)![Waterbullet](Images/waterbullet.png)\
 Weather dynamically controls the flow and feel of the game.\
 ![Weather](Images/weather.png)\
