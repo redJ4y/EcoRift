@@ -33,6 +33,7 @@ Project is created with :
 - Multiple enemies of different types, flying and ground.
  ![Enemies](Images/enemies.png)
 - Player can shoot in any direction.
+ ![Shooting](Images/shooting.png)
 - Player can select and change from 4 different elemental weapons.
 - Weather dynamically controls the flow and feel of the game.
 - Player can select from 4 different levels.
