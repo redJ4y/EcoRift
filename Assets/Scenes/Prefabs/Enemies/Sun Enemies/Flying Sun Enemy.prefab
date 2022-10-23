@@ -100,6 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  hpRegenRate: 5
+  healthBarScript: {fileID: 0}
+  maxHp: 0
   hitParticles: {fileID: 8272800020882129886}
 --- !u!1 &1293473887882945468
 GameObject:
@@ -202,7 +205,7 @@ GameObject:
   - component: {fileID: 2098920219063282053}
   m_Layer: 10
   m_Name: Flying Sun Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,13 +369,13 @@ MonoBehaviour:
   movementSpeed: 35
   targetHeight: 6
   minimumHeight: 4
-  minimumYLevel: -5
+  minimumYLevel: -10
   aggroDistance: 15
   keepAggro: 0
   patrolDistance: 5
   attackRange: 10
-  attackSpeed: 1
-  projectileSpeed: 15
+  attackSpeed: 15
+  projectileSpeed: 20
   shootRadius: 0.5
   canLeadShots: 1
 --- !u!1 &8272800020882129883
