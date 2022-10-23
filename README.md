@@ -37,4 +37,6 @@ Project is created with :
 - Player can select and change from 4 different elemental weapons.
 - ![Sunbullet](Images/sunbullet.png)![Snowbullet](Images/snowbullet.png)![Stormbullet](Images/stormbullet.png)![Waterbullet](Images/waterbullet.png)
 - Weather dynamically controls the flow and feel of the game.
+  ![Weather](Images/weather.png)
 - Player can select from 4 different levels.
+  ![Levels](Images/levels.png)
