@@ -6,16 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelectScreen : MonoBehaviour
 {
+    [SerializeField] GameObject mainMenuCanvas;
     [SerializeField] GameObject levelSelectCanvas;
 
     public void OpenLevelSelectScreen()
     {
+        mainMenuCanvas.SetActive(false);
         levelSelectCanvas.SetActive(true);
+        levelSelectCanvas.GetComponent<Canvas>().sortingOrder = 5;
+
     }
 
     public void CloseLevelSelectScreen()
     {
+        mainMenuCanvas.SetActive(true);
         levelSelectCanvas.SetActive(false);
+        mainMenuCanvas.GetComponent<Canvas>().sortingOrder = 5;
     }
 
     public void LoadSnowLevel() {
