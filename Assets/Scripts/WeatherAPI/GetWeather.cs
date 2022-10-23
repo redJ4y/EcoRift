@@ -6,7 +6,7 @@ using TMPro;
 
 public class GetWeather : MonoBehaviour
 {
-    [SerializeReference] private InfoScript infoScript; 
+    [SerializeReference] private InfoScript infoScript;
     [SerializeField] private string currentWeather;   // String representation of current weather
     [SerializeField] private GameObject tileGrid;     // The game's tile grid to be altered with weather
     [SerializeField] private Sprite[] snowSprites;    // Snow tile sprites for snowy conditions
@@ -82,6 +82,7 @@ public class GetWeather : MonoBehaviour
     public void fetchAPIData(Weather[] weatherList)
     {
         // json object is a list for some reason so parse through that
+        
         foreach (Weather w in weatherList)
         {
             currentWeather = w.main;

@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 9066088410662718609}
   - component: {fileID: 5510983642888593106}
   - component: {fileID: -120871672431923471}
-  - component: {fileID: 4221439398019739133}
   - component: {fileID: 6512161085064558953}
-  - component: {fileID: 8935806764608266145}
+  - component: {fileID: 1950019893933864428}
+  - component: {fileID: 4021923401150449357}
   m_Layer: 12
-  m_Name: EnemySunProjectile 1
+  m_Name: EnemySnowProjectile2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1893480078, guid: 46e7167419c464e47a67a5152f4fe184, type: 3}
+  m_Sprite: {fileID: -1124487995, guid: 46e7167419c464e47a67a5152f4fe184, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.53333336, y: 0.16666667}
+  m_Size: {x: 0.6979167, y: 0.36666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -109,22 +109,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &4221439398019739133
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6958890066831099034}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.07, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.25
 --- !u!114 &6512161085064558953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,21 +121,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9c87ce40b70e24c9c02b7947741f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileID: 52
-  element: 
-  tier: 0
+  projectileID: 56
+  element: Snow
+  tier: 3
   damage: 10
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
   fireRate: 10
-  bulletSpeed: 0
-  lifeSpan: 1.5
+  bulletSpeed: 4.4
+  lifeSpan: 3
   thrust: 0
   rotationSpeed: 1000
   focusDistance: 5
   freezeObject: {fileID: 0}
---- !u!82 &8935806764608266145
+--- !u!60 &1950019893933864428
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958890066831099034}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.35, y: -0.18}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 1}
+    oldSize: {x: 0.6979167, y: 0.36666667}
+    newSize: {x: 0.6979167, y: 0.36666667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.35244212, y: -0.0057381648}
+      - {x: 0.17550264, y: -0.17496403}
+      - {x: 0.027509864, y: -0.18293247}
+      - {x: -0.14306761, y: 0.0020025177}
+      - {x: 0.025068698, y: 0.17785574}
+      - {x: 0.1814563, y: 0.1830549}
+--- !u!82 &4021923401150449357
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,9 +176,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3049ca61ce67b4d1c9cda73b5b0b91cc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e1c16e7bdf5ff47fa9d9273ec61df970, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.257
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
