@@ -126,7 +126,7 @@ MonoBehaviour:
   isRotatable: 1
   fireRate: 100
   bulletSpeed: 10
-  lifeSpan: 1
+  lifeSpan: 3
   thrust: 0
   rotationSpeed: 1000
   focusDistance: 5

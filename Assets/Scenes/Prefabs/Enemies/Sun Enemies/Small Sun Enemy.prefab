@@ -4999,6 +4999,7 @@ MonoBehaviour:
   hp: 100
   hpRegenRate: 5
   healthBarScript: {fileID: 0}
+  maxHp: 0
   hitParticles: {fileID: 2934831291540522788}
 --- !u!1 &8195552513483324960
 GameObject:
@@ -5276,7 +5277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 8195552514184523922}
-  enemyWeapon: {fileID: 6958890066831099034, guid: 30620ca3d18a940348eeaa65016fcb0d, type: 3}
+  enemyTargetedWeapon: {fileID: 0}
+  enemySpecialWeapon: {fileID: 0}
+  enemyDirectionalWeapon: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -5289,5 +5292,8 @@ MonoBehaviour:
   patrolDistance: 2
   retreatHealth: 20
   attackRange: 10
-  attackSpeed: 1
-  projectileSpeed: 5
+  attackSpeed: 20
+  projectileSpeed: 15
+  shootUp: 0
+  shootSideways: 0
+  shootDiagonally: 0
