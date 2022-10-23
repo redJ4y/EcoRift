@@ -18729,7 +18729,7 @@ PrefabInstance:
     - target: {fileID: 6283570204787516330, guid: 9410de619482a134f8f92ec0bce7628b, type: 3}
       propertyPath: enemyDirectionalWeapon
       value: 
-      objectReference: {fileID: 6958890066831099034, guid: 4cbff2fceb5a1a74b8270200ddb225ac, type: 3}
+      objectReference: {fileID: 6958890066831099034, guid: 7dd1cdef56b7ae647881b479837d6582, type: 3}
     - target: {fileID: 6283570204787516333, guid: 9410de619482a134f8f92ec0bce7628b, type: 3}
       propertyPath: m_RootOrder
       value: 6
