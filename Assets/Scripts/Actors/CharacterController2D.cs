@@ -99,11 +99,22 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 
+       
+            if (transform.localPosition.y < -20.0f) // -20.0f is arbitrary
+            {
+                if (gameObject.tag.Equals("Player"))
+                {
+                    transform.localPosition = new Vector3(0, 0, 0); // (0, 0, 0) is spawn (can be changed)
+                }
+                else if(gameObject.tag.Equals("Enemy"))
+                {
+                    Destroy(gameObject);
+                }
+            }
+        
+       
+
         // Check if player is falling through void, if so teleport to spawn
-        if (transform.localPosition.y < -20.0f) // -20.0f is arbitrary
-        {
-            transform.localPosition = new Vector3(0, 0, 0); // (0, 0, 0) is spawn (can be changed)
-        }
 
     }
 

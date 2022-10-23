@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8582433180453949619}
   m_Layer: 10
   m_Name: FlyingStormEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingOrder: 3
   m_Sprite: {fileID: -767620935, guid: ffeb737e9ce046b4f839f6295a374cfc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.96, y: 0.52}
@@ -292,6 +292,7 @@ MonoBehaviour:
   hp: 100
   hpRegenRate: 5
   healthBarScript: {fileID: 0}
+  maxHp: 0
   hitParticles: {fileID: 1798293709001538280}
 --- !u!1 &8919773742890785418
 GameObject:
