@@ -165,9 +165,9 @@ public class GroundEnemyBrain : MonoBehaviour
             if ((250 - attackSpeed) - specialShotDelay < 0 && Random.value > 0.9f) // try shoot special
             {
                 if (enemySpecialWeapon.tag == "Tornado")
-                    projectilePool.Shoot(enemySpecialWeapon, transform, toPlayer.normalized / 2f, 0f); // sorry for not using Shoot() jared
+                    projectilePool.Shoot(enemySpecialWeapon, shootStartPosition.transform, toPlayer.normalized / 2f, 0f); // sorry for not using Shoot() jared
                 else
-                    projectilePool.Shoot(enemyTargetedWeapon, transform, toPlayer, projectileSpeed);
+                    projectilePool.Shoot(enemyTargetedWeapon, shootStartPosition.transform, toPlayer, projectileSpeed);
 
                 specialShotDelay = 0;
             }
