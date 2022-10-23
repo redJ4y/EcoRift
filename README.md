@@ -35,6 +35,6 @@ Project is created with :
 - Player can shoot in any direction.
  ![Shooting](Images/shooting.png)
 - Player can select and change from 4 different elemental weapons.
--![Sunbullet](Images/sunbullet.png) ![Snowbullet](Images/snowbullet.png) ![Stormbullet](Images/stormbullet.png) ![Waterbullet](Images/waterbullet.png)
+- ![Sunbullet](Images/sunbullet.png)![Snowbullet](Images/snowbullet.png)![Stormbullet](Images/stormbullet.png)![Waterbullet](Images/waterbullet.png)
 - Weather dynamically controls the flow and feel of the game.
 - Player can select from 4 different levels.
