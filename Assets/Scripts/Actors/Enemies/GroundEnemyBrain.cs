@@ -110,11 +110,11 @@ public class GroundEnemyBrain : MonoBehaviour
         Vector3 playerPos = player.transform.position;
         toPlayer = playerPos - myPos;
         // Only shoot when the shotDelay has exceeded the attackSpeed (inverted)
-        if ((200 - attackSpeed) - shotDelay < 0 && Random.value > 0.9f)
+        if (enemyTargetedWeapon != null && (200 - attackSpeed) - shotDelay < 0 && Random.value > 0.9f)
         {
             if (toPlayer.magnitude < attackRange && Mathf.Abs(playerPos.y - myPos.y) < 2)
             { // Player is within range at a similar y-value...
-                Shoot();
+                projectilePool.Shoot(enemyTargetedWeapon, transform, toPlayer, projectileSpeed);
                 // Make enemy face in the direction of shot:
                 if (myPos.x < playerPos.x)
                 {
@@ -133,14 +133,14 @@ public class GroundEnemyBrain : MonoBehaviour
             shotDelay++;
         }
 
-        if (shootUp || shootDiagonally || shootSideways)
+        if (enemyDirectionalWeapon != null && (shootUp || shootDiagonally || shootSideways))
         {
             directionalShotDelay++;
-            if ((250 - (attackSpeed*2)) - directionalShotDelay < 0 && Random.value > 0.9f) // try shoot directional
+            if ((250 - (attackSpeed * 2)) - directionalShotDelay < 0 && Random.value > 0.9f) // try shoot directional
             {
                 if (shootUp)
                 {
-                    projectilePool.Shoot(enemyDirectionalWeapon, transform, Vector2.up, projectileSpeed*2); // sorry for not using Shoot() jared
+                    projectilePool.Shoot(enemyDirectionalWeapon, transform, Vector2.up, projectileSpeed * 2); // sorry for not using Shoot() jared
                 }
                 if (shootDiagonally)
                 {
@@ -156,20 +156,15 @@ public class GroundEnemyBrain : MonoBehaviour
             }
         }
 
-        if (enemySpecialWeapon)
+        if (enemySpecialWeapon != null)
         {
             specialShotDelay++;
             if ((250 - attackSpeed) - specialShotDelay < 0 && Random.value > 0.9f) // try shoot special
             {
-                projectilePool.Shoot(enemySpecialWeapon, transform, toPlayer.normalized/2f, 0f); // sorry for not using Shoot() jared
+                projectilePool.Shoot(enemySpecialWeapon, transform, toPlayer.normalized / 2f, 0f); // sorry for not using Shoot() jared
                 specialShotDelay = 0;
             }
         }
-    }
-
-    private void Shoot()
-    {
-        projectilePool.Shoot(enemyTargetedWeapon, transform, toPlayer, projectileSpeed);
     }
 
     public void UpdateBuff(string weatherType)
@@ -188,6 +183,9 @@ public class GroundEnemyBrain : MonoBehaviour
     // Returns the preferred movement value (not scaled by movement speed)
     private float GetPreferredMovement()
     {
+        if (currentlyLeaping) // Don't stop forward movement when leaping
+            return System.Math.Sign(currentMovement);
+
         Vector2 myPos = gameObject.transform.position;
         Vector2 playerPos = player.transform.position;
         float distance = Mathf.Sqrt(Mathf.Pow(myPos.y - playerPos.y, 2) + Mathf.Pow(myPos.x - playerPos.x, 2));
@@ -198,7 +196,7 @@ public class GroundEnemyBrain : MonoBehaviour
             patrolling = false;
             if (keepAggro)
                 permanentAggro = true; // Lock in aggro if keepAggro is enabled
-            // Determine movement direction (towards player):
+                                       // Determine movement direction (towards player):
             if (myPos.x < playerPos.x)
             {
                 preferredMovement = 1;
@@ -263,6 +261,10 @@ public class GroundEnemyBrain : MonoBehaviour
     {
         float movementSpeedDebuffed = movementSpeed * controller.GetMovementDebuff(); // Subtracts slowed movement speed from controller
         int currentMovementRaw = System.Math.Sign(currentMovement);
+
+        if (currentlyLeaping) // Don't stop forward movement when leaping
+            return currentMovementRaw * movementSpeedDebuffed;
+
         if (currentMovementRaw != preferredMovement) // Check for direction change
         { // Apply smoothing to direction change...
             if (timeSinceDirectionChange > 0.5f && Random.value < timeSinceDirectionChange / 10.0f) // Do not always switch directions immediately (increase chance as time passes)

@@ -4831,7 +4831,7 @@ GameObject:
   - component: {fileID: 7310329012665108453}
   m_Layer: 10
   m_Name: Boss Sun Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5027,7 +5027,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 7310329012665108452}
-  enemyWeapon: {fileID: 6958890066831099034, guid: 30620ca3d18a940348eeaa65016fcb0d, type: 3}
+  enemyTargetedWeapon: {fileID: 0}
+  enemySpecialWeapon: {fileID: 0}
+  enemyDirectionalWeapon: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -5040,8 +5042,11 @@ MonoBehaviour:
   patrolDistance: 3
   retreatHealth: 0
   attackRange: 20
-  attackSpeed: 1
-  projectileSpeed: 5
+  attackSpeed: 100
+  projectileSpeed: 20
+  shootUp: 0
+  shootSideways: 0
+  shootDiagonally: 0
 --- !u!1 &7310329012680368919
 GameObject:
   m_ObjectHideFlags: 0
@@ -5287,7 +5292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615f5a266f199514d9cd0892145f297a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 500
   hpRegenRate: 5
   healthBarScript: {fileID: 0}
   maxHp: 0
