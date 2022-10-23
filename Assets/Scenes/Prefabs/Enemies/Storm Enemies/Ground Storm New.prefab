@@ -71,7 +71,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7977492489572996693, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Name
-      value: Ground Storm New
+      value: Ground Storm New (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977492489572996693, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996712, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -101,21 +105,25 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7977492489572996716, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.525983
+      value: 205.36234
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5034833
+      value: 1.1688026
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.6300987
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalRotation.w
