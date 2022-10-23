@@ -28,15 +28,15 @@ Project is created with :
 * If the above doesn't work, please follow : https://www.lifewire.com/install-apk-on-android-4177185
 
 ## Features
-On-screen joystick movement implemented for player control.
-![MovementDemo](Images/movement.png)
-Multiple enemies of different types, flying and ground.
-![Enemies](Images/enemies.png)
-Player can shoot in any direction.
-![Shooting](Images/shooting.png)
-Player can select and change from 4 different elemental weapons.
-![Sunbullet](Images/sunbullet.png)![Snowbullet](Images/snowbullet.png)![Stormbullet](Images/stormbullet.png)![Waterbullet](Images/waterbullet.png)
-Weather dynamically controls the flow and feel of the game.
-![Weather](Images/weather.png)
-Player can select from 4 different levels.
+On-screen joystick movement implemented for player control.\
+![MovementDemo](Images/movement.png)\
+Multiple enemies of different types, flying and ground.\
+![Enemies](Images/enemies.png)\
+Player can shoot in any direction.\
+![Shooting](Images/shooting.png)\
+Player can select and change from 4 different elemental weapons.\
+![Sunbullet](Images/sunbullet.png)![Snowbullet](Images/snowbullet.png)![Stormbullet](Images/stormbullet.png)![Waterbullet](Images/waterbullet.png)\
+Weather dynamically controls the flow and feel of the game.\
+![Weather](Images/weather.png)\
+Player can select from 4 different levels.\
 ![Levels](Images/levels.png)
