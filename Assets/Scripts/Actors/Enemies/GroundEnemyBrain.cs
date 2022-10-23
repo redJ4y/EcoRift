@@ -10,6 +10,7 @@ using UnityEngine;
 public class GroundEnemyBrain : MonoBehaviour
 {
     [SerializeReference] private CharacterController2D controller;
+    [SerializeReference] private GameObject shootStartPosition;
     [SerializeField] private GameObject enemyTargetedWeapon; // regular projectile shooting at player
     [SerializeField] private GameObject enemySpecialWeapon; // special projectile shooting less frequently at player
     [SerializeField] private GameObject enemyDirectionalWeapon; // projectile aiming in specific directions
@@ -74,6 +75,8 @@ public class GroundEnemyBrain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!shootStartPosition)
+            shootStartPosition = gameObject;
         player = GameObject.FindWithTag("Player");
         projectileStorage = GameObject.Find("ProjectileStorage");
         projectilePool = projectileStorage.GetComponent<ProjectilePool>();
@@ -140,17 +143,17 @@ public class GroundEnemyBrain : MonoBehaviour
             {
                 if (shootUp)
                 {
-                    projectilePool.Shoot(enemyDirectionalWeapon, transform, Vector2.up, projectileSpeed * 2); // sorry for not using Shoot() jared
+                    projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, Vector2.up, projectileSpeed*2); // sorry for not using Shoot() jared
                 }
                 if (shootDiagonally)
                 {
-                    projectilePool.Shoot(enemyDirectionalWeapon, transform, new Vector2(-.5f, .5f), projectileSpeed * 2);
-                    projectilePool.Shoot(enemyDirectionalWeapon, transform, new Vector2(.5f, .5f), projectileSpeed * 2);
+                    projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, new Vector2(-.5f, .5f), projectileSpeed * 2);
+                    projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, new Vector2(.5f, .5f), projectileSpeed * 2);
                 }
                 if (shootSideways)
                 {
-                    projectilePool.Shoot(enemyDirectionalWeapon, transform, Vector2.left, projectileSpeed * 2);
-                    projectilePool.Shoot(enemyDirectionalWeapon, transform, Vector2.right, projectileSpeed * 2);
+                    projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, Vector2.left, projectileSpeed * 2);
+                    projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, Vector2.right, projectileSpeed * 2);
                 }
                 directionalShotDelay = 0;
             }
