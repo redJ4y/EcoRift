@@ -121,6 +121,14 @@ PrefabInstance:
       propertyPath: enemyWeapon
       value: 
       objectReference: {fileID: 6958890066831099034, guid: 2ef832ee0b4aed746a285bcb6b372b48, type: 3}
+    - target: {fileID: 7977492489572996714, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
+      propertyPath: enemySpecialWeapon
+      value: 
+      objectReference: {fileID: 6958890066831099034, guid: 4cbff2fceb5a1a74b8270200ddb225ac, type: 3}
+    - target: {fileID: 7977492489572996714, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
+      propertyPath: enemyTargetedWeapon
+      value: 
+      objectReference: {fileID: 6958890066831099034, guid: 2ef832ee0b4aed746a285bcb6b372b48, type: 3}
     - target: {fileID: 7977492489572996716, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -204,6 +212,10 @@ PrefabInstance:
     - target: {fileID: 7977492490211350750, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008795432840087178, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
+      propertyPath: hp
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 9008795432840087178, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: hitParticles
