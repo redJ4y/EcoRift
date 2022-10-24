@@ -140,7 +140,7 @@ MonoBehaviour:
   projectileID: 53
   element: Water
   tier: 0
-  damage: 10
+  damage: 7
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1

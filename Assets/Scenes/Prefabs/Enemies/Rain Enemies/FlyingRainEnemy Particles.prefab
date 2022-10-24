@@ -374,8 +374,8 @@ MonoBehaviour:
   keepAggro: 0
   patrolDistance: 5
   attackRange: 10
-  attackSpeed: 5
-  projectileSpeed: 20
+  attackSpeed: 4
+  projectileSpeed: 16
   shootRadius: 0.5
   canLeadShots: 1
 --- !u!1001 &8627886886165661808
