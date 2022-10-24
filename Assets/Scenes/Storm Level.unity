@@ -61964,15 +61964,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8582433180453949619, guid: d2a3bfeef10cda143aa7621cc7507e60, type: 3}
       propertyPath: attackSpeed
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8582433180453949619, guid: d2a3bfeef10cda143aa7621cc7507e60, type: 3}
       propertyPath: enemyWeapon
       value: 
       objectReference: {fileID: 6958890066831099034, guid: 0de2b659c18d44293baf64855ba1fafc, type: 3}
     - target: {fileID: 8582433180453949619, guid: d2a3bfeef10cda143aa7621cc7507e60, type: 3}
+      propertyPath: shootRadius
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582433180453949619, guid: d2a3bfeef10cda143aa7621cc7507e60, type: 3}
       propertyPath: projectileSpeed
-      value: 50
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8582433180453949621, guid: d2a3bfeef10cda143aa7621cc7507e60, type: 3}
       propertyPath: m_RootOrder
