@@ -4996,7 +4996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615f5a266f199514d9cd0892145f297a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 70
   hpRegenRate: 5
   healthBarScript: {fileID: 0}
   maxHp: 0
@@ -5251,7 +5251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c612efadf77ad4abc699e433d6d4c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 120
+  m_JumpForce: 200
   m_MovementSmoothing: 0.05
   m_AirControl: 0
   m_WhatIsGround:
@@ -5277,6 +5277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 8195552514184523922}
+  shootStartPosition: {fileID: 0}
   enemyTargetedWeapon: {fileID: 0}
   enemySpecialWeapon: {fileID: 0}
   enemyDirectionalWeapon: {fileID: 0}
@@ -5284,7 +5285,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   enemyType: Clear
-  movementSpeed: 15
+  movementSpeed: 20
   canJump: 1
   aggroDistance: 10
   keepAggro: 0

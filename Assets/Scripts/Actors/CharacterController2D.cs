@@ -85,6 +85,24 @@ public class CharacterController2D : MonoBehaviour
     private void FixedUpdate()
     {
         animator.SetBool("Run", Mathf.Abs(moveInput) > 0.0001f);
+        DoGroundCheck();
+
+        // Check if player is falling through void, if so teleport to spawn
+        if (transform.localPosition.y < -20.0f) // -20.0f is arbitrary
+        {
+            if (gameObject.tag.Equals("Player"))
+            {
+                transform.localPosition = startPosition;
+            }
+            else if (gameObject.tag.Equals("Enemy"))
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    public void DoGroundCheck()
+    {
         bool wasGrounded = m_Grounded;
         m_Grounded = false;
 
@@ -100,26 +118,7 @@ public class CharacterController2D : MonoBehaviour
                     OnLandEvent.Invoke();
             }
         }
-
-
-        if (transform.localPosition.y < -20.0f) // -20.0f is arbitrary
-        {
-            if (gameObject.tag.Equals("Player"))
-            {
-                transform.localPosition = startPosition;
-            }
-            else if (gameObject.tag.Equals("Enemy"))
-            {
-                Destroy(gameObject);
-            }
-        }
-
-
-
-        // Check if player is falling through void, if so teleport to spawn
-
     }
-
 
     public void Move(float move, bool jump)
     {
