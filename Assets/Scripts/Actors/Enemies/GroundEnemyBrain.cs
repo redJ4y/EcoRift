@@ -325,6 +325,7 @@ public class GroundEnemyBrain : MonoBehaviour
                             { // Jump to the next platform...
                                 jump = true;
                                 currentlyLeaping = true; // Maintain jump state until landing
+                                timeSinceDirectionChange = 0;
                                 return preferredMovement;
                             }
                         }
@@ -336,7 +337,7 @@ public class GroundEnemyBrain : MonoBehaviour
                 }
             }
         }
-        if (currentlyLeaping)
+        if (currentlyLeaping && timeSinceDirectionChange > 2 * Time.fixedDeltaTime) // Delay ground check
         {
             controller.DoGroundCheck();
             if (controller.IsPlayerGrounded())
