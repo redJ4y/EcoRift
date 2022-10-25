@@ -28,7 +28,7 @@ The API key must be pasted into the 'APIData.cs' script ( "EcoRift/Assets/Script
 Build and compile the game. \
 To play the game functionally, please run the game from the 'MainMenu' scene.\
 If there are missing references from the inspector, please contact us!\
-Enjoy :)\
+Enjoy :)
 
 
 
