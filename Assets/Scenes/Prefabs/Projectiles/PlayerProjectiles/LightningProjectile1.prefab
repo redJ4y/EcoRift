@@ -140,7 +140,7 @@ MonoBehaviour:
   projectileID: 0
   element: Clouds
   tier: 1
-  damage: 2.5
+  damage: 7
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1

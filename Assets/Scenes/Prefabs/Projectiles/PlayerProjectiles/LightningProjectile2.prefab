@@ -107,10 +107,10 @@ MonoBehaviour:
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 0
-  fireRate: 10
+  fireRate: 5
   bulletSpeed: 5
   lifeSpan: 5
-  thrust: 20
+  thrust: 10
   rotationSpeed: 1000
   focusDistance: 5
   freezeObject: {fileID: 0}
@@ -159,11 +159,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.084334016, y: -1.162256}
-      - {x: 0.29254395, y: -1.1640494}
-      - {x: 1.1894178, y: 1.5419941}
-      - {x: 1.1894178, y: 1.5419942}
-      - {x: -1.0055666, y: 1.5605712}
+    - - {x: 0.17437124, y: -1.1394595}
+      - {x: -0.6450678, y: 1.4881139}
+      - {x: 0.742607, y: 1.4926935}
 --- !u!82 &759521790405259644
 AudioSource:
   m_ObjectHideFlags: 0

@@ -119,11 +119,11 @@ MonoBehaviour:
   projectileID: 10
   element: Sun
   tier: 3
-  damage: 10
+  damage: 30
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
-  fireRate: 10
+  fireRate: 7
   bulletSpeed: 3
   lifeSpan: 4
   thrust: 0

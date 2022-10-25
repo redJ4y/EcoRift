@@ -138,38 +138,47 @@ public class GroundEnemyBrain : MonoBehaviour
 
         if (enemyDirectionalWeapon != null && (shootUp || shootDiagonally || shootSideways))
         {
+
             directionalShotDelay++;
-            if ((250 - (attackSpeed * 2)) - directionalShotDelay < 0 && Random.value > 0.9f) // try shoot directional
-            {
-                if (shootUp)
+
+            if (toPlayer.magnitude < attackRange && Mathf.Abs(playerPos.y - myPos.y) < 2)
+            { // Player is within range at a similar y-value...
+                if ((250 - (attackSpeed * 2)) - directionalShotDelay < 0 && Random.value > 0.9f) // try shoot directional
                 {
-                    projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, Vector2.up, projectileSpeed * 2); // sorry for not using Shoot() jared
+                    if (shootUp)
+                    {
+                        projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, Vector2.up, projectileSpeed * 2);
+                    }
+                    if (shootDiagonally)
+                    {
+                        projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, new Vector2(-.5f, .5f), projectileSpeed * 2);
+                        projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, new Vector2(.5f, .5f), projectileSpeed * 2);
+                    }
+                    if (shootSideways)
+                    {
+                        projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, Vector2.left, projectileSpeed * 2);
+                        projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, Vector2.right, projectileSpeed * 2);
+                    }
+                    directionalShotDelay = 0;
                 }
-                if (shootDiagonally)
-                {
-                    projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, new Vector2(-.5f, .5f), projectileSpeed * 2);
-                    projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, new Vector2(.5f, .5f), projectileSpeed * 2);
-                }
-                if (shootSideways)
-                {
-                    projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, Vector2.left, projectileSpeed * 2);
-                    projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, Vector2.right, projectileSpeed * 2);
-                }
-                directionalShotDelay = 0;
             }
         }
 
         if (enemySpecialWeapon != null)
         {
             specialShotDelay++;
-            if ((250 - attackSpeed) - specialShotDelay < 0 && Random.value > 0.9f) // try shoot special
-            {
-                if (enemySpecialWeapon.tag == "Tornado")
-                    projectilePool.Shoot(enemySpecialWeapon, shootStartPosition.transform, toPlayer.normalized / 2f, 0f); // sorry for not using Shoot() jared
-                else
-                    projectilePool.Shoot(enemySpecialWeapon, shootStartPosition.transform, toPlayer, projectileSpeed);
 
-                specialShotDelay = 0;
+            if (toPlayer.magnitude < attackRange && Mathf.Abs(playerPos.y - myPos.y) < 2)
+            { // Player is within range at a similar y-value...
+                if ((250 - attackSpeed) - specialShotDelay < 0 && Random.value > 0.9f) // try shoot special
+                {
+                    if (enemySpecialWeapon.tag == "Tornado")
+                        projectilePool.Shoot(enemySpecialWeapon, shootStartPosition.transform, toPlayer.normalized / 2f, 0f); 
+                    else
+                        projectilePool.Shoot(enemySpecialWeapon, shootStartPosition.transform, toPlayer, projectileSpeed);
+
+                    specialShotDelay = 0;
+                }
             }
         }
     }
