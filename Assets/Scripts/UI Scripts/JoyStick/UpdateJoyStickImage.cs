@@ -5,24 +5,16 @@ using UnityEngine.UI;
 
 public class UpdateJoyStickImage : MonoBehaviour
 {
-
     [SerializeReference]
     private Sprite[] joySticks;
-
     [SerializeField]
     private GetWeather weatherState;
     private Image currentImage;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         currentImage = GetComponent<Image>();
     }
-    //Clouds
-    //Clear
-    //Rain
-    //Snow
 
     public void ChangeImage(string weatherState)
     { 

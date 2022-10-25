@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class JoyStickAiming : MonoBehaviour
 {
-
     public MobileJoyStick joyStick;
     public Transform twistPoint;
 
@@ -13,13 +12,6 @@ public class JoyStickAiming : MonoBehaviour
         joyStick = GameObject.FindObjectOfType<MobileJoyStick>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Aim();
@@ -27,8 +19,6 @@ public class JoyStickAiming : MonoBehaviour
 
     public void Aim()
     {
-        // Vector3 angle = twistPoint.transform.localEulerAngles;
-
         float Horizontal = joyStick.aimVector.x;
         float Vertical = joyStick.aimVector.y;
 

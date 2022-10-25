@@ -9,7 +9,7 @@ public class APIHelper : MonoBehaviour
 {
     public GetWeather getWeatherScript;
 
-    public void startRequest()
+    public void StartRequest()
     {
         StartCoroutine(MakeRequests());
     }
@@ -19,7 +19,6 @@ public class APIHelper : MonoBehaviour
         // GET
         UnityWebRequest getRequest = CreateRequest(APIData.APIurl);
         yield return getRequest.SendWebRequest();
-        //var deserializedGetData = JsonUtility.FromJson<Todo>(getRequest.downloadHandler.text);
         Weather[] deserialisedGetData = JsonHelper.FromJson<Weather>(getRequest.downloadHandler.text);
         getWeatherScript.fetchAPIData(deserialisedGetData);
         // Trigger continuation of game flow

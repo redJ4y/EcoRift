@@ -21,23 +21,23 @@ public class InfoScript : MonoBehaviour
 
     private IEnumerator moveSmoothly(TMP_Text tmp, Transform tra)
     {
-        var t = 0f;
+        float time = 0f;
 
-        while (t < 1.0f)
+        while (time < 1.0f)
         {
-            t += Time.deltaTime * animationSpeed;
-            tmp.fontMaterial.SetColor("_FaceColor", Color.Lerp(new Color(1.0f, 1.0f, 1.0f, 0.0f), Color.white, t));
-            tra.localPosition = Vector3.Lerp(startingPos, endingPos, t);
+            time += Time.deltaTime * animationSpeed;
+            tmp.fontMaterial.SetColor("_FaceColor", Color.Lerp(new Color(1.0f, 1.0f, 1.0f, 0.0f), Color.white, time)); // from invisible to visible
+            tra.localPosition = Vector3.Lerp(startingPos, endingPos, time);
             yield return null;
         }
 
         yield return new WaitForSeconds(duration);
 
-        t = 0f;
-        while (t < 1.0f)
+        time = 0f;
+        while (time < 1.0f)
         {
-            t += Time.deltaTime * animationSpeed;
-            tmp.fontMaterial.SetColor("_FaceColor", Color.Lerp(Color.white, new Color(1.0f, 1.0f, 1.0f, 0.0f), t));
+            time += Time.deltaTime * animationSpeed;
+            tmp.fontMaterial.SetColor("_FaceColor", Color.Lerp(Color.white, new Color(1.0f, 1.0f, 1.0f, 0.0f), time)); // from visible to invisible
             yield return null;
         }
 

@@ -9,6 +9,7 @@ public class TeleportScript : MonoBehaviour
     [SerializeReference] private GameObject pairedPortal;
     [SerializeReference] private Animator crossFade;
     [SerializeField] private string currentLevel;
+
     private Vector3 teleportOffset;
     private Collider2D collider;
     private bool collided;
@@ -45,7 +46,7 @@ public class TeleportScript : MonoBehaviour
         {
             UpdateLevelData();
             controller.currentlyTeleporting = true;
-            teleportToMainMenu();
+            TeleportToMainMenu();
 
             StartCoroutine(TeleportDelay(controller));
         }
@@ -73,12 +74,12 @@ public class TeleportScript : MonoBehaviour
         }
     }
 
-    private void teleportToMainMenu()
+    private void TeleportToMainMenu()
     {
         StartCoroutine(GoToMainMenu());
     }
 
-    private void teleportToOtherPortal(Transform objTrans)
+    private void TeleportToOtherPortal(Transform objTrans)
     {
         objTrans.localPosition = pairedPortal.transform.localPosition + teleportOffset;
     }

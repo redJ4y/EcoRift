@@ -32,10 +32,4 @@ public class PlayerJoyStickMovement : MonoBehaviour
     { 
         joystick.OnMove += Move;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

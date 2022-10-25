@@ -110,8 +110,6 @@ public class ProjectilePool : MonoBehaviour
     IEnumerator waitThenDestroy(float lifeSpan, GameObject bullet)
     {
         yield return new WaitForSeconds(lifeSpan);
-        if (bullet.layer == 11)
-            Debug.Log("Lifespan ended");
         DestroyBullet(bullet);
     }
 

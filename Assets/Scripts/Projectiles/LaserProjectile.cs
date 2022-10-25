@@ -8,6 +8,7 @@ public class LaserProjectile : MonoBehaviour
     private LineRenderer line;
     private Ray2D ray;
     private List<GameObject> hitEnemies;
+
     [SerializeField] float bulletForce;
     [SerializeField] float maxLength;
     [SerializeField] int lineLength;

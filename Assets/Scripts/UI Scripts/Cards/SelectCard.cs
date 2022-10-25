@@ -12,12 +12,15 @@ public class SelectCard : MonoBehaviour
     private Vector3 newPos;
     private Color prevColor;
     private bool currentlyAnimating;
+    private float movementAmount;
+
     [SerializeReference] ProjectileHandler projectileScript;
     [SerializeReference] SwitchStaff staffScript;
     [SerializeReference] SpinTier tierScript;
 
     private void Start()
     {
+        movementAmount = 40f;
         prevColor = new Color32(140, 140, 140, 255);
         currentlyAnimating = false;
     }
@@ -31,7 +34,7 @@ public class SelectCard : MonoBehaviour
             {
                 // First animate down the previous selected card
                 RectTransform cardTrans = selectedCard.GetComponent<RectTransform>();
-                Vector3 newPos = cardTrans.transform.localPosition + new Vector3(0, -40.0f, 0);
+                Vector3 newPos = cardTrans.transform.localPosition + new Vector3(0, -movementAmount, 0);
                 coroutinePrev = moveSmoothly(selectedCard.GetComponent<Image>(), false, cardTrans.transform, cardTrans.transform.localPosition, newPos);
                 StartCoroutine(coroutinePrev);
             }
@@ -43,7 +46,7 @@ public class SelectCard : MonoBehaviour
             staffScript.changeStaff(cardClicked.name + "Staff");
             // Now animate up the current selected card
             cardTrans = cardClicked.GetComponent<RectTransform>();
-            newPos = cardTrans.transform.localPosition + new Vector3(0, 40.0f,0);
+            newPos = cardTrans.transform.localPosition + new Vector3(0, movementAmount, 0);
             coroutine = moveSmoothly(selectedCard.GetComponent<Image>(), true, cardTrans.transform, cardTrans.transform.localPosition, newPos);
             StartCoroutine(coroutine);
         }
@@ -51,20 +54,20 @@ public class SelectCard : MonoBehaviour
 
     private IEnumerator moveSmoothly(Image cardImg, bool selected, Transform tra, Vector3 from, Vector3 to)
     {
-        var t = 0f;
+        float time = 0f;
 
-        while (t < 1f)
+        while (time < 1f)
         {
-            t += Time.deltaTime * 3.0f;
-            tra.localPosition = Vector3.Lerp(from, to, t);
+            time += Time.deltaTime * 3.0f;
+            tra.localPosition = Vector3.Lerp(from, to, time);
+
             if (selected == true)
-                cardImg.color = Color.Lerp(prevColor, Color.white, t);
+                cardImg.color = Color.Lerp(prevColor, Color.white, time);
             else
-                cardImg.color = Color.Lerp(Color.white, prevColor, t);
+                cardImg.color = Color.Lerp(Color.white, prevColor, time);
             yield return null;
         }
 
         currentlyAnimating = false;
     }
-
 }

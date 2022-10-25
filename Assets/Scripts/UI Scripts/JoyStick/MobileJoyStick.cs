@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IPointerDownHandler
 {
-
     private RectTransform joystickTransform;
    
     [SerializeField]
@@ -36,7 +35,7 @@ public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
         return new Vector2(x, y);
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData) // unused interface method
     {
         
     }
@@ -50,17 +49,5 @@ public class MobileJoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IP
     private void Awake()
     {
         joystickTransform = (RectTransform)transform;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

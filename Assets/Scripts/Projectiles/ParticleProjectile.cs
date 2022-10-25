@@ -21,14 +21,13 @@ public class ParticleProjectile : MonoBehaviour
         int numCollisionEvents = part.GetCollisionEvents(target, collisionEvents);
 
         Rigidbody2D rb = target.GetComponent<Rigidbody2D>();
-        int i = 0;
-        while (i < numCollisionEvents)
+
+        for (int i = 0; i < numCollisionEvents; i++)
         {
             if (rb)
             {
                 target.transform.Find("HealthBar").GetComponent<Health>().TakeDamage(particleDamage);
             }
-            i++;
         }
     }
 }

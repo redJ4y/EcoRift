@@ -6,22 +6,20 @@ public class HealthBarScript : MonoBehaviour
 {
     [SerializeField]
     private Health health; // Player's health
-
     [SerializeField]
     private RectTransform barRect; // healthbar rect
-
     [SerializeField]
     private RectMask2D mask; // using mask to grow or shrink bar
 
     private float maxRightMask;
     private float initialRightMask;
+
     private void Start()
     {
         //x = left , w = top , y = bottom , z = right
         maxRightMask = barRect.rect.width - mask.padding.x - mask.padding.z;
         initialRightMask = mask.padding.z;
     }
-
 
     public void SetValue() // updates visual of healthbar according to player HP
     {
