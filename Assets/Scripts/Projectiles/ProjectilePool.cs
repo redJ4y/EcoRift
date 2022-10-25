@@ -5,12 +5,12 @@ using UnityEngine;
 public class ProjectilePool : MonoBehaviour
 {
     public Dictionary<int, Stack<GameObject>> poolMap;
-    public Dictionary<GameObject, Coroutine> destroyCoroutines;
+    public Dictionary<GameObject, IEnumerator> destroyCoroutines;
 
     void Awake()
     {
         poolMap = new Dictionary<int, Stack<GameObject>>();
-        destroyCoroutines = new Dictionary<GameObject, Coroutine>();
+        destroyCoroutines = new Dictionary<GameObject, IEnumerator>();
     }
 
     public void Shoot(GameObject weapon, Transform bulletStart, Vector2 aimVector)
@@ -61,6 +61,7 @@ public class ProjectilePool : MonoBehaviour
         else
         {
             newBullet = currentPool.Pop();
+            newBullet.GetComponent<Projectile>().ResetCollision();
             newBullet.SetActive(true);
             newBullet.transform.position = bulletStart.position;
         }
@@ -68,7 +69,9 @@ public class ProjectilePool : MonoBehaviour
         Projectile projectileScript = newBullet.GetComponent<Projectile>();
 
         // Ensure bullet is destroyed after its set lifespan in seconds
-        Coroutine newCoroutine = StartCoroutine(waitThenDestroy(projectileScript.lifeSpan, newBullet));
+        IEnumerator newCoroutine = waitThenDestroy(projectileScript.lifeSpan, newBullet);
+        StartCoroutine(newCoroutine);
+
         try
         {
             destroyCoroutines[newBullet] = newCoroutine;
@@ -107,6 +110,8 @@ public class ProjectilePool : MonoBehaviour
     IEnumerator waitThenDestroy(float lifeSpan, GameObject bullet)
     {
         yield return new WaitForSeconds(lifeSpan);
+        if (bullet.layer == 11)
+            Debug.Log("Lifespan ended");
         DestroyBullet(bullet);
     }
 

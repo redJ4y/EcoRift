@@ -38,6 +38,7 @@ public class Projectile : MonoBehaviour
     private ProjectilePool pool;
     private IEnumerator coroutine;
     private bool damageEnemies = false;
+    private bool alreadyCollided = false;
 
     void Awake()
     {
@@ -98,6 +99,11 @@ public class Projectile : MonoBehaviour
         return bestTarget;
     }
 
+    public void ResetCollision()
+    {
+        alreadyCollided = false;
+    }
+
     public void SetLooking(bool isLooking)
     {
         homingTarget = GetClosestEnemy(GameObject.FindGameObjectsWithTag("Enemy"));
@@ -117,10 +123,13 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (!projectileDisabled && gameObject.tag != "Tornado")
+        if (!projectileDisabled && gameObject.tag != "Tornado" && !alreadyCollided)
         {
+            alreadyCollided = true;
             if (col.gameObject.layer == 8) // If collides with ground
             {
+                if (gameObject.layer == 11)
+                    Debug.Log("Colliding with ground");
                 pool.DestroyBullet(gameObject);
             }
 
@@ -132,6 +141,9 @@ public class Projectile : MonoBehaviour
 
             if ((target.layer == 10 || target.layer == 9)) // Check if collider is enemy or player
             {
+                if (gameObject.layer == 11)
+                    Debug.Log("Hit enemy destroy bullet");
+                pool.DestroyBullet(gameObject);
                 if (isBuffed)
                     damage *= 1.2f;
                 target.transform.Find("HealthBar").GetComponent<Health>().TakeDamage(damage);
@@ -149,7 +161,6 @@ public class Projectile : MonoBehaviour
                     if (flyingTargetController)
                         InitiateEnemyHitEffect(flyingTargetController);
                 }
-                pool.DestroyBullet(gameObject);
             }
         }
         else if (gameObject.tag == "Tornado")
