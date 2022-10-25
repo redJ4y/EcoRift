@@ -84,7 +84,15 @@ public class Health : MonoBehaviour
         {
             if (hp < maxHp)
             {
-                hp += hpRegenRate;
+                if((hp + hpRegenRate) > maxHp)
+                {
+                    hp = maxHp;
+                }
+                else
+                {
+                    hp += hpRegenRate;
+                }
+
                 if (healthBarScript != null)
                     healthBarScript.SetValue();
                 yield return new WaitForSeconds(5);
