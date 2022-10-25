@@ -16,7 +16,7 @@ public class LocationManager : MonoBehaviour
         if (!Input.location.isEnabledByUser)
         {
             print("Location not enabled");
-            apiHelperScript.startRequest(); // Begin API request with default lat and lon
+            apiHelperScript.StartRequest(); // Begin API request with default lat and lon
             yield break;
         }
         // Starts the location service.
@@ -52,7 +52,7 @@ public class LocationManager : MonoBehaviour
 
             APIData.lat = lat.ToString();
             APIData.lon = lon.ToString();
-            apiHelperScript.startRequest();
+            apiHelperScript.StartRequest();
         }
 
         // Stops the location service if there is no need to query location updates continuously.
