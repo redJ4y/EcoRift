@@ -46,7 +46,6 @@ public class PlayerInput : MonoBehaviour
     // Called a fixed number of times per second
     void FixedUpdate()
     {
-
         if (usingNewInput)
         {
             controller.Move(newInputDirection * runSpeed * Time.fixedDeltaTime, jump);

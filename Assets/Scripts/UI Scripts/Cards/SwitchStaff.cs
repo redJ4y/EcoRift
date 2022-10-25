@@ -15,7 +15,7 @@ public class SwitchStaff : MonoBehaviour
         playerRenderer = transform.parent.gameObject.GetComponent<SpriteRenderer>();
     }
 
-    public void changeStaff(string element)
+    public void ChangeStaff(string element)
     {
         foreach (Sprite staff in staves)
         {
@@ -50,6 +50,5 @@ public class SwitchStaff : MonoBehaviour
             transform.localPosition = newPos;
             transform.rotation = newRot;
         }
-        
     }
 }

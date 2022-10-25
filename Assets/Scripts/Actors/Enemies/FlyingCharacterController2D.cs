@@ -8,9 +8,12 @@ public class FlyingCharacterController2D : MonoBehaviour
     IDictionary<string, Color32> colourReference;
 
     private Rigidbody2D m_Rigidbody2D;
-    private bool m_FacingRight = true;
     private Vector3 m_Velocity = Vector3.zero;
     private SpriteRenderer renderer;
+    private bool m_FacingRight = true;
+
+    
+    private float freezeTime = 5.0f;
     private bool slowed = false;
     private bool frozen = false;
 
@@ -30,7 +33,8 @@ public class FlyingCharacterController2D : MonoBehaviour
 
     public void Move(Vector2 move)
     {
-        m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, move * 10.0f, ref m_Velocity, 0.5f);
+        float moveMultiplier = 10.0f;
+        m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, move * moveMultiplier, ref m_Velocity, 0.5f);
         if (move.x > 0 && !m_FacingRight) // If the input is moving the player right and the player is facing left...
         {
             Flip();
@@ -65,7 +69,7 @@ public class FlyingCharacterController2D : MonoBehaviour
 
             GameObject newFreeze = Instantiate(freezeObject, transform.position, Quaternion.identity);
             newFreeze.transform.SetParent(transform);
-            Destroy(newFreeze, 5.0f);
+            Destroy(newFreeze, freezeTime);
             StartCoroutine(Thaw());
         }
     }

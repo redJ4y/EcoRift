@@ -23,23 +23,9 @@ public class SpinTier : MonoBehaviour
     private int selectedTierNumber;
     private bool currentlyAnimating;
 
-    // Start is called before the first frame update
     void Start()
     {
         InitialiseDictionaries();
-
-        // for testing purposes
-        /*
-        UnlockTier("Water", 2);
-        UnlockTier("Water", 3);
-        UnlockTier("Snow", 2);
-        UnlockTier("Snow", 3);
-        UnlockTier("Lightning", 2);
-        UnlockTier("Lightning", 3);
-        UnlockTier("Sun", 3);
-        UnlockTier("Sun", 2);
-        */
-
         if (currentWeather != "None")
             UpdateLockImages();
         selectedTierNumber = 1;
@@ -48,17 +34,6 @@ public class SpinTier : MonoBehaviour
 
     private void InitialiseDictionaries()
     {
-        /*
-        tierUnlocked = new Dictionary<string, Dictionary<int, bool>>();
-        foreach (string name in weatherNames)
-        {
-            Dictionary<int, bool> newDict = new Dictionary<int, bool>();
-            newDict[1] = true;
-            newDict[2] = false;
-            newDict[3] = false;
-
-            tierUnlocked.Add(name, newDict);
-        } */
         // Get the saved progress from data manager:
         DataManager dataManager = DataManager.Instance;
         dataManager.SetWeatherNames(weatherNames);
@@ -69,7 +44,6 @@ public class SpinTier : MonoBehaviour
     {
         foreach (KeyValuePair<int, bool> pair in tierUnlocked[currentWeather])
         {
-
             if (pair.Value == true) // if tier is unlocked
             {
                 if (tierObjects[pair.Key - 1] == selectedTierObject)

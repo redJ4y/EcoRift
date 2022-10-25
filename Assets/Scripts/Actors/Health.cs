@@ -78,7 +78,6 @@ public class Health : MonoBehaviour
             Destroy(actor);
     }
 
-
     private IEnumerator RegenHealth()
     {
         while (true)
@@ -99,7 +98,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        emitParticles(); // emit blood particles on hit
+        EmitParticles(); // emit blood particles on hit
         justHit = true;
         hp -= damage;
 
@@ -120,16 +119,16 @@ public class Health : MonoBehaviour
             if (isVisible == false)
             {
 
-                StartCoroutine(fadeIn());
+                StartCoroutine(FadeIn());
             }
             else
             {
-                StartCoroutine(fadeOut());
+                StartCoroutine(FadeOut());
             }
         }
     }
 
-    private IEnumerator fadeOut()
+    private IEnumerator FadeOut()
     {
         while (justHit == true)
         {
@@ -159,27 +158,27 @@ public class Health : MonoBehaviour
         isFading = false;
     }
 
-    private IEnumerator fadeIn()
+    private IEnumerator FadeIn()
     {
-        var t = 0f;
+        var time = 0f;
         Color prevColor = hpRenderer.color;
         Color tempColor = hpRenderer.color;
-        tempColor.a = 1.0f;
+        tempColor.a = 1.0f; // set the opacity to 100%
 
         Color innerPrevColor = innerHpRenderer.color;
         Color innerTempColor = innerHpRenderer.color;
-        innerTempColor.a = 1.0f;
+        innerTempColor.a = 1.0f; // set the opacity to 100%
 
-        while (t < 1f)
+        while (time < 1f)
         {
-            t += Time.deltaTime * 3.0f;
+            time += Time.deltaTime * 3.0f;
 
-            innerHpRenderer.color = Color.Lerp(innerPrevColor, innerTempColor, t);
-            hpRenderer.color = Color.Lerp(prevColor, tempColor, t);
+            innerHpRenderer.color = Color.Lerp(innerPrevColor, innerTempColor, time);
+            hpRenderer.color = Color.Lerp(prevColor, tempColor, time);
             yield return null;
         }
 
-        StartCoroutine(fadeOut());
+        StartCoroutine(FadeOut());
 
         isVisible = true;
     }
@@ -195,7 +194,7 @@ public class Health : MonoBehaviour
     }
 
     //debug tool for testing healthbar
-    public void lowerHP()
+    public void LowerHP()
     {
         if (hp >= 11)
         {
@@ -204,7 +203,7 @@ public class Health : MonoBehaviour
     }
 
     //debug tool for testing healthbar
-    public void raiseHP()
+    public void RaiseHP()
     {
         hp += 10;
         if (hp > maxHp)
@@ -214,15 +213,15 @@ public class Health : MonoBehaviour
     }
 
     //blood particle emission
-    void emitParticles()
+    public void EmitParticles()
     {
-        if (hitParticles != null)
+        if (hitParticles)
         {
             hitParticles.Play();
         }
     }
 
-    public void buffHp(float multiplier)
+    public void BuffHp(float multiplier)
     {
         float oldMaxHp = maxHp;
         maxHp *= multiplier;

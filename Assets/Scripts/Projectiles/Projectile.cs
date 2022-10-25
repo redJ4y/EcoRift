@@ -128,21 +128,14 @@ public class Projectile : MonoBehaviour
             alreadyCollided = true;
             if (col.gameObject.layer == 8) // If collides with ground
             {
-                if (gameObject.layer == 11)
-                    Debug.Log("Colliding with ground");
                 pool.DestroyBullet(gameObject);
             }
 
             Vector2 endPos = col.contacts[0].point + new Vector2(1.5f, 0);
-
-            //Vector3 endPos = thisCollider.bounds.center + new Vector3(gameObject.transform.position.x,0,0);
-
             GameObject target = col.gameObject;
 
             if ((target.layer == 10 || target.layer == 9)) // Check if collider is enemy or player
             {
-                if (gameObject.layer == 11)
-                    Debug.Log("Hit enemy destroy bullet");
                 pool.DestroyBullet(gameObject);
                 if (isBuffed)
                     damage *= 1.2f;
@@ -172,9 +165,7 @@ public class Projectile : MonoBehaviour
             }
         }
     }
-    // TODO: 
-    // Collapse both functions below into one
-    // (they needed to be separate bc of different object types, "CharacterController2D" and "FlyingCharacterController2D")
+
     private void InitiateEnemyHitEffect(CharacterController2D targetController)
     {
         switch(element)
@@ -203,13 +194,13 @@ public class Projectile : MonoBehaviour
 
     private IEnumerator MoveSmoothly(TMP_Text tmp, Transform tra, Vector3 from, Vector3 to)
     {
-        var t = 0f;
+        float time = 0f;
 
-        while (t < 1.5f)
+        while (time < 1.5f)
         {
-            t += Time.deltaTime;
-            tmp.fontMaterial.SetColor("_FaceColor", Color.Lerp(Color.white, Color.clear, t));
-            tra.position = Vector3.Lerp(from, to, t);
+            time += Time.deltaTime;
+            tmp.fontMaterial.SetColor("_FaceColor", Color.Lerp(Color.white, Color.clear, time));
+            tra.position = Vector3.Lerp(from, to, time);
             yield return null;
         }
     }

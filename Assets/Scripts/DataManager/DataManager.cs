@@ -104,8 +104,8 @@ public class DataManager : MonoBehaviour
             PlayerPrefs.SetInt("snow", current + 1);
             return true;
         }
-
     }
+
     private bool IncreaseStormProg()
     {
         int current = PlayerPrefs.GetInt("storm", 0);
@@ -121,6 +121,7 @@ public class DataManager : MonoBehaviour
             return true;
         }
     }
+
     private bool IncreaseRainProg()
     {
         int current = PlayerPrefs.GetInt("rain", 0);
@@ -134,7 +135,6 @@ public class DataManager : MonoBehaviour
             PlayerPrefs.SetInt("rain", current + 1);
             return true;
         }
-
     }
 
     public bool[] GetRainLevelEmblems()
@@ -223,10 +223,12 @@ public class DataManager : MonoBehaviour
     {
         return PlayerPrefs.GetInt("storm", 0);
     }
+
     public int GetRainProg()
     {
         return PlayerPrefs.GetInt("rain", 0);
     }
+
     public void SunProgTest()
     {
         IncreaseSunProg();

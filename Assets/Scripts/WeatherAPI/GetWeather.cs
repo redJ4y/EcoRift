@@ -42,11 +42,10 @@ public class GetWeather : MonoBehaviour
         }
     }
 
-    private void replaceCurrentTiles(Sprite[] newSprites)
+    private void ReplaceCurrentTiles(Sprite[] newSprites)
     {
         if (newSprites != activeSprites)
         {
-            Debug.Log("Changing tiles...");
             activeSprites = newSprites;
             Tilemap activeTM = activeTileMap.GetComponent<Tilemap>();
 
@@ -69,17 +68,18 @@ public class GetWeather : MonoBehaviour
 
     private Sprite getSpriteFromName(string name, Sprite[] array)
     {
-        foreach (Sprite s in array)
+        foreach (Sprite sprite in array)
         {
-            if (s.name == name)
+            if (sprite.name == name)
             {
-                return s;
+                return sprite;
             }
         }
+
         return null;
     }
 
-    public void fetchAPIData(Weather[] weatherList)
+    public void FetchAPIData(Weather[] weatherList)
     {
         // json object is a list for some reason so parse through that
         
@@ -88,10 +88,10 @@ public class GetWeather : MonoBehaviour
             currentWeather = w.main;
         }
 
-        updateWeather();
+        UpdateWeather();
     }
 
-    private void updateWeather()
+    private void UpdateWeather()
     {
         infoScript.Alert("Current weather: " + currentWeather);
 
@@ -108,30 +108,26 @@ public class GetWeather : MonoBehaviour
         if (weatherBackgrounds != null)
         {
             // Ensure no backgrounds are currently set
-            disableBackgrounds();
+            DisableBackgrounds();
 
             if (currentWeather == "Clouds")
             {
                 weatherBackgrounds.Find(obj => obj.name == "Cloudy").SetActive(true);
                 weatherBackgrounds.Find(obj => obj.name == "Cloud Particles").SetActive(true);
-                //replaceCurrentTiles(normalSprites);
             }
             else if (currentWeather == "Clear")
             {
                 weatherBackgrounds.Find(obj => obj.name == "Sunny").SetActive(true);
-                //replaceCurrentTiles(sunSprites);
             }
             else if (currentWeather == "Rain")
             {
                 weatherBackgrounds.Find(obj => obj.name == "Rainy").SetActive(true);
                 weatherBackgrounds.Find(obj => obj.name == "Rain Particles").SetActive(true);
-                //replaceCurrentTiles(rainSprites);
             }
             else if (currentWeather == "Snow")
             {
                 weatherBackgrounds.Find(obj => obj.name == "Snowy").SetActive(true);
                 weatherBackgrounds.Find(obj => obj.name == "Snow Particles").SetActive(true);
-                //replaceCurrentTiles(snowSprites);
             }
             else
             {
@@ -139,11 +135,10 @@ public class GetWeather : MonoBehaviour
             }
 
             updateJoyStick.ChangeImage(currentWeather);
-
         }
     }
 
-    private void disableBackgrounds()
+    private void DisableBackgrounds()
     {
         foreach (GameObject bgObj in weatherBackgrounds)
         {
@@ -151,7 +146,7 @@ public class GetWeather : MonoBehaviour
         }
     }
 
-    public void dropDownSelect(TMP_Dropdown dropDown)
+    public void DropDownSelect(TMP_Dropdown dropDown)
     {
         switch (dropDown.value)
         {
@@ -170,10 +165,10 @@ public class GetWeather : MonoBehaviour
         }
 
         if (dropDown.value != 0)
-            updateWeather();
+            UpdateWeather();
     }
 
-    public string getWeatherType()
+    public string GetWeatherType()
     {
         return currentWeather;
     }
