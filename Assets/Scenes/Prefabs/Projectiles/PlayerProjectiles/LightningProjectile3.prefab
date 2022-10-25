@@ -89,7 +89,7 @@ MonoBehaviour:
   projectileID: 12
   element: Lightning
   tier: 3
-  damage: 10
+  damage: 25
   projectileDisabled: 1
   isBuffed: 0
   isRotatable: 1
