@@ -33,7 +33,7 @@ Enjoy :)
 
 
 * Install .apk locally on Android device.
-Please find the .apk file in the repo. This will only work on Android devices/emulators. Once you have the .apk file, feel free to install it to your device. If your device has a security block on unrecognized .apk files, you can bypass this depending on your Android version :\
+Please find the .apk file in the repo under the published release "EcoRift Beta". This will only work on Android devices/emulators. Once you have the .apk file, feel free to install it to your device. If your device has a security block on unrecognized .apk files, you can bypass this depending on your Android version :\
 Settings > Apps > Special app access > Install unknown apps\
 Settings > Apps & notifications > Advanced > Special app access > Install unknown apps\
 Settings > Apps and notifications\
