@@ -19,12 +19,25 @@ Project is created with :
 * Open Weather API
 
 ## Setup
-* google play place holder
-* Please find the .apk file in the repo. This will only work on Android devices/emulators. Once you have the .apk file, feel free to install it to your device. If your device has a security block on unrecognized .apk files, you can bypass this depending on your Android version :
-- Settings > Apps > Special app access > Install unknown apps
-- Settings > Apps & notifications > Advanced > Special app access > Install unknown apps
-- Settings > Apps and notifications
-- Settings > Security
+* The project is under review on Google Play as on 23/10/2022. 
+
+* To clone and run on Unity. 
+User must include the API key (this is not public on GitHub for exploitation prevention).\
+The API key can be found on our Trello board under Sprint 2 Documentation -> API Key.\
+The API key must be pasted into the 'APIData.cs' script ( "EcoRift/Assets/Scripts/WeatherAPI/" ). A placeholder is there for you to replace under 'removed'.\
+Build and compile the game. \
+To play the game functionally, please run the game from the 'MainMenu' scene.\
+If there are missing references from the inspector, please contact us!\
+Enjoy :)
+
+
+
+* Install .apk locally on Android device.
+Please find the .apk file in the repo under the published release "EcoRift Beta". This will only work on Android devices/emulators. Once you have the .apk file, feel free to install it to your device. If your device has a security block on unrecognized .apk files, you can bypass this depending on your Android version :\
+Settings > Apps > Special app access > Install unknown apps\
+Settings > Apps & notifications > Advanced > Special app access > Install unknown apps\
+Settings > Apps and notifications\
+Settings > Security
 * If the above doesn't work, please follow : https://www.lifewire.com/install-apk-on-android-4177185
 
 ## Features
