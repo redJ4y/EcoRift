@@ -38,8 +38,8 @@ public class FlyingEnemyBrain : MonoBehaviour
     [Tooltip("Whether or not the enemy can predict player movement")]
     [SerializeField] private bool canLeadShots = false;
 
-    private GameObject player;
-    private CharacterController2D playerController;
+    private volatile GameObject player;
+    private volatile CharacterController2D playerController;
     private GameObject projectileStorage;
     private Health healthScript;
     private Vector2 toPlayer;
@@ -50,8 +50,8 @@ public class FlyingEnemyBrain : MonoBehaviour
     private float timeSinceDirectionChange = 0;
     private int shotDelay = 0;
     private bool isBuffed;
-    private readonly float shootingDeadzone = 2; // The deadzone if canLeadShots is enabled (avoid inaccurate leading)
-	private ProjectilePool projectilePool;
+    private readonly float shootingDeadzone = 4; // The deadzone if canLeadShots is enabled (avoid inaccurate leading)
+    private ProjectilePool projectilePool;
 
     // For ray casting:
     private Vector2 downRightRay;
@@ -64,7 +64,7 @@ public class FlyingEnemyBrain : MonoBehaviour
         playerController = player.GetComponent<CharacterController2D>();
         projectileStorage = GameObject.Find("ProjectileStorage");
         healthScript = transform.Find("HealthBar").GetComponent<Health>();
-		projectilePool = projectileStorage.GetComponent<ProjectilePool>();
+        projectilePool = projectileStorage.GetComponent<ProjectilePool>();
 
         movementSpeed *= 2; // Adjust movement speed to account for increased smoothing
         targetHeight *= 2; // Start correcting sooner
@@ -141,19 +141,20 @@ public class FlyingEnemyBrain : MonoBehaviour
     private Vector2 PredictTrajectory(Vector2 playerPosition, Vector2 playerVelocity, Vector2 projectileLaunchPos)
     {
         Vector2 targetDifference = playerPosition - projectileLaunchPos;
-        targetDifference.y = 0;
-        playerVelocity.y = 0;
+        targetDifference.y = 0.0f;
+        playerVelocity.y = 0.0f;
+        playerVelocity.x *= 1.1f; // Adjust for calculation delay
 
         // Set up an approximated quadratic formula:
-        float a = Vector2.Dot(playerVelocity, playerVelocity) - Mathf.Pow(projectileSpeed, 2);
-        float b = 2 * Vector2.Dot(targetDifference, playerVelocity);
+        float a = Vector2.Dot(playerVelocity, playerVelocity) - Mathf.Pow(projectileSpeed, 2.0f);
+        float b = 2.0f * Vector2.Dot(targetDifference, playerVelocity);
         float c = Vector2.Dot(targetDifference, targetDifference);
 
-        float determinant = Mathf.Sqrt(Mathf.Pow(b, 2) - 4 * a * c);
-        if (determinant > 0)
+        float determinant = Mathf.Sqrt(Mathf.Pow(b, 2.0f) - 4.0f * a * c);
+        if (determinant > 0.0f)
         {   // Calculate intercepts:
-            float t1 = (-b + determinant) / (2 * a);
-            float t2 = (-b - determinant) / (2 * a);
+            float t1 = (-b + determinant) / (2.0f * a);
+            float t2 = (-b - determinant) / (2.0f * a);
 
             Vector2 futurePosition = playerPosition + playerVelocity * Mathf.Max(t1, t2);
             Vector2 toFuturePosition = futurePosition - (Vector2)transform.position;
@@ -237,7 +238,7 @@ public class FlyingEnemyBrain : MonoBehaviour
         if (Random.value < timeSinceDirectionChange / 5.0f) // Do not always respond immediately (increase chance as time passes)
         {
             timeSinceDirectionChange = 0; // Reset duration since change (increased in every fixed update)
-            return preferredMovement * (movementSpeed*controller.GetMovementDebuff()); // Accept preferredMovement
+            return preferredMovement * (movementSpeed * controller.GetMovementDebuff()); // Accept preferredMovement
         }
         else
         { // Randomly pick one of two options instead of switching directions...
@@ -261,7 +262,7 @@ public class FlyingEnemyBrain : MonoBehaviour
         { // Within minimum height, move up...
             Vector2 correctedMovement = preferredMovement.normalized;
             correctedMovement.y += 0.1f;
-            return correctedMovement.normalized * (movementSpeed*controller.GetMovementDebuff());
+            return correctedMovement.normalized * (movementSpeed * controller.GetMovementDebuff());
         }
         if (transform.position.y < minimumYLevel)
         { // Under minimum y level, move up forcefully...
