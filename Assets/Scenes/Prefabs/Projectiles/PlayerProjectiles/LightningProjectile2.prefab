@@ -110,7 +110,7 @@ MonoBehaviour:
   fireRate: 5
   bulletSpeed: 5
   lifeSpan: 5
-  thrust: 20
+  thrust: 10
   rotationSpeed: 1000
   focusDistance: 5
   freezeObject: {fileID: 0}
