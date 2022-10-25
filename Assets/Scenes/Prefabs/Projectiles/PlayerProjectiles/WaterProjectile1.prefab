@@ -140,7 +140,7 @@ MonoBehaviour:
   projectileID: 3
   element: Rain
   tier: 1
-  damage: 10
+  damage: 20
   projectileDisabled: 0
   isBuffed: 0
   isRotatable: 1
