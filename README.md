@@ -37,7 +37,7 @@ Please find the .apk file in the repo. This will only work on Android devices/em
 Settings > Apps > Special app access > Install unknown apps\
 Settings > Apps & notifications > Advanced > Special app access > Install unknown apps\
 Settings > Apps and notifications\
-Settings > Security\
+Settings > Security
 * If the above doesn't work, please follow : https://www.lifewire.com/install-apk-on-android-4177185
 
 ## Features
