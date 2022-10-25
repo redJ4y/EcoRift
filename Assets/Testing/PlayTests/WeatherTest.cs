@@ -23,7 +23,7 @@ public class APITest
     {
         GetWeather weather = GameObject.Find("WeatherTest").GetComponent<GetWeather>();
         yield return new WaitForSeconds(8);
-        string currentWeather = weather.getWeatherType();
+        string currentWeather = weather.GetWeatherType();
         Assert.IsNotNull(currentWeather);
         switch (currentWeather)
         {

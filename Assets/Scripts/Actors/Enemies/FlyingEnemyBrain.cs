@@ -131,7 +131,7 @@ public class FlyingEnemyBrain : MonoBehaviour
         {
             isBuffed = true;
             // Apply effects:
-            healthScript.buffHp(1.2f);
+            healthScript.BuffHp(1.2f);
             attackSpeed++;
             attackRange++;
             aggroDistance++;

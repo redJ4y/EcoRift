@@ -20,7 +20,7 @@ public class APIHelper : MonoBehaviour
         UnityWebRequest getRequest = CreateRequest(APIData.APIurl);
         yield return getRequest.SendWebRequest();
         Weather[] deserialisedGetData = JsonHelper.FromJson<Weather>(getRequest.downloadHandler.text);
-        getWeatherScript.fetchAPIData(deserialisedGetData);
+        getWeatherScript.FetchAPIData(deserialisedGetData);
         // Trigger continuation of game flow
     }
 

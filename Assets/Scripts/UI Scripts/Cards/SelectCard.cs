@@ -43,7 +43,7 @@ public class SelectCard : MonoBehaviour
             projectileScript.SwitchWeapon(cardClicked.name+"Projectile1");
             tierScript.SetNewWeather(cardClicked.name);
 
-            staffScript.changeStaff(cardClicked.name + "Staff");
+            staffScript.ChangeStaff(cardClicked.name + "Staff");
             // Now animate up the current selected card
             cardTrans = cardClicked.GetComponent<RectTransform>();
             newPos = cardTrans.transform.localPosition + new Vector3(0, movementAmount, 0);

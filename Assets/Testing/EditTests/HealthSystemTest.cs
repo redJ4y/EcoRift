@@ -18,13 +18,13 @@ public class HealthSystemTest
         Assert.AreEqual(startingHP - 5.0f, health.GetHp());
         // Test RaiseHP:
         health.TakeDamage(10.0f);
-        health.raiseHP();
+        health.RaiseHP();
         Assert.AreEqual(startingHP - 15.0f + 10.0f, health.GetHp());
-        health.raiseHP();
+        health.RaiseHP();
         Assert.AreEqual(startingHP, health.GetHp());
         // Test BuffHP:
-        health.buffHp(2.0f);
-        health.raiseHP();
+        health.BuffHp(2.0f);
+        health.RaiseHP();
         Assert.Greater(health.GetHp(), startingHP);
     }
 }

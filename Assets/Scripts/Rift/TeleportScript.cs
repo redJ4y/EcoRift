@@ -58,16 +58,16 @@ public class TeleportScript : MonoBehaviour
         switch (currentLevel)
         {
             case "sun":
-                dataManager.SunLevelComplete(weatherState.getWeatherType());
+                dataManager.SunLevelComplete(weatherState.GetWeatherType());
                 break;
             case "rain":
-                dataManager.RainLevelComplete(weatherState.getWeatherType());
+                dataManager.RainLevelComplete(weatherState.GetWeatherType());
                 break;
             case "storm":
-                dataManager.StormLevelComplete(weatherState.getWeatherType());
+                dataManager.StormLevelComplete(weatherState.GetWeatherType());
                 break;
             case "snow":
-                dataManager.SnowLevelComplete(weatherState.getWeatherType());
+                dataManager.SnowLevelComplete(weatherState.GetWeatherType());
                 break;
             default:
                 break;
