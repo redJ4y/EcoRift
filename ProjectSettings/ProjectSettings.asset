@@ -254,7 +254,7 @@ PlayerSettings:
   AndroidTargetDevices: 1
   AndroidSplashScreenScale: 2
   androidSplashScreen: {fileID: 2800000, guid: 39c85df9df6cb4a04a9836556e66428a, type: 3}
-  AndroidKeystoreName: C:/Users/moars/OneDrive - AUT University/Documents/gameScreenshots/user.keystore
+  AndroidKeystoreName: C:/Users/myles/Desktop/SDP Unity Assets/key/user.keystore
   AndroidKeyaliasName: cardungeon
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
