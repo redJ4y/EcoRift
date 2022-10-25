@@ -53087,6 +53087,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3807157755351374352, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
+      propertyPath: hpRegenRate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3807157755351374352, guid: f5e0d3e0ad0ca4a7183ec6c24bd5cc04, type: 3}
       propertyPath: healthBarScript
       value: 
       objectReference: {fileID: 2012247219}

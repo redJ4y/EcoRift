@@ -143,7 +143,7 @@ public class GroundEnemyBrain : MonoBehaviour
             {
                 if (shootUp)
                 {
-                    projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, Vector2.up, projectileSpeed*2); // sorry for not using Shoot() jared
+                    projectilePool.Shoot(enemyDirectionalWeapon, shootStartPosition.transform, Vector2.up, projectileSpeed * 2); // sorry for not using Shoot() jared
                 }
                 if (shootDiagonally)
                 {
@@ -317,14 +317,15 @@ public class GroundEnemyBrain : MonoBehaviour
                     {
                         // Check if there is something to jump to:
                         float jumpDistance = GetApproximateJumpDistance();
-                        if (jumpDistance > 2) // Filter out false positives at very low speed
+                        if (jumpDistance > 1) // Filter out false positives at very low speed
                         {
-                            float jumpRayLength = Mathf.Sqrt(Mathf.Pow(jumpDistance, 2) + halfEnemyHeightSquared) * 1.01f;
+                            float jumpRayLength = Mathf.Sqrt(Mathf.Pow(jumpDistance, 2) + halfEnemyHeightSquared) * 1.02f;
                             Vector2 jumpToRay = new Vector2(preferredMovement < 0 ? -jumpDistance : jumpDistance, -halfEnemyHeight);
                             if (Physics2D.Raycast(transform.position, jumpToRay.normalized, jumpRayLength, whatIsGround))
                             { // Jump to the next platform...
                                 jump = true;
                                 currentlyLeaping = true; // Maintain jump state until landing
+                                timeSinceDirectionChange = 0;
                                 return preferredMovement;
                             }
                         }
@@ -332,12 +333,16 @@ public class GroundEnemyBrain : MonoBehaviour
                     // There is nothing to jump to (or canJump is disabled)...
                     currentlyLeaping = false;
                     timeSinceDirectionChange = 0;
-                    return Random.value < 0.8f ? 0 : -preferredMovement;
+                    return -preferredMovement;
                 }
             }
         }
-        if (canJump && controller.IsPlayerGrounded())
-            currentlyLeaping = false;
+        if (currentlyLeaping && timeSinceDirectionChange > 2 * Time.fixedDeltaTime) // Delay ground check
+        {
+            controller.DoGroundCheck();
+            if (controller.IsPlayerGrounded())
+                currentlyLeaping = false;
+        }
         return preferredMovement;
     }
 

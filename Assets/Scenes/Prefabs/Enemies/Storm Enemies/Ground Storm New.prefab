@@ -71,7 +71,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7977492489572996693, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Name
-      value: Ground Storm New (6)
+      value: Ground Storm New (4)
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996693, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_TagString
@@ -97,6 +97,14 @@ PrefabInstance:
       propertyPath: enemyWeapon
       value: 
       objectReference: {fileID: 6958890066831099034, guid: 0de2b659c18d44293baf64855ba1fafc, type: 3}
+    - target: {fileID: 7977492489572996714, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
+      propertyPath: enemyTargetedWeapon
+      value: 
+      objectReference: {fileID: 6958890066831099034, guid: 0de2b659c18d44293baf64855ba1fafc, type: 3}
+    - target: {fileID: 7977492489572996714, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
+      propertyPath: enemyDirectionalWeapon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996716, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -115,11 +123,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 205.36234
+      value: 190.68005
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1688026
+      value: -5.8372655
       objectReference: {fileID: 0}
     - target: {fileID: 7977492489572996717, guid: 7d9bb7a565ca51944b74361116627d08, type: 3}
       propertyPath: m_LocalPosition.z
