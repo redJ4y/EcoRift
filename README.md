@@ -19,7 +19,7 @@ Project is created with :
 * Open Weather API
 
 ## Setup
-* The project is under review on Google Play as on 23/10/2022. 
+* The project is currently available on Google Play, please search 'EcoRift'.
 
 * To clone and run on Unity. 
 User must include the API key (this is not public on GitHub for exploitation prevention).\
